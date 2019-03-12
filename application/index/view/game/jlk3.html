@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>结算账户</title>
+    <link rel="stylesheet" href="__STATIC__/style/bootstrap.min.css">
+    <link rel="stylesheet" href="__STATIC__/style/public.css">
+    <link rel="stylesheet" href="__STATIC__/game/style/index.css">
+</head>
+
+<body>
+    <div class="layout">
+        <div class="header">
+            <div class="header-tip clear-float">
+                <div class="time-wrap pull-left color-tip">
+                    香港时间：<span id="onlineTime">2019-03-06 22:22:15</span>
+                </div>
+                <div class="marquee-wrap pull-left color-simple-pink">
+                    <span class="pull-left">公告：</span>
+                    <div class="marquee-view pull-left">
+                        <marquee scrolldelay="120" onmouseover="this.stop()" onmouseout="this.start()" class="marquee">
+                            <p style="position:relative; margin: 0;"><span style="color:#FF0000;font-size:14px">吉林省快3游戏销售时间调整为20分钟一期，早8:20开售至晚上21：40每天40期。</span></p>
+                        </marquee>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-main">
+                <ul class="nav-bar">
+                    <li class="nav-list active"><a href="javascript:void(0)">彩票大厅</a></li>
+                    <li class="nav-list">&nbsp;&nbsp;</li>
+                    <li class="nav-list"><a href="javascript:void(0)">系统公告</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list active"><a href="javascript:void(0)">游戏切换</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="javascript:void(0)">会员资料</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="javascript:void(0)">额度变动</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="javascript:void(0)">修改密码</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="javascript:void(0)">下注明细</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="javascript:void(0)">结算账户</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="javascript:void(0)">开奖结果</a></li>
+                    <li class="nav-list">&nbsp;&nbsp;</li>
+                    <li class="nav-list"><a href="javascript:void(0)">登出</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 控制内容宽度 （userInfo -> 左侧显示user） -->
+        <div class="main userInfo">
+            <!-- 左侧人物信息 -->
+            <div class="layout-slidebar">
+                <div class="userForm">
+                    <div class="logo-warp">
+                        <div class="game-logo"></div>
+                        <div class="game-name">吉林快3</div>
+                    </div>
+                    <div class="acct-bg">
+                        <div class="acct border-b565656">
+                            <div class="acct-key">账号</div>
+                            <div class="acct-value">qwe1133</div>
+                        </div>
+                        <div class="acct border-tb5b5b5">
+                            <div class="acct-key">现金额度</div>
+                            <div class="acct-value">100</div>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-title">
+                            <span class="icon"></span>最新投注
+                        </div>
+                        <div class="table-content">
+                            <p>最新&nbsp;&nbsp;<b>1</b>&nbsp;&nbsp;笔</p>
+                            <table cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>内容</th>
+                                        <th>赔率</th>
+                                        <th>金额</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>内容</td>
+                                        <td>赔率</td>
+                                        <td>金额</td>
+                                    </tr>
+                                    <tr>
+                                        <td>时间</td>
+                                        <td>内容</td>
+                                        <td>赔率</td>
+                                        <td>金额</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-title">
+                            <span class="icon"></span>最新投注
+                        </div>
+                        <div class="table-content">
+                            <table cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th>期数</th>
+                                        <th>开奖号码</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>20190308-016</td>
+                                        <td>
+                                            <span class="color2">2</span>
+                                            <span class="color3">3</span>
+                                            <span class="color3">3</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                            <td>20190308-016</td>
+                                            <td>
+                                                <span class="color2">2</span>
+                                                <span class="color3">3</span>
+                                                <span class="color3">3</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>20190308-016</td>
+                                                <td>
+                                                    <span class="color2">2</span>
+                                                    <span class="color3">3</span>
+                                                    <span class="color3">3</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                    <td>20190308-016</td>
+                                                    <td>
+                                                        <span class="color2">2</span>
+                                                        <span class="color3">3</span>
+                                                        <span class="color3">3</span>
+                                                    </td>
+                                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧内容信息 -->
+            <div class="layout-body">
+                <!-- 上部分 -->
+                <div class="page-content-title">
+                    <span>第</span>
+                    <strong class="f-c-red">20190311-039</strong>
+                    <span>开奖号码</span>
+                    <span class="color1 color-game">1</span>
+                    <span class="color2 color-game">2</span>
+                    <span class="color3 color-game">3</span>
+                </div>
+                <!-- 切换 -->
+                <div class="clear-float select-wrapper">
+                    <strong class="sub-title m-r-15">投注类型</strong>
+                    <div class="select-item active m-r-5">一般</div>
+                    <div class="select-item">游戏规则</div>
+                </div>
+                <div class="portlet">
+                    <div class="portlet-title clear-float">
+                        <span>重庆时时彩&nbsp;&nbsp;龙虎&nbsp;</span>
+                        <select name="" id="" class="form-control changeGame">
+                            <option selected value="">A</option>
+                            <option value="">B</option>
+                        </select>
+                        <span class="m-l-30">第<b class="f-c-red">20190311-054</b>期</span>
+                        <span class="m-l-30">投注时间：<b class="f-c-red">0:12:40</b></span>
+                        <span class="m-l-30">停盘时间：<b>22:07:00</b></span>
+                        <div class="fast-import pull-right">
+                            <span>快速输入&nbsp;</span>
+                            <input type="text" class="form-control m-r-15">
+                            <span class="h-btn btn-red">重新整理</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <!-- 第一项 -->
+                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th colspan="100">三军(一同骰子=（赔率-1）X1、 二同骰子=（赔率-1）X2、 三同骰子=（赔率-1）X3)</th>
+                                </tr>
+                                <tr>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                </tr>
+                                <tr>
+                                    <th>1</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input type="text">
+                                    </td>
+
+                                    <th>2</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input type="text">
+                                    </td>
+
+                                    <th>3</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>4</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input type="text">
+                                    </td>
+
+                                    <th>5</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input type="text">
+                                    </td>
+
+                                    <th>6</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input type="text">
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <!-- 第二项 -->
+                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th colspan="100">合值</th>
+                                </tr>
+                                <tr>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                </tr>
+                                <tr>
+                                    <th>3</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>4</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>5</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>6</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>7</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>8</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>8</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>10</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>11</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>12</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>13</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>14</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>15</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>16</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>17</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>18</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    <td colspan="12"></td>
+                                </tr>
+
+                                <tr>
+                                    <th>大</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>小</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>单</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>双</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <td colspan="3"></td>
+                                </tr>
+
+                                <tr>
+                                    <th>大单</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>大双</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>小单</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>小双</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    
+                                    <td colspan="3"></td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <!-- 第三项 -->
+                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th colspan="15">豹子、顺子、杂</th>
+                                </tr>
+                                <tr>
+                                    <th>豹子</th>
+                                    <td><b class="f-c-red f-s-16">15</b></td>
+                                    <td><input type="text" class="gb"></td>
+
+                                    <th>半顺</th>
+                                    <td><b class="f-c-red f-s-16">15</b></td>
+                                    <td><input type="text" class="gb"></td>
+
+                                    <th>全顺</th>
+                                    <td><b class="f-c-red f-s-16">15</b></td>
+                                    <td><input type="text" class="gb"></td>
+
+                                    <th>杂</th>
+                                    <td><b class="f-c-red f-s-16">15</b></td>
+                                    <td><input type="text" class="gb"></td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <!-- 第四项 -->
+                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th colspan="15">跨度</th>
+                                </tr>
+                                <tr>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                    <th>号码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                </tr>
+
+                                <tr>
+                                    <th>1</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>2</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>3</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>4</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <th>5</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+
+                                    <td colspan="3"></td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <!-- 第五项 -->
+                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                                <tr>
+                                    <td colspan="15">过关</td>
+                                </tr>
+                                <tr>
+                                    <th>红单</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    <th>红双</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    <th>红大</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    <th>红小</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>黑单</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    <th>黑双</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    <th>黑大</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    <th>黑小</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>黑码</th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    <th><span class="f-c-red">红码</span></th>
+                                    <td>
+                                        <b class="f-c-red f-s-16">1.98</b>
+                                    </td>
+                                    <td>
+                                        <input class="gb" type="text">
+                                    </td>
+                                    
+                                    <td colspan="6"></td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <!-- 第六项 -->
+                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                            <thead>
+                                <tr>
+                                    <th>玩法</th>
+                                    <th colspan="6">红黑码</th>
+                                    <th>赔率</th>
+                                    <th>金额</th>
+                                </tr>
+                                <tr>
+                                    <th>4码黑</th>
+                                    <td class="bg"><input type="checkbox">1</td>
+                                    <td class="bg"><input type="checkbox">2</td>
+                                    <td class="bg"><input type="checkbox">3</td>
+                                    <td class="bg"><input type="checkbox">4</td>
+                                    <td class="bg"><input type="checkbox">5</td>
+                                    <td class="bg"><input type="checkbox">6</td>
+                                    <td><b class="f-s-16 f-c-red">6</b></td>
+                                    <td><input type="text" class="gb"></td>
+                                </tr>
+                                <tr>
+                                    <th><span class="f-c-red">4码红</span></th>
+                                    <td class="bg f-c-red"><input type="checkbox">1</td>
+                                    <td class="bg f-c-red"><input type="checkbox">2</td>
+                                    <td class="bg f-c-red"><input type="checkbox">3</td>
+                                    <td class="bg f-c-red"><input type="checkbox">4</td>
+                                    <td class="bg f-c-red"><input type="checkbox">5</td>
+                                    <td class="bg f-c-red"><input type="checkbox">6</td>
+                                    <td><b class="f-s-16 f-c-red">6</b></td>
+                                    <td><input type="text" class="gb"></td>
+                                </tr>
+                                <tr>
+                                    <th>5码黑</th>
+                                    <td class="bg"><input type="checkbox">1</td>
+                                    <td class="bg"><input type="checkbox">2</td>
+                                    <td class="bg"><input type="checkbox">3</td>
+                                    <td class="bg"><input type="checkbox">4</td>
+                                    <td class="bg"><input type="checkbox">5</td>
+                                    <td class="bg"><input type="checkbox">6</td>
+                                    <td><b class="f-s-16 f-c-red">6</b></td>
+                                    <td><input type="text" class="gb"></td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="form-assect">
+                            <span class="f-c-green m-r-5"><b>金额</b></span>
+                            <span class="f-c-red m-r-5"><b>0</b></span>
+                            <span class="m-r-5"><b>快速输入</b></span>
+                            <input type="text" class="m-r-15">
+                            <span class="h-btn btn-red m-r-5">确认</span>
+                            <span class="h-btn m-r-5">重置</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="__STATIC__/js/jquery-2.1.4.min.js"></script>
+
+</html>

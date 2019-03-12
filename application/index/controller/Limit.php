@@ -1,0 +1,11 @@
+<?php
+namespace app\index\controller;
+use think\Controller;
+
+class Limit extends Controller
+{
+    public function index()
+    {
+         return $this->fetch();
+    }
+}
