@@ -1,0 +1,150 @@
+.layout-body{
+    margin-top: 20px;
+}
+.gameTable{
+    border-top: 1px solid #a28d74;
+    border-left: 1px solid #a28d74;
+}
+.gameTable > table{
+    width: 100%;
+}
+.gameTable td{
+    border-bottom: 1px solid #a28d74;
+    border-right: 1px solid #a28d74;
+    height: 243px;
+    min-height: 243px;
+    position: relative;
+    background: linear-gradient(rgb(29, 21, 14) 0%, rgb(103, 88, 61) 50%, rgb(103, 88, 61) 100%);
+    overflow: hidden;
+}
+.gameTable .gameLogo{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 45px;
+    text-align: center;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+}
+.gameTable td:hover .gameLogo{
+    transform: scale(1.3);
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -o-transform: scale(1.4);
+}
+
+.gameTable .gameName{
+    position: absolute;
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    bottom: 15px;
+    font-weight: normal;
+    opacity: 1;
+}
+.gameTable td:hover .gameName{
+    opacity: 0;
+    bottom: -100%;
+}
+.gameTable .gameName .game{
+    display: inline-block;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 2px;
+    width: 100px;
+    background-color: #372c1e;
+    border-radius: 50px;
+    line-height: 32px;
+}
+
+.gameTable .gameContent{
+    position: relative;
+    z-index: 2;
+    background: rgba(0,0,0,.4);
+    height: 100%;
+    opacity: 0;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+}
+.gameContent li{
+    height: 48px;
+    line-height: 48px;
+    overflow: hidden;
+    border-bottom: 1px solid #000;
+   
+}
+.gameContent .gameList{
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+    height: 100%;
+    cursor: pointer;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+}
+.gameContent .countDown{
+    position: relative;
+    width: 105px;
+    text-align: right;
+}
+.gameContent .countDown .timeIcon{
+    position: absolute;
+    left: 0;
+    top: 11px;
+    border-radius: 50px;
+    height: 26px;
+    width: 26px;
+    transition: all .3s ease-in-out;
+}
+.gameContent .countDown .timeIcon.ready{
+    border: 2px solid #01b38f;
+}
+.gameContent .countDown .timeIcon.over{
+    border: 2px solid #dc494d;
+}
+.gameContent .countDown .timeIcon::before{
+    content: '';
+    position: absolute;
+}
+.gameContent .countDown .timeIcon.ready::before{
+    top: 3px;
+    left: 8px;
+    width: 0;
+    height: 0;
+    border-radius: 2px;
+    border-width: 8px;
+    border-color: transparent transparent transparent #01b38f;
+    border-style: solid;
+}
+.gameContent .countDown .timeIcon.over::before{
+    top: 6px;
+    left: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 1px;
+    border: none;
+    background: #dc494d;
+}
+.gameContent .gameList:hover{
+    background: rgba(90, 136, 145, 0.4)
+}
+.gameContent .gameList:hover .countDown .timeIcon{
+    width: 116px;
+}
+
+.gameTable td:hover .gameContent{
+    opacity: 1;
+}
