@@ -49,12 +49,16 @@ return [
     // 控制器类后缀
     'controller_suffix'      => false,
 
+
+    'TMPL_CACHE_ON' => false,
+    'TMPL_CACHE_ON' => false,
+
     // +----------------------------------------------------------------------
     // | 模块设置
     // +----------------------------------------------------------------------
 
     // 默认模块名
-    'default_module'         => 'home',
+    'default_module'         => 'index',
     // 禁止访问模块
     'deny_module_list'       => ['common'],
     // 默认控制器名
