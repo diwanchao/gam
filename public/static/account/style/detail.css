@@ -16,6 +16,7 @@
     vertical-align: middle;
     height: 26px;
     font-size: 14px;
+    padding: 0;
 }
 .page-info{
     display: inline-block;

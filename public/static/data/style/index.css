@@ -3,6 +3,7 @@
     color: #333;
     display: inline-block;
     width: 95px;
+    padding: 0;
 }
 .h-table td{
     text-align: center;
