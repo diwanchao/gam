@@ -1,0 +1,9 @@
+.portlet .portlet-title .form-control{
+    height: 25px;
+    color: #333;
+    display: inline-block;
+    width: 95px;
+}
+.h-table td{
+    text-align: center;
+}

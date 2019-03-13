@@ -1,0 +1,17 @@
+
+.portlet-title{
+    line-height: 38px;
+    font-size: 0;
+}
+.portlet-title span{
+    vertical-align: middle;
+    line-height: 38px;
+    font-size: 14px;
+}
+.changeGame.form-control{
+    width: 95px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 26px;
+    font-size: 14px;
+}

@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>额度变动</title>
+    <title>下注明细</title>
     <link rel="stylesheet" href="__STATIC__/style/bootstrap.min.css">
     <link rel="stylesheet" href="__STATIC__/style/public.css">
-    <link rel="stylesheet" href="__STATIC__/limit/style/index.css">
+    <link rel="stylesheet" href="__STATIC__/detail/style/index.css">
 </head>
 
 <body>
@@ -119,37 +119,43 @@
             <!-- 右侧内容信息 -->
             <div class="layout-body">
                 <div class="portlet">
-                    <div class="portlet-title">快开额度变动记录</div>
+                    <div class="portlet-title">
+                        <select name="" id="" class="form-control changeGame">
+                            <option value="">体裁PL3</option>
+                            <option value="">吉林快3</option>
+                        </select>
+                        <span>&nbsp;&nbsp;下注明细(当前未结算注单)&nbsp;&nbsp;</span>
+                    </div>
                     <div class="portlet-body">
                         <table class="h-table" cellspacing="0" cellpadding="0" border="0">
                             <thead>
                                 <tr>
-                                    <th>存入/提取项目</th>
-                                    <th>变动数值</th>
-                                    <th>时间</th>
+                                    <th width="2%">No</th>
+                                    <th width="10%">下注时间</th>
+                                    <th width="10%">注单单号</th>
+                                    <th width="5%">分盘</th>
+                                    <th width="30%">投注内容</th>
+                                    <th width="10%">金额</th>
+                                    <th width="10%">退水</th>
+                                    <th width="10%">输赢</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>存入金额</td>
-                                    <td>100</td>
-                                    <td>2019-02-24 12:54:27</td>
-                                </tr>
                             </tbody>
                         </table>
-                        <div class="portlet-footer">
-                            <div class="page-info">
-                                <span>共:&nbsp;<b class="page-total">1</b>&nbsp;条</span>
-                                <span>&nbsp;&nbsp;跳至&nbsp;</span>
-                                <select name="" class="form-control page-jump" id="">
-                                    <option value="1">1</option>
-                                </select>
-                                <span>&nbsp;页&nbsp;／&nbsp;<b class="page-index">1</b>&nbsp;页&nbsp;&nbsp;</span>
-                                <a href="javascript:void(0)" class="page-first">首页</a>
-                                <a href="javascript:void(0)" class="page-prev">上一页</a>
-                                <a href="javascript:void(0)" class="page-next">下一页</a>
-                                <a href="javascript:void(0)" class="page-last">末页</a>
-                            </div>
+                    </div>
+                    <div class="portlet-footer">
+                        <div class="page-info">
+                            <span>当前页合计:&nbsp;<b class="page-total">1</b>&nbsp;笔</span>
+                            <span>&nbsp;&nbsp;跳至&nbsp;</span>
+                            <select name="" class="form-control page-jump" id="">
+                                <option value="1">1</option>
+                            </select>
+                            <span>&nbsp;页&nbsp;／&nbsp;<b class="page-index">1</b>&nbsp;页&nbsp;&nbsp;</span>
+                            <a href="javascript:void(0)" class="page-first">首页</a>
+                            <a href="javascript:void(0)" class="page-prev">上一页</a>
+                            <a href="javascript:void(0)" class="page-next">下一页</a>
+                            <a href="javascript:void(0)" class="page-last">末页</a>
                         </div>
                     </div>
                 </div>
