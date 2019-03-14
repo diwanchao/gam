@@ -1,22 +1,33 @@
 var $username = $('[name=username]');
-var $password = $('[name=passowrd]');
+var $password = $('[name=password]');
 var $ensure = $('[name=ensure]');
 var $login = $('#login');
 
 var requireURL = {
     login: '',
-    getEnsure: '',
 }
 
 $(function(){
 
     $login.bind('click', function(){
         var data = {
-            username: $useranme.val(),
-            passowrd: $password.val(),
-            ensure: $ensure.val(),
+            user_name: $username.val(),
+            user_pwd: $password.val(),
+            code: $ensure.val(),
         }
+        console.log(data);
 
         //ajax
+        $.ajax({
+            type: 'POST',
+            url: requireURL.login,
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+            },
+            error: function(err){
+                console.log(err)
+            }
+        })
     });
 })
