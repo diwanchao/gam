@@ -10,7 +10,7 @@ class Index extends Controller
 
         $swagger_json_path = ROOT_PATH.'public\swagger.json';
         $res = file_put_contents($swagger_json_path, $swagger);*/
-        $cmd = 'php '.ROOT_PATH.'vendor\zircote\swagger-php\bin\swagger '.ROOT_PATH.'application\api -o '.ROOT_PATH.'public';
+        $cmd = 'php '.ROOT_PATH.'vendor/zircote/swagger-php/bin/swagger '.ROOT_PATH.'application/api -o '.ROOT_PATH.'public';
 
         $res = shell_exec($cmd);
         $this->redirect('http://'.$_SERVER['HTTP_HOST'].'/swagger-ui/dist/index.html');
