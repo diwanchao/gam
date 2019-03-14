@@ -9,7 +9,7 @@ class Home extends Base
      * @SWG\Get(
      *   path="/api/home/info",
      *   tags={"Home"},
-     *   summary="登录接口",
+     *   summary="主界面接口",
      *   operationId="updatePetWithForm",
      *   consumes={"application/x-www-form-urlencoded"},
      *   produces={"application/json"},
