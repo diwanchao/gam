@@ -13,6 +13,6 @@ class Index extends Controller
         $cmd = 'php '.ROOT_PATH.'vendor\zircote\swagger-php\bin\swagger '.ROOT_PATH.'application\index -o '.ROOT_PATH.'public';
 
         $res = shell_exec($cmd);
-        $this->redirect('http://game.com/swagger-ui/dist/index.html');
+        $this->redirect('http://'.$_SERVER['HTTP_HOST'].'/swagger-ui/dist/index.html');
     }
 }
