@@ -34,7 +34,7 @@ class Login extends Base
      *     required=true,
      *     type="string"
      *   ),
-     *   @SWG\Response(response="405",description="Invalid input"),
+     *   @SWG\Response(response="201",description="字段不全"),
      *   security={{
      *     "petstore_auth": {"write:pets", "read:pets"}
      *   }}
@@ -53,10 +53,18 @@ class Login extends Base
         	if (!captcha_check($data['code'])) 
         		throw new \Exception("验证码不正确", 1);
 
+
+
+
+        	$user_info = [
+        		'user_name' => $data['user_name'],
+        		'balance' 	=> 100
+        	];
+
         } catch (\Exception $e) {
 			return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);        	
         }
-        return json(['msg' => 'succeed','code' => 200, 'data' => []]);
+        return json(['msg' => 'succeed','code' => 200, 'data' =>['user'=>$user_info]]);
     }
 
 }
