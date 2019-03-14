@@ -1,7 +1,6 @@
 var $username = $('[name=username]');
 var $password = $('[name=passowrd]');
 var $ensure = $('[name=ensure]');
-var $ensureImg = $('#ensureImg');
 var $login = $('#login');
 
 var requireURL = {
