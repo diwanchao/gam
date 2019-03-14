@@ -15,7 +15,6 @@ $(function(){
             user_pwd: $password.val(),
             code: $ensure.val(),
         }
-        console.log(data);
 
         //ajax
         $.ajax({
@@ -23,10 +22,16 @@ $(function(){
             url: requireURL.login,
             dataType: 'json',
             success: function(data){
+                if(data.code != 200){
+                    alert(data.msg);
+                }
+                else {
+                    // window.location = '/index/home';
+                }
                 console.log(data);
             },
             error: function(err){
-                console.log(err)
+                alert(data.msg);
             }
         })
     });
