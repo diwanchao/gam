@@ -30,6 +30,31 @@ BODY{background-color:#090908}.agree_border{background-color:#ddd}
             margin: 0 auto;
         }
     </style>
+    <script type="text/javascript">
+        function getCookie(name) 
+        { 
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        
+            if(arr=document.cookie.match(reg))
+        
+                return unescape(arr[2]); 
+            else 
+                return null; 
+        } 
+
+        function delCookie(name) 
+        { 
+            var exp = new Date(); 
+            exp.setTime(exp.getTime() - 1); 
+            var cval=getCookie(name); 
+            if(cval!=null) 
+                document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+        } 
+
+        if(!getCookie('userInfo')){
+            window.location = '/index/login';
+        }
+    </script>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
         <table width="" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="White" style="margin-top:20px;">
@@ -68,8 +93,8 @@ BODY{background-color:#090908}.agree_border{background-color:#ddd}
                     </tr>
                     <tr bgcolor="#FFFFFF">
                         <td height="40" align="center" class="linkb">
-                            <input type="button" name="Submit" value="不同意" onclick="document.location='login.jsp';">
-                            <input type="button" name="Submit2" value="同意" onclick="document.location='index2.jsp';">
+                            <input id="submit1" type="button" name="Submit" value="不同意">
+                            <input id="submit2" type="button" name="Submit2" value="同意">
                         </td>
                     </tr>
                 </tbody></table>
@@ -84,4 +109,18 @@ BODY{background-color:#090908}.agree_border{background-color:#ddd}
     
 
 </body>
+<script type="text/javascript">
+    var btn1 = document.getElementById('submit1');
+    var btn2 = document.getElementById('submit2');
+
+    btn1.click = function(){
+        delCookie('userInfo');
+        window.location = '/index/login';
+    };
+
+    btn2.click = function(){
+        window.location = '/index/home';
+    }
+
+</script>
 </html>

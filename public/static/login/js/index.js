@@ -7,6 +7,34 @@ var requireURL = {
     login: '',
 }
 
+function setCookie(name,value) 
+{ 
+    var Days = 1; 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString() + 'path=/'; 
+} 
+
+// function getCookie(name) 
+// { 
+//     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+ 
+//     if(arr=document.cookie.match(reg))
+ 
+//         return unescape(arr[2]); 
+//     else 
+//         return null; 
+// } 
+
+// function delCookie(name) 
+// { 
+//     var exp = new Date(); 
+//     exp.setTime(exp.getTime() - 1); 
+//     var cval=getCookie(name); 
+//     if(cval!=null) 
+//         document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+// } 
+
 $(function(){
 
     $login.bind('click', function(){
@@ -26,12 +54,13 @@ $(function(){
                     alert(data.msg);
                 }
                 else {
-                    // window.location = '/index/home';
+                    setCookie('userInfo', JSON.stringify(data.data.user))
+                    window.location = '/index/agree';
                 }
                 console.log(data);
             },
             error: function(err){
-                alert(data.msg);
+                alert('Server error……');
             }
         })
     });
