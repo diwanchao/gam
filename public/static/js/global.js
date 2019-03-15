@@ -117,9 +117,13 @@ $(document).ready(function(){
 
 		// 服务器时间
 		this.$onlineTime = $('#onlineTime');
+		// 最新公告
+		this.$newNotice = $('#newNotice');
 
 		// ajax请求数据
 		this.data = {
+			// 最新公告
+			notice: '这是一条最新公告',
 			// 服务器时间
 			macau_time: utils.paseDate(null, 'yyyy-MM-dd HH:mm:ss'),
 			// 游戏集合
@@ -130,9 +134,7 @@ $(document).ready(function(){
 			// 游戏详情
 			gameInfo: [],
 		};
-
 		this.init();
-		
 	}
 
 	var _proto = InitHeader.prototype;
@@ -142,6 +144,7 @@ $(document).ready(function(){
 	 */
 	_proto.init = function(){
 		this.timeInit();
+		this.noticeInit();
 	}
 
 	/**
@@ -149,12 +152,24 @@ $(document).ready(function(){
 	 */
 	_proto.timeInit = function(){
 		var time = this.data.macau_time;
+		var _this = this;
 		this.$onlineTime.text(time);
 		window.setInterval(function(){
 			time = new Date(time) * 1 + 1000;
-			this.$onlineTime.text(utils.paseDate(time, 'yyyy-MM-dd HH:mm:ss'));
+			_this.$onlineTime.text(utils.paseDate(time, 'yyyy-MM-dd HH:mm:ss'));
 		}, 1000);
 	}
+
+	/**
+	 * 初始化最新公告
+	 */
+	_proto.noticeInit = function(){
+		this.$newNotice.text(this.data.notice);
+	}
+
+
+
+
 
 	window.InfoAll = {
 		InitHeader: new InitHeader(),

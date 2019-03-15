@@ -89,13 +89,13 @@ a:hover{
 }
 .header-main .nav-bar{
     color: #fff;
-    overflow: hidden;
     font-weight: 100;
     display: inline-block;
     margin-top: 5px;
 }
 .header-main .nav-list{
     float: left;
+    position: relative;
 }
 .header-main .nav-list.active{
     color: #FFFF00;
@@ -108,6 +108,45 @@ a:hover{
 }
 .header-main .nav-list a:hover{
     color:#F7E67D;
+}
+.game-menu{
+    position: absolute;
+    left: 0;
+    top: 99%;
+    z-index: 5;
+    width: 190px;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 0 5px;
+    padding-bottom: 10px;
+    font-weight: 400;
+}
+.game-menu .game-group{
+    line-height: 24px;
+}
+.game-menu .game-group p{
+    color: #C49869;
+    text-align: center;
+    margin-bottom: 0;
+    line-height: 28px;
+    font-weight: 400;
+}
+.game-menu .game-group ul{
+    width: 100%;
+}
+.game-menu .game-group ul li{
+    width: 100%;
+    float: none;
+    color: #000;
+    text-align: left;
+}
+.game-menu .game-group ul li a{
+    color: #000;
+    font-weight: 400;
+}
+.game-menu .game-group ul li a:hover{
+    color: #000;
+    text-decoration: underline;
 }
 .layout{
     height: 100%;
