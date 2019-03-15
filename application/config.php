@@ -245,4 +245,17 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+
+    'captcha'  => [        // 验证码字符集合3.        
+        'codeSet'  => '1234567890',         // 验证码字体大小(px)5.   
+        'fontSize' => 13,         // 是否画混淆曲线7.      
+        'useCurve' => false,          // 验证码图片高度9.      
+        'imageH'   => 30,        // 验证码图片宽度11.       
+        'imageW'   => 85,         // 验证码位数13.       
+        'length'   => 4,         // 验证成功后是否重置        15.      
+        'reset'    => true,
+        'useNoise' => false,
+        ],
+
+
 ];
