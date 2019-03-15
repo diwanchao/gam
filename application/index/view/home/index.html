@@ -13,7 +13,45 @@
 
 <body>
     <div class="layout">
-        {include file="public/head"}
+        <div class="header">
+            <div class="header-tip clear-float">
+                <div class="time-wrap pull-left color-tip">
+                    香港时间：<span id="onlineTime">2019-03-06 22:22:15</span>
+                </div>
+                <div class="marquee-wrap pull-left color-simple-pink">
+                    <span class="pull-left">公告：</span>
+                    <div class="marquee-view pull-left">
+                        <marquee scrolldelay="120" onmouseover="this.stop()" onmouseout="this.start()" class="marquee">
+                            <p style="position:relative; margin: 0;"><span style="color:#FF0000;font-size:14px" id="newNotice">吉林省快3游戏销售时间调整为20分钟一期，早8:20开售至晚上21：40每天40期。</span></p>
+                        </marquee>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-main">
+                <ul class="nav-bar">
+                    <li class="nav-list active"><a href="/index/home">彩票大厅</a></li>
+                    <li class="nav-list">&nbsp;&nbsp;</li>
+                    <li class="nav-list"><a href="/index/notice">系统公告</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list active"><a href="javascript:void(0)">游戏切换</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="/index/data">会员资料</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="/index/limit">额度变动</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="/index/change_pwd">修改密码</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="/index/detail">下注明细</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="/index/account">结算账户</a></li>
+                    <li class="nav-list">&nbsp;|&nbsp;</li>
+                    <li class="nav-list"><a href="/index/result">开奖结果</a></li>
+                    <li class="nav-list">&nbsp;&nbsp;</li>
+                    <li class="nav-list"><a href="javascript:void(0)">登出</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="layout-body container">
             <div class="banner" id="banner">
                 <ul class="inner">
@@ -236,6 +274,7 @@
 </body>
 <script src="__STATIC__/js/jquery-2.1.4.min.js"></script>
 <script src="__STATIC__/js/TouchSlide.1.1.js"></script>
+<script src="/static/js/global.js"></script>
 <script>
     TouchSlide({
         slideCell:'#banner',
