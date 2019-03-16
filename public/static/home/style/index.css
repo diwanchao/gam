@@ -11,8 +11,8 @@
 .gameTable td{
     border-bottom: 1px solid #a28d74;
     border-right: 1px solid #a28d74;
-    height: 243px;
-    min-height: 243px;
+    width: 33.33333%;
+    height: 480px;
     position: relative;
     background: linear-gradient(rgb(29, 21, 14) 0%, rgb(103, 88, 61) 50%, rgb(103, 88, 61) 100%);
     overflow: hidden;

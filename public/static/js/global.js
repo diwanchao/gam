@@ -22,7 +22,7 @@ var utils = {
 	delCookie: function (name) { 
 		var exp = new Date(); 
 		exp.setTime(exp.getTime() - 1); 
-		var cval=getCookie(name); 
+		var cval = utils.getCookie(name); 
 		if(cval!=null) 
 			document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
 	},
@@ -119,7 +119,17 @@ $(document).ready(function(){
 		this.$onlineTime = $('#onlineTime');
 		// 最新公告
 		this.$newNotice = $('#newNotice');
-
+		// 菜单列表
+		this.$gameMenu = $('#gameMenu');
+		// 游戏列表
+		this.$navGameList = $('#navGameList');
+		// 显示隐藏菜单列表按钮
+		this.$gameDorpDown = $('#gameDorpDown');
+		// 游戏二级菜单
+		this.$subGameMenu = $('#subGameMenu');
+		// 登出
+		this.$logout = $('#logout');
+	
 		// ajax请求数据
 		this.data = {
 			// 最新公告
@@ -127,26 +137,32 @@ $(document).ready(function(){
 			// 服务器时间
 			macau_time: utils.paseDate(null, 'yyyy-MM-dd HH:mm:ss'),
 			// 游戏集合
-			game: {
-				k3: [],
-				ssc: [],
-			},
+			game: [
+				{name: '吉林快3', key: 'jlk3', url: '/'},
+				{name: '重庆时时彩', key: 'ccssc', url: '/'}
+			],
 			// 游戏详情
-			gameInfo: [],
+			subGame: [
+				{name: '(三軍、和值、其它)', url: '/'},
+				{name: '(三同号单选、二同号复选、二同号单选、三不同号、二不同号)', key: 'ccssc', url: '/'}
+			],
 		};
 		this.init();
 	}
-
+	
 	var _proto = InitHeader.prototype;
-
+	
 	/**
 	 * header初始化
 	 */
 	_proto.init = function(){
 		this.timeInit();
 		this.noticeInit();
+		this.gameInit();
+		this.subGameInit();
+		this.logoutInit();
 	}
-
+	
 	/**
 	 * 初始化服务器时间
 	 */
@@ -159,16 +175,66 @@ $(document).ready(function(){
 			_this.$onlineTime.text(utils.paseDate(time, 'yyyy-MM-dd HH:mm:ss'));
 		}, 1000);
 	}
-
+	
 	/**
 	 * 初始化最新公告
 	 */
 	_proto.noticeInit = function(){
 		this.$newNotice.text(this.data.notice);
 	}
-
-
-
+	
+	/**
+	 * 游戏列表
+	 */
+	_proto.gameInit = function(){
+		var _this = this;
+	
+		// 绑定游戏列表展开收起
+		this.$gameDorpDown.hover(function(){
+			_this.$gameMenu.fadeIn('fast');
+		}, function(){
+			_this.$gameMenu.fadeOut('fast');
+		})
+	
+		// 渲染游戏列表
+		if(this.data.game && $.isArray(this.data.game) && this.data.game.length){
+			for(var i = 0; i < this.data.game.length; i++){
+				var cur = this.data.game[i];
+				var $html = $('<li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript:void(0);">'+ cur.name +'</a></li>');
+				$html.click(function(){
+					utils.setCookie('game_key', cur.key);
+					window.location = cur.url;
+				});
+				this.$navGameList.append($html);
+			}
+		}
+		
+	}
+	
+	/**
+	 * 游戏二级列表
+	 */
+	_proto.subGameInit = function(){
+		if(this.data.subGame && $.isArray(this.data.subGame) && this.data.subGame.length){
+			for(var i = 0; i < this.data.subGame.length; i++) {
+				var cur = this.data.subGame[i];
+				this.$subGameMenu.append('<a href="'+ cur.url +'">'+ cur.name +'</a>');
+			}
+		}
+	}
+	
+	/**
+	 * 登出
+	 */
+	_proto.logoutInit = function(){
+		this.$logout.bind('click', function(){
+			utils.delCookie('userInfo');
+			window.location = '/index/login';
+		});
+	}
+	
+	
+	
 
 
 	window.InfoAll = {

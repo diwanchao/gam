@@ -120,6 +120,7 @@ a:hover{
     padding: 0 5px;
     padding-bottom: 10px;
     font-weight: 400;
+    display: none;
 }
 .game-menu .game-group{
     line-height: 24px;

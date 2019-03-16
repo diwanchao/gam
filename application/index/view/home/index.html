@@ -34,7 +34,19 @@
                     <li class="nav-list">&nbsp;&nbsp;</li>
                     <li class="nav-list"><a href="/index/notice">系统公告</a></li>
                     <li class="nav-list">&nbsp;|&nbsp;</li>
-                    <li class="nav-list active"><a href="javascript:void(0)">游戏切换</a></li>
+                    <li class="nav-list active">
+                        <a href="javascript:void(0)" id="gameDorpDown">游戏切换</a>
+                        <div id="gameMenu" class="game-menu">
+                            <div class="game-group">
+                                <p>--快开彩球系列--</p>
+                                <ul id="navGameList">
+                                    <li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript: void(0)">北京赛车</a></li>
+                                    <li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript: void(0)">北京赛车</a></li>
+                                    <li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript: void(0)">北京赛车</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
                     <li class="nav-list">&nbsp;|&nbsp;</li>
                     <li class="nav-list"><a href="/index/data">会员资料</a></li>
                     <li class="nav-list">&nbsp;|&nbsp;</li>
@@ -48,7 +60,7 @@
                     <li class="nav-list">&nbsp;|&nbsp;</li>
                     <li class="nav-list"><a href="/index/result">开奖结果</a></li>
                     <li class="nav-list">&nbsp;&nbsp;</li>
-                    <li class="nav-list"><a href="javascript:void(0)">登出</a></li>
+                    <li class="nav-list"><a id="logout" href="javascript:void(0)">登出</a></li>
                 </ul>
             </div>
         </div>
@@ -88,178 +100,14 @@
                     <tbody>
                         <tr>
                             <td>
-                                <div class="gameLogo"><img src="__STATIC__/image/icon1.png" alt=""></div>
-                                <div class="gameName"><span class="game">一般彩球</span></div>
-                                <div class="gameContent">
-                                    <ul>
-                                        <!-- ready / over -->
-                                        <li class="">
-                                            <div class="gameList">
-                                                <div class="pull-left">福彩3D</div>
-                                                <div class="pull-right countDown">
-                                                    <div class="timeIcon over"></div>
-                                                    01 : 23&nbsp;:&nbsp;26
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="">
-                                            <div class="gameList">
-                                                <div class="pull-left">福彩3D</div>
-                                                <div class="pull-right countDown">
-                                                    <div class="timeIcon ready"></div>
-                                                    01 : 23&nbsp;:&nbsp;26
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                         <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                         <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                         <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                    </ul>
-                                </div>
                             </td>
                             <td>
-                                <div class="gameLogo"><img src="__STATIC__/image/icon1.png" alt=""></div>
-                                <div class="gameName"><span class="game">一般彩球</span></div>
-                                <div class="gameContent">
-                                    <ul>
-                                        <!-- ready / over -->
-                                        <li class="">
-                                            <div class="gameList">
-                                                <div class="pull-left">福彩3D</div>
-                                                <div class="pull-right countDown">
-                                                    <div class="timeIcon ready"></div>
-                                                    01 : 23&nbsp;:&nbsp;26
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="">
-                                            <div class="gameList">
-                                                <div class="pull-left">福彩3D</div>
-                                                <div class="pull-right countDown">
-                                                    <div class="timeIcon ready"></div>
-                                                    01 : 23&nbsp;:&nbsp;26
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                            <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                            <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                            <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                    </ul>
-                                </div>
                             </td>
                             <td>
-                                <div class="gameLogo"><img src="__STATIC__/image/icon1.png" alt=""></div>
-                                <div class="gameName"><span class="game">一般彩球</span></div>
-                                <div class="gameContent">
-                                    <ul>
-                                        <!-- ready / over -->
-                                        <li class="">
-                                            <div class="gameList">
-                                                <div class="pull-left">福彩3D</div>
-                                                <div class="pull-right countDown">
-                                                    <div class="timeIcon ready"></div>
-                                                    01 : 23&nbsp;:&nbsp;26
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="">
-                                            <div class="gameList">
-                                                <div class="pull-left">福彩3D</div>
-                                                <div class="pull-right countDown">
-                                                    <div class="timeIcon ready"></div>
-                                                    01 : 23&nbsp;:&nbsp;26
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                            <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                            <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                            <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                    </ul>
-                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div class="gameLogo"><img src="__STATIC__/image/icon1.png" alt=""></div>
-                                <div class="gameName"><span class="game">一般彩球</span></div>
-                                <div class="gameContent">
-                                    <ul>
-                                        <!-- ready / over -->
-                                        <li class="">
-                                            <div class="gameList">
-                                                <div class="pull-left">福彩3D</div>
-                                                <div class="pull-right countDown">
-                                                    <div class="timeIcon ready"></div>
-                                                    01 : 23&nbsp;:&nbsp;26
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="">
-                                            <div class="gameList">
-                                                <div class="pull-left">福彩3D</div>
-                                                <div class="pull-right countDown">
-                                                    <div class="timeIcon ready"></div>
-                                                    01 : 23&nbsp;:&nbsp;26
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                            <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                            <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                            <li class="">
-                                        </li>
-                                        <li class="">
-                                        </li>
-                                    </ul>
-                                </div>
                             </td>
                             <td>
                             </td>
@@ -275,18 +123,5 @@
 <script src="__STATIC__/js/jquery-2.1.4.min.js"></script>
 <script src="__STATIC__/js/TouchSlide.1.1.js"></script>
 <script src="/static/js/global.js"></script>
-<script>
-    TouchSlide({
-        slideCell:'#banner',
-        mainCell:"#banner .inner",
-        effect:"leftLoop",
-        // prevCell:".banner-prevCell",
-        // nextCell:".banner-nextCell",
-        titCell : '.banner-item-outer span',
-        autoPlay:true,
-        interTime:4000
-    })
-
-</script>
-
+<script src="/static/home/js/index.js"></script>
 </html>
