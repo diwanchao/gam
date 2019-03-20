@@ -1,0 +1,66 @@
+var game_key = utils.getCookie('game_key');
+var gameList = InfoAll.InitHeader.data.game;
+var tablePage = new Page('#pageInfo', function(index){init();});
+
+var init = function(){
+    if(!game_key){
+        alert('没有可玩的游戏');
+        return;
+    }
+
+    var p = tablePage.data.index;
+    // 用p / game_key ajax请求 获取列表
+    var json = {
+        total: 192,
+        single: 123,
+        money: 32,
+        school: 43,
+        break: 838,
+        get: 23,
+        data: [
+            {date: '2019-03-10 星期日', single: '0', money: '1.00', school: '0.00', break: '0.00', get: '0.00'},
+            {date: '2019-03-10 星期日', single: '0', money: '1.00', school: '0.00', break: '0.00', get: '0.00'},
+            {date: '2019-03-10 星期日', single: '0', money: '1.00', school: '0.00', break: '0.00', get: '0.00'},
+            {date: '2019-03-10 星期日', single: '0', money: '1.00', school: '0.00', break: '0.00', get: '0.00'},
+        ]
+    }
+    tablePage.init({total: json.total});
+    render(json.data, json.money, json.school, json.break, json.get);
+}
+
+var render = function(data, single, money, school, b_reak, get){
+    var html = '';
+
+    for(var i = 0; i < data.length; i++) {
+        html += '<tr><td class="bg-eee"><a href="/index/detail?date='+ (/\d{4}-\d{2}-\d{2}/.exec(data[i].date)[0]) +'>'+ data[i].date +'</a></td><td>'+ data[i].single +'</td><td>'+ data[i].money +'</td><td>'+ data[i].school +'</td><td>'+ data[i].money +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>';
+    }
+
+    html = '<tr><td>总计</td><td>'+ single +'</td><td>'+ money +'</td><td>'+ school +'</td><td>'+ b_reak +'</td><td><b>'+ get +'</b></td></tr>';
+
+    $('#tableBody').empty().append(html);
+}
+
+$(function(){
+
+    $('#changeGame').append(function(){
+        var html = '';
+        if($.isArray(gameList) && gameList.length){
+            if(!game_key){
+                game_key = gameList[0].key;
+            }
+
+            for(var i = 0; i < gameList.length; i++){
+                html += '<option value="'+ gameList[i].key +'">'+ gameList[i].name +'</option>'
+            }
+        }
+    }).val(game_key);
+
+    $('#changeGame').bind('change', function(){
+        game_key = this.value;
+        // tablePage.init({index: 1})
+        tablePage.data.index = 1;
+        init();
+    });
+    
+    init();
+});

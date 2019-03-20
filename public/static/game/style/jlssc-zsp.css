@@ -1,0 +1,219 @@
+.portlet-title{
+    line-height: 38px;
+    font-size: 0;
+}
+.portlet-title span{
+    vertical-align: middle;
+    line-height: 38px;
+    font-size: 14px;
+}
+.form-control{
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    height: 26px;
+    font-size: 14px;
+}
+.page-content-title{
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.f-c-red{
+    color: #FE6263;
+}
+.select-wrapper strong,
+.select-wrapper .select-item{
+    height: 32px;
+    border-radius: 5px 5px 0 0;
+    line-height: 32px;
+    text-align: center;
+    float: left;
+    color: #333;
+}
+.select-wrapper strong{
+    
+    background: transparent;
+    text-align: left;
+}
+.select-wrapper .select-item{
+    border: 1px solid #ccc;
+    background: #eee;
+    border-bottom: 0;
+    width: 80px;
+    cursor: pointer;
+}
+.select-wrapper .select-item:hover{
+    background: #aaa;
+    color: #fff;
+}
+.select-wrapper .select-item.active{
+    background: #666;
+    color: #fff;
+    
+}
+
+.fast-import .form-control{
+    width: 60px;
+    padding: 3px 3px;
+}
+.h-btn{
+    padding: 4px 12px; 
+    background: #fff;
+    color: #333;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    height: 38px;
+    font-size: 14px !important;
+    cursor: pointer;
+}
+.h-btn:hover{
+    background: #ddd;
+}
+.h-btn.btn-red{
+    background: #FE6263;
+    border: 1px solid #FE6263;
+    color: #fff;
+}
+.h-btn.btn-red:hover{
+    background: rgb(252, 80, 80);
+}
+/* .h-table .h-table.inner-table{
+    border-top: 1px solid #ddd;
+}
+.h-table .h-table.inner-table td{
+    background: #eee;
+    height: auto;
+} */
+.h-table .f-c-red{
+    color: #FF0000;
+}
+.h-table td{
+    text-align: center;
+}
+.h-table input{
+    outline: none;
+    border: #b1b0b5 1px solid;
+    height: 24px;
+    border-color: #7f9db9;
+}
+.h-table input.gb{
+    width: 50px;
+}
+.h-table input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.h-table tbody th{
+    background: #eee;
+    /* font-size: 16px; */
+}
+.bg{
+    background: #f1f1f1 !important;
+}
+.form-assect {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.form-assect .f-c-green{
+    color: #00AA00;
+}
+.form-assect input{
+    width: 70px;
+}
+.form-assect .h-btn{
+    padding: 7px 18px;
+}
+
+.rule{
+    background: #eeedf3;
+}
+.rule .spacing{
+    color: #3366ff;
+}
+.rule .mark{
+    color: #d90b29;
+    background: transparent;
+}
+.rule .f-c-red{
+    color: #ff0000;
+}
+.rule h1{
+    MARGIN: 70px 0px 20px;
+    WIDTH: 530px;
+    COLOR: #3366ff;
+    FONT-SIZE: 36px;
+    font-weight: 400;
+}
+.rule h2{
+    LINE-HEIGHT: 32px;
+    COLOR: #3366ff;
+    FONT-SIZE: 16px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+.rule h4{
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+}
+.rule h3{
+    BACKGROUND-IMAGE: url(../../../../public/image/h3_icon.png);
+    LINE-HEIGHT: 32px;
+    PADDING-LEFT: 20px;
+    BACKGROUND-REPEAT: no-repeat;
+    BACKGROUND-POSITION: 0px 8px;
+    COLOR: #000000;
+    FONT-SIZE: 16px;
+    font-weight: 400;
+}
+.rule .tit{
+    width: 218px;
+}
+.rule .h-table{
+    border-color: #666;
+    border-top: 1px solid #666;
+}
+.rule .h-table th,
+.rule .h-table td{
+    border-color: #666;
+    background: transparent;
+    text-align: left;
+    LINE-HEIGHT: 24px;
+    padding: 10px;
+}
+.rule .h-table tr:hover{
+    background: #f7eec8;
+}
+.rule .ex-text{
+    BORDER-BOTTOM: #666 1px solid;
+    BORDER-LEFT: #666 1px solid;
+    PADDING-BOTTOM: 10px;
+    LINE-HEIGHT: 24px;
+    MARGIN: 10px 0px;
+    PADDING-LEFT: 10px;
+    PADDING-RIGHT: 10px;
+    COLOR: #333;
+    FONT-SIZE: 14px;
+    BORDER-TOP: #666 1px solid;
+    BORDER-RIGHT: #666 1px solid;
+    PADDING-TOP: 10px;
+}
+.rule-content{
+    BACKGROUND-IMAGE: url(../../../../public/image/bg_img.jpg);
+    PADDING-BOTTOM: 20px;
+    PADDING-LEFT: 20px;
+    WIDTH: 820px;
+    PADDING-RIGHT: 20px;
+    BACKGROUND-REPEAT: no-repeat;
+    PADDING-TOP: 20px;
+    padding-bottom: 30px;
+}
+/** k3规则 **/

@@ -8,7 +8,7 @@
     <title>结算账户</title>
     <link rel="stylesheet" href="__STATIC__/style/bootstrap.min.css">
     <link rel="stylesheet" href="__STATIC__/style/public.css">
-    <link rel="stylesheet" href="__STATIC__/game/style/jlssc.css">
+    <link rel="stylesheet" href="__STATIC__/game/style/jlk3-kd.css">
 </head>
 
 <body>
@@ -17,7 +17,105 @@
         <!-- 控制内容宽度 （userInfo -> 左侧显示user） -->
         <div class="main" id="main">
             <!-- 左侧人物信息 -->
-            {include file="public/slidebar"}
+            <div class="layout-slidebar">
+                <div class="userForm">
+                    <div class="logo-warp">
+                        <div class="game-logo"></div>
+                        <div class="game-name">吉林快3</div>
+                    </div>
+                    <div class="acct-bg">
+                        <div class="acct border-b565656">
+                            <div class="acct-key">账号</div>
+                            <div class="acct-value">qwe1133</div>
+                        </div>
+                        <div class="acct border-tb5b5b5">
+                            <div class="acct-key">现金额度</div>
+                            <div class="acct-value">100</div>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-title">
+                            <span class="icon"></span>最新投注
+                        </div>
+                        <div class="table-content">
+                            <p>最新&nbsp;&nbsp;<b>1</b>&nbsp;&nbsp;笔</p>
+                            <table cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>内容</th>
+                                        <th>赔率</th>
+                                        <th>金额</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>内容</td>
+                                        <td>赔率</td>
+                                        <td>金额</td>
+                                    </tr>
+                                    <tr>
+                                        <td>时间</td>
+                                        <td>内容</td>
+                                        <td>赔率</td>
+                                        <td>金额</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="table-list">
+                        <div class="table-title">
+                            <span class="icon"></span>最新投注
+                        </div>
+                        <div class="table-content">
+                            <table cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th>期数</th>
+                                        <th>开奖号码</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>20190308-016</td>
+                                        <td>
+                                            <span class="color2">2</span>
+                                            <span class="color3">3</span>
+                                            <span class="color3">3</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>20190308-016</td>
+                                        <td>
+                                            <span class="color2">2</span>
+                                            <span class="color3">3</span>
+                                            <span class="color3">3</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>20190308-016</td>
+                                        <td>
+                                            <span class="color2">2</span>
+                                            <span class="color3">3</span>
+                                            <span class="color3">3</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>20190308-016</td>
+                                        <td>
+                                            <span class="color2">2</span>
+                                            <span class="color3">3</span>
+                                            <span class="color3">3</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- 右侧内容信息 -->
             <div class="layout-body">
                 <!-- 上部分 -->
@@ -53,244 +151,176 @@
                     </div>
                     <div class="portlet-body">
                         <!-- 游戏大厅 -->
-                        <div class="hide lobby">
-                            <table class="h-table" border="0" cellspacing="0" cellpadding="0">
+                        <div class="lobby">
+                            <table class="h-table col" cellspacing="0" cellpadding="0" border="0">
                                 <thead>
-                                    <!-- 龙1 -->
                                     <tr>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙1</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙1</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎3</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙1</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎4</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙1</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
+                                        <th colspan="20">前三 跨度</th>
                                     </tr>
-                                    <!-- 龙2 -->
                                     <tr>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙2</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎3</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙2</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎4</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙2</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                    </tr>
-                                    <!-- 龙3 -->
-                                    <tr>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙3</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎4</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙3</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                    </tr>
-                                    <!-- 龙4 -->
-                                    <tr>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙4</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b class="f-s-16">0</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">1</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">2</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">3</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">4</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><b class="f-s-16">5</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">6</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">7</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">8</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">9</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="h-table col" cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th colspan="20">中三 跨度</th>
+                                    </tr>
+                                    <tr>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b class="f-s-16">0</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">1</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">2</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">3</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">4</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><b class="f-s-16">5</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">6</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">7</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">8</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">9</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="h-table col" cellspacing="0" cellpadding="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th colspan="20">后三 跨度</th>
+                                    </tr>
+                                    <tr>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                        <th>号码</th>
+                                        <th colspan="2">赔率</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b class="f-s-16">0</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">1</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">2</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">3</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">4</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><b class="f-s-16">5</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">6</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">7</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">8</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                        <td><b class="f-s-16">9</b>
+                                        <td><b class="f-c-red f-s-16">181</b></td>
+                                        <td><input type="text" class="gb"></td>
+                                    </tr>
+                                </tbody>
                             </table>
                             <div class="form-assect">
                                 <span class="f-c-green m-r-5"><b>金额</b></span>
@@ -302,7 +332,7 @@
                             </div>
                         </div>
                         <!-- 游戏规则 -->
-                        <div class="show rule">
+                        <div class="hide rule">
                             <div class="rule-content rule-k3">
                                 <h1>重庆时时彩</h1>
                                 <div class="ex-text">
@@ -552,7 +582,8 @@
                                 <table class="h-table" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
                                     <tbody>
                                         <tr>
-                                            <td colspan="2">以开奖结果【千位、佰位、拾位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<span class="f-c-red">跨度</span><br><span class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为4。(最大号码8减最小号码4等于4)。</td>
+                                            <td colspan="2">以开奖结果【千位、佰位、拾位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<span class="f-c-red">跨度</span><br><span
+                                                    class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为4。(最大号码8减最小号码4等于4)。</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -561,7 +592,8 @@
                                     <tbody>
                                         <tr>
 
-                                            <td colspan="2">以开奖结果【佰位、拾位、个位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<br><span class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为2。(最大号码8减最小号码6等于2)。
+                                            <td colspan="2">以开奖结果【佰位、拾位、个位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<br><span
+                                                    class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为2。(最大号码8减最小号码6等于2)。
                                             </td>
                                         </tr>
                                     </tbody>

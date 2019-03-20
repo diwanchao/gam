@@ -15,107 +15,9 @@
     <div class="layout">
         {include file="public/head"}
         <!-- 控制内容宽度 （userInfo -> 左侧显示user） -->
-        <div class="main userInfo">
+        <div class="main" id="main">
             <!-- 左侧人物信息 -->
-            <div class="layout-slidebar">
-                <div class="userForm">
-                    <div class="logo-warp">
-                        <div class="game-logo"></div>
-                        <div class="game-name">吉林快3</div>
-                    </div>
-                    <div class="acct-bg">
-                        <div class="acct border-b565656">
-                            <div class="acct-key">账号</div>
-                            <div class="acct-value">qwe1133</div>
-                        </div>
-                        <div class="acct border-tb5b5b5">
-                            <div class="acct-key">现金额度</div>
-                            <div class="acct-value">100</div>
-                        </div>
-                    </div>
-                    <div class="table-list">
-                        <div class="table-title">
-                            <span class="icon"></span>最新投注
-                        </div>
-                        <div class="table-content">
-                            <p>最新&nbsp;&nbsp;<b>1</b>&nbsp;&nbsp;笔</p>
-                            <table cellspacing="0" cellpadding="0" border="0">
-                                <thead>
-                                    <tr>
-                                        <th>时间</th>
-                                        <th>内容</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td>内容</td>
-                                        <td>赔率</td>
-                                        <td>金额</td>
-                                    </tr>
-                                    <tr>
-                                        <td>时间</td>
-                                        <td>内容</td>
-                                        <td>赔率</td>
-                                        <td>金额</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="table-list">
-                        <div class="table-title">
-                            <span class="icon"></span>最新投注
-                        </div>
-                        <div class="table-content">
-                            <table cellspacing="0" cellpadding="0" border="0">
-                                <thead>
-                                    <tr>
-                                        <th>期数</th>
-                                        <th>开奖号码</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>20190308-016</td>
-                                        <td>
-                                            <span class="color2">2</span>
-                                            <span class="color3">3</span>
-                                            <span class="color3">3</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                            <td>20190308-016</td>
-                                            <td>
-                                                <span class="color2">2</span>
-                                                <span class="color3">3</span>
-                                                <span class="color3">3</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                                <td>20190308-016</td>
-                                                <td>
-                                                    <span class="color2">2</span>
-                                                    <span class="color3">3</span>
-                                                    <span class="color3">3</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                    <td>20190308-016</td>
-                                                    <td>
-                                                        <span class="color2">2</span>
-                                                        <span class="color3">3</span>
-                                                        <span class="color3">3</span>
-                                                    </td>
-                                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {include file="public/slidebar"}
             <!-- 右侧内容信息 -->
             <div class="layout-body">
                 <div class="portlet">
@@ -129,22 +31,20 @@
                                     <th>时间</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            <tbody id="tableBody">
+                                <!-- <tr>
                                     <td>存入金额</td>
                                     <td>100</td>
                                     <td>2019-02-24 12:54:27</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                         <div class="portlet-footer">
-                            <div class="page-info">
+                            <div class="page-info" id="pageInfo">
                                 <span>共:&nbsp;<b class="page-total">1</b>&nbsp;条</span>
                                 <span>&nbsp;&nbsp;跳至&nbsp;</span>
-                                <select name="" class="form-control page-jump" id="">
-                                    <option value="1">1</option>
-                                </select>
-                                <span>&nbsp;页&nbsp;／&nbsp;<b class="page-index">1</b>&nbsp;页&nbsp;&nbsp;</span>
+                                <select name="" class="form-control page-index" id=""></select>
+                                <span>&nbsp;页&nbsp;／&nbsp;<b class="page-page">1</b>&nbsp;页&nbsp;&nbsp;</span>
                                 <a href="javascript:void(0)" class="page-first">首页</a>
                                 <a href="javascript:void(0)" class="page-prev">上一页</a>
                                 <a href="javascript:void(0)" class="page-next">下一页</a>
