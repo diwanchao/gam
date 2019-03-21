@@ -556,4 +556,4 @@ var utils = {
 		InitSlidebar: new InitSlidebar(),
 	}
 
-})
+})();
