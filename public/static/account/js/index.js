@@ -9,16 +9,18 @@ var init = function(){
     }
 
     var p = tablePage.data.index;
-    // 用p / game_key ajax请求 获取列表
+    // 用当前第几页 index / game_key ajax请求 获取列表
     var json = {
-        total: 192,
-        single: 123,
-        money: 32,
-        school: 43,
-        break: 838,
-        get: 23,
+        total: 192, //总共多少条数
+        single: 123, // 单量
+        money: 32, // 金额 
+        school: 43, // 派彩 
+        break: 838, // 退水 
+        get: 23, // 输赢 
         data: [
-            {date: '2019-03-10 星期日', single: '0', money: '1.00', school: '0.00', break: '0.00', get: '0.00'},
+            // 日期	 单量	金额	派彩	退水	输赢
+            {date: '2019-03-10 星期日',
+             single: '0', money: '1.00', school: '0.00', break: '0.00', get: '0.00'},
             {date: '2019-03-10 星期日', single: '0', money: '1.00', school: '0.00', break: '0.00', get: '0.00'},
             {date: '2019-03-10 星期日', single: '0', money: '1.00', school: '0.00', break: '0.00', get: '0.00'},
             {date: '2019-03-10 星期日', single: '0', money: '1.00', school: '0.00', break: '0.00', get: '0.00'},
@@ -35,7 +37,7 @@ var render = function(data, single, money, school, b_reak, get){
         html += '<tr><td class="bg-eee"><a href="/index/detail?date='+ (/\d{4}-\d{2}-\d{2}/.exec(data[i].date)[0]) +'>'+ data[i].date +'</a></td><td>'+ data[i].single +'</td><td>'+ data[i].money +'</td><td>'+ data[i].school +'</td><td>'+ data[i].money +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>';
     }
 
-    html = '<tr><td>总计</td><td>'+ single +'</td><td>'+ money +'</td><td>'+ school +'</td><td>'+ b_reak +'</td><td><b>'+ get +'</b></td></tr>';
+    html += '<tr><td>总计</td><td>'+ single +'</td><td>'+ money +'</td><td>'+ school +'</td><td>'+ b_reak +'</td><td><b>'+ get +'</b></td></tr>';
 
     $('#tableBody').empty().append(html);
 }
