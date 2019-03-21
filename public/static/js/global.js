@@ -1,5 +1,7 @@
 var utils = {
 
+	
+
 	/**
 	 * 获取cookie
 	 * @param {String} cookie名
@@ -157,9 +159,14 @@ var utils = {
 				alert('服务器错误');
 			}
 		})
-
-		
 	},
+
+
+	
+};
+
+var ENV = {
+	game_key: utils.getCookie('game_key'),
 };
 
 
@@ -313,16 +320,19 @@ var utils = {
 		this.$page.html(this.data.page);
 
 		// select
-		if(this.$index[0].tagName === 'SELECT'){
-			var html = '';
-			for(var i = 1; i <= this.data.page; i++){
-				html += '<option value="'+ i +'">'+ i +'</option>';
+		if(this.$index.length){
+			if(this.$index[0].tagName === 'SELECT'){
+				var html = '';
+				for(var i = 1; i <= this.data.page; i++){
+					html += '<option value="'+ i +'">'+ i +'</option>';
+				}
+				this.$index.empty().append(html).val(this.data.index);
 			}
-			this.$index.empty().append(html).val(this.data.index);
+			else {
+				this.$index.val(this.data.index);
+			}
 		}
-		else {
-			this.$index.val(this.data.index);
-		}
+		
 		
 	}
 
@@ -383,19 +393,21 @@ var utils = {
 	 */
 	InitHeader.prototype.init = function(){
 		var _this = this;
-
+		var url = (ENV.game_key ? '/api/home/headInfo?game_key=' + ENV.game_key : '/api/home/headInfo');
 		utils.getAjax({
-			url: '/api/home/headInfo',
+			url: url,
 			type: 'POST',
 			success: function(data){
 				_this.data = $.extend({}, _this.data, data);
+
+				_this.timeInit();
+				_this.noticeInit();
+				_this.gameInit();
+				_this.subGameInit();
+				_this.logoutInit();
 			}
 		})
-		this.timeInit();
-		this.noticeInit();
-		this.gameInit();
-		this.subGameInit();
-		this.logoutInit();
+		
 	}
 	
 	/**
