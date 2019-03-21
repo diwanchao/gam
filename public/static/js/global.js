@@ -320,16 +320,19 @@ var ENV = {
 		this.$page.html(this.data.page);
 
 		// select
-		if(this.$index[0].tagName === 'SELECT'){
-			var html = '';
-			for(var i = 1; i <= this.data.page; i++){
-				html += '<option value="'+ i +'">'+ i +'</option>';
+		if(this.$index.length){
+			if(this.$index[0].tagName === 'SELECT'){
+				var html = '';
+				for(var i = 1; i <= this.data.page; i++){
+					html += '<option value="'+ i +'">'+ i +'</option>';
+				}
+				this.$index.empty().append(html).val(this.data.index);
 			}
-			this.$index.empty().append(html).val(this.data.index);
+			else {
+				this.$index.val(this.data.index);
+			}
 		}
-		else {
-			this.$index.val(this.data.index);
-		}
+		
 		
 	}
 
