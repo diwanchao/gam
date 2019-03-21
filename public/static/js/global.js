@@ -150,7 +150,7 @@ var utils = {
 
 		this.$wrapper = $(wrapper);
 		this.callback = callback;
-		if(!$wrapper.length){
+		if(!this.$wrapper.length){
 			throw Error('Pagination must have outermost support……');
 		}
 		// 总共多少条
