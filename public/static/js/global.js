@@ -552,9 +552,10 @@ var ENV = {
 			'#slidebarBetPage',
 			 function(index){
 				// ajax
+				var url = (ENV.game_key ? '/api/home/batPage?game_key=' + ENV.game_key : '/api/home/batPage');
 				utils.getAjax({
 					type: 'GET',
-					url: '/api/home/betPage',
+					url: url,
 					data: {index: index},
 					success: function(data){
 						_this.data.bet = $.extend({}, _this.data.bet, data);
@@ -578,6 +579,7 @@ var ENV = {
 			type: 'GET',
 			success: function(data){
 				_this.data = $.extend({}, _this.data, data);
+				_this.betPage.init({total: _this.data.bet.total})
 				_this.baseInit();
 				_this.betTableInit();
 				_this.numTableInit();
