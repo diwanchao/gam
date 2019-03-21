@@ -181,7 +181,6 @@ class Home extends Base
      *   }}
      * )
      */
-
     public function gameInfo()
     {
             $data = [
@@ -193,7 +192,7 @@ class Home extends Base
                     ['name'=>'吉林时时彩','time'=>100000,'status'=>1,'url'=>'/','key'=>'jlssc'],
                     ['name'=>'辽宁时时彩','time'=>600000,'status'=>0,'url'=>'/','key'=>'lnssc'],
                 ],
-            ],
+            ];
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
 
