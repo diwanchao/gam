@@ -510,6 +510,10 @@ var ENV = {
 		// 开奖号码表格
 		this.$slidebarNumTable = $('#slidebarNumTable');
 
+		// 如果是home页面 没有左侧
+		if(location.pathname == '/index/home'){
+			return;
+		}
 		if(!this.gameKey){
 			return;
 		}
