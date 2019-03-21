@@ -162,8 +162,12 @@ var utils = {
 	},
 
 
-	game_key: utils.getCookie('game_key'),
+	
 };
+
+var ENV = {
+	game_key: utils.getCookie('game_key'),
+}
 
 
 (function(){
@@ -386,7 +390,7 @@ var utils = {
 	 */
 	InitHeader.prototype.init = function(){
 		var _this = this;
-		var url = (utils.game_key ? '/api/home/headInfo?game_key=' + utils.game_key : '/api/home/headInfo');
+		var url = (ENV.game_key ? '/api/home/headInfo?game_key=' + ENV.game_key : '/api/home/headInfo');
 		utils.getAjax({
 			url: '/api/home/headInfo',
 			type: 'POST',
