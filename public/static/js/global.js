@@ -136,6 +136,7 @@ var utils = {
 			type: opt.type || 'POST',
 			dataType: opt.dataType || 'JSON',
 			url: opt.url || '/',
+			data: opt.data || {},
 			success: function(result){
 				if(result.code == 304){
 					alert('登陆超时……');
@@ -551,29 +552,40 @@ var ENV = {
 			'#slidebarBetPage',
 			 function(index){
 				// ajax
-				_this.data.bet = {
-					total: index * 8,
-					data: [
-						{time: '2015-11-11 11:11:11', content: '123', odds: index + '.5', money: '100'},
-						{time: '2015-11-11 11:11:12', content: '537', odds: index + '.3', money: '110'}
-					]
-				}
-
-				_this.betTableInit();
-				this.init({total: _this.data.bet.total});
+				var url = (ENV.game_key ? '/api/home/batPage?game_key=' + ENV.game_key : '/api/home/batPage');
+				utils.getAjax({
+					type: 'GET',
+					url: url,
+					data: {index: index},
+					success: function(data){
+						_this.data.bet = $.extend({}, _this.data.bet, data);
+						_this.betTableInit();
+						_this.betPage.init({total: _this.data.bet.total});
+					}
+				})
 			},
-			{total: this.data.bet.total}
 		);
 
 		this.init();
 	}
 
 	InitSlidebar.prototype.init = function(){
-
+		var _this = this;
+		var url = (ENV.game_key ? '/api/home/leftInfo?game_key=' + ENV.game_key : '/api/home/leftInfo');
 		// ajax 用分页面请求 this.betPage.data.index
-		this.baseInit();
-		this.betTableInit();
-		this.numTableInit();
+		utils.getAjax({
+			url: url,
+			data: {index: this.betPage.data.index},
+			type: 'GET',
+			success: function(data){
+				_this.data = $.extend({}, _this.data, data);
+				_this.betPage.init({total: _this.data.bet.total})
+				_this.baseInit();
+				_this.betTableInit();
+				_this.numTableInit();
+			}
+		})
+		
 	}
 
 	InitSlidebar.prototype.baseInit = function(){
@@ -588,7 +600,7 @@ var ENV = {
 		var html = '';
 		for(var i = 0; i < this.data.bet.data.length; i++) {
 			var cur = this.data.bet.data[i];
-			var content;
+			var content = '';
 			for(var s = 0; s < cur.content.length; s++) {
 				content += '<span class="m-r-2 color'+ cur.content[s] +'">'+ cur.content[s] +'</span>';
 			}
@@ -601,7 +613,7 @@ var ENV = {
 		var html = '';
 		for(var i = 0; i < this.data.num.data.length; i++) {
 			var cur = this.data.num.data[i];
-			var content;
+			var content = '';
 			for(var s = 0; s < cur.content.length; s++) {
 				content += '<span class="m-r-2 color'+ cur.content[s] +'">'+ cur.content[s] +'</span>';
 			}

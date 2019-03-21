@@ -50,6 +50,15 @@ a:hover{
 .m-l-30{
     margin-left: 30px;
 }
+.m-t-10{
+    margin-top: 10px !important;
+}
+.m-b-10{
+    margin-bottom: 10px !important;
+}
+.p-5{
+    padding: 5px;
+}
 .clear-float{
     clear: both;
     overflow: hidden;
@@ -112,6 +121,7 @@ a:hover{
 .header-main .nav-list a:hover{
     color:#F7E67D;
 }
+
 .game-menu{
     position: absolute;
     left: 0;
@@ -131,8 +141,8 @@ a:hover{
 .game-menu .game-group p{
     color: #C49869;
     text-align: center;
-    margin-bottom: 0;
     line-height: 28px;
+    margin-bottom: 0;
     font-weight: 400;
 }
 .game-menu .game-group ul{
@@ -151,6 +161,24 @@ a:hover{
 .game-menu .game-group ul li a:hover{
     color: #000;
     text-decoration: underline;
+}
+.sub-game-menu{
+    margin-top: 5px;
+}
+.sub-game-menu a{
+    color: #fff;
+    font-size: 13px;
+    padding: 0 5px;
+    font-weight: 100;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+}
+.sub-game-menu a:hover{
+    text-decoration: none;
+    color: #FFFF00;
 }
 .layout{
     height: 100%;
@@ -343,10 +371,6 @@ a:hover{
     vertical-align: middle;
     display: inline-block;
     border-radius: 50%;
-    cursor: pointer;
-    -moz-user-select:none;
-    -webkit-user-select:none;
-    user-select:none;
     transition: all .2s ease-in-out;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
@@ -534,3 +558,5 @@ a:hover{
 .page-info .page-last{
     margin-left: 10px;
 }
+
+
