@@ -63,7 +63,7 @@ class Home extends Base
 
     public function headInfo()
     {
-        $game_name = $_POST['game_name'];
+        $game_name = $_POST['game_name'] ?? '';
 
         $data = [
             'notice'     => '我是公告',
