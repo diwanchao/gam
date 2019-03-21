@@ -167,5 +167,35 @@ class Home extends Base
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
+    /**
+     * @SWG\Get(
+     *   path="/api/home/gameInfo",
+     *   tags={"Home"},
+     *   summary="首页游戏信息",
+     *   operationId="updatePetWithForm",
+     *   consumes={"application/x-www-form-urlencoded"},
+     *   produces={"application/json"},
+     *   @SWG\Response(response="201",description="字段不全"),
+     *   security={{
+     *     "petstore_auth": {"write:pets", "read:pets"}
+     *   }}
+     * )
+     */
+
+    public function gameInfo()
+    {
+            $data = [
+                'k3'=>[
+                    ['name'=>'吉林快3','time'=>100000,'status'=>1,'url'=>'/','key'=>'jlk3'],
+                    ['name'=>'辽宁快3','time'=>600000,'status'=>0,'url'=>'/','key'=>'lnk3'],
+                ],
+                'ssc'=>[
+                    ['name'=>'吉林时时彩','time'=>100000,'status'=>1,'url'=>'/','key'=>'jlssc'],
+                    ['name'=>'辽宁时时彩','time'=>600000,'status'=>0,'url'=>'/','key'=>'lnssc'],
+                ],
+            ],
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+    }
+
 
 }
