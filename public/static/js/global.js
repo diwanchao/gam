@@ -573,6 +573,20 @@ var ENV = {
 
 	InitSlidebar.prototype.init = function(){
 		var _this = this;
+
+		this.$slidebar.find('.table-list').each(function(){
+			var _tab_this = $(this);
+			_tab_this.find('.table-title').bind('click', function(){
+				if(_tab_this.find('.table-content').is('hidden')){
+					_tab_this.find('.table-content').slideDown('fast');
+				}
+				else {
+					_tab_this.find('.table-content').slideUp('fast');
+				}
+				
+			})
+		})
+
 		// ajax 用分页面请求 this.betPage.data.index
 		utils.getAjax({
 			url: utils.concatGameKey('/api/home/leftInfo'),
