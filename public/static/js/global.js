@@ -122,7 +122,7 @@ var utils = {
 		return null;
 	},
 
-}
+};
 
 
 (function(){
@@ -150,7 +150,7 @@ var utils = {
 
 		this.$wrapper = $(wrapper);
 		this.callback = callback;
-		if(!$wrapper.length){
+		if(!this.$wrapper.length){
 			throw Error('Pagination must have outermost support……');
 		}
 		// 总共多少条
@@ -164,7 +164,7 @@ var utils = {
 		// 末页
 		this.$last = this.$wrapper.find('.page-last');
 		// 下一页
-		this.$next = this.$warpper.find('.page-next');
+		this.$next = this.$wrapper.find('.page-next');
 		// 上一页
 		this.$prev = this.$wrapper.find('.page-prev');
 
