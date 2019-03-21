@@ -8,7 +8,7 @@ class Notice extends Base
     /**
      * @SWG\Get(
      *   path="/api/notice/",
-     *   tags={"NOTICE"},
+     *   tags={"Notice"},
      *   summary="公告信息接口",
      *   operationId="updatePetWithForm",
      *   consumes={"application/x-www-form-urlencoded"},
