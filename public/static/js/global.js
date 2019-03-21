@@ -123,7 +123,7 @@ var utils = {
 	},
 
 	getAjax: function(opt){
-		var userInfo = utils.getCookie(userInfo);
+		var userInfo = utils.getCookie('userInfo');
 		if(!userInfo){
 			alert('登陆超时……');
 			window.location.href = '/index/login';
