@@ -1,5 +1,6 @@
 var json = {
     ssc: [
+        // 游戏名  链接  游戏key  倒计时(毫秒)  状态 0-》停盘 1-》开启
         {name: '重庆时时彩', url: '/', key: 'jlk3', time: 60000, status: 0},
         {name: '新疆时时彩', url: '/', key: 'jlk2', time: 900000, status: 1},
     ],

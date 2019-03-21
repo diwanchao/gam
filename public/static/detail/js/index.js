@@ -9,11 +9,16 @@ var init = function(){
     }
 
     var p = tablePage.data.index;
-    // 用p / game_key ajax请求 获取列表
+    // 用当前第几页 index / game_key ajax请求 获取列表
     var json = {
         total: 345,
         data: [
-            {no: '1', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'},
+            // No	下注时间	注单单号	分盘	投注内容	金额	退水	输赢
+            {no: '1',
+             time: '2019-11-11 11:11:11',
+              number: '102373933',
+               part: '龙虎盘',
+                content: '168', money: '101', break: '20', get: '30000'},
             {no: '2', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'},
             {no: '3', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'},
             {no: '4', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'}
