@@ -395,7 +395,7 @@ var ENV = {
 		var _this = this;
 		var url = (ENV.game_key ? '/api/home/headInfo?game_key=' + ENV.game_key : '/api/home/headInfo');
 		utils.getAjax({
-			url: '/api/home/headInfo',
+			url: url,
 			type: 'POST',
 			success: function(data){
 				_this.data = $.extend({}, _this.data, data);
