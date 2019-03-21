@@ -27,8 +27,8 @@ var render = function(data){
     var html = '';
     for(var i = 0; i < data.length; i++) {
         var content;
-        for(var s = 0; s < data.content.length; s++) {
-            content += '<span class="m-r-2 color'+ data.content[s] +'">'+ data.content[s] +'</span>';
+        for(var s = 0; s < data[i].content.length; s++) {
+            content += '<span class="m-r-2 color'+ data[i].content[s] +'">'+ data[i].content[s] +'</span>';
         }
         html += '<tr><td>'+ data[i].no +'</td><td>'+ data[i].time +'</td><td>'+ data[i].number +'</td><td>'+ data[i].part +'</td><td>'+ data[i].content +'</td><td>'+ data[i].money +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>';
     }
