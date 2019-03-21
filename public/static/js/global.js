@@ -122,7 +122,7 @@ var utils = {
 		return null;
 	},
 
-}
+};
 
 
 (function(){
