@@ -1,5 +1,7 @@
 var utils = {
 
+	
+
 	/**
 	 * 获取cookie
 	 * @param {String} cookie名
@@ -157,9 +159,10 @@ var utils = {
 				alert('服务器错误');
 			}
 		})
-
-		
 	},
+
+
+	game_key: utils.getCookie('game_key'),
 };
 
 
@@ -383,19 +386,21 @@ var utils = {
 	 */
 	InitHeader.prototype.init = function(){
 		var _this = this;
-
+		var url = (utils.game_key ? '/api/home/headInfo?game_key=' + utils.game_key : '/api/home/headInfo');
 		utils.getAjax({
 			url: '/api/home/headInfo',
 			type: 'POST',
 			success: function(data){
 				_this.data = $.extend({}, _this.data, data);
+
+				_this.timeInit();
+				_this.noticeInit();
+				_this.gameInit();
+				_this.subGameInit();
+				_this.logoutInit();
 			}
 		})
-		this.timeInit();
-		this.noticeInit();
-		this.gameInit();
-		this.subGameInit();
-		this.logoutInit();
+		
 	}
 	
 	/**
