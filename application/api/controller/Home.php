@@ -48,7 +48,7 @@ class Home extends Base
      *   consumes={"application/x-www-form-urlencoded"},
      *   produces={"application/json"},
      *   @SWG\Parameter(
-     *     name="game_name",
+     *     name="game_key",
      *     in="formData",
      *     description="游戏名",
      *     required=false,
@@ -98,35 +98,38 @@ class Home extends Base
      */
     public function leftInfo()
     {
+
+        //game_key 游戏名
+        //index 页数
         $data = [
             'game_logo' => '/',
             'game_name' => '吉林快3',
-            'userbane'  => '傻小子',
+            'username'  => '傻小子',
             'balance'   => 888888,
             'bet'       => [
                 'total'=>5,
                 'data'=>[
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
                 ],
             ],
             'num'       => [
                 'data'=>[
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
-                    ['date'=>'20191111-11','content'=>110],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
+                    ['date'=>'20191111-11','content'=>'110'],
                 ]
             ]
 
