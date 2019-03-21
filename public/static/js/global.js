@@ -167,7 +167,7 @@ var utils = {
 
 var ENV = {
 	game_key: utils.getCookie('game_key'),
-}
+};
 
 
 (function(){
