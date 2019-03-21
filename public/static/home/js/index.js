@@ -115,7 +115,7 @@ function renderGame(key){
             '</div>'
         )
         $('#' + key).append($html);
-        return $html;
+        return $('#' + key);
     }
 }
 
