@@ -570,7 +570,7 @@ var ENV = {
 
 	InitSlidebar.prototype.init = function(){
 		var _this = this;
-		var url = (ENV.game_key ? '/api/home/headInfo?game_key=' + ENV.game_key : '/api/home/headInfo');
+		var url = (ENV.game_key ? '/api/home/leftInfo?game_key=' + ENV.game_key : '/api/home/leftInfo');
 		// ajax 用分页面请求 this.betPage.data.index
 		utils.getAjax({
 			url: url,
