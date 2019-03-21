@@ -135,6 +135,34 @@ class Home extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
 
     }
-
+    /**
+     * @SWG\Get(
+     *   path="/api/home/batPage",
+     *   tags={"BAT"},
+     *   summary="投注信息分页信息",
+     *   operationId="updatePetWithForm",
+     *   consumes={"application/x-www-form-urlencoded"},
+     *   produces={"application/json"},
+     *   @SWG\Response(response="201",description="字段不全"),
+     *   security={{
+     *     "petstore_auth": {"write:pets", "read:pets"}
+     *   }}
+     * )
+     */
+    public function batPage()
+    {
+        $data = [
+                'total'=>5,
+                'data'=>[
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
+                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
+                ],
+        ];
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+    }
 
 }
