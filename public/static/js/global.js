@@ -297,10 +297,10 @@ var utils = {
 
 	window.Page = Page;
 
-})()
+})();
 
 
-$(document).ready(function(){
+(function(){
 
 	var InitHeader = function(){
 
@@ -455,20 +455,30 @@ $(document).ready(function(){
 		}
 
 		this.data = {
+			// 游戏图标
 			game_logo: '/',
+			// 游戏名
 			game_name: '吉林快三',
+			// 用户账号
 			username: 'han123',
+			// 余额
 			balance: '100',
+			// 最新投注表格数据 （所有表格分页 我都会告诉你index -> 当前第几页  没次你都需要告诉我 一共多少条）
 			bet: {
+				// 一共多少条
 				total: 2,
 				data: [
+					// 时间 ／ 下注内容 ／ 赔率 ／ 金额
 					{time: '2015-11-11 11:11:11', content: '123', odds: '1.5', money: '100'},
 					{time: '2015-11-11 11:11:12', content: '537', odds: '1.3', money: '110'}
 				]
 			},
+			// 开奖结果 (最新开奖20条)
 			num: {
+				// 总攻多少条
 				total: 10,
 				data: [
+					// 期数 ／ 开奖内容
 					{date: '20151111-11', content: '383'},
 					{date: '20151111-11', content: '716'},
 					{date: '20151111-11', content: '558'},
