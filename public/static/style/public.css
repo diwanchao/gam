@@ -264,6 +264,7 @@ a:hover{
     border-bottom: 1px solid #ccc;
     padding: 0 10px;
     line-height: 44px;
+    cursor: pointer;
 }
 .layout-slidebar .table-content{
     background: #fff;
