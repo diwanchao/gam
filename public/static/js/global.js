@@ -577,7 +577,7 @@ var ENV = {
 		this.$slidebar.find('.table-list').each(function(){
 			var _tab_this = $(this);
 			_tab_this.find('.table-title').bind('click', function(){
-				if(_tab_this.find('.table-content').is('hidden')){
+				if(_tab_this.find('.table-content').is(':hidden')){
 					_tab_this.find('.table-content').slideDown('fast');
 				}
 				else {

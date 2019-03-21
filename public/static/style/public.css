@@ -267,6 +267,7 @@ a:hover{
 }
 .layout-slidebar .table-content{
     background: #fff;
+    display: none;
 }
 .layout-slidebar .table-content p{
     padding: 8px;
