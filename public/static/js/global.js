@@ -588,7 +588,7 @@ var ENV = {
 		var html = '';
 		for(var i = 0; i < this.data.bet.data.length; i++) {
 			var cur = this.data.bet.data[i];
-			var content;
+			var content = '';
 			for(var s = 0; s < cur.content.length; s++) {
 				content += '<span class="m-r-2 color'+ cur.content[s] +'">'+ cur.content[s] +'</span>';
 			}
@@ -601,7 +601,7 @@ var ENV = {
 		var html = '';
 		for(var i = 0; i < this.data.num.data.length; i++) {
 			var cur = this.data.num.data[i];
-			var content;
+			var content = '';
 			for(var s = 0; s < cur.content.length; s++) {
 				content += '<span class="m-r-2 color'+ cur.content[s] +'">'+ cur.content[s] +'</span>';
 			}
