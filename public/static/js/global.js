@@ -122,6 +122,44 @@ var utils = {
 		return null;
 	},
 
+	getAjax: function(opt){
+		var userInfo = utils.getCookie('userInfo');
+		if(!userInfo){
+			alert('登陆超时……');
+			window.location.href = '/index/login';
+			return;
+		}
+
+		$.ajax({
+			type: opt.type || 'POST',
+			dataType: opt.dataType || 'JSON',
+			url: opt.url || '/',
+			success: function(result){
+				if(result.code == 304){
+					alert('登陆超时……');
+					window.location.href = '/index/login';
+					return;
+				}
+				else if(result.code == 200) {
+					typeof opt.success == 'function' ? opt.success(result.data) : null;
+					if(opt.alert){
+						alert(result.msg);
+					}
+					return;
+				}
+				else {
+					alert(result.msg);
+					return;
+				}
+			},
+			error: function(err){
+				typeof opt.error == 'function' ? opt.error(err) : null;
+				alert('服务器错误');
+			}
+		})
+
+		
+	},
 };
 
 
@@ -344,6 +382,15 @@ var utils = {
 	 * header初始化
 	 */
 	InitHeader.prototype.init = function(){
+		var _this = this;
+
+		utils.getAjax({
+			url: '/api/home/headInfo',
+			type: 'POST',
+			success: function(data){
+				_this.data = $.extend({}, _this.data, data);
+			}
+		})
 		this.timeInit();
 		this.noticeInit();
 		this.gameInit();
