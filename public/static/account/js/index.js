@@ -34,7 +34,7 @@ var render = function(data, single, money, school, b_reak, get){
     var html = '';
 
     for(var i = 0; i < data.length; i++) {
-        html += '<tr><td class="bg-eee"><a href="/index/detail?date='+ (/\d{4}-\d{2}-\d{2}/.exec(data[i].date)[0]) +'>'+ data[i].date +'</a></td><td>'+ data[i].single +'</td><td>'+ data[i].money +'</td><td>'+ data[i].school +'</td><td>'+ data[i].money +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>';
+        html += '<tr><td class="bg-eee"><a href="/index/detail?date='+ (/\d{4}-\d{2}-\d{2}/.exec(data[i].date)[0]) +'">'+ data[i].date +'</a></td><td>'+ data[i].single +'</td><td>'+ data[i].money +'</td><td>'+ data[i].school +'</td><td>'+ data[i].money +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>';
     }
 
     html += '<tr><td>总计</td><td>'+ single +'</td><td>'+ money +'</td><td>'+ school +'</td><td>'+ b_reak +'</td><td><b>'+ get +'</b></td></tr>';
