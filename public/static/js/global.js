@@ -164,7 +164,7 @@ var utils = {
 		// 末页
 		this.$last = this.$wrapper.find('.page-last');
 		// 下一页
-		this.$next = this.$warpper.find('.page-next');
+		this.$next = this.$wrapper.find('.page-next');
 		// 上一页
 		this.$prev = this.$wrapper.find('.page-prev');
 
