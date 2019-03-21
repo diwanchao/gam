@@ -92,7 +92,7 @@ a:hover{
 
 .header-main{
     height: 64px;
-    background: url(../../public/image/header_bg.jpg) 0 0 no-repeat;
+    background: url(/static/image/header_bg.jpg) 0 0 no-repeat;
     background-size: 100% 100%;
     text-align: center;
 }
@@ -206,7 +206,7 @@ a:hover{
     height: 60px;
 }
 .layout-slidebar .logo-warp .game-logo{
-    background: url(../../public/image/game_main.png);
+    background: url(/static/image/game_main.png);
     background-position: -180px -180px;
     width: 60px;
     height: 60px;
@@ -424,7 +424,7 @@ a:hover{
     line-height: 32px;
     color: #4B413A !important;
     text-align: center;
-    background: url(../../public/image/second-menubg.png) left bottom repeat-x;
+    background: url(/static/image/second-menubg.png) left bottom repeat-x;
 }
 .h-table td{
     height: 40px;
