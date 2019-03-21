@@ -124,6 +124,10 @@ var utils = {
 		return null;
 	},
 
+	concatGameKey: function(url){
+		return (ENV.game_key ? url + '?game_key=' + ENV.game_key : url);
+	},
+
 	getAjax: function(opt){
 		var userInfo = utils.getCookie('userInfo');
 		if(!userInfo){
@@ -394,9 +398,8 @@ var ENV = {
 	 */
 	InitHeader.prototype.init = function(){
 		var _this = this;
-		var url = (ENV.game_key ? '/api/home/headInfo?game_key=' + ENV.game_key : '/api/home/headInfo');
 		utils.getAjax({
-			url: url,
+			url: utils.concatGameKey('/api/home/headInfo'),
 			type: 'POST',
 			success: function(data){
 				_this.data = $.extend({}, _this.data, data);
@@ -488,7 +491,7 @@ var ENV = {
 	var InitSlidebar = function(){
 
 		// 当前人物所在的游戏 key
-		this.gameKey = utils.getCookie('game_key');
+		this.gameKey = ENV.game_key;
 
 		// 页面内容 用来控制显示隐藏slidebar userInfo -> 有
 		this.$main = $('#main');
@@ -552,10 +555,9 @@ var ENV = {
 			'#slidebarBetPage',
 			 function(index){
 				// ajax
-				var url = (ENV.game_key ? '/api/home/batPage?game_key=' + ENV.game_key : '/api/home/batPage');
 				utils.getAjax({
 					type: 'GET',
-					url: url,
+					url: utils.concatGameKey('/api/home/batPage'),
 					data: {index: index},
 					success: function(data){
 						_this.data.bet = $.extend({}, _this.data.bet, data);
@@ -571,10 +573,9 @@ var ENV = {
 
 	InitSlidebar.prototype.init = function(){
 		var _this = this;
-		var url = (ENV.game_key ? '/api/home/leftInfo?game_key=' + ENV.game_key : '/api/home/leftInfo');
 		// ajax 用分页面请求 this.betPage.data.index
 		utils.getAjax({
-			url: url,
+			url: utils.concatGameKey('/api/home/leftInfo'),
 			data: {index: this.betPage.data.index},
 			type: 'GET',
 			success: function(data){
@@ -606,7 +607,7 @@ var ENV = {
 			}
 			html += '<tr><td>'+ cur.time +'</td><td>'+ content +'</td><td>'+ cur.odds +'</td><td>'+ cur.money +'</td></tr>'
 		}
-		this.$slidebarBetTable.append(html);
+		this.$slidebarBetTable.empty().append(html);
 	}
 
 	InitSlidebar.prototype.numTableInit = function(){
@@ -619,7 +620,7 @@ var ENV = {
 			}
 			html += '<tr><td>'+ cur.date +'</td><td>'+ content +'</td></tr>'
 		}
-		this.$slidebarNumTable.append(html);
+		this.$slidebarNumTable.empty().append(html);
 	}
 
 	window.InfoAll = {
