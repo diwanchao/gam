@@ -109,11 +109,8 @@ class Home extends Base
 
         $user_data  = Db::name('menber')->field('id,user_name,password,blance')->where('id=?',[$this->USER_ID])->find();
         $bet        = Db::name('order')->field('time,content,odds,money')->where('user_id=? and game_key=?',[$this->USER_ID,$game_key])->order('time desc')->paginate(10,false,['var_page'=>'index']);
-        $num = 
+        $num        = Db::name('lottery_record')->field('lottery_date as date,lottery_num as content')->where('game_key=?',[$game_key])->select();
 
-
-        //game_key 游戏名
-        //index 页数
         $data = [
             'game_logo' => '/',
             'game_name' => '吉林快3',
@@ -121,19 +118,7 @@ class Home extends Base
             'balance'   => $user_data['blance'] ?? 0,
             'bet'       => $bet,
             'num'       => [
-                'data'=>[
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                    ['date'=>'20191111-11','content'=>'110'],
-                ]
+                'data'=> $num ?: []
             ]
 
         ];
