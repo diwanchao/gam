@@ -1,11 +1,11 @@
 var json = {
     ssc: [
         // 游戏名  链接  游戏key  倒计时(毫秒)  状态 0-》停盘 1-》开启
-        {name: '重庆时时彩', url: '/', key: 'jlk3', time: 60000, status: 0},
+        {name: '重庆时时彩', url: '/', key: 'jlk3', time: 10000, status: 0},
         {name: '新疆时时彩', url: '/', key: 'jlk2', time: 900000, status: 1},
     ],
     k3: [
-        {name: '吉林快3', url: '/', key: 'jlk3', time: 60000, status: 0},
+        {name: '吉林快3', url: '/', key: 'jlk3', time: 10000, status: 0},
         {name: '吉林快32', url: '/', key: 'jlk2', time: 900000, status: 1},
     ]
 }
@@ -79,7 +79,7 @@ var render = function(data){ // type-> ssc / k3
         if(data.time <= 0){
             window.clearInterval(interval);
             // ajax
-            data.time = 60000;
+            data.time = 10000;
             data.status = !data.status;
             interval = window.setInterval(intervalFun, 1000);
         }
