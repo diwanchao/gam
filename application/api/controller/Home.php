@@ -103,9 +103,14 @@ class Home extends Base
      */
     public function leftInfo()
     {
+        $game_key  = Request::instance()->param('game_key');
 
-        $user_data = Db::name('menber')->field('id,user_name,password,blance')->where('id=?',[$this->USER_ID])->find();
-        $bet =$this->betPage();
+
+
+        $user_data  = Db::name('menber')->field('id,user_name,password,blance')->where('id=?',[$this->USER_ID])->find();
+        $bet        = Db::name('order')->field('time,content,odds,money')->where('user_id=? and game_key=?',[$this->USER_ID,$game_key])->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        $num = 
+
 
         //game_key 游戏名
         //index 页数
@@ -114,17 +119,7 @@ class Home extends Base
             'game_name' => '吉林快3',
             'username'  => $user_data['user_name'] ?? '',
             'balance'   => $user_data['blance'] ?? 0,
-            'bet'       => [
-                'total'=>5,
-                'data'=>[
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'123','odds'=>'1.5','money'=>100],
-                ],
-            ],
+            'bet'       => $bet,
             'num'       => [
                 'data'=>[
                     ['date'=>'20191111-11','content'=>'110'],
