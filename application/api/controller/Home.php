@@ -2,7 +2,8 @@
 namespace app\api\controller;
 
 use \think\Request;
-
+use \think\Db;
+use \think\Session;
 class Home extends Base
 {
     /**
@@ -21,8 +22,10 @@ class Home extends Base
      */
     public function info()
     {
+
+        $first_notice   = Db::name('notice')->order('create_time desc')->value('content');
         $data = [
-            'notice'    =>'第一条公告',
+            'notice'    => $first_notice,
             'game'      => [
                 'k3'=>[
                     ['name'=>'吉林快3','time'=>date('Y-m-d H:i:s',time()),'status'=>1],
@@ -63,17 +66,19 @@ class Home extends Base
 
     public function headInfo()
     {
-        $game_name = $_GET['game_key'] ?? '';
+                //game_key
+        $game_key       = Request::instance()->param('game_key','');
+        $first_notice   = Db::name('notice')->order('create_time desc')->value('content');
 
         $data = [
-            'notice'     => '我是公告',
+            'notice'     => $first_notice,
             'macau_time' => time(),
             'game'       => [
                 ['name' => '吉林快3', 'key' => 'jlk3', 'url'=>'/'],
                 ['name' => '时时彩', 'key' => 'ssc', 'url'=>'/'],
             ],
         ];
-        if ($game_name) 
+        if ($game_key) 
         {
             $data['subGame'] = [
                 ['name'=>'三军', 'key'=>'ssc','url'=>'/'],
@@ -99,13 +104,16 @@ class Home extends Base
     public function leftInfo()
     {
 
+        $user_data = Db::name('menber')->field('id,user_name,password,blance')->where('id=?',[$this->USER_ID])->find();
+        $bet =$this->betPage();
+
         //game_key 游戏名
         //index 页数
         $data = [
             'game_logo' => '/',
             'game_name' => '吉林快3',
-            'username'  => '傻小子',
-            'balance'   => 888888,
+            'username'  => $user_data['user_name'] ?? '',
+            'balance'   => $user_data['blance'] ?? 0,
             'bet'       => [
                 'total'=>5,
                 'data'=>[
@@ -140,8 +148,8 @@ class Home extends Base
     }
     /**
      * @SWG\Get(
-     *   path="/api/home/batPage",
-     *   tags={"BAT"},
+     *   path="/api/home/betPage",
+     *   tags={"Bet"},
      *   summary="投注信息分页信息",
      *   operationId="updatePetWithForm",
      *   consumes={"application/x-www-form-urlencoded"},
@@ -152,19 +160,14 @@ class Home extends Base
      *   }}
      * )
      */
-    public function batPage()
+    public function betPage()
     {
-        $data = [
-                'total'=>5,
-                'data'=>[
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                    ['time'=>date('Y-m-d H:i:s',time()),'content'=>'dfdsf','odds'=>'1.5','money'=>100],
-                ],
-        ];
+        $game_key  = Request::instance()->param('game_key');
+        $where = 'user_id=? and game_key=?';
+        $where_param[] = $this->USER_ID;
+        $where_param[] = $game_key;
+
+        $data = Db::name('order')->field('time,content,odds,money')->where($where,$where_param)->order('time desc')->paginate(10,false,['var_page'=>'index']);
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
     /**

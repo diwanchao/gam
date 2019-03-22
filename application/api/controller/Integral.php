@@ -2,6 +2,7 @@
 namespace app\api\controller;
 
 use \think\Request;
+use \think\Db;
 
 class Integral extends Base
 {
@@ -21,15 +22,8 @@ class Integral extends Base
      */
     public function index()
     {
-        $data = [
-            'total' => '3',
-            'data'  => [
-                ['type'=> '存入金额', 'num'=>'100', 'time'=>date('Y-m-d H:i:s',time())],
-                ['type'=> '提取项目', 'num'=>'100', 'time'=>date('Y-m-d H:i:s',time())],
-                ['type'=> '存入金额', 'num'=>'100', 'time'=>date('Y-m-d H:i:s',time())],
-            ]
-        ];
-            return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+        $data = Db::name('integral')->where('user_id=?',[1])->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
 
 }

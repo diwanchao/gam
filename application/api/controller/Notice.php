@@ -2,6 +2,7 @@
 namespace app\api\controller;
 
 use \think\Request;
+use \think\Db;
 
 class Notice extends Base
 {
@@ -21,23 +22,8 @@ class Notice extends Base
      */
     public function index()
     {
-        $data = [
-            'total' => '10',
-            'data'  => [
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-                ['time'=>date('Y-m-d H:i:s',time()),'content'=>'我是公告内容'],
-            ]
-        ];
-            return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+        $data = Db::name('notice')->field('content,create_time as time')->order('create_time desc')->paginate(10,false,['var_page'=>'index']);
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
 
 }
