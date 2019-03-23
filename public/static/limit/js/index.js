@@ -7,7 +7,7 @@ var init = function(){
     utils.getAjax({
         url: '/api/integral/',
         type: 'GET',
-        data: {p: p},
+        data: {index: p},
         success: function(json){
             tablePage.init({total: json.total});
             render(json.data);

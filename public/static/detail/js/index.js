@@ -1,31 +1,38 @@
-var game_key = utils.getCookie('game_key');
-var gameList = InfoAll.InitHeader.data.game;
+// var game_key = utils.getCookie('game_key');
+
 var tablePage = new Page('#pageInfo', function(index){init();});
 
 var init = function(){
-    if(!game_key){
+    if(!ENV.game_key){
         alert('没有可玩的游戏');
         return;
     }
 
     var p = tablePage.data.index;
     // 用当前第几页 index / game_key ajax请求 获取列表
-    var json = {
-        total: 345,
-        data: [
-            // No	下注时间	注单单号	分盘	投注内容	金额	退水	输赢
-            {no: '1',
-             time: '2019-11-11 11:11:11',
-              number: '102373933',
-               part: '龙虎盘',
-                content: '168', money: '101', break: '20', get: '30000'},
-            {no: '2', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'},
-            {no: '3', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'},
-            {no: '4', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'}
-        ]
-    }
-    tablePage.init({total: json.total});
-    render(json.data);
+    utils.getAjax({
+        url: utils.concatGameKey('/api/user/getList'),
+        type: 'POST',
+        success: function(json){
+            tablePage.init({total: json.total});
+            render(json.data);
+        }
+    })
+    // var json = {
+    //     total: 345,
+    //     data: [
+    //         // No	下注时间	注单单号	分盘	投注内容	金额	退水	输赢
+    //         {no: '1',
+    //          time: '2019-11-11 11:11:11',
+    //           number: '102373933',
+    //            part: '龙虎盘',
+    //             content: '168', money: '101', break: '20', get: '30000'},
+    //         {no: '2', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'},
+    //         {no: '3', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'},
+    //         {no: '4', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '168', money: '101', break: '20', get: '30000'}
+    //     ]
+    // }
+    
 }
 
 var render = function(data){
@@ -42,21 +49,23 @@ var render = function(data){
 
 $(function(){
 
+    var gameList = InfoAll.InitHeader.data.game;
+
     $('#changeGame').append(function(){
         var html = '';
         if($.isArray(gameList) && gameList.length){
-            if(!game_key){
-                game_key = gameList[0].key;
+            if(!ENV.game_key){
+                ENV.game_key = gameList[0].key;
             }
 
             for(var i = 0; i < gameList.length; i++){
                 html += '<option value="'+ gameList[i].key +'">'+ gameList[i].name +'</option>'
             }
         }
-    }).val(game_key);
+    }).val(ENV.game_key);
 
     $('#changeGame').bind('change', function(){
-        game_key = this.value;
+        ENV.game_key = this.value;
         // tablePage.init({index: 1})
         tablePage.data.index = 1;
         init();
