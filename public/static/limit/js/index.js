@@ -4,21 +4,15 @@ var init = function(){
     var p = tablePage.data.index;
 
     //ajax  
-    // utils.getAjax({
-    //     url: 
-    // })
-    var json = {
-        total: 32,
-        data: [
-            // 存入金额(提取项目) / 变动数值 ／ 时间
-            {type: '存入金额', num: '100', time: '2019-02-24 12:54:27'},
-            {type: '提取项目', num: '100', time: '2019-02-24 12:54:27'},
-            {type: '存入金额', num: '100', time: '2019-02-24 12:54:27'}
-        ]
-    }
-
-    tablePage.init({total: json.total});
-    render(json.data);
+    utils.getAjax({
+        url: '/api/integral/',
+        type: 'GET',
+        data: {p: p},
+        success: function(json){
+            tablePage.init({total: json.total});
+            render(json.data);
+        }
+    });
 }
 
 var render = function(data){

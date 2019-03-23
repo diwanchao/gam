@@ -14,15 +14,6 @@ var init = function(){
             render(data.data);
         }
     })
-    // var data = [
-    //     // 玩法 / 退水A / 退水B / 退水C / 退水D / 退水E / 单项限额	/ 单注最高限额	/ 单注最低限额
-    //     {methods: '一字组合',
-    //      A: '10', B: '14', C: '15',
-    //       D: '16', E: '11', limit: '20000', max: '30000', min: '10'},
-    //     {methods: '二字组合', A: '10', B: '14', C: '15', D: '16', E: '11', limit: '20000', max: '30000', min: '10'},
-    //     {methods: '三字组合', A: '10', B: '14', C: '15', D: '16', E: '11', limit: '20000', max: '30000', min: '10'}
-    // ]
-    // render(data);
 }
 
 var render = function(data){
