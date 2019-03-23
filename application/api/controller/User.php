@@ -135,6 +135,65 @@ class User extends Base
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' => $return_data]);
     }
+    /**
+     * @SWG\Post(
+     *   path="/api/user/settlementDetail",
+     *   tags={"User"},
+     *   summary="结算账户明细",
+     *   operationId="updatePetWithForm",
+     *   consumes={"application/x-www-form-urlencoded"},
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *     name="game_key",
+     *     in="formData",
+     *     description="游戏编号",
+     *     required=true,
+     *     type="string",
+     *   ),
+     *   @SWG\Parameter(
+     *     name="index",
+     *     in="formData",
+     *     description="页码数",
+     *     required=false,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="index",
+     *     in="formData",
+     *     description="时间",
+     *     required=false,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response="201",description="字段不全"),
+     *   security={{
+     *     "petstore_auth": {"write:pets", "read:pets"}
+     *   }}
+     * )
+     */
+
+
+    public function settlementDetail()
+    {
+        //game_key
+        //index
+        //date 时间 字符串
+
+
+        $data = [
+            'total'=>23,
+            'money'=>123,
+            'school'=>11,
+            'break'=>11,
+            'get'=>11,
+            'data'=>[
+                ['no'=>1,'time'=>date('Y-m-d H:i:s',time()),'number'=>'112','part'=>'龙湖畔','content'=>'和值大小','name'=>'吉林快3','periods'=>'2910231','value'=>'小','reate'=>'1.98','result'=>'3,2,4','money'=>'100','school'=>'0','break'=>'200','get'=>'3000'],
+                ['no'=>1,'time'=>date('Y-m-d H:i:s',time()),'number'=>'112','part'=>'龙湖畔','content'=>'和值大小','name'=>'吉林快3','periods'=>'2910231','value'=>'小','reate'=>'1.98','result'=>'3,2,4','money'=>'100','school'=>'0','break'=>'200','get'=>'3000']
+            ]
+
+        ];
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+
+    }
 
 
 }
