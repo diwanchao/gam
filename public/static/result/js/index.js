@@ -63,7 +63,7 @@ var init = function(){
         ]
     }
     tablePage.init({total: json.total});
-    setHeader(game_key);
+    setHeader(ENV.game_key);
     render(json.data);
 }
 
