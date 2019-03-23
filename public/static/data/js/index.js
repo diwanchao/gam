@@ -1,8 +1,5 @@
 var game_key = utils.getCookie('game_key');
-
 var userInfo = JSON.parse(utils.getCookie('userInfo'));
-var gameList = InfoAll.InitHeader.data.game;
-
 
 var init = function(){
     if(!game_key){
@@ -28,6 +25,8 @@ var render = function(data){
 }
 
 $(function(){
+
+    var gameList = InfoAll.InitHeader.data.game;
 
     $('.username').html(userInfo.user_name);
     $('#changeGame').append(function(){
