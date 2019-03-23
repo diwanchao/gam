@@ -133,7 +133,7 @@ var utils = {
 		if(!userInfo){
 			alert('登陆超时……');
 			// window.location.href = '/index/login';
-			return;
+			// return;
 		}
 
 		$.ajax({
@@ -145,7 +145,7 @@ var utils = {
 				if(result.code == 304){
 					alert('登陆超时……');
 					// window.location.href = '/index/login';
-					return;
+					// return;
 				}
 				else if(result.code == 200) {
 					typeof opt.success == 'function' ? opt.success(result.data) : null;
