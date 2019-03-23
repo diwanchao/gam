@@ -4,7 +4,7 @@ var tablePage = new Page('#pageInfo', function(index){init();});
 
 var setHeader = function(game){
     switch (game) {
-        case 'k3': {
+        case 'jlk3': {
             return $('#tableContent').empty().append('<tr>'+
             '<th>期数</th>'+
             '<th>星期</th>'+
