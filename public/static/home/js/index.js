@@ -166,7 +166,7 @@ function renderGame(key){
             '</ul>'+
             '</div>'
         )
-        $('#' + key).append($html);
+        $('#' + key).empty().append($html);
         return $('#' + key);
     }
 }
