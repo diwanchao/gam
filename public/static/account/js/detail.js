@@ -21,10 +21,10 @@ var init = function(){
         ]
     }
     tablePage.init({total: json.total});
-    render(json.data, json.money, json.school, json.b_reak, json.get);
+    render(json.data, json.money, json.school, json.b_break, json.get);
 }
 
-var render = function(data, money, school, b_reak, get){
+var render = function(data, money, school, b_break, get){
     var html = '';
     for(var i = 0; i < data.length; i++) {
         html += 
@@ -41,7 +41,7 @@ var render = function(data, money, school, b_reak, get){
                 '<td><span class="f-c-red">'+ data[i].get +'</span></td>'+
             '</tr>';
     }
-    html += '<tr><td>总计</td><td></td><td></td><td></td><td></td><td></td><td><b>'+ money +'</b></td><td><b>'+ school +'</b></td><td><b>'+ b_reak +'</b></td><td><b>'+ get +'</b></td></tr>';
+    html += '<tr><td>总计</td><td></td><td></td><td></td><td></td><td></td><td><b>'+ money +'</b></td><td><b>'+ school +'</b></td><td><b>'+ b_break +'</b></td><td><b>'+ get +'</b></td></tr>';
 
     $('#tableBody').empty().append(html);
 }
