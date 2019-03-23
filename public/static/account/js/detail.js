@@ -32,7 +32,7 @@ var render = function(data, money, school, b_reak, get){
                 '<td>'+ data[i].no +'</td>'+
                 '<td><span>'+ data[i].time +'</span></td>'+
                 '<td>'+ data[i].number +'</td>'+
-                '<td>'+ data[i].part +'</td>'
+                '<td>'+ data[i].part +'</td>'+
                 '<td><p>['+ data[i].name +' '+ data[i].periods +'期]</p><span class="f-c-blue">'+ data[i].content +'</span>&ngsp;<span class="f-c-red">('+ data[i].value +')</span>&nbsp;@&nbsp;<span class="f-c-red">'+ data[i].reate +'</span></td>'+
                 '<td>'+ data[i].result +'</td>'+
                 '<td>'+ data[i].money +'</td>'+
