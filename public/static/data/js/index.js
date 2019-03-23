@@ -1,12 +1,15 @@
-var game_key = utils.getCookie('game_key');
+// var game_key = utils.getCookie('game_key');
 var userInfo = JSON.parse(utils.getCookie('userInfo'));
 
 var init = function(){
-    if(!game_key){
+    if(!ENV.game_key){
         alert('没有可玩的游戏');
         return;
     }
     // 用url + ?game_key=游戏key ajax请求 获取列表
+    // utils.getAjax({
+    //     url: utils.concatGameKey('')
+    // })
     var data = [
         // 玩法 / 退水A / 退水B / 退水C / 退水D / 退水E / 单项限额	/ 单注最高限额	/ 单注最低限额
         {methods: '一字组合', A: '10', B: '14', C: '15', D: '16', E: '11', limit: '20000', max: '30000', min: '10'},
@@ -32,18 +35,19 @@ $(function(){
     $('#changeGame').append(function(){
         var html = '';
         if($.isArray(gameList) && gameList.length){
-            if(!game_key){
-                game_key = gameList[0].key;
+            if(!ENV.game_key){
+                ENV.game_key = gameList[0].key;
             }
 
             for(var i = 0; i < gameList.length; i++){
                 html += '<option value="'+ gameList[i].key +'">'+ gameList[i].name +'</option>'
             }
         }
-    }).val(game_key);
+        return html;
+    }).val(ENV.game_key);
 
     $('#changeGame').bind('change', function(){
-        game_key = this.value;
+        ENV.game_key = this.value;
         init();
     });
     
