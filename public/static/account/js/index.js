@@ -11,7 +11,7 @@ var init = function(){
     var p = tablePage.data.index;
     // 用当前第几页 index / game_key ajax请求 获取列表
     utils.getAjax({
-        url: utils.concatGameKey('/user/settlementList'),
+        url: utils.concatGameKey('/api/user/settlementList'),
         type: 'POST',
         data: {index: p},
         success: function(json){
