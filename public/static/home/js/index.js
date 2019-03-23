@@ -42,14 +42,16 @@ var render = function(data){
         timeout: data.time,
     });
 
+    return $html;
+
 }
 
 function timeInterval() {
     var interval = window.setInterval(function(){
         for(var i = 0 ; i < refresh_data.length; i++) {
             var data = refresh_data[i];
-            data[i].time -= 1000;
-            if(data[i].time <= 0){
+            data[i].timeout -= 1000;
+            if(data[i].timeout <= 0){
                 window.clearInterval(interval);
                 // ajax
                 // data.time = 10000;
@@ -57,7 +59,7 @@ function timeInterval() {
                 init();
                 
             }
-            data[i].element.find('.remainingTime').html(utils.remainingTime(data[i].time).replace(/:/g, '&nbsp;:&nbsp;'));
+            data[i].element.find('.remainingTime').html(utils.remainingTime(data[i].timeout).replace(/:/g, '&nbsp;:&nbsp;'));
         }
     }, 1000);
 }
