@@ -25,7 +25,7 @@ var render = function(data){
             '<div class="pull-left">'+ data.name +'</div>'+
             '<div class="pull-right countDown">'+
                 '<div class="timeIcon '+ (data.status == 0 ? "over" : "ready") +'"></div>'+
-                '<span class="remainingTime">'+ utils.remainingTime(time).replace(/:/g, '&nbsp;:&nbsp;') +'</span>'+
+                '<span class="remainingTime">'+ utils.remainingTime(data.time).replace(/:/g, '&nbsp;:&nbsp;') +'</span>'+
             '</div>'+
         '</div>'
     );
@@ -39,9 +39,27 @@ var render = function(data){
     refresh_data.push({
         element: $html,
         status: data.status,
-        timeout: data.timeout,
+        timeout: data.time,
     });
 
+}
+
+function timeInterval() {
+    var interval = window.setInterval(function(){
+        for(var i = 0 ; i < refresh_data.length; i++) {
+            var data = refresh_data[i];
+            data[i].time -= 1000;
+            if(data[i].time <= 0){
+                window.clearInterval(interval);
+                // ajax
+                // data.time = 10000;
+                // data.status = !data.status;
+                init();
+                
+            }
+            data[i].element.find('.remainingTime').html(utils.remainingTime(data[i].time).replace(/:/g, '&nbsp;:&nbsp;'));
+        }
+    }, 1000);
 }
 
 // var requireURL = {
@@ -153,21 +171,31 @@ function renderGame(key){
     }
 }
 
-var init = function(){
+var init = function(callback){
     // ajax
-    for(var k in json){
-        if(json.hasOwnProperty(k)){
-            var ele = renderGame(k);
-            var data = json[k];
-            for(var i = 0; i < 10; i++){
-                var oli = $('<li></li>');
-                if(data[i]){
-                    oli.append(render(data[i]));
+    utils.getAjax({
+        url: '/api/home/gameInfo',
+        type: 'GET',
+        success: function(json){
+            for(var k in json){
+                if(json.hasOwnProperty(k)){
+                    var ele = renderGame(k);
+                    var data = json[k];
+                    for(var i = 0; i < 10; i++){
+                        var oli = $('<li></li>');
+                        if(data[i]){
+                            oli.append(render(data[i]));
+                        }
+                        ele.find('ul').append(oli);
+                    }
                 }
-                ele.find('ul').append(oli);
             }
+            timeInterval();
+            // typeof callback === 'function' ? callback(json) : null;
         }
-    }
+
+    })
+    
 }
 
 $(function(){
