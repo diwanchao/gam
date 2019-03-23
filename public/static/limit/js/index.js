@@ -4,6 +4,9 @@ var init = function(){
     var p = tablePage.data.index;
 
     //ajax  
+    // utils.getAjax({
+    //     url: 
+    // })
     var json = {
         total: 32,
         data: [
