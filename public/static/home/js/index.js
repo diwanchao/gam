@@ -53,9 +53,7 @@ function timeInterval() {
             data.timeout -= 1000;
             if(data.timeout <= 0){
                 window.clearInterval(interval);
-                // ajax
-                // data.time = 10000;
-                // data.status = !data.status;
+                refresh_data = [];
                 init();
                 
             }
