@@ -11,7 +11,7 @@ var init = function(){
         url: utils.concatGameKey('/api/user/'),
         type: 'GET',
         success: function(data){
-            render(data);
+            render(data.data);
         }
     })
     // var data = [
@@ -22,7 +22,7 @@ var init = function(){
     //     {methods: '二字组合', A: '10', B: '14', C: '15', D: '16', E: '11', limit: '20000', max: '30000', min: '10'},
     //     {methods: '三字组合', A: '10', B: '14', C: '15', D: '16', E: '11', limit: '20000', max: '30000', min: '10'}
     // ]
-    render(data);
+    // render(data);
 }
 
 var render = function(data){
