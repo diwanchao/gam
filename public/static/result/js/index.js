@@ -73,14 +73,14 @@ var render = function(data){
     for(var i = 0; i < data.length; i++) {
         var content;
         if(game_key == 'ssc'){
-            for(var s = 0; s < data.content.length; s++) {
-                content += '<td><span class="ssc-color">'+ data.content[s] +'</span></td>';
+            for(var s = 0; s < data[i].content.length; s++) {
+                content += '<td><span class="ssc-color">'+ data[i].content[s] +'</span></td>';
             }
             html += '<tr><td>'+ data[i].no +'</td><td>'+ data[i].week +'</td><td>'+ data[i].time +'</td>'+ conetnt +'<td><span class="'+ (data[i].tenThousand == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].tenThousand +'</span></td><td><span class="'+ (data[i].thousand == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].thousand +'</span></td><td><span class="'+ (data[i].hundred == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].hundred +'</span></td><td><span class="'+ (data[i].ten == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].ten +'</span></td><td><span class="'+ (data[i].one == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].one +'</span></td></tr>';
         }
         else if(game_key == 'k3'){
-            for(var s = 0; s < data.content.length; s++) {
-                content += '<td>'+ data.content[s] +'</td>';
+            for(var s = 0; s < data[i].content.length; s++) {
+                content += '<td>'+ data[i].content[s] +'</td>';
             }
             html += '<tr><td>'+ data[i].no +'</td><td>'+ data[i].week +'</td><td>'+ data[i].time +'</td>'+ conetnt +'<td>'+ data[i].sum +'</td><td><span class="'+ (data[i].oddEven == '单' ? "f-c-orange" : "f-c-blue") +'">'+ data[i].oddEven +'</span></td><td><span class="'+ (data[i].bigSmall == '大' ? "f-c-green" : "f-c-pink") +'">'+ data[i].bigSmall +'</span></td></tr>';
         }
