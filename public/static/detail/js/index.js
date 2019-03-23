@@ -62,6 +62,7 @@ $(function(){
                 html += '<option value="'+ gameList[i].key +'">'+ gameList[i].name +'</option>'
             }
         }
+        return html;
     }).val(ENV.game_key);
 
     $('#changeGame').bind('change', function(){
