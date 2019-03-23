@@ -78,7 +78,7 @@ var render = function(data){
             }
             html += '<tr><td>'+ data[i].no +'</td><td>'+ data[i].week +'</td><td>'+ data[i].time +'</td>'+ content +'<td><span class="'+ (data[i].tenThousand == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].tenThousand +'</span></td><td><span class="'+ (data[i].thousand == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].thousand +'</span></td><td><span class="'+ (data[i].hundred == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].hundred +'</span></td><td><span class="'+ (data[i].ten == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].ten +'</span></td><td><span class="'+ (data[i].one == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].one +'</span></td></tr>';
         }
-        else if(ENV.game_key == 'k3'){
+        else if(ENV.game_key == 'jlk3'){
             for(var s = 0; s < data[i].content.length; s++) {
                 content += '<td>'+ data[i].content[s] +'</td>';
             }
@@ -87,7 +87,7 @@ var render = function(data){
         
     }
     html += '</body>';
-    $('#tableContent').empty().append(html);
+    $('#tableContent').append(html);
 }
 
 $(function(){
