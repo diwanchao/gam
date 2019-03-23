@@ -55,7 +55,7 @@ function timeInterval() {
                 window.clearInterval(interval);
                 refresh_data = [];
                 init();
-                
+                break;
             }
             data.element.find('.remainingTime').html(utils.remainingTime(data.timeout).replace(/:/g, '&nbsp;:&nbsp;'));
         }
