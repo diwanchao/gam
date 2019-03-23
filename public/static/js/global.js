@@ -132,7 +132,7 @@ var utils = {
 		var userInfo = utils.getCookie('userInfo');
 		if(!userInfo){
 			alert('登陆超时……');
-			window.location.href = '/index/login';
+			// window.location.href = '/index/login';
 			return;
 		}
 
@@ -144,7 +144,7 @@ var utils = {
 			success: function(result){
 				if(result.code == 304){
 					alert('登陆超时……');
-					window.location.href = '/index/login';
+					// window.location.href = '/index/login';
 					return;
 				}
 				else if(result.code == 200) {
