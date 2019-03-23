@@ -1,5 +1,4 @@
-var game_key = utils.getCookie('game_key');
-var gameList = InfoAll.InitHeader.data.game;
+
 var tablePage = new Page('#pageInfo', function(index){init();});
 
 var setHeader = function(game){
@@ -41,7 +40,7 @@ var setHeader = function(game){
 }
 
 var init = function(){
-    if(!game_key){
+    if(!ENV.game_key){
         alert('没有可玩的游戏');
         return;
     }
@@ -88,26 +87,29 @@ var render = function(data){
         
     }
     html += '</body>';
-    $('#tableContent').append(html);
+    $('#tableContent').empty().append(html);
 }
 
 $(function(){
 
+    var gameList = InfoAll.InitHeader.data.game;
+
     $('#changeGame').append(function(){
         var html = '';
         if($.isArray(gameList) && gameList.length){
-            if(!game_key){
-                game_key = gameList[0].key;
+            if(!ENV.game_key){
+                ENV.game_key = gameList[0].key;
             }
 
             for(var i = 0; i < gameList.length; i++){
                 html += '<option value="'+ gameList[i].key +'">'+ gameList[i].name +'</option>'
             }
         }
-    }).val(game_key);
+        return html;
+    }).val(ENV.game_key);
 
     $('#changeGame').bind('change', function(){
-        game_key = this.value;
+        ENV.game_key = this.value;
         // tablePage.init({index: 1})
         tablePage.data.index = 1;
         init();
