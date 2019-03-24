@@ -245,12 +245,12 @@ class User extends Base
                 throw new \Exception("两次输入密码不一致", 1);
 
 
-            $user_data = Db::name('menber')->field('id,user_name,password,blance')->where('id=?',[$this->USER_ID])->find();
+            $user_data = Db::name('menber')->field('password')->where('id=?',[$this->USER_ID])->find();
             if (!$user_data) 
                 throw new \Exception("用户不存在", 1);
             if ($user_data['password'] != md5($old_pwd)) 
                 throw new \Exception("旧密码错误", 1);
-            $update_res = Db::name('user')->where('id', $this->USER_ID)->update(['password' => md5($new_pwd)]);
+            $update_res = Db::name('menber')->where('id', $this->USER_ID)->update(['password' => md5($new_pwd)]);
             if (!$update_res) 
                 throw new \Exception("修改密码失败", 1);
 
