@@ -50,7 +50,7 @@ function timeInterval() {
     var interval = window.setInterval(function(){
         for(var i = 0 ; i < refresh_data.length; i++) {
             var data = refresh_data[i];
-            data.timeout -= 1000;
+            data.timeout -= 1;
             data.element.find('.remainingTime').html(utils.remainingTime(data.timeout).replace(/:/g, '&nbsp;:&nbsp;'));
             if(data.timeout <= 0){
                 window.clearInterval(interval);
