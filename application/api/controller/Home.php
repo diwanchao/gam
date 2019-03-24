@@ -214,9 +214,16 @@ class Home extends Base
             $k3_status  = 0;
             $k3_time    = strtotime(date('Y-m-d 08:40:00',strtotime("+1 day"))) - time();
         }
+
+
+
+
+
+
+
             $data = [
                 'k3'=>[
-                    ['name'=>'吉林快3','time'=>$k3_time,'status'=>$k3_status,'url'=>'/','key'=>'jlk3'],
+                    ['name'=>'吉林快3','time'=>$k3_time*1000,'status'=>$k3_status,'url'=>'/','key'=>'jlk3'],
                 ],
                 'ssc'=>[
                     ['name'=>'重庆时时彩','time'=>100000,'status'=>1,'url'=>'/','key'=>'jlssc'],
