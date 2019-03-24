@@ -29,8 +29,8 @@ class User extends Base
         if (!$game_key) 
             return json(['msg' => 'game_key not empty','code' => 201, 'data' => []]);
 
-        $where  = 'user_id=1 and game_key=?';
-        $data   = Db::name('user_game_method')->where($where,[$game_key])->select();
+        $where  = 'user_id=? and game_key=?';
+        $data   = Db::name('user_game_method')->where($where,[$this->USER_ID,$game_key])->select();
         $data   = ['data'  => $data];
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
