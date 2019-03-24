@@ -8,7 +8,7 @@ function setNumber(key){
     if($.inArray(key, selectedAry) == -1){ // 不存在
         elementList.addClass('active');
         selectedAry.push(key);
-        if(quickImport){
+        if(quickValue){
             elementList.find('input').val(quickValue);
         }
     }
