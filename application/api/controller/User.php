@@ -241,7 +241,7 @@ class User extends Base
                 throw new \Exception("新密码不能为空", 1);
             if (!$repeat_pwd) 
                 throw new \Exception("确认密码不能为空", 1);
-            if ($new!=$repeat_pwd) 
+            if ($new_pwd!=$repeat_pwd) 
                 throw new \Exception("两次输入密码不一致", 1);
 
 
