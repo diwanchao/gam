@@ -8,6 +8,16 @@ use \think\Session;
 
 class User extends Base
 {
+
+
+    function __construct() 
+    {
+        parent::__construct();
+    }
+
+
+
+
     /**
      * @SWG\Get(
      *   path="/api/user/",
