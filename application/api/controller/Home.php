@@ -223,7 +223,7 @@ class Home extends Base
 
             $data = [
                 'k3'=>[
-                    ['name'=>'吉林快3','time'=>$k3_time*1000,'status'=>$k3_status,'url'=>'/','key'=>'jlk3'],
+                    ['name'=>'吉林快3','time'=>$k3_time,'status'=>$k3_status,'url'=>'/','key'=>'jlk3'],
                 ],
                 'ssc'=>[
                     ['name'=>'重庆时时彩','time'=>100000,'status'=>1,'url'=>'/','key'=>'jlssc'],
