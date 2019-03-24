@@ -2,7 +2,8 @@
     line-height: 38px;
     font-size: 0;
 }
-.portlet-title span{
+.portlet-title span,
+.portlet-title a{
     vertical-align: middle;
     line-height: 38px;
     font-size: 14px;

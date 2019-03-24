@@ -125,7 +125,7 @@ var app = new Vue({
         tab: 0, // 0->游戏 1->规则
         quickImport: '', // 快速输入
         level: [],
-        levelValue: '',
+        levelValue: '/index/game/jlk3-A',
         nowPeriods: '',
         close_time: '',
         count_down: ''
