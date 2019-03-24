@@ -38,7 +38,12 @@ function getMoneyTotal() {
 function getData() {
     var ary = [];
     $('[data-name=begin-table] input[type=text]').each(function(){
-        console.log($(this).data('item'));
+        var data;
+        if(this.value){
+            data = JSON.parse($(this).data('item'));
+            data.value = this.value;
+            ary.push(data);
+        }
     })
     // $('[data-name=begin-table]').each(function(){
     //     var innerObj = {}
