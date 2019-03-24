@@ -25,6 +25,16 @@ function setSelectAry(){
     }
 }
 
+function getMoneyTotal() {
+    var total = 0;
+    $('.portlet-body .h-table').find('input[type=text]').each(function(){
+        if(this.value){
+            total += parseInt(this.value);
+        }
+    });
+    $('.moneyTotal').val(total);
+}
+
 $(function(){
     $('.portlet-body .h-table').find('input[type=text]').bind('keydown', function(e){
         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
@@ -65,6 +75,7 @@ $(function(){
     $('.quickImport').bind('input', function(){
         $('.quickImport').val(this.value);
         quickValue = this.value;
-        setSelectAry()
+        setSelectAry();
+        getMoneyTotal();
     })
 })
