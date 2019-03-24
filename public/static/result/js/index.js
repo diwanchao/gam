@@ -93,10 +93,38 @@ var render = function(data){
     for(var i = 0; i < data.length; i++) {
         var content = '';
         if(ENV.game_key == 'ssc'){
+            var wContent = '';
+            var qContent = '';
+            var bContent = '';
+            var sContent = '';
+            var gContent = '';
+            
+            var w = data[i].tenThousand;
+            var q = data[i].thousand;
+            var b = data[i].hundred;
+            var b = data[i].hundred;
+            var s = data[i].ten;
+            var g = data[i].one;
             for(var s = 0; s < data[i].content.length; s++) {
                 content += '<td><span class="ssc-color">'+ data[i].content[s] +'</span></td>';
             }
-            html += '<tr><td>'+ data[i].no +'</td><td>'+ data[i].week +'</td><td>'+ data[i].time +'</td>'+ content +'<td><span class="'+ (data[i].tenThousand == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].tenThousand +'</span></td><td><span class="'+ (data[i].thousand == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].thousand +'</span></td><td><span class="'+ (data[i].hundred == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].hundred +'</span></td><td><span class="'+ (data[i].ten == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].ten +'</span></td><td><span class="'+ (data[i].one == '小' ? "f-c-deep-green" : "f-c-blue") +'">'+ data[i].one +'</span></td></tr>';
+            for(var l = 0; w < l.length; l++) {
+                wContent += '<td><span class="'+ ((w[l] == '小' || w[l] == '双' || w[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ w[l] +'</span></td>';
+            }
+            for(var l = 0; q < l.length; l++) {
+                qContent += '<td><span class="'+ ((q[l] == '小' || q[l] == '双' || q[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ q[l] +'</span></td>';
+            }
+            for(var l = 0; b < l.length; l++) {
+                bContent += '<td><span class="'+ ((b[l] == '小' || b[l] == '双' || b[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ b[l] +'</span></td>';
+            }
+            for(var l = 0; s < l.length; l++) {
+                sContent += '<td><span class="'+ ((s[l] == '小' || s[l] == '双' || s[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ s[l] +'</span></td>';
+            }
+            for(var l = 0; g < l.length; l++) {
+                gContent += '<td><span class="'+ ((g[l] == '小' || g[l] == '双' || g[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ g[l] +'</span></td>';
+            }
+            
+            html += '<tr><td>'+ data[i].no +'</td><td>'+ data[i].week +'</td><td>'+ data[i].time +'</td>'+ content + wContent + qContent + bContent + sContent + gContent +'</tr>';
         }
         else if(ENV.game_key == 'jlk3'){
             for(var s = 0; s < data[i].content.length; s++) {
