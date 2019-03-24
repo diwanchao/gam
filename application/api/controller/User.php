@@ -110,7 +110,7 @@ class User extends Base
         $game_key   = Request::instance()->param('game_key'); 
         $where      = $game_key ? "where game_key='{$game_key}'" : 'where 1=1';
 
-        $sql = "SELECT DATE_FORMAT(time,'%Y-%m-%d') AS date,COUNT(id) AS single,SUM(money) AS money,SUM(handsel) AS school,SUM(break) AS break,SUM(get) AS get FROM `order` {$where} GROUP BY date ORDER BY date ASC limit 7";
+        $sql = "SELECT DATE_FORMAT(time,'%Y-%m-%d') AS date,COUNT(no) AS single,SUM(money) AS money,SUM(handsel) AS school,SUM(break) AS break,SUM(get) AS get FROM `order` {$where} GROUP BY date ORDER BY date ASC limit 7";
         $data = Db::query($sql);
         
         foreach ($data as $key => $value) {
