@@ -40,7 +40,7 @@ function getData() {
     $('[data-name=begin-table] input[type=text]').each(function(){
         var data;
         if(this.value){
-            data = JSON.parse($(this).data('item'));
+            data = new Function("return" + $(this).data('item'))();
             data.value = this.value;
             ary.push(data);
         }
