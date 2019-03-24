@@ -1,4 +1,4 @@
-var game_key = utils.getCookie('game_key');
+// var game_key = utils.getCookie('game_key');
 var tablePage = new Page('#pageInfo', function(index){init();});
 var date = utils.getURL(location.search, 'date');
 
@@ -6,36 +6,47 @@ var init = function(){
     // date / game_key
     var p = tablePage.data.index;
 
+    utils.getAjax({
+        url: utils.concatGameKey('/api/user/settlementDetail'),
+        data: {
+            date: date,
+            index: p,
+        },
+        type: 'POST',
+        success: function(json){
+            tablePage.init({total: json.total});
+            render(json.data, json.money, json.school, json.break, json.get);
+        }
+    })
     // ajax 会用时间->date(POST) 游戏key->game_key(GET) 第几页->index(POST) 请求
-    var json = {
-        total: 23,//总共多少条数
-        money: 23423,// 单量
-        school: 32,// 金额 
-        break: 723,// 退水 
-        get: 4,// 输赢 
-        data: [
-            // No	下注时间	注单单号	分盘	内容	开奖结果	金额	派彩	退水	输赢
-            {no: '1',
-             time: '2019-11-11 11:11:11',
-              number: '102373933',
-               part: '龙虎盘',
-                content: '和值大小',
-                 name: '吉林快3',
-                  periods: '20190309-029',
-                   value: '小',
-                    reate: '1.98',
-                     result: '3,2,4',
-                      money: '101',
-                       school: '0',
-                        break: '20',
-                         get: '30000'},
-            {no: '1', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '和值大小', name: '吉林快3', periods: '20190309-029', value: '小', reate: '1.98', result: '3,2,4', money: '101', school: '0', break: '20', get: '30000'},
-            {no: '1', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '和值大小', name: '吉林快3', periods: '20190309-029', value: '小', reate: '1.98', result: '3,2,4', money: '101', school: '0', break: '20', get: '30000'},
-            {no: '1', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '和值大小', name: '吉林快3', periods: '20190309-029', value: '小', reate: '1.98', result: '3,2,4', money: '101', school: '0', break: '20', get: '30000'},
-        ]
-    }
-    tablePage.init({total: json.total});
-    render(json.data, json.money, json.school, json.break, json.get);
+    // var json = {
+    //     total: 23,//总共多少条数
+    //     money: 23423,// 单量
+    //     school: 32,// 金额 
+    //     break: 723,// 退水 
+    //     get: 4,// 输赢 
+    //     data: [
+    //         // No	下注时间	注单单号	分盘	内容	开奖结果	金额	派彩	退水	输赢
+    //         {no: '1',
+    //          time: '2019-11-11 11:11:11',
+    //           number: '102373933',
+    //            part: '龙虎盘',
+    //             content: '和值大小',
+    //              name: '吉林快3',
+    //               periods: '20190309-029',
+    //                value: '小',
+    //                 reate: '1.98',
+    //                  result: '3,2,4',
+    //                   money: '101',
+    //                    school: '0',
+    //                     break: '20',
+    //                      get: '30000'},
+    //         {no: '1', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '和值大小', name: '吉林快3', periods: '20190309-029', value: '小', reate: '1.98', result: '3,2,4', money: '101', school: '0', break: '20', get: '30000'},
+    //         {no: '1', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '和值大小', name: '吉林快3', periods: '20190309-029', value: '小', reate: '1.98', result: '3,2,4', money: '101', school: '0', break: '20', get: '30000'},
+    //         {no: '1', time: '2019-11-11 11:11:11', number: '102373933', part: '龙虎盘', content: '和值大小', name: '吉林快3', periods: '20190309-029', value: '小', reate: '1.98', result: '3,2,4', money: '101', school: '0', break: '20', get: '30000'},
+    //     ]
+    // }
+
 }
 
 var render = function(data, money, school, b_break, get){
