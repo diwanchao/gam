@@ -22,7 +22,52 @@ class Game extends Base
      */
     public function resultList()
     {
+        $result_data= [];
+        $weekarray  = array("日","一","二","三","四","五","六");
+
         $game_key   = Request::instance()->param('game_key'); 
+        $page       = Request::instance()->param('index',1); 
+        $page_row   = 10;
+        $count  = Db::name('game_result')->where('game_key=?',[$game_key])->select();
+        $data   = Db::name('game_result')->order('time desc')->where('game_key=?',[$game_key])->limit($page*$page_row-$page_row,$page*$page_row)->select();
+
+        if ($data) 
+        {
+            if ($game_key=='jlk3') 
+            {
+                # code...
+                foreach ($data as $key => $value) 
+                {
+                    $sum                            = 0;
+                    $result_data[$key]['no']        = $key+1;
+                    $result_data[$key]['week']      = $weekarray[date("w",strtotime($value['time']))];
+                    $result_data[$key]['time']      = date('Y-m-d',strtotime($value['time']));
+                    $result_data[$key]['content']   = $value['game_result'];
+                    $one = str_split($value['game_result']);
+                    foreach ($one as $val) {
+                        $sum +=$val;
+                    }
+                    $result_data[$key]['sum']       = $sum;
+                    $result_data[$key]['oddEven']   = ($sum%2)==0 ? '双' : '单';
+                    $result_data[$key]['bigSmall']  = $sum>9 ? '大' : '小';
+
+
+                }
+            }
+
+
+        }
+
+        $return=[
+            'total' => $count ? count($count) : 0,
+            'data'  => $result_data,
+
+        ];
+
+/*
+        var_dump($data);die();
+
+
         if ('ssc' == $game_key) {
             $data = [
                 'total'=>10,
@@ -39,8 +84,8 @@ class Game extends Base
                     ['no'=>1,'week'=>'日','time'=>'2019-11-11','content'=>'123','sum'=>11,'oddEven'=>'单','bigSmall'=>'大'],
                 ]
             ];
-        }
-        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+        }*/
+        return json(['msg' => 'succeed','code' => 200, 'data' => $return]);
 
     }
     /**
