@@ -88,7 +88,7 @@ function getData() {
     //     return innerObj;
     // })();
 
-    return obj;
+    return ary;
 }
 
 $(function(){
