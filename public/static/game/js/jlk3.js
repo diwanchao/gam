@@ -45,25 +45,26 @@ $(function(){
 
 
 
-    $('#quickImport').bind('keydown', function(e){
+    $('.quickImport').bind('keydown', function(e){
         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
             e.preventDefault();
         }
     });
 
-    $('#quickImport').bind('blur', function(){
+    $('.quickImport').bind('blur', function(){
         if(isNaN(this.value)){
             alert('请输入纯数字');
             this.value = '';
         }
     });
 
-    $('#quickImport').bind('click', function(e){
+    $('.quickImport').bind('click', function(e){
         e.stopPropagation();
     });
 
-    $('#quickImport').bind('input', function(){
-        quickValue = _this.value;
+    $('.quickImport').bind('input', function(){
+        $('.quickImport').val(this.value);
+        quickValue = this.value;
         setSelectAry()
     })
 })
