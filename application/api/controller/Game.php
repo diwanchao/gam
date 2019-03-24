@@ -54,8 +54,6 @@ class Game extends Base
 
                 }
             }
-
-
         }
 
         $return=[
@@ -111,6 +109,41 @@ class Game extends Base
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
+    /**
+     * @SWG\Get(
+     *   path="/api/game/gameInit",
+     *   tags={"Game"},
+     *   summary="游戏初始化",
+     *   operationId="updatePetWithForm",
+     *   consumes={"application/x-www-form-urlencoded"},
+     *   produces={"application/json"},
+     *   @SWG\Response(response="201",description="字段不全"),
+     *   security={{
+     *     "petstore_auth": {"write:pets", "read:pets"}
+     *   }}
+     * )
+     */
+    public function gameInit()
+    {
+
+        $data = [
+            'last_issue' => '20190324-11',
+            'last_num'   => '123',
+            'issue'      => '20190324-12',
+            'count_down' => '600',
+            'close_time' => '22:40:00',
+            'game_name'  => '吉林快3',
+            'dish'       => [
+                ['name'=>'A','url'=>'/index/game/jlk3-A'],
+                ['name'=>'B','url'=>'/index/game/jlk3-B'],
+            ]
+
+        ];
+
+
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+    }
+
 
 
 }
