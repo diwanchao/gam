@@ -81,6 +81,9 @@ var init = function(){
         //     {no: 4, week: '日', time: '2019-11-11', content: '123', sum: '11', oddEven: '双', bigSmall: '大'},
         // ]
     }
+    tablePage.init({total: json.total});
+    setHeader(ENV.game_key);
+    render(json.data);
 
 }
 
