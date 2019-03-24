@@ -85,6 +85,50 @@ function getData() {
     return ary;
 }
 
+var init = function(){
+    utils.getAjax({
+        url: utils.concatGameKey('/api/game/gameInit'),
+        type: 'GET',
+        success: function(json){
+            app._data.periods = json.last_issue;
+            app._data.periods_number = json.last_num;
+            app._data.level = json.dish;
+            app._data.nowPeriods = json.issue;
+            app._data.close_time = json.close_time;
+            timeInterval(json.count_down);
+        }
+    })
+}
+
+
+function timeInterval(time) {
+    var interval = window.setInterval(function(){
+            time -= 1;
+            app._data.count_down = utils.remainingTime(time);
+            if(data.timeout <= 0){
+                console.log('timeout: 0')
+                window.clearInterval(interval);
+                // refresh_data = [];
+                // init();
+                // break;
+            }
+    }, 1000);
+}
+
+var app = new Vue({
+    el: '#layoutBody',
+    data: {
+        periods: '', //最新期数
+        periods_number: '', // 最新开奖结果
+        tab: 0, // 0->游戏 1->规则
+        quickImport: '', // 快速输入
+        level: [],
+        nowPeriods: '',
+        close_time: '',
+        count_down: ''
+    },
+})
+
 $(function(){
     $('.portlet-body .h-table').find('input[type=text]').bind('keydown', function(e){
         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
@@ -146,21 +190,15 @@ $(function(){
 
         console.log(getData());
 
-    })
+    });
+
+    init();
+    
 })
 
 
-var app = new Vue({
-    el: '#layoutBody',
-    data: {
-        periods: '20190324-11', //最新期数
-        periods_number: '123', // 最新开奖结果
-        tab: 0, // 0->游戏 1->规则
-        level: 'A', // 盘
-        quickImport: '', // 快速输入
 
-    }
-})
+
 
 
 // [
