@@ -29,6 +29,7 @@ $(function(){
             type: 'POST',
             url: requireURL.login,
             dataType: 'json',
+            data: data,
             success: function(data){
                 if(data.code != 200){
                     alert(data.msg);

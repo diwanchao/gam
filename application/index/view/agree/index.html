@@ -113,12 +113,12 @@ BODY{background-color:#090908}.agree_border{background-color:#ddd}
     var btn1 = document.getElementById('submit1');
     var btn2 = document.getElementById('submit2');
 
-    btn1.click = function(){
+    btn1.onclick = function(){
         delCookie('userInfo');
         window.location = '/index/login';
     };
 
-    btn2.click = function(){
+    btn2.onclick = function(){
         window.location = '/index/home';
     }
 
