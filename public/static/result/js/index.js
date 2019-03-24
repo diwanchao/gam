@@ -48,42 +48,42 @@ var init = function(){
     var p = tablePage.data.index;
     // 用index / game_key ajax请求 获取列表
 
-    // utils.getAjax({
-    //     url: utils.concatGameKey('/api/game/resultList'),
-    //     type: 'GET',
-    //     data: {
-    //         index: p,
-    //     },
-    //     success: function(json){
-    //         tablePage.init({total: json.total});
-    //         setHeader(ENV.game_key);
-    //         render(json.data);
-    //     }
-    // })
+    utils.getAjax({
+        url: utils.concatGameKey('/api/game/resultList'),
+        type: 'GET',
+        data: {
+            index: p,
+        },
+        success: function(json){
+            tablePage.init({total: json.total});
+            setHeader(ENV.game_key);
+            render(json.data);
+        }
+    })
 
-    var json = {
-        total: 345,
-        data: [
-        // game_key = ssc
-        //期数 星期 时间 彩球号码 万 千 百 拾 个
-            {no: '1', week: '日', time: '2019-11-11', content: '12347',
-             tenThousand: '小', thousand: '小', hundred: '大', ten: '小', one: '大'},
-            {no: '2', week: '日', time: '2019-11-11', content: '12349', tenThousand: '小', thousand: '小', hundred: '大', ten: '小', one: '大'},
-            {no: '3', week: '日', time: '2019-11-11', content: '12340', tenThousand: '小', thousand: '小', hundred: '大', ten: '小', one: '大'},
-            {no: '4', week: '日', time: '2019-11-11', content: '12344', tenThousand: '小', thousand: '小', hundred: '大', ten: '小', one: '大'},
-        ],
-        // game_key = jlk3
-        // 期数	星期	时间	开奖号	和值	和值单双	和值大小
-        // data: [
-        //     {no: 1, week: '日', time: '2019-11-11', content: '123', sum: '11', oddEven: '单', bigSmall: '小'},
-        //     {no: 2, week: '日', time: '2019-11-11', content: '123', sum: '11', oddEven: '双', bigSmall: '大'},
-        //     {no: 3, week: '日', time: '2019-11-11', content: '123', sum: '11', oddEven: '单', bigSmall: '小'},
-        //     {no: 4, week: '日', time: '2019-11-11', content: '123', sum: '11', oddEven: '双', bigSmall: '大'},
-        // ]
-    }
-    tablePage.init({total: json.total});
-    setHeader(ENV.game_key);
-    render(json.data);
+    // var json = {
+    //     total: 345,
+    //     data: [
+    //     // game_key = ssc
+    //     //期数 星期 时间 彩球号码 万 千 百 拾 个
+    //         {no: '1', week: '日', time: '2019-11-11', content: '12347',
+    //          tenThousand: '小', thousand: '小', hundred: '大', ten: '小', one: '大'},
+    //         {no: '2', week: '日', time: '2019-11-11', content: '12349', tenThousand: '小', thousand: '小', hundred: '大', ten: '小', one: '大'},
+    //         {no: '3', week: '日', time: '2019-11-11', content: '12340', tenThousand: '小', thousand: '小', hundred: '大', ten: '小', one: '大'},
+    //         {no: '4', week: '日', time: '2019-11-11', content: '12344', tenThousand: '小', thousand: '小', hundred: '大', ten: '小', one: '大'},
+    //     ],
+    //     // game_key = jlk3
+    //     // 期数	星期	时间	开奖号	和值	和值单双	和值大小
+    //     // data: [
+    //     //     {no: 1, week: '日', time: '2019-11-11', content: '123', sum: '11', oddEven: '单', bigSmall: '小'},
+    //     //     {no: 2, week: '日', time: '2019-11-11', content: '123', sum: '11', oddEven: '双', bigSmall: '大'},
+    //     //     {no: 3, week: '日', time: '2019-11-11', content: '123', sum: '11', oddEven: '单', bigSmall: '小'},
+    //     //     {no: 4, week: '日', time: '2019-11-11', content: '123', sum: '11', oddEven: '双', bigSmall: '大'},
+    //     // ]
+    // }
+    // tablePage.init({total: json.total});
+    // setHeader(ENV.game_key);
+    // render(json.data);
 
 }
 
