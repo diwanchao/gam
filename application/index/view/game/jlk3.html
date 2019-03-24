@@ -45,7 +45,7 @@
                         <div class="fast-import pull-right">
                             <span>快速输入&nbsp;</span>
                             <input type="text" class="form-control m-r-15 quickImport" v-model="quickImport">
-                            <span class="h-btn btn-red">重新整理</span>
+                            <a href="javascript:history.go(0);" class="h-btn btn-red">重新整理</a>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -661,7 +661,7 @@
                             <span class="m-r-5"><b>快速输入</b></span>
                             <input type="text" class="m-r-15 quickImport" v-model="quickImport">
                             <span class="h-btn btn-red m-r-5 submit">确认</span>
-                            <span class="h-btn m-r-5">重置</span>
+                            <a href="javascript: history.go(0);" class="h-btn m-r-5">重置</a>
                         </div>
                     </div>
                 </div>
