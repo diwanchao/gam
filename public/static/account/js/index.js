@@ -52,21 +52,25 @@ var render = function(data, single, money, school, b_reak, get){
 
 $(function(){
 
-    var gameList = InfoAll.InitHeader.data.game;
-
-    $('#changeGame').append(function(){
-        var html = '';
-        if($.isArray(gameList) && gameList.length){
-            if(!ENV.game_key){
-                ENV.game_key = gameList[0].key;
-            }
-
-            for(var i = 0; i < gameList.length; i++){
-                html += '<option value="'+ gameList[i].key +'">'+ gameList[i].name +'</option>'
-            }
+    utils.getAjax({
+        url: '/api/game/userGameList',
+        type: 'GET',
+        success : function(){
+            $('#changeGame').append(function(gameList){
+                var html = '';
+                if($.isArray(gameList) && gameList.length){
+                    if(!ENV.game_key){
+                        ENV.game_key = gameList[0].key;
+                    }
+        
+                    for(var i = 0; i < gameList.length; i++){
+                        html += '<option value="'+ gameList[i].key +'">'+ gameList[i].name +'</option>'
+                    }
+                }
+                return html;
+            }).val(ENV.game_key);
         }
-        return html;
-    }).val(ENV.game_key);
+    });
 
     $('#changeGame').bind('change', function(){
         ENV.game_key = this.value;
