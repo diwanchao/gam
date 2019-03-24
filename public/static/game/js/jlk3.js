@@ -9,7 +9,7 @@ function setNumber(key){
         elementList.addClass('active');
         selectedAry.push(key);
         if(quickValue){
-            elementList.find('input').val(quickValue);
+            elementList.find('input').val(quickValue).trigger('input');
         }
     }
     else{ // 存在
