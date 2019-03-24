@@ -7,12 +7,14 @@ function setNumber(key){
     var elementList = $('[data-item='+ key +']');
     if($.inArray(key, selectedAry) == -1){ // 不存在
         elementList.addClass('active');
+        selectedAry.push(key);
         if(quickImport){
             elementList.find('input').val(quickValue);
         }
     }
     else{ // 存在
         elementList.removeClass('active');
+        selectedAry.splice($.inArray(key, selectedAry), 1);
     }
 }
 

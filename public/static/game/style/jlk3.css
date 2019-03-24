@@ -94,7 +94,7 @@
 .h-table td{
     text-align: center;
 }
-.h-table td:active{
+.h-table td.active{
     background: rgb(255, 255, 102);
 }
 .h-table input{
