@@ -64,8 +64,8 @@ class Game extends Base
             ['game_key'=>'jlk3','name'=>'吉林快3'],
             ['game_key'=>'cqssc','name'=>'重庆时时彩'],
         ];
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
-    return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
 
 
 }
