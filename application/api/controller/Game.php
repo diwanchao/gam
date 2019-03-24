@@ -27,8 +27,8 @@ class Game extends Base
             $data = [
                 'total'=>10,
                 'data'=>[
-                    ['no'=>1,'week'=>'日','time'=>'2019-11-11','content'=>'123','tenThousand'=>'小','thousand'=>'小','hundred'=>'大','ten'=>'小','one'=>'大'],
-                    ['no'=>1,'week'=>'日','time'=>'2019-11-11','content'=>'123','tenThousand'=>'小','thousand'=>'小','hundred'=>'大','ten'=>'小','one'=>'大'],
+                    ['no'=>1,'week'=>'日','time'=>'2019-11-11','content'=>'12345','tenThousand'=>'小双合','thousand'=>'小单质','hundred'=>'大单合','ten'=>'小双合','one'=>'大双合'],
+                    ['no'=>1,'week'=>'日','time'=>'2019-11-11','content'=>'12345','tenThousand'=>'小双合','thousand'=>'小双合','hundred'=>'大双合','ten'=>'小双合','one'=>'大双合'],
                 ]
             ];
         }else{
