@@ -169,7 +169,7 @@ var app = new Vue({
 })
 
 
-[
+// [
     // {
     //     key: 'samjun',
     //     name: '三军',
@@ -190,4 +190,4 @@ var app = new Vue({
     //     odds: '1.95',
     //     value: 100,
     // }
-]
+// ]
