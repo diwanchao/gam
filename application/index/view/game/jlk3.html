@@ -23,7 +23,7 @@
                 <!-- 上部分 -->
                 <div class="page-content-title">
                     <span>第</span>
-                    <strong class="f-c-red" id="last_issue"></strong>
+                    <strong class="f-c-red">{{periods}}</strong>
                     <span>开奖号码</span>
                     <span v-for="(item,index) in periods_number" class="color-game" :class="'color' + item">{{item}}</span>
                 </div>
@@ -35,9 +35,9 @@
                 </div>
                 <div class="portlet">
                     <div class="portlet-title clear-float">
-                        <span>{{game_name}}</span>
+                        <span>{{game_name}}&nbsp;&nbsp;</span>
                         <select class="form-control changeGame">
-                            <option v-for="(item, index) in level" :value="item.name"><a :href="item.url">{{item.name}}</a></option>
+                            <option v-for="(item, index) in level" :value="item.url">{{item.name}}</option>
                             <!-- <option selected value="A">A</option>
                             <option value="B">B</option> -->
                         </select>
