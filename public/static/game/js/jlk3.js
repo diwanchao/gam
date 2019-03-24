@@ -44,55 +44,44 @@ function getData() {
             data.value = this.value;
             ary.push(data);
         }
-    })
-    // $('[data-name=begin-table]').each(function(){
-    //     var innerObj = {}
-        
-    //     $(this).find('input[type=text]').each(function(){
-    //         if(this.value){
-    //             innerObj[this.name] = this.value;
-    //         }
-    //     });
-    //     obj[$(this).data('key')] = innerObj;
-    // });
+    });
 
-    
-    // obj['4mahei'] = (function(){
-    //     var innerObj = {};
-    //     if($('#simahei').find('input[type=text]').val()){
-    //         var key = '';
-    //         $('#simahei').find('input[type=checkbox]:checked').each(function(){
-    //             key += this.name;
-    //         });
-    //         innerObj[key] = $('#simahei').find('input[type=text]').val();
-    //     }
-    //     return innerObj;
-    // })();
+    if($('#simahei').find('input[type=text]').val()){
+        var key = '';
+        $('#simahei').find('input[type=checkbox]:checked').each(function(){
+            key += this.name;
+        });
 
-    // obj['4mahong'] = (function(){
-    //     var innerObj = {};
-    //     if($('#simahong').find('input[type=text]').val()){
-    //         var key = '';
-    //         $('#simahong').find('input[type=checkbox]:checked').each(function(){
-    //             key += this.name;
-    //         });
-    //         innerObj[key] = $('#simahong').find('input[type=text]').val();
-    //     }
-    //     return innerObj;
-    // })();
+        data = new Function("return" + $('#simahei').find('input[type=text]').data('item'))();
+        data.value = $('#simahei').find('input[type=text]').val();
+        data['sub_key'] = key;
+        data['sub_name'] = key;
 
-    // obj['45ahei'] = (function(){
-    //     var innerObj = {};
-    //     if($('#wumahei').find('input[type=text]').val()){
-    //         var key = '';
-    //         $('#wumahei').find('input[type=checkbox]:checked').each(function(){
-    //             key += this.name;
-    //         });
-    //         innerObj[key] = $('#wumahei').find('input[type=text]').val();
-    //     }
-    //     return innerObj;
-    // })();
+    }
+    if($('#simahong').find('input[type=text]').val()){
+        var key = '';
+        $('#simahong').find('input[type=checkbox]:checked').each(function(){
+            key += this.name;
+        });
 
+        data = new Function("return" + $('#simahong').find('input[type=text]').data('item'))();
+        data.value = $('#simahong').find('input[type=text]').val();
+        data['sub_key'] = key;
+        data['sub_name'] = key;
+
+    }
+    if($('#wumahei').find('input[type=text]').val()){
+        var key = '';
+        $('#wumahei').find('input[type=checkbox]:checked').each(function(){
+            key += this.name;
+        });
+
+        data = new Function("return" + $('#wumahei').find('input[type=text]').data('item'))();
+        data.value = $('#wumahei').find('input[type=text]').val();
+        data['sub_key'] = key;
+        data['sub_name'] = key;
+
+    }
     return ary;
 }
 
