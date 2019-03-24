@@ -51,8 +51,8 @@ class Login extends Controller
         		throw new \Exception("密码不能为空", 1);
         	if (!($data['code']??'')) 
         		throw new \Exception("验证码不能为空", 1);
-/*        	if (!captcha_check($data['code'])) 
-        		throw new \Exception("验证码不正确", 1);*/
+        	if (!captcha_check($data['code'])) 
+        		throw new \Exception("验证码不正确", 1);
 
         	$user_data = Db::name('menber')->field('id,user_name,password,blance')->where('user_name=?',[$data['user_name']])->find();
         	if (!$user_data) 
