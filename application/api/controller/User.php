@@ -3,6 +3,8 @@ namespace app\api\controller;
 
 use \think\Request;
 use \think\Db;
+use \think\Session;
+
 
 class User extends Base
 {
