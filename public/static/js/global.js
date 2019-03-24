@@ -383,7 +383,8 @@ var ENV = {
 				{name: '吉林快3', key: 'jlk3', url: '/'},
 				{name: '重庆时时彩', key: 'ssc', url: '/'}
 			],
-			// 游戏详情
+			// 游戏详情s
+			subGame: [],
 			// subGame: [
 			// 	{name: '(三軍、和值、其它)', url: '/'},
 			// 	{name: '(三同号单选、二同号复选、二同号单选、三不同号、二不同号)', key: 'ccssc', url: '/'}
