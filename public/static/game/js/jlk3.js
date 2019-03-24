@@ -35,6 +35,22 @@ function getMoneyTotal() {
     $('.moneyTotal').text(total);
 }
 
+function getData() {
+    var obj = {};
+    $('[data-name=begin-table]').each(function(){
+        var innerObj = {}
+        
+        $(this).find('input[type=text]').each(function(){
+            if(this.value){
+                innerObj[this.name] = this.value;
+            }
+        });
+        obj[$(this).data('key')] = {};
+    });
+
+
+}
+
 $(function(){
     $('.portlet-body .h-table').find('input[type=text]').bind('keydown', function(e){
         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
@@ -81,5 +97,20 @@ $(function(){
         quickValue = this.value;
         setSelectAry();
         getMoneyTotal();
+    });
+
+    $('[data-key=hongheima]').find('input[type=checkbox]').each(function() {
+        $(this).bind('click', function(e){
+            if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
+                e.stopPropagation();
+                alert('不能超过4项');
+            }
+        })
+    })
+
+    $('.submit').bind('click', function(){
+
+        console.log(getData());
+
     })
 })

@@ -53,7 +53,7 @@
                     </div>
                     <div class="portlet-body">
                         <!-- 第一项 -->
-                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                        <table class="h-table" data-name="begin-table" data-key="sanjun" cellspacing="0" cellpadding="0" border="0">
                             <thead>
                                 <tr>
                                     <th colspan="100">三军(一同骰子=（赔率-1）X1、 二同骰子=（赔率-1）X2、 三同骰子=（赔率-1）X3)</th>
@@ -69,13 +69,15 @@
                                     <th>赔率</th>
                                     <th>金额</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <tr>
                                     <th data-item="SJ_N_1" onclick="setNumber('SJ_N_1')">1</th>
                                     <td data-item="SJ_N_1" onclick="setNumber('SJ_N_1')">
                                         <b class="f-c-red f-s-16">1.98</b>
                                     </td>
                                     <td data-item="SJ_N_1" onclick="setNumber('SJ_N_1')">
-                                        <input type="text">
+                                        <input type="text" name="1">
                                     </td>
 
                                     <th data-item="SJ_N_2" onclick="setNumber('SJ_N_2')">2</th>
@@ -83,7 +85,7 @@
                                         <b class="f-c-red f-s-16">1.98</b>
                                     </td>
                                     <td data-item="SJ_N_2" onclick="setNumber('SJ_N_2')">
-                                        <input type="text">
+                                        <input type="text" name="2">
                                     </td>
 
                                     <th data-item="SJ_N_3" onclick="setNumber('SJ_N_3')">3</th>
@@ -91,7 +93,7 @@
                                         <b class="f-c-red f-s-16">1.98</b>
                                     </td>
                                     <td data-item="SJ_N_3" onclick="setNumber('SJ_N_3')">
-                                        <input type="text">
+                                        <input type="text" name="3">
                                     </td>
                                 </tr>
                                 <tr>
@@ -100,7 +102,7 @@
                                         <b class="f-c-red f-s-16">1.98</b>
                                     </td>
                                     <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
-                                        <input type="text">
+                                        <input type="text" name="4">
                                     </td>
 
                                     <th data-item="SJ_N_5" onclick="setNumber('SJ_N_5')">5</th>
@@ -108,7 +110,7 @@
                                         <b class="f-c-red f-s-16">1.98</b>
                                     </td>
                                     <td data-item="SJ_N_5" onclick="setNumber('SJ_N_5')">
-                                        <input type="text">
+                                        <input type="text" name="5">
                                     </td>
 
                                     <th data-item="SJ_N_6" onclick="setNumber('SJ_N_6')">6</th>
@@ -116,13 +118,13 @@
                                         <b class="f-c-red f-s-16">1.98</b>
                                     </td>
                                     <td data-item="SJ_N_6" onclick="setNumber('SJ_N_6')">
-                                        <input type="text">
+                                        <input type="text" name="6">
                                     </td>
                                 </tr>
-                            </thead>
+                            </tbody>
                         </table>
                         <!-- 第二项 -->
-                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                        <table class="h-table" data-name="begin-table" data-key="hezhi" cellspacing="0" cellpadding="0" border="0">
                             <thead>
                                 <tr>
                                     <th colspan="100">合值</th>
@@ -150,7 +152,7 @@
                                         <b class="f-c-red f-s-16">181</b>
                                     </td>
                                     <td data-item="HZ_N_3" onclick="setNumber('HZ_N_3')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="3">
                                     </td>
 
                                     <th data-item="HZ_N_4" onclick="setNumber('HZ_N_4')">4</th>
@@ -158,7 +160,7 @@
                                         <b class="f-c-red f-s-16">61</b>
                                     </td>
                                     <td data-item="HZ_N_4" onclick="setNumber('HZ_N_4')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="4">
                                     </td>
 
                                     <th data-item="HZ_N_5" onclick="setNumber('HZ_N_5')">5</th>
@@ -166,7 +168,7 @@
                                         <b class="f-c-red f-s-16">31</b>
                                     </td>
                                     <td data-item="HZ_N_5" onclick="setNumber('HZ_N_5')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="5">
                                     </td>
 
                                     <th data-item="HZ_N_6" onclick="setNumber('HZ_N_6')">6</th>
@@ -174,7 +176,7 @@
                                         <b class="f-c-red f-s-16">19</b>
                                     </td>
                                     <td data-item="HZ_N_6" onclick="setNumber('HZ_N_6')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="6">
                                     </td>
 
                                     <th data-item="HZ_N_7" onclick="setNumber('HZ_N_7')">7</th>
@@ -182,7 +184,7 @@
                                         <b class="f-c-red f-s-16">12.9</b>
                                     </td>
                                     <td data-item="HZ_N_7" onclick="setNumber('HZ_N_7')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="7">
                                     </td>
                                 </tr>
 
@@ -192,7 +194,7 @@
                                         <b class="f-c-red f-s-16">9.2</b>
                                     </td>
                                     <td data-item="HZ_N_8" onclick="setNumber('HZ_N_8')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="8">
                                     </td>
 
                                     <th data-item="HZ_N_9" onclick="setNumber('HZ_N_9')">9</th>
@@ -200,7 +202,7 @@
                                         <b class="f-c-red f-s-16">7.7</b>
                                     </td>
                                     <td data-item="HZ_N_9" onclick="setNumber('HZ_N_9')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="9">
                                     </td>
 
                                     <th data-item="HZ_N_10" onclick="setNumber('HZ_N_10')">10</th>
@@ -208,7 +210,7 @@
                                         <b class="f-c-red f-s-16">7.1</b>
                                     </td>
                                     <td data-item="HZ_N_10" onclick="setNumber('HZ_N_10')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="10">
                                     </td>
 
                                     <th data-item="HZ_N_11" onclick="setNumber('HZ_N_11')">11</th>
@@ -216,7 +218,7 @@
                                         <b class="f-c-red f-s-16">7.1</b>
                                     </td>
                                     <td data-item="HZ_N_11" onclick="setNumber('HZ_N_11')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="11">
                                     </td>
 
                                     <th data-item="HZ_N_12" onclick="setNumber('HZ_N_12')">12</th>
@@ -224,7 +226,7 @@
                                         <b class="f-c-red f-s-16">7.7</b>
                                     </td>
                                     <td data-item="HZ_N_12" onclick="setNumber('HZ_N_12')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="12">
                                     </td>
                                 </tr>
 
@@ -234,7 +236,7 @@
                                         <b class="f-c-red f-s-16">9.2</b>
                                     </td>
                                     <td data-item="HZ_N_13" onclick="setNumber('HZ_N_13')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="13">
                                     </td>
 
                                     <th data-item="HZ_N_14" onclick="setNumber('HZ_N_14')">14</th>
@@ -242,7 +244,7 @@
                                         <b class="f-c-red f-s-16">12.9</b>
                                     </td>
                                     <td data-item="HZ_N_14" onclick="setNumber('HZ_N_14')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="14">
                                     </td>
 
                                     <th data-item="HZ_N_15" onclick="setNumber('HZ_N_15')">15</th>
@@ -250,7 +252,7 @@
                                         <b class="f-c-red f-s-16">19</b>
                                     </td>
                                     <td data-item="HZ_N_15" onclick="setNumber('HZ_N_15')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="15">
                                     </td>
 
                                     <th data-item="HZ_N_16" onclick="setNumber('HZ_N_16')">16</th>
@@ -258,7 +260,7 @@
                                         <b class="f-c-red f-s-16">31</b>
                                     </td>
                                     <td data-item="HZ_N_16" onclick="setNumber('HZ_N_16')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="16">
                                     </td>
 
                                     <th data-item="HZ_N_17" onclick="setNumber('HZ_N_17')">17</th>
@@ -266,7 +268,7 @@
                                         <b class="f-c-red f-s-16">61</b>
                                     </td>
                                     <td data-item="HZ_N_17" onclick="setNumber('HZ_N_17')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="17">
                                     </td>
                                 </tr>
 
@@ -276,7 +278,7 @@
                                         <b class="f-c-red f-s-16">181</b>
                                     </td>
                                     <td data-item="HZ_N_18" onclick="setNumber('HZ_N_18')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="18">
                                     </td>
                                     <td colspan="12"></td>
                                 </tr>
@@ -287,7 +289,7 @@
                                         <b class="f-c-red f-s-16">1.95</b>
                                     </td>
                                     <td data-item="HZ_N_BIG" onclick="setNumber('HZ_N_BIG')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="da">
                                     </td>
 
                                     <th data-item="HZ_N_SMALL" onclick="setNumber('HZ_N_SMALL')">小</th>
@@ -295,7 +297,7 @@
                                         <b class="f-c-red f-s-16">1.95</b>
                                     </td>
                                     <td data-item="HZ_N_SMALL" onclick="setNumber('HZ_N_SMALL')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="xiao">
                                     </td>
 
                                     <th data-item="HZ_N_SINGLE" onclick="setNumber('HZ_N_SINGLE')">单</th>
@@ -303,7 +305,7 @@
                                         <b class="f-c-red f-s-16">1.95</b>
                                     </td>
                                     <td data-item="HZ_N_SINGLE" onclick="setNumber('HZ_N_SINGLE')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="dan">
                                     </td>
 
                                     <th data-item="HZ_N_ODD" onclick="setNumber('HZ_N_ODD')">双</th>
@@ -311,7 +313,7 @@
                                         <b class="f-c-red f-s-16">1.95</b>
                                     </td>
                                     <td data-item="HZ_N_ODD" onclick="setNumber('HZ_N_ODD')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="shuang">
                                     </td>
 
                                     <td colspan="3"></td>
@@ -323,7 +325,7 @@
                                         <b class="f-c-red f-s-16">3.3</b>
                                     </td>
                                     <td data-item="HZ_N_BIGSINGLE" onclick="setNumber('HZ_N_BIGSINGLE')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="dadan">
                                     </td>
 
                                     <th data-item="HZ_N_BIGODD" onclick="setNumber('HZ_N_BIGODD')">大双</th>
@@ -331,7 +333,7 @@
                                         <b class="f-c-red f-s-16">4.3</b>
                                     </td>
                                     <td data-item="HZ_N_BIGODD" onclick="setNumber('HZ_N_BIGODD')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="dashuang">
                                     </td>
 
                                     <th data-item="HZ_N_SMALLSINGLE" onclick="setNumber('HZ_N_SMALLSINGLE')">小单</th>
@@ -339,7 +341,7 @@
                                         <b class="f-c-red f-s-16">4.3</b>
                                     </td>
                                     <td data-item="HZ_N_SMALLSINGLE" onclick="setNumber('HZ_N_SMALLSINGLE')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="xiaodan">
                                     </td>
 
                                     <th data-item="HZ_N_SMALLODD" onclick="setNumber('HZ_N_SMALLODD')">小双</th>
@@ -347,7 +349,7 @@
                                         <b class="f-c-red f-s-16">3.3</b>
                                     </td>
                                     <td data-item="HZ_N_SMALLODD" onclick="setNumber('HZ_N_SMALLODD')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="xiaoshuang">
                                     </td>
                                     
                                     <td colspan="3"></td>
@@ -355,7 +357,7 @@
                             </thead>
                         </table>
                         <!-- 第三项 -->
-                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                        <table class="h-table" data-name="begin-table" data-key="baozi" cellspacing="0" cellpadding="0" border="0">
                             <thead>
                                 <tr>
                                     <th colspan="15">豹子、顺子、杂</th>
@@ -365,24 +367,24 @@
                                 <tr>
                                     <th data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')">豹子</th>
                                     <td data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')"><b class="f-c-red f-s-16">30</b></td>
-                                    <td data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')"><input type="text" class="gb"></td>
+                                    <td data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')"><input type="text" class="gb" name="baozi"></td>
 
                                     <th data-item="BSZ_BS" onclick="setNumber('BSZ_BS')">半顺</th>
                                     <td data-item="BSZ_BS" onclick="setNumber('BSZ_BS')"><b class="f-c-red f-s-16">2.5</b></td>
-                                    <td data-item="BSZ_BS" onclick="setNumber('BSZ_BS')"><input type="text" class="gb"></td>
+                                    <td data-item="BSZ_BS" onclick="setNumber('BSZ_BS')"><input type="text" class="gb" name="banshun"></td>
 
                                     <th data-item="BSZ_QS" onclick="setNumber('BSZ_QS')">全顺</th>
                                     <td data-item="BSZ_QS" onclick="setNumber('BSZ_QS')"><b class="f-c-red f-s-16">7.5</b></td>
-                                    <td data-item="BSZ_QS" onclick="setNumber('BSZ_QS')"><input type="text" class="gb"></td>
+                                    <td data-item="BSZ_QS" onclick="setNumber('BSZ_QS')"><input type="text" class="gb" name="quanshun"></td>
 
                                     <th data-item="BSZ_Z" onclick="setNumber('BSZ_Z')">杂</th>
                                     <td data-item="BSZ_Z" onclick="setNumber('BSZ_Z')"><b class="f-c-red f-s-16">7.5</b></td>
-                                    <td data-item="BSZ_Z" onclick="setNumber('BSZ_Z')"><input type="text" class="gb"></td>
+                                    <td data-item="BSZ_Z" onclick="setNumber('BSZ_Z')"><input type="text" class="gb" name="za"></td>
                                 </tr>
                             </tbody>
                         </table>
                         <!-- 第四项 -->
-                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                        <table class="h-table" data-name="begin-table" data-key="kuadu" cellspacing="0" cellpadding="0" border="0">
                             <thead>
                                 <tr>
                                     <th colspan="15">跨度</th>
@@ -406,7 +408,7 @@
                                         <b class="f-c-red f-s-16">6</b>
                                     </td>
                                     <td data-item="KD_N_1" onclick="setNumber('KD_N_1')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="1">
                                     </td>
 
                                     <th data-item="KD_N_2" onclick="setNumber('KD_N_2')">2</th>
@@ -414,7 +416,7 @@
                                         <b class="f-c-red f-s-16">3.75</b>
                                     </td>
                                     <td data-item="KD_N_2" onclick="setNumber('KD_N_2')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="2">
                                     </td>
 
                                     <th data-item="KD_N_3" onclick="setNumber('KD_N_3')">3</th>
@@ -422,7 +424,7 @@
                                         <b class="f-c-red f-s-16">3.3</b>
                                     </td>
                                     <td data-item="KD_N_3" onclick="setNumber('KD_N_3')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="3">
                                     </td>
                                 </tr>
                                 <tr>
@@ -431,7 +433,7 @@
                                         <b class="f-c-red f-s-16">3.75</b>
                                     </td>
                                     <td data-item="KD_N_4" onclick="setNumber('KD_N_4')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="4">
                                     </td>
 
                                     <th data-item="KD_N_5" onclick="setNumber('KD_N_5')">5</th>
@@ -439,7 +441,7 @@
                                         <b class="f-c-red f-s-16">6</b>
                                     </td>
                                     <td data-item="KD_N_5" onclick="setNumber('KD_N_5')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="5">
                                     </td>
 
                                     <td colspan="3"></td>
@@ -447,10 +449,10 @@
                             </tbody>
                         </table>
                         <!-- 第五项 -->
-                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                        <table class="h-table" data-name="begin-table" data-key="guoguan" cellspacing="0" cellpadding="0" border="0">
                             <thead>
                                 <tr>
-                                    <td colspan="15">过关</td>
+                                    <th colspan="15">过关</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -460,28 +462,28 @@
                                         <b class="f-c-red f-s-16">4</b>
                                     </td>
                                     <td data-item="GG_REDSINGLE" onclick="setNumber('GG_REDSINGLE')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="hongdan">
                                     </td>
                                     <th data-item="GG_YEH" onclick="setNumber('GG_YEH')">红双</th>
                                     <td data-item="GG_YEH" onclick="setNumber('GG_YEH')">
                                         <b class="f-c-red f-s-16">4</b>
                                     </td>
                                     <td data-item="GG_YEH" onclick="setNumber('GG_YEH')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="hongshuang">
                                     </td>
                                     <th data-item="GG_IFBEU" onclick="setNumber('GG_IFBEU')">红大</th>
                                     <td data-item="GG_IFBEU" onclick="setNumber('GG_IFBEU')">
                                         <b class="f-c-red f-s-16">4</b>
                                     </td>
                                     <td data-item="GG_IFBEU" onclick="setNumber('GG_IFBEU')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="hongda">
                                     </td>
                                     <th data-item="GG_OGPMEIG" onclick="setNumber('GG_OGPMEIG')">红小</th>
                                     <td data-item="GG_OGPMEIG" onclick="setNumber('GG_OGPMEIG')">
                                         <b class="f-c-red f-s-16">4</b>
                                     </td>
                                     <td data-item="GG_OGPMEIG" onclick="setNumber('GG_OGPMEIG')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="hongxiao">
                                     </td>
                                 </tr>
                                 <tr>
@@ -490,28 +492,28 @@
                                         <b class="f-c-red f-s-16">3</b>
                                     </td>
                                     <td data-item="GG_IGRMROE" onclick="setNumber('GG_IGRMROE')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="heidan">
                                     </td>
                                     <th data-item="GG_VMVIEPW" onclick="setNumber('GG_VMVIEPW')">黑双</th>
                                     <td data-item="GG_VMVIEPW" onclick="setNumber('GG_VMVIEPW')">
                                         <b class="f-c-red f-s-16">3</b>
                                     </td>
                                     <td data-item="GG_VMVIEPW" onclick="setNumber('GG_VMVIEPW')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="heishuang">
                                     </td>
                                     <th data-item="GG_NVBIWWW" onclick="setNumber('GG_NVBIWWW')">黑大</th>
                                     <td data-item="GG_NVBIWWW" onclick="setNumber('GG_NVBIWWW')">
                                         <b class="f-c-red f-s-16">3</b>
                                     </td>
                                     <td data-item="GG_NVBIWWW" onclick="setNumber('GG_NVBIWWW')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="heida">
                                     </td>
                                     <th data-item="GG_PEOWNVV" onclick="setNumber('GG_PEOWNVV')">黑小</th>
                                     <td data-item="GG_PEOWNVV" onclick="setNumber('GG_PEOWNVV')">
                                         <b class="f-c-red f-s-16">3</b>
                                     </td>
                                     <td data-item="GG_PEOWNVV" onclick="setNumber('GG_PEOWNVV')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="heixiao">
                                     </td>
                                 </tr>
                                 <tr>
@@ -520,14 +522,14 @@
                                         <b class="f-c-red f-s-16">1.5</b>
                                     </td>
                                     <td data-item="GG_OOOOOEWW" onclick="setNumber('GG_OOOOOEWW')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="heima">
                                     </td>
                                     <th data-item="GG_OP" onclick="setNumber('GG_OP')"><span class="f-c-red">红码</span></th>
                                     <td data-item="GG_OP" onclick="setNumber('GG_OP')">
                                         <b class="f-c-red f-s-16">2</b>
                                     </td>
                                     <td data-item="GG_OP" onclick="setNumber('GG_OP')">
-                                        <input class="gb" type="text">
+                                        <input class="gb" type="text" name="hongma">
                                     </td>
                                     
                                     <td colspan="6"></td>
@@ -535,7 +537,7 @@
                             </tbody>
                         </table>
                         <!-- 第六项 -->
-                        <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                        <table class="h-table" data-key="guoguan" cellspacing="0" cellpadding="0" border="0">
                             <thead>
                                 <tr>
                                     <th>玩法</th>
@@ -547,36 +549,36 @@
                             <tbody>
                                 <tr>
                                     <th>4码黑</th>
-                                    <td class="bg"><input type="checkbox">1</td>
-                                    <td class="bg"><input type="checkbox">2</td>
-                                    <td class="bg"><input type="checkbox">3</td>
-                                    <td class="bg"><input type="checkbox">4</td>
-                                    <td class="bg"><input type="checkbox">5</td>
-                                    <td class="bg"><input type="checkbox">6</td>
-                                    <td><b class="f-s-16 f-c-red">6</b></td>
-                                    <td><input type="text" class="gb"></td>
+                                    <td class="bg"><input type="checkbox" name="1">1</td>
+                                    <td class="bg"><input type="checkbox" name="2">2</td>
+                                    <td class="bg"><input type="checkbox" name="3">3</td>
+                                    <td class="bg"><input type="checkbox" name="4">4</td>
+                                    <td class="bg"><input type="checkbox" name="5">5</td>
+                                    <td class="bg"><input type="checkbox" name="6">6</td>
+                                    <td data-item="GG_UUIGMS" onclick="setNumber('GG_UUIGMS')"><b class="f-s-16 f-c-red">6</b></td>
+                                    <td data-item="GG_UUIGMS" onclick="setNumber('GG_UUIGMS')"><input type="text" class="gb" name="4mahei"></td>
                                 </tr>
                                 <tr>
                                     <th><span class="f-c-red">4码红</span></th>
-                                    <td class="bg f-c-red"><input type="checkbox">1</td>
-                                    <td class="bg f-c-red"><input type="checkbox">2</td>
-                                    <td class="bg f-c-red"><input type="checkbox">3</td>
-                                    <td class="bg f-c-red"><input type="checkbox">4</td>
-                                    <td class="bg f-c-red"><input type="checkbox">5</td>
-                                    <td class="bg f-c-red"><input type="checkbox">6</td>
-                                    <td><b class="f-s-16 f-c-red">5.5</b></td>
-                                    <td><input type="text" class="gb"></td>
+                                    <td class="bg f-c-red"><input type="checkbox" name="1">1</td>
+                                    <td class="bg f-c-red"><input type="checkbox" name="2">2</td>
+                                    <td class="bg f-c-red"><input type="checkbox" name="3">3</td>
+                                    <td class="bg f-c-red"><input type="checkbox" name="4">4</td>
+                                    <td class="bg f-c-red"><input type="checkbox" name="5">5</td>
+                                    <td class="bg f-c-red"><input type="checkbox" name="6">6</td>
+                                    <td data-item="GG_QWERT" onclick="setNumber('GG_QWERT')"><b class="f-s-16 f-c-red">5.5</b></td>
+                                    <td data-item="GG_QWERT" onclick="setNumber('GG_QWERT')"><input type="text" class="gb" name="4mahong"></td>
                                 </tr>
                                 <tr>
                                     <th>5码黑</th>
-                                    <td class="bg"><input type="checkbox">1</td>
-                                    <td class="bg"><input type="checkbox">2</td>
-                                    <td class="bg"><input type="checkbox">3</td>
-                                    <td class="bg"><input type="checkbox">4</td>
-                                    <td class="bg"><input type="checkbox">5</td>
-                                    <td class="bg"><input type="checkbox">6</td>
-                                    <td><b class="f-s-16 f-c-red">2.5</b></td>
-                                    <td><input type="text" class="gb"></td>
+                                    <td class="bg"><input type="checkbox" name="1">1</td>
+                                    <td class="bg"><input type="checkbox" name="2">2</td>
+                                    <td class="bg"><input type="checkbox" name="3">3</td>
+                                    <td class="bg"><input type="checkbox" name="4">4</td>
+                                    <td class="bg"><input type="checkbox" name="5">5</td>
+                                    <td class="bg"><input type="checkbox" name="6">6</td>
+                                    <td data-item="GG_POIUTM" onclick="setNumber('GG_POIUTM')"><b class="f-s-16 f-c-red">2.5</b></td>
+                                    <td data-item="GG_POIUTM" onclick="setNumber('GG_POIUTM')"><input type="text" class="gb" name="5mahei"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -585,7 +587,7 @@
                             <span class="f-c-red m-r-5"><b class="moneyTotal">0</b></span>
                             <span class="m-r-5"><b>快速输入</b></span>
                             <input type="text" class="m-r-15 quickImport">
-                            <span class="h-btn btn-red m-r-5">确认</span>
+                            <span class="h-btn btn-red m-r-5 submit">确认</span>
                             <span class="h-btn m-r-5">重置</span>
                         </div>
                     </div>
