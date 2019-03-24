@@ -153,9 +153,10 @@
 // })
 
 var app = new Vue({
-    ele: '#layoutBody',
+    el: '#layoutBody',
     data: {
         periods: '20190324-11', //最新期数
-        periods_number: '123'
+        periods_number: '123', // 最新开奖结果
+        tab: 0, // 0->游戏 1->规则
     }
 })
