@@ -37,9 +37,7 @@
                     <div class="portlet-title clear-float">
                         <span>{{game_name}}&nbsp;&nbsp;</span>
                         <select class="form-control changeGame">
-                            <option v-for="(item, index) in level" :value="item.url">{{item.name}}</option>
-                            <!-- <option selected value="A">A</option>
-                            <option value="B">B</option> -->
+                            <option @change="levelChange" v-model="levelValue" v-for="(item, index) in level" :value="item.url">{{item.name}}</option>
                         </select>
                         <span class="m-l-30">第<b class="f-c-red">{{nowPeriods}}</b>期</span>
                         <span class="m-l-30">投注时间：<b class="f-c-red">{{count_down}}</b></span>

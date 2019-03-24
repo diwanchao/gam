@@ -125,10 +125,16 @@ var app = new Vue({
         tab: 0, // 0->游戏 1->规则
         quickImport: '', // 快速输入
         level: [],
+        levelValue: '',
         nowPeriods: '',
         close_time: '',
         count_down: ''
     },
+    methods: {
+        levelChange: function(){
+            window.location = this.levelValue;
+        }
+    }
 })
 
 $(function(){
