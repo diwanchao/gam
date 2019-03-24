@@ -419,7 +419,7 @@ var ENV = {
 	 * 初始化服务器时间
 	 */
 	InitHeader.prototype.timeInit = function(){
-		var time = this.data.macau_time;
+		var time = this.data.macau_time * 1000;
 		var _this = this;
 		this.$onlineTime.text(time);
 		window.setInterval(function(){
