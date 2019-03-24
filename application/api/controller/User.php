@@ -194,6 +194,74 @@ class User extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
 
     }
+    /**
+     * @SWG\Post(
+     *   path="/api/user/changePassword",
+     *   tags={"User"},
+     *   summary="修改密码",
+     *   operationId="updatePetWithForm",
+     *   consumes={"application/x-www-form-urlencoded"},
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *     name="old_pwd",
+     *     in="formData",
+     *     description="旧密码",
+     *     required=true,
+     *     type="string",
+     *   ),
+     *   @SWG\Parameter(
+     *     name="new_pwd",
+     *     in="formData",
+     *     description="新密码",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Parameter(
+     *     name="repeat_pwd",
+     *     in="formData",
+     *     description="重复密码",
+     *     required=true,
+     *     type="string"
+     *   ),
+     *   @SWG\Response(response="201",description="字段不全"),
+     *   security={{
+     *     "petstore_auth": {"write:pets", "read:pets"}
+     *   }}
+     * )
+     */
+    public function changePassword()
+    {
+        $old_pwd  = Request::instance()->param('old_pwd');
+        $new_pwd  = Request::instance()->param('new_pwd');
+        $repeat_pwd  = Request::instance()->param('repeat_pwd');
+        try {
+            if (!$old_pwd)) 
+                throw new \Exception("旧密码不能为空", 1);
+            if (!$new_pwd) 
+                throw new \Exception("新密码不能为空", 1);
+            if (!$repeat_pwd) 
+                throw new \Exception("确认密码不能为空", 1);
+            if ($new!=$repeat_pwd) 
+                throw new \Exception("两次输入密码不一致", 1);
+
+
+            $user_data = Db::name('menber')->field('id,user_name,password,blance')->where('id=?',[$this->USER_ID])->find();
+            if (!$user_data) 
+                throw new \Exception("用户不存在", 1);
+            if ($user_data['password'] != md5($old_pwd)) 
+                throw new \Exception("旧密码错误", 1);
+            $update_res = Db::name('user')->where('id', $this->USER_ID)->update(['password' => md5($new_pwd)]);
+            if (!$update_res) 
+                throw new \Exception("修改密码失败", 1);
+
+            Session::set('is_login',0);
+
+        } catch (\Exception $e) {
+            return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);          
+        }
+        return json(['msg' => '修改成功','code' => 200, 'data' =>[]]);
+
+    }
 
 
 }
