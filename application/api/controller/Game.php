@@ -43,5 +43,29 @@ class Game extends Base
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
 
     }
+    /**
+     * @SWG\Get(
+     *   path="/api/game/userGameList",
+     *   tags={"Game"},
+     *   summary="当前用户可玩游戏列表",
+     *   operationId="updatePetWithForm",
+     *   consumes={"application/x-www-form-urlencoded"},
+     *   produces={"application/json"},
+     *   @SWG\Response(response="201",description="字段不全"),
+     *   security={{
+     *     "petstore_auth": {"write:pets", "read:pets"}
+     *   }}
+     * )
+     */
+
+    public function userGameList()
+    {
+        $data = [
+            ['game_key'=>'jlk3','name'=>'吉林快3'],
+            ['game_key'=>'cqssc','name'=>'重庆时时彩'],
+        ];
+    }
+    return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+
 
 }
