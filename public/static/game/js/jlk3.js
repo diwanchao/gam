@@ -32,7 +32,7 @@ function getMoneyTotal() {
             total += parseInt(this.value);
         }
     });
-    $('.moneyTotal').val(total);
+    $('.moneyTotal').text(total);
 }
 
 $(function(){
@@ -52,6 +52,10 @@ $(function(){
     $('.portlet-body .h-table').find('input[type=text]').bind('click', function(e){
         e.stopPropagation();
     });
+
+    $('.portlet-body .h-table').find('input[type=text]').bind('input', function(){
+        getMoneyTotal();
+    })
 
 
 
