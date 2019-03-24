@@ -8,7 +8,7 @@ $(function(){
     });
 
     $('.portlet-body .h-table').find('input').bind('blur', function(){
-        if(isNaN(parseInt(this.value))){
+        if(isNaN(this.value)){
             alert('请输入纯数字');
             this.value = '';
         }
