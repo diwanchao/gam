@@ -56,7 +56,7 @@ function getData() {
         data.value = $('#simahei').find('input[type=text]').val();
         data['sub_key'] = key;
         data['sub_name'] = key;
-
+        ary.push(data);
     }
     if($('#simahong').find('input[type=text]').val()){
         var key = '';
@@ -68,7 +68,7 @@ function getData() {
         data.value = $('#simahong').find('input[type=text]').val();
         data['sub_key'] = key;
         data['sub_name'] = key;
-
+        ary.push(data);
     }
     if($('#wumahei').find('input[type=text]').val()){
         var key = '';
@@ -80,7 +80,7 @@ function getData() {
         data.value = $('#wumahei').find('input[type=text]').val();
         data['sub_key'] = key;
         data['sub_name'] = key;
-
+        ary.push(data);
     }
     return ary;
 }

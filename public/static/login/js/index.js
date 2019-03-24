@@ -4,7 +4,7 @@ var $ensure = $('[name=ensure]');
 var $login = $('#login');
 
 var requireURL = {
-    login: '',
+    login: '/api/login',
 }
 
 function setCookie(name,value) 
