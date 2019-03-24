@@ -36,16 +36,16 @@
                 <div class="portlet">
                     <div class="portlet-title clear-float">
                         <span>重庆时时彩&nbsp;&nbsp;龙虎&nbsp;</span>
-                        <select name="" id="" class="form-control changeGame">
-                            <option selected value="">A</option>
-                            <option value="">B</option>
+                        <select v-model="class" name="" id="" class="form-control changeGame">
+                            <option selected value="A">A</option>
+                            <option value="B">B</option>
                         </select>
                         <span class="m-l-30">第<b class="f-c-red">20190311-054</b>期</span>
                         <span class="m-l-30">投注时间：<b class="f-c-red">0:12:40</b></span>
                         <span class="m-l-30">停盘时间：<b>22:07:00</b></span>
                         <div class="fast-import pull-right">
                             <span>快速输入&nbsp;</span>
-                            <input type="text" class="form-control m-r-15 quickImport">
+                            <input type="text" class="form-control m-r-15 quickImport" v-model="quickImport">
                             <span class="h-btn btn-red">重新整理</span>
                         </div>
                     </div>
@@ -660,7 +660,7 @@
                             <span class="f-c-green m-r-5"><b>金额</b></span>
                             <span class="f-c-red m-r-5"><b class="moneyTotal">0</b></span>
                             <span class="m-r-5"><b>快速输入</b></span>
-                            <input type="text" class="m-r-15 quickImport">
+                            <input type="text" class="m-r-15 quickImport" v-model="quickImport">
                             <span class="h-btn btn-red m-r-5 submit">确认</span>
                             <span class="h-btn m-r-5">重置</span>
                         </div>

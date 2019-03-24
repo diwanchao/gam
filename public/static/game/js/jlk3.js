@@ -158,5 +158,8 @@ var app = new Vue({
         periods: '20190324-11', //最新期数
         periods_number: '123', // 最新开奖结果
         tab: 0, // 0->游戏 1->规则
+        class: 'A', // 盘
+        quickImport: '', // 快速输入
+        
     }
 })
