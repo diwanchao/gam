@@ -143,7 +143,31 @@ class Game extends Base
 
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
-
+    /**
+     * @SWG\Post(
+     *   path="/api/game/addBet",
+     *   tags={"Game"},
+     *   summary="投注",
+     *   operationId="updatePetWithForm",
+     *   consumes={"application/x-www-form-urlencoded"},
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *     name="data",
+     *     in="formData",
+     *     description="不用管的参数",
+     *     required=false,
+     *     type="string",
+     *   ),
+     *   @SWG\Response(response="201",description="字段不全"),
+     *   security={{
+     *     "petstore_auth": {"write:pets", "read:pets"}
+     *   }}
+     * )
+     */
+    public function addBet()
+    {
+        return json(['msg' => '投注成功','code' => 200, 'data' => []]);
+    }
 
 
 }
