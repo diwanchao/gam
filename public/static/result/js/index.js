@@ -142,8 +142,8 @@ $(function(){
     utils.getAjax({
         url: '/api/game/userGameList',
         type: 'GET',
-        success : function(){
-            $('#changeGame').append(function(gameList){
+        success : function(gameList){
+            $('#changeGame').append(function(){
                 var html = '';
                 if($.isArray(gameList) && gameList.length){
                     if(!ENV.game_key){
@@ -151,7 +151,7 @@ $(function(){
                     }
         
                     for(var i = 0; i < gameList.length; i++){
-                        html += '<option value="'+ gameList[i].key +'">'+ gameList[i].name +'</option>'
+                        html += '<option value="'+ gameList[i].game_key +'">'+ gameList[i].name +'</option>'
                     }
                 }
                 return html;
