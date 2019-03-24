@@ -45,10 +45,46 @@ function getData() {
                 innerObj[this.name] = this.value;
             }
         });
-        obj[$(this).data('key')] = {};
+        obj[$(this).data('key')] = innerObj;
     });
 
+    if($('#simahei').find('input[type=text]').val()){
+        obj['4mahei'] = (function(){
+            var innerObj = {};
+            var key = '';
+            $('#simahei').find('input[type=checkbox]:checked').each(function(){
+                key += this.name;
+            });
+            innerObj[key] = $('#simahei').find('input[type=text]').val();
+            return innerObj;
+        })();
+    }
 
+    if($('#simahong').find('input[type=text]').val()){
+        obj['4mahong'] = (function(){
+            var innerObj = {};
+            var key = '';
+            $('#simahong').find('input[type=checkbox]:checked').each(function(){
+                key += this.name;
+            });
+            innerObj[key] = $('#simahong').find('input[type=text]').val();
+            return innerObj;
+        })();
+    }
+
+    if($('#wumahei').find('input[type=text]').val()){
+        obj['5mahei'] = (function(){
+            var innerObj = {};
+            var key = '';
+            $('#wumahei').find('input[type=checkbox]:checked').each(function(){
+                key += this.name;
+            });
+            innerObj[key] = $('#wumahei').find('input[type=text]').val();
+            return innerObj;
+        })();
+    }
+
+    return obj;
 }
 
 $(function(){
@@ -102,7 +138,7 @@ $(function(){
     $('[data-key=hongheima]').find('input[type=checkbox]').each(function() {
         $(this).bind('click', function(e){
             if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
-                e.stopPropagation();
+                e.preventDefault();
                 alert('不能超过4项');
             }
         })
