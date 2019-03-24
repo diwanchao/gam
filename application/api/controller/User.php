@@ -235,7 +235,7 @@ class User extends Base
         $new_pwd  = Request::instance()->param('new_pwd');
         $repeat_pwd  = Request::instance()->param('repeat_pwd');
         try {
-            if (!$old_pwd)) 
+            if (!$old_pwd) 
                 throw new \Exception("旧密码不能为空", 1);
             if (!$new_pwd) 
                 throw new \Exception("新密码不能为空", 1);
