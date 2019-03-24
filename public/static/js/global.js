@@ -99,7 +99,7 @@ var utils = {
 	 */
 	remainingTime: function(num){
 		num = num || 0;
-		num = Math.round(num / 1000);
+		num = Math.round(num);
 		var h,
 			m,
 			s,
