@@ -26,22 +26,27 @@ var render = function(data){
 
 $(function(){
 
-    var gameList = InfoAll.InitHeader.data.game;
-
     $('.username').html(userInfo.user_name);
-    $('#changeGame').append(function(){
-        var html = '';
-        if($.isArray(gameList) && gameList.length){
-            if(!ENV.game_key){
-                ENV.game_key = gameList[0].key;
-            }
 
-            for(var i = 0; i < gameList.length; i++){
-                html += '<option value="'+ gameList[i].key +'">'+ gameList[i].name +'</option>'
-            }
+    utils.getAjax({
+        url: '/api/game/userGameList',
+        type: 'GET',
+        success : function(gameList){
+            $('#changeGame').append(function(){
+                var html = '';
+                if($.isArray(gameList) && gameList.length){
+                    if(!ENV.game_key){
+                        ENV.game_key = gameList[0].key;
+                    }
+        
+                    for(var i = 0; i < gameList.length; i++){
+                        html += '<option value="'+ gameList[i].game_key +'">'+ gameList[i].name +'</option>'
+                    }
+                }
+                return html;
+            }).val(ENV.game_key);
         }
-        return html;
-    }).val(ENV.game_key);
+    });
 
     $('#changeGame').bind('change', function(){
         ENV.game_key = this.value;
