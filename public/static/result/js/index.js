@@ -102,11 +102,10 @@ var render = function(data){
             var w = data[i].tenThousand;
             var q = data[i].thousand;
             var b = data[i].hundred;
-            var b = data[i].hundred;
             var s = data[i].ten;
             var g = data[i].one;
-            for(var s = 0; s < data[i].content.length; s++) {
-                content += '<td><span class="ssc-color">'+ data[i].content[s] +'</span></td>';
+            for(var l = 0; l < data[i].content.length; l++) {
+                content += '<td><span class="ssc-color">'+ data[i].content[l] +'</span></td>';
             }
             for(var l = 0; l < w.length; l++) {
                 wContent += '<td><span class="'+ ((w[l] == '小' || w[l] == '双' || w[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ w[l] +'</span></td>';
