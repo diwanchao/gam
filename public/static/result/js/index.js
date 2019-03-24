@@ -109,20 +109,21 @@ var render = function(data){
                 content += '<td><span class="ssc-color">'+ data[i].content[s] +'</span></td>';
             }
             for(var l = 0; w < l.length; l++) {
-                wContent += '<td><span class="'+ ((w[l] == '小' || w[l] == '双' || w[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ w[l] +'</span></td>';
+                wContent += '<td><span class="'+ ((w[l] == "小" || w[l] == "双" || w[l] == "合") ? "f-c-deep-green" : "f-c-blue") +'">'+ w[l] +'</span></td>';
             }
             for(var l = 0; q < l.length; l++) {
-                qContent += '<td><span class="'+ ((q[l] == '小' || q[l] == '双' || q[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ q[l] +'</span></td>';
+                qContent += '<td><span class="'+ ((q[l] == "小" || q[l] == "双" || q[l] == "合") ? "f-c-deep-green" : "f-c-blue") +'">'+ q[l] +'</span></td>';
             }
             for(var l = 0; b < l.length; l++) {
-                bContent += '<td><span class="'+ ((b[l] == '小' || b[l] == '双' || b[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ b[l] +'</span></td>';
+                bContent += '<td><span class="'+ ((b[l] == "小" || b[l] == "双" || b[l] == "合") ? "f-c-deep-green" : "f-c-blue") +'">'+ b[l] +'</span></td>';
             }
             for(var l = 0; s < l.length; l++) {
-                sContent += '<td><span class="'+ ((s[l] == '小' || s[l] == '双' || s[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ s[l] +'</span></td>';
+                sContent += '<td><span class="'+ ((s[l] == "小" || s[l] == "双" || s[l] == "合") ? "f-c-deep-green" : "f-c-blue") +'">'+ s[l] +'</span></td>';
             }
             for(var l = 0; g < l.length; l++) {
-                gContent += '<td><span class="'+ ((g[l] == '小' || g[l] == '双' || g[l] == '合') ? "f-c-deep-green" : "f-c-blue") +'">'+ g[l] +'</span></td>';
+                gContent += '<td><span class="'+ ((g[l] == "小" || g[l] == "双" || g[l] == "合") ? "f-c-deep-green" : "f-c-blue") +'">'+ g[l] +'</span></td>';
             }
+            console.log(wContent)
             
             html += '<tr><td>'+ data[i].no +'</td><td>'+ data[i].week +'</td><td>'+ data[i].time +'</td>'+ content + wContent + qContent + bContent + sContent + gContent +'</tr>';
         }
