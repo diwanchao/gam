@@ -90,6 +90,7 @@ var init = function(){
         url: utils.concatGameKey('/api/game/gameInit'),
         type: 'GET',
         success: function(json){
+            app._data.game_name = json.game_name;
             app._data.periods = json.last_issue;
             app._data.periods_number = json.last_num;
             app._data.level = json.dish;
@@ -105,7 +106,7 @@ function timeInterval(time) {
     var interval = window.setInterval(function(){
             time -= 1;
             app._data.count_down = utils.remainingTime(time);
-            if(data.timeout <= 0){
+            if(time <= 0){
                 console.log('timeout: 0')
                 window.clearInterval(interval);
                 // refresh_data = [];
@@ -118,6 +119,7 @@ function timeInterval(time) {
 var app = new Vue({
     el: '#layoutBody',
     data: {
+        game_name: '',
         periods: '', //最新期数
         periods_number: '', // 最新开奖结果
         tab: 0, // 0->游戏 1->规则
