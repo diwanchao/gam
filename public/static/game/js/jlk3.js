@@ -48,41 +48,42 @@ function getData() {
         obj[$(this).data('key')] = innerObj;
     });
 
-    if($('#simahei').find('input[type=text]').val()){
-        obj['4mahei'] = (function(){
-            var innerObj = {};
+    
+    obj['4mahei'] = (function(){
+        var innerObj = {};
+        if($('#simahei').find('input[type=text]').val()){
             var key = '';
             $('#simahei').find('input[type=checkbox]:checked').each(function(){
                 key += this.name;
             });
             innerObj[key] = $('#simahei').find('input[type=text]').val();
-            return innerObj;
-        })();
-    }
+        }
+        return innerObj;
+    })();
 
-    if($('#simahong').find('input[type=text]').val()){
-        obj['4mahong'] = (function(){
-            var innerObj = {};
+    obj['4mahong'] = (function(){
+        var innerObj = {};
+        if($('#simahong').find('input[type=text]').val()){
             var key = '';
             $('#simahong').find('input[type=checkbox]:checked').each(function(){
                 key += this.name;
             });
             innerObj[key] = $('#simahong').find('input[type=text]').val();
-            return innerObj;
-        })();
-    }
+        }
+        return innerObj;
+    })();
 
-    if($('#wumahei').find('input[type=text]').val()){
-        obj['5mahei'] = (function(){
-            var innerObj = {};
+    obj['45ahei'] = (function(){
+        var innerObj = {};
+        if($('#wumahei').find('input[type=text]').val()){
             var key = '';
             $('#wumahei').find('input[type=checkbox]:checked').each(function(){
                 key += this.name;
             });
             innerObj[key] = $('#wumahei').find('input[type=text]').val();
-            return innerObj;
-        })();
-    }
+        }
+        return innerObj;
+    })();
 
     return obj;
 }
