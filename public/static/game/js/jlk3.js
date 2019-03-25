@@ -167,7 +167,6 @@ function confirmInit() {
 var app = new Vue({
     el: '#layoutBody',
     data: {
-        game_name: '',
         periods: '', //最新期数
         periods_number: '', // 最新开奖结果
         tab: 0, // 0->游戏 1->规则
