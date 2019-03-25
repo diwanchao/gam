@@ -118,6 +118,19 @@ function timeInterval(time) {
     }, 1000);
 }
 
+function confirmInit(data) {
+    var ele = $('#confirmModal');
+    var tbody = ele.find('.confirmTbody').empty();
+    var tableLength = ele.find('.table-length');
+    var html = ''
+
+    for(var i = 0 ; i < data.length; i++) {
+        html += '<tr><td>'+ data[i].name +'</td><td>'+ data[i].sub_name +'</td><td>'+ data[i].odds +'</td><td>'+ data[i].value +'</td></tr>';
+    }
+    tbody.append(html);
+    tableLength.text(data.length);
+}
+
 var app = new Vue({
     el: '#layoutBody',
     data: {
@@ -128,11 +141,11 @@ var app = new Vue({
         quickImport: '', // 快速输入
         level: [],
         levelValue: '/index/game/jlk3-A',
-        levelName: 'A盘',
+        // levelName: 'A盘',
         nowPeriods: '',
         close_time: '',
         count_down: '',
-        confirmTable: [],
+        confirmTable: [], // 啥用没有
     },
     methods: {
         levelChange: function(){
@@ -199,6 +212,7 @@ $(function(){
     })
 
     $('.submit').bind('click', function(){
+        confirmInit();
         app._data.confirmTable = getData();
         confirmModal.show();
     });
