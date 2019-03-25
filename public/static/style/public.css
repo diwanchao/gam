@@ -565,7 +565,7 @@ select.form-control{
     padding: 0 3px;
 }
 .loadBox{
-    margin: 12em 4em;
+    padding: 12em 4em;
     text-align: center;
     border: 2px solid #000;
     border-radius: 5px;
