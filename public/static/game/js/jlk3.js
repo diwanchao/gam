@@ -118,9 +118,6 @@ var init = function(){
         url: utils.concatGameKey('/api/game/gameInit'),
         type: 'GET',
         success: function(json){
-            app._data.game_name = json.game_name;
-            app._data.periods = json.last_issue;
-            app._data.periods_number = json.last_num;
             app._data.level = json.dish;
             app._data.nowPeriods = json.issue;
             app._data.close_time = json.close_time;
@@ -163,6 +160,17 @@ function confirmInit() {
     tableLength.text(tableData.length);
 }
 
+function getLastPeriods(){
+    utils.getAjax({
+        url: utils.concatGameKey('/api/game/lastNum'),
+        type: 'GET',
+        success: function(json){
+            app._data.periods = json.last_issue;
+            app._data.periods_number = json.last_num;
+        }
+    })
+}
+
 // 设置基础信息的 为乐方便
 var app = new Vue({
     el: '#layoutBody',
@@ -184,7 +192,7 @@ var app = new Vue({
             window.location = this.levelValue;
         }
     }
-})
+});
 
 $(function(){
     /* ************* 限制投注输入框 ************** */
@@ -267,6 +275,11 @@ $(function(){
 
     /* ************* 哈 ************** */
     init();
+    getLastPeriods();
+    window.setInterval(function(){
+        getLastPeriods();
+    }, 10000);
+   
     
 })
 
