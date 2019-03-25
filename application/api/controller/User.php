@@ -204,11 +204,10 @@ class User extends Base
     {
         //game_key
         //date 时间 字符串
-        var_dump(Request::instance()->param());die();
         $game_key   = Request::instance()->param('game_key'); 
         $date       = Request::instance()->param('date');
     
-        $where      = $game_key ? "where game_key='{$game_key}'" : 'where 1=1';
+        $where      = $game_key ? "game_key='{$game_key}'" : '1=1';
         $where      .= " and user_id='{$this->USER_ID}' and DATE_FORMAT(time,'%Y-%m-%d')='{$date}'";
 
         $res = Db::name('order')->where($where)->order('time desc')->paginate(10,false,['var_page'=>'index']);
