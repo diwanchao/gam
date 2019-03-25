@@ -140,7 +140,7 @@ function timeInterval(time) {
     var interval = window.setInterval(function(){
             time -= 1;
             app._data.count_down = utils.remainingTime(time);
-            if(time <= 0){
+            if(time <= -1){
                 console.log('timeout: 0')
                 window.clearInterval(interval);
                 refresh_data = [];
