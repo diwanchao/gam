@@ -113,10 +113,15 @@ function getData() {
 /**
  * 初始化 获取基础信息
  */
+var a = 0;
 var init = function(){
+    a = (a == 0 ? 1 : 0);
     utils.getAjax({
         url: utils.concatGameKey('/api/game/gameInit'),
         type: 'GET',
+        data:{
+            a: a,
+        },
         success: function(json){
             app._data.level = json.dish;
             app._data.nowPeriods = json.issue;
@@ -135,7 +140,7 @@ function timeInterval(time) {
     var interval = window.setInterval(function(){
             time -= 1;
             app._data.count_down = utils.remainingTime(time);
-            if(time <= 0){
+            if(time <= -1){
                 console.log('timeout: 0')
                 window.clearInterval(interval);
                 refresh_data = [];
