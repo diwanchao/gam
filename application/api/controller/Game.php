@@ -105,13 +105,14 @@ class Game extends Base
     public function gameInit()
     {
         $game_key   = Request::instance()->param('game_key'); 
+        $a   = Request::instance()->param('a'); 
 
 
         $data = [
             'issue'      => '20190324-12',
             'count_down' => '60',
             'close_time' => '22:40:00',
-            'status'     => 1,
+            'status'     => $a,
             'dish'       => [
                 ['name'=>'A','url'=>'/index/game/jlk3-A'],
                 ['name'=>'B','url'=>'/index/game/jlk3-B'],
