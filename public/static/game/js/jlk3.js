@@ -7,6 +7,9 @@ var tableData = [];
 // 快速输入 值
 var quickValue = '';
 
+// 分盘
+var levelValue = 'A';
+
 // 确认投注弹出框
 var confirmModal = new H_modal('#confirmModal');
 
@@ -155,13 +158,16 @@ function timeInterval(time) {
 function confirmInit() {
     var ele = $('#confirmModal');
     var tbody = ele.find('.confirmTbody').empty();
+    var level = ele.find('.level');
     var tableLength = ele.find('.table-length');
     var html = ''
 
     for(var i = 0 ; i < tableData.length; i++) {
         html += '<tr><td>'+ tableData[i].name +'</td><td>'+ tableData[i].sub_name +'</td><td><b class="f-s-16 f-c-red">'+ tableData[i].odds +'</b></td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
     }
+    
     tbody.append(html);
+    level.text(levelValue);
     tableLength.text(tableData.length);
 }
 
@@ -187,7 +193,7 @@ var app = new Vue({
         tabContent: 1, // 0->停盘 1->开盘
         quickImport: '', // 快速输入
         level: [],
-        levelValue: '/index/game/jlk3-A',
+        levelValue: 'A',
         // levelName: 'A盘',
         nowPeriods: '',
         close_time: '',
@@ -196,7 +202,7 @@ var app = new Vue({
     },
     methods: {
         levelChange: function(){
-            window.location = this.levelValue;
+            levelValue = this.levelValue;
         }
     }
 });
@@ -268,11 +274,16 @@ $(function(){
 
     /* ************* 确认下注提交 ************** */
     confirmModal.on('bs-beforeSubmit', function(){
-        console.log(tableData);
+        var data = tableData;
+        
         utils.getAjax({
             url: utils.concatGameKey('/api/game/addBet'),
             type: 'POST',
-            data: tableData,
+            data: {
+                nowPeriods: app._data.nowPeriods,
+                level: levelValue,
+                data: tableData,
+            },
             alert: true,
             success: function(){
                 history.go(0);
