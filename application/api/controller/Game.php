@@ -3,6 +3,7 @@ namespace app\api\controller;
 
 use \think\Request;
 use \think\Db;
+use \think\Cache;
 
 class Game extends Base
 {
@@ -125,6 +126,8 @@ class Game extends Base
      */
     public function gameInit()
     {
+        $game_key   = Request::instance()->param('game_key'); 
+
 
         $data = [
             'issue'      => '20190324-12',

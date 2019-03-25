@@ -561,4 +561,8 @@ a:hover{
     margin-left: 10px;
 }
 
+select.form-control{
+    padding: 0 3px;
+}
+
 

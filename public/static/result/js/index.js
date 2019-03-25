@@ -1,5 +1,5 @@
 
-var tablePage = new Page('#pageInfo', function(index){init();});
+// var tablePage = new Page('#pageInfo', function(index){init();});
 
 var setHeader = function(game){
     switch (game) {
@@ -45,17 +45,17 @@ var init = function(){
         return;
     }
 
-    var p = tablePage.data.index;
+    // var p = tablePage.data.index;
     // 用index / game_key ajax请求 获取列表
 
     utils.getAjax({
         url: utils.concatGameKey('/api/game/resultList'),
         type: 'GET',
-        data: {
-            index: p,
-        },
+        // data: {
+        //     index: p,
+        // },
         success: function(json){
-            tablePage.init({total: json.total});
+            // tablePage.init({total: json.total});
             setHeader(ENV.game_key);
             render(json.data);
         }
@@ -162,7 +162,7 @@ $(function(){
     $('#changeGame').bind('change', function(){
         ENV.game_key = this.value;
         // tablePage.init({index: 1})
-        tablePage.data.index = 1;
+        // tablePage.data.index = 1;
         init();
     });
     

@@ -1,32 +1,35 @@
+var reg = {
+    username: /^[a-zA-z]\w{3,15}$/,
+    phone: /^1[345678]\d{9}$/,
+    pwd: /^(\w|\.){8,16}$/,
+    email: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/
+}
 var utils = {
-
-	
-
 	/**
 	 * 获取cookie
 	 * @param {String} cookie名
 	 * @returns {String/null} 返回取到的cooke
 	 */
-	getCookie: function (name) { 
-		var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-	
-		if(arr=document.cookie.match(reg))
-	
-			return unescape(arr[2]); 
-		else 
-			return null; 
+	getCookie: function (name) {
+		var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+		if (arr = document.cookie.match(reg))
+
+			return unescape(arr[2]);
+		else
+			return null;
 	},
 
 	/**
 	 * 删除cookie
 	 * @param {String} cookie名
 	 */
-	delCookie: function (name) { 
-		var exp = new Date(); 
-		exp.setTime(exp.getTime() - 1); 
-		var cval = utils.getCookie(name); 
-		if(cval!=null) 
-			document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+	delCookie: function (name) {
+		var exp = new Date();
+		exp.setTime(exp.getTime() - 1);
+		var cval = utils.getCookie(name);
+		if (cval != null)
+			document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 	},
 
 	/**
@@ -34,11 +37,11 @@ var utils = {
 	 * @param {String} cookie名
 	 * @param {String} cookie内容
 	 */
-	setCookie: function (name,value) { 
-		var Days = 1; 
-		var exp = new Date(); 
-		exp.setTime(exp.getTime() + Days*24*60*60*1000); 
-		document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString() + 'path=/'; 
+	setCookie: function (name, value) {
+		var Days = 1;
+		var exp = new Date();
+		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+		document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + 'path=/';
 	},
 
 	/**
@@ -63,11 +66,10 @@ var utils = {
 				// 如果UTC时间 没有Z后缀 加上Z后缀
 				!/Z$/.test(paseStr) ? paseStr += 'Z' : null;
 				date = new Date(new Date(paseStr) * 1 + timeOffset);
-			}
-			else {
+			} else {
 				date = paseStr ? new Date(paseStr) : new Date();
 			}
-			
+
 			var dict = {
 				"yyyy": date.getFullYear(),
 				"M": date.getMonth() + 1,
@@ -86,8 +88,7 @@ var utils = {
 			return format.replace(/(yyyy|MM?|dd?|HH?|ss?|mm?|ll?)/g, function () {
 				return dict[arguments[0]];
 			});
-		}
-		catch (e) {
+		} catch (e) {
 			alert(true, '需要正确的时间格式,当前时间格式为' + paseStr, '解析时间失败');
 		}
 	},
@@ -97,7 +98,7 @@ var utils = {
 	 * @param {Number/String} 毫秒数
 	 * @returns {String} 返回剩余时间
 	 */
-	remainingTime: function(num){
+	remainingTime: function (num) {
 		num = num || 0;
 		num = Math.round(num);
 		var h,
@@ -124,13 +125,13 @@ var utils = {
 		return null;
 	},
 
-	concatGameKey: function(url){
+	concatGameKey: function (url) {
 		return (ENV.game_key ? url + '?game_key=' + ENV.game_key : url);
 	},
 
-	getAjax: function(opt){
+	getAjax: function (opt) {
 		var userInfo = utils.getCookie('userInfo');
-		if(!userInfo){
+		if (!userInfo) {
 			alert('登陆超时……');
 			// window.location.href = '/index/login';
 			// return;
@@ -141,33 +142,65 @@ var utils = {
 			dataType: opt.dataType || 'JSON',
 			url: opt.url || '/',
 			data: opt.data || {},
-			success: function(result){
-				if(result.code == 304){
+			success: function (result) {
+				if (result.code == 304) {
 					alert('登陆超时……');
 					// window.location.href = '/index/login';
 					// return;
-				}
-				else if(result.code == 200) {
+				} else if (result.code == 200) {
 					typeof opt.success == 'function' ? opt.success(result.data) : null;
-					if(opt.alert){
+					if (opt.alert) {
 						alert(result.msg);
 					}
 					return;
-				}
-				else {
+				} else {
 					alert(result.msg);
 					return;
 				}
 			},
-			error: function(err){
+			error: function (err) {
 				typeof opt.error == 'function' ? opt.error(err) : null;
 				alert('服务器错误');
 			}
 		})
 	},
 
+	/**
+	 * 检测值是否是预期数据类型
+	 * @param {All} val 值
+	 * @param {string} type 预期类型
+	 */
+	isTypeOf(val, type) {
+		switch (type) {
+			case 'noEmpty':
+				{ // 不为空
+					return val !== '';
+				}
+			case 'isPhone':
+				{
+					return reg.phone.test(val);
+				}
+			case 'isPwd':
+				{
+					return val && reg.pwd.test(val);
+				}
+			case 'isEmail':
+				{
+					return val && reg.email.test(val);
+				}
+			case 'isUsername':
+				{
+					return val && reg.username.test(val);
+				}
+			default:
+				{
+					return Object.prototype.toString.call(val).toLowerCase() === `[object ${type.toLowerCase()}]`;
+				}
+		}
+	},
 
-	
+
+
 };
 
 var ENV = {
@@ -175,16 +208,16 @@ var ENV = {
 };
 
 
-(function(){
+(function () {
 
 	/**
 	 * 获取总共多少页
 	 * @param {Number} total 总共多少条
 	 * @param {Number} page_total 每页显示多少条
 	 */
-	var getPage = function(total, page_total){
+	var getPage = function (total, page_total) {
 		var p = Math.ceil(total / page_total);
-		if(!p){
+		if (!p) {
 			p = 1;
 		}
 		return p
@@ -196,11 +229,11 @@ var ENV = {
 	 * @param {Function} callback 页数变更回调用函数
 	 * @param {Object} opt 初始化参数
 	 */
-	var Page = function(wrapper, callback, opt){
+	var Page = function (wrapper, callback, opt) {
 
 		this.$wrapper = $(wrapper);
 		this.callback = callback;
-		if(!this.$wrapper.length){
+		if (!this.$wrapper.length) {
 			throw Error('Pagination must have outermost support……');
 		}
 		// 总共多少条
@@ -237,8 +270,8 @@ var ENV = {
 	 * 分页初始化
 	 * @param {Object} opt 初始化参数
 	 */
-	_proto.init = function(opt){
-		if(opt){
+	_proto.init = function (opt) {
+		if (opt) {
 			this.data = $.extend({}, this.data, opt);
 		}
 		this.data.page = getPage(this.data.total, this.data.page_total);
@@ -249,20 +282,19 @@ var ENV = {
 	/**
 	 * 绑定分页事件
 	 */
-	_proto.bind = function(){
+	_proto.bind = function () {
 		var _this = this;
 
 		// 跳页
-		if(this.$index.length){
-			if(this.$index[0].tagName === 'SELECT'){
-				this.$index.bind('change', function(){
+		if (this.$index.length) {
+			if (this.$index[0].tagName === 'SELECT') {
+				this.$index.bind('change', function () {
 					_this.data.index = Number(this.value);
 					_this.emit();
 				});
-			}
-			else if(this.$index[0].tagName === 'INPUT') {
-				this.$index.bind('blur', function(){
-					if(isNaN(this.value)){
+			} else if (this.$index[0].tagName === 'INPUT') {
+				this.$index.bind('blur', function () {
+					if (isNaN(this.value)) {
 						this.value = _this.data.page;
 						return;
 					}
@@ -273,32 +305,32 @@ var ENV = {
 		}
 
 		// 首页
-		if(this.$first.length){
-			this.$first.bind('click', function(){
-				if(_this.data.index == 1){
+		if (this.$first.length) {
+			this.$first.bind('click', function () {
+				if (_this.data.index == 1) {
 					return;
 				}
 				_this.data.index = 1;
 				_this.emit();
 			});
 		}
-		
+
 		// 末页
-		if(this.$first.length){
-			this.$last.bind('click', function(){
-				if(_this.data.index == _this.data.page){
+		if (this.$first.length) {
+			this.$last.bind('click', function () {
+				if (_this.data.index == _this.data.page) {
 					return;
 				}
 				_this.data.index = _this.data.page;
 				_this.emit();
 			});
 		}
-		
+
 		// 下一页
-		if(this.$next.length){
-			this.$next.bind('click', function(){
+		if (this.$next.length) {
+			this.$next.bind('click', function () {
 				_this.data.index++;
-				if(_this.data.index > _this.data.page){
+				if (_this.data.index > _this.data.page) {
 					_this.data.index = _this.data.page;
 				}
 				_this.emit();
@@ -306,56 +338,55 @@ var ENV = {
 		}
 
 		// 上一页
-		if(this.$prev.length){
-			this.$prev.bind('click', function(){
+		if (this.$prev.length) {
+			this.$prev.bind('click', function () {
 				_this.data.index--;
-				if(_this.data.index < 1){
+				if (_this.data.index < 1) {
 					_this.data.index = 1;
 				}
 				_this.emit();
 			});
 		}
 	}
-	
+
 	/**
 	 * 渲染分页
 	 */
-	_proto.render = function(){
+	_proto.render = function () {
 		this.$total.html(this.data.total);
 		this.$page.html(this.data.page);
 
 		// select
-		if(this.$index.length){
-			if(this.$index[0].tagName === 'SELECT'){
+		if (this.$index.length) {
+			if (this.$index[0].tagName === 'SELECT') {
 				var html = '';
-				for(var i = 1; i <= this.data.page; i++){
-					html += '<option value="'+ i +'">'+ i +'</option>';
+				for (var i = 1; i <= this.data.page; i++) {
+					html += '<option value="' + i + '">' + i + '</option>';
 				}
 				this.$index.empty().append(html).val(this.data.index);
-			}
-			else {
+			} else {
 				this.$index.val(this.data.index);
 			}
 		}
-		
-		
+
+
 	}
 
 	/**
 	 * 触发分页回调
 	 */
-	_proto.emit = function(){
-		typeof this.callback == 'function' ? this.callback.call(this, this.data.index) : null; 
-	} 
+	_proto.emit = function () {
+		typeof this.callback == 'function' ? this.callback.call(this, this.data.index) : null;
+	}
 
 	window.Page = Page;
 
 })();
 
 
-(function(){
+(function () {
 
-	var InitHeader = function(){
+	var InitHeader = function () {
 
 		// 服务器时间
 		this.$onlineTime = $('#onlineTime');
@@ -371,7 +402,7 @@ var ENV = {
 		this.$subGameMenu = $('#subGameMenu');
 		// 登出
 		this.$logout = $('#logout');
-	
+
 		// ajax请求数据
 		this.data = {
 			// 最新公告
@@ -379,9 +410,16 @@ var ENV = {
 			// 服务器时间
 			macau_time: utils.paseDate(null, 'yyyy-MM-dd HH:mm:ss'),
 			// 游戏集合
-			game: [
-				{name: '吉林快3', key: 'jlk3', url: '/'},
-				{name: '重庆时时彩', key: 'ssc', url: '/'}
+			game: [{
+					name: '吉林快3',
+					key: 'jlk3',
+					url: '/'
+				},
+				{
+					name: '重庆时时彩',
+					key: 'ssc',
+					url: '/'
+				}
 			],
 			// 游戏详情s
 			subGame: [],
@@ -393,16 +431,16 @@ var ENV = {
 
 		this.init();
 	}
-	
+
 	/**
 	 * header初始化
 	 */
-	InitHeader.prototype.init = function(){
+	InitHeader.prototype.init = function () {
 		var _this = this;
 		utils.getAjax({
 			url: utils.concatGameKey('/api/home/headInfo'),
 			type: 'POST',
-			success: function(data){
+			success: function (data) {
 				_this.data = $.extend({}, _this.data, data);
 
 				_this.timeInit();
@@ -412,84 +450,84 @@ var ENV = {
 				_this.logoutInit();
 			}
 		})
-		
+
 	}
-	
+
 	/**
 	 * 初始化服务器时间
 	 */
-	InitHeader.prototype.timeInit = function(){
+	InitHeader.prototype.timeInit = function () {
 		var time = this.data.macau_time * 1000;
 		var _this = this;
 		this.$onlineTime.text(time);
-		window.setInterval(function(){
+		window.setInterval(function () {
 			time = new Date(time) * 1 + 1000;
 			_this.$onlineTime.text(utils.paseDate(time, 'yyyy-MM-dd HH:mm:ss'));
 		}, 1000);
 	}
-	
+
 	/**
 	 * 初始化最新公告
 	 */
-	InitHeader.prototype.noticeInit = function(){
+	InitHeader.prototype.noticeInit = function () {
 		this.$newNotice.text(this.data.notice);
 	}
-	
+
 	/**
 	 * 游戏列表
 	 */
-	InitHeader.prototype.gameInit = function(){
+	InitHeader.prototype.gameInit = function () {
 		var _this = this;
-	
+
 		// 绑定游戏列表展开收起
-		this.$gameDorpDown.hover(function(){
+		this.$gameDorpDown.hover(function () {
 			_this.$gameMenu.fadeIn('fast');
-		}, function(){
+		}, function () {
 			_this.$gameMenu.fadeOut('fast');
 		})
-	
+
 		// 渲染游戏列表
-		if(this.data.game && $.isArray(this.data.game) && this.data.game.length){
-			for(var i = 0; i < this.data.game.length; i++){
+		if (this.data.game && $.isArray(this.data.game) && this.data.game.length) {
+			for (var i = 0; i < this.data.game.length; i++) {
 				var cur = this.data.game[i];
-				var $html = $('<li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript:void(0);">'+ cur.name +'</a></li>');
-				$html.click(function(){
+				var $html = $('<li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript:void(0);">' + cur.name + '</a></li>');
+				$html.click(function () {
 					utils.setCookie('game_key', cur.key);
 					window.location = cur.url;
 				});
 				this.$navGameList.append($html);
 			}
 		}
-		
+
 	}
-	
+
 	/**
 	 * 游戏二级列表
 	 */
-	InitHeader.prototype.subGameInit = function(){
-		if(this.data.subGame && $.isArray(this.data.subGame) && this.data.subGame.length){
-			for(var i = 0; i < this.data.subGame.length; i++) {
+	InitHeader.prototype.subGameInit = function () {
+		if (this.data.subGame && $.isArray(this.data.subGame) && this.data.subGame.length) {
+			for (var i = 0; i < this.data.subGame.length; i++) {
 				var cur = this.data.subGame[i];
-				this.$subGameMenu.append('<a href="'+ cur.url +'">'+ cur.name +'</a>');
+				this.$subGameMenu.append('<a href="' + cur.url + '">' + cur.name + '</a>');
 			}
 		}
 	}
-	
+
 	/**
 	 * 登出
 	 */
-	InitHeader.prototype.logoutInit = function(){
-		this.$logout.bind('click', function(){
+	InitHeader.prototype.logoutInit = function () {
+		this.$logout.bind('click', function () {
 			utils.delCookie('userInfo');
 			window.location = '/index/login';
 		});
 	}
-	
-	
+
+
 	/**
 	 * 左侧个人信息初始化
 	 */
-	var InitSlidebar = function(){
+	var InitSlidebar = function () {
 
 		// 当前人物所在的游戏 key
 		this.gameKey = ENV.game_key;
@@ -512,13 +550,12 @@ var ENV = {
 		this.$slidebarNumTable = $('#slidebarNumTable');
 
 		// 如果是home页面 没有左侧
-		if(location.pathname == '/index/home'){
+		if (location.pathname == '/index/home') {
 			return;
 		}
-		if(!this.gameKey){
+		if (!this.gameKey) {
 			return;
-		}
-		else {
+		} else {
 			this.$main.addClass('userInfo');
 		}
 
@@ -537,8 +574,18 @@ var ENV = {
 				total: 2,
 				data: [
 					// 时间 ／ 下注内容 ／ 赔率 ／ 金额
-					{time: '2015-11-11 11:11:11', content: '123', odds: '1.5', money: '100'},
-					{time: '2015-11-11 11:11:12', content: '537', odds: '1.3', money: '110'}
+					{
+						time: '2015-11-11 11:11:11',
+						content: '123',
+						odds: '1.5',
+						money: '100'
+					},
+					{
+						time: '2015-11-11 11:11:12',
+						content: '537',
+						odds: '1.3',
+						money: '110'
+					}
 				]
 			},
 			// 开奖结果 (最新开奖20条)
@@ -547,9 +594,18 @@ var ENV = {
 				total: 10,
 				data: [
 					// 期数 ／ 开奖内容
-					{date: '20151111-11', content: '383'},
-					{date: '20151111-11', content: '716'},
-					{date: '20151111-11', content: '558'},
+					{
+						date: '20151111-11',
+						content: '383'
+					},
+					{
+						date: '20151111-11',
+						content: '716'
+					},
+					{
+						date: '20151111-11',
+						content: '558'
+					},
 				]
 			}
 		}
@@ -558,16 +614,20 @@ var ENV = {
 		// 最新投注分页
 		this.betPage = new Page(
 			'#slidebarBetPage',
-			 function(index){
+			function (index) {
 				// ajax
 				utils.getAjax({
 					type: 'GET',
 					url: utils.concatGameKey('/api/home/batPage'),
-					data: {index: index},
-					success: function(data){
+					data: {
+						index: index
+					},
+					success: function (data) {
 						_this.data.bet = $.extend({}, _this.data.bet, data);
 						_this.betTableInit();
-						_this.betPage.init({total: _this.data.bet.total});
+						_this.betPage.init({
+							total: _this.data.bet.total
+						});
 					}
 				})
 			},
@@ -576,39 +636,42 @@ var ENV = {
 		this.init();
 	}
 
-	InitSlidebar.prototype.init = function(){
+	InitSlidebar.prototype.init = function () {
 		var _this = this;
 
-		this.$slidebar.find('.table-list').each(function(){
+		this.$slidebar.find('.table-list').each(function () {
 			var _tab_this = $(this);
-			_tab_this.find('.table-title').bind('click', function(){
-				if(_tab_this.find('.table-content').is(':hidden')){
+			_tab_this.find('.table-title').bind('click', function () {
+				if (_tab_this.find('.table-content').is(':hidden')) {
 					_tab_this.find('.table-content').slideDown('fast');
-				}
-				else {
+				} else {
 					_tab_this.find('.table-content').slideUp('fast');
 				}
-				
+
 			})
 		})
 
 		// ajax 用分页面请求 this.betPage.data.index
 		utils.getAjax({
 			url: utils.concatGameKey('/api/home/leftInfo'),
-			data: {index: this.betPage.data.index},
+			data: {
+				index: this.betPage.data.index
+			},
 			type: 'GET',
-			success: function(data){
+			success: function (data) {
 				_this.data = $.extend({}, _this.data, data);
-				_this.betPage.init({total: _this.data.bet.total})
+				_this.betPage.init({
+					total: _this.data.bet.total
+				})
 				_this.baseInit();
 				_this.betTableInit();
 				_this.numTableInit();
 			}
 		})
-		
+
 	}
 
-	InitSlidebar.prototype.baseInit = function(){
+	InitSlidebar.prototype.baseInit = function () {
 		// logo暂定
 		// this.$slidebarGameLogo
 		this.$slidebarGameName.html(this.data.game_name);
@@ -616,28 +679,28 @@ var ENV = {
 		this.$slidebarBalance.html(this.data.balance);
 	}
 
-	InitSlidebar.prototype.betTableInit = function(){
+	InitSlidebar.prototype.betTableInit = function () {
 		var html = '';
-		for(var i = 0; i < this.data.bet.data.length; i++) {
+		for (var i = 0; i < this.data.bet.data.length; i++) {
 			var cur = this.data.bet.data[i];
 			var content = '';
-			for(var s = 0; s < cur.content.length; s++) {
-				content += '<span class="m-r-2 color'+ cur.content[s] +'">'+ cur.content[s] +'</span>';
+			for (var s = 0; s < cur.content.length; s++) {
+				content += '<span class="m-r-2 color' + cur.content[s] + '">' + cur.content[s] + '</span>';
 			}
-			html += '<tr><td>'+ cur.time +'</td><td>'+ content +'</td><td>'+ cur.odds +'</td><td>'+ cur.money +'</td></tr>'
+			html += '<tr><td>' + cur.time + '</td><td>' + content + '</td><td>' + cur.odds + '</td><td>' + cur.money + '</td></tr>'
 		}
 		this.$slidebarBetTable.empty().append(html);
 	}
 
-	InitSlidebar.prototype.numTableInit = function(){
+	InitSlidebar.prototype.numTableInit = function () {
 		var html = '';
-		for(var i = 0; i < this.data.num.data.length; i++) {
+		for (var i = 0; i < this.data.num.data.length; i++) {
 			var cur = this.data.num.data[i];
 			var content = '';
-			for(var s = 0; s < cur.content.length; s++) {
-				content += '<span class="m-r-2 color'+ cur.content[s] +'">'+ cur.content[s] +'</span>';
+			for (var s = 0; s < cur.content.length; s++) {
+				content += '<span class="m-r-2 color' + cur.content[s] + '">' + cur.content[s] + '</span>';
 			}
-			html += '<tr><td>'+ cur.date +'</td><td>'+ content +'</td></tr>'
+			html += '<tr><td>' + cur.date + '</td><td>' + content + '</td></tr>'
 		}
 		this.$slidebarNumTable.empty().append(html);
 	}

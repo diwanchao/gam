@@ -1,8 +1,19 @@
-
+ // 被选中的游戏 无规则的key
 var selectedAry = [];
 
+// 确认投注的信息
+var tableData = [];
+
+// 快速输入 值
 var quickValue = '';
 
+// 确认投注弹出框
+var confirmModal = new H_modal('#confirmModal');
+
+/**
+ * 添加被选中的游戏
+ * @param {String} key 别选中的游戏 无规则的key
+ */
 function setNumber(key){
     var elementList = $('[data-item='+ key +']');
     if($.inArray(key, selectedAry) == -1){ // 不存在
@@ -18,6 +29,9 @@ function setNumber(key){
     }
 }
 
+/**
+ * 快速输入设置被选中的游戏值
+ */
 function setSelectAry(){
     for(var i = 0; i < selectedAry.length; i++) {
         var ele = $('[data-item='+ selectedAry[i] +']');
@@ -25,6 +39,9 @@ function setSelectAry(){
     }
 }
 
+/**
+ * 获取总投注金额 .moneyTotal
+ */
 function getMoneyTotal() {
     var total = 0;
     $('.portlet-body .h-table').find('input[type=text]').each(function(){
@@ -35,6 +52,9 @@ function getMoneyTotal() {
     $('.moneyTotal').text(total);
 }
 
+/**
+ * 获取被选中游戏的信息
+ */
 function getData() {
     var ary = [];
     $('[data-name=begin-table] input[type=text]').each(function(){
@@ -46,6 +66,7 @@ function getData() {
         }
     });
 
+    // 四码黑单独获取
     if($('#simahei').find('input[type=text]').val()){
         var key = '';
         $('#simahei').find('input[type=checkbox]:checked').each(function(){
@@ -58,6 +79,8 @@ function getData() {
         data['sub_name'] = key;
         ary.push(data);
     }
+
+    // 四码红单独获取
     if($('#simahong').find('input[type=text]').val()){
         var key = '';
         $('#simahong').find('input[type=checkbox]:checked').each(function(){
@@ -70,6 +93,8 @@ function getData() {
         data['sub_name'] = key;
         ary.push(data);
     }
+
+    // 五码黑单独获取
     if($('#wumahei').find('input[type=text]').val()){
         var key = '';
         $('#wumahei').find('input[type=checkbox]:checked').each(function(){
@@ -85,7 +110,84 @@ function getData() {
     return ary;
 }
 
+/**
+ * 初始化 获取基础信息
+ */
+var init = function(){
+    utils.getAjax({
+        url: utils.concatGameKey('/api/game/gameInit'),
+        type: 'GET',
+        success: function(json){
+            app._data.game_name = json.game_name;
+            app._data.periods = json.last_issue;
+            app._data.periods_number = json.last_num;
+            app._data.level = json.dish;
+            app._data.nowPeriods = json.issue;
+            app._data.close_time = json.close_time;
+            timeInterval(json.count_down);
+        } 
+    })
+}
+
+/**
+ * 设置倒计时
+ * @param {Number} time 倒计时(秒)
+ */
+function timeInterval(time) {
+    var interval = window.setInterval(function(){
+            time -= 1;
+            app._data.count_down = utils.remainingTime(time);
+            if(time <= 0){
+                console.log('timeout: 0')
+                window.clearInterval(interval);
+                // refresh_data = [];
+                // init();
+                // break;
+            }
+    }, 1000);
+}
+
+/**
+ * 确认投注modal基础信息初始化
+ */
+function confirmInit() {
+    var ele = $('#confirmModal');
+    var tbody = ele.find('.confirmTbody').empty();
+    var tableLength = ele.find('.table-length');
+    var html = ''
+
+    for(var i = 0 ; i < tableData.length; i++) {
+        html += '<tr><td>'+ tableData[i].name +'</td><td>'+ tableData[i].sub_name +'</td><td><b class="f-s-16 f-c-red">'+ tableData[i].odds +'</b></td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
+    }
+    tbody.append(html);
+    tableLength.text(tableData.length);
+}
+
+// 设置基础信息的 为乐方便
+var app = new Vue({
+    el: '#layoutBody',
+    data: {
+        periods: '', //最新期数
+        periods_number: '', // 最新开奖结果
+        tab: 0, // 0->游戏 1->规则
+        quickImport: '', // 快速输入
+        level: [],
+        levelValue: '/index/game/jlk3-A',
+        // levelName: 'A盘',
+        nowPeriods: '',
+        close_time: '',
+        count_down: '',
+        // confirmTable: [], // 啥用没有/
+    },
+    methods: {
+        levelChange: function(){
+            window.location = this.levelValue;
+        }
+    }
+})
+
 $(function(){
+    /* ************* 限制投注输入框 ************** */
     $('.portlet-body .h-table').find('input[type=text]').bind('keydown', function(e){
         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
             e.preventDefault();
@@ -107,8 +209,7 @@ $(function(){
         getMoneyTotal();
     })
 
-
-
+    /* ************* 限制快速投注输入框 ************** */
     $('.quickImport').bind('keydown', function(e){
         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
             e.preventDefault();
@@ -133,6 +234,7 @@ $(function(){
         getMoneyTotal();
     });
 
+    /* ************* 限制红黑码只能选择4种 ************** */
     $('[data-key=hongheima]').find('input[type=checkbox]').each(function() {
         $(this).bind('click', function(e){
             if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
@@ -142,40 +244,38 @@ $(function(){
         })
     })
 
+    /* ************* 点击下注弹出确认下注 ************** */
     $('.submit').bind('click', function(){
+        tableData = getData();
+        confirmInit();
+        confirmModal.show();
+    });
 
-        console.log(getData());
+    /* ************* 确认下注提交 ************** */
+    confirmModal.on('bs-beforeSubmit', function(){
+        console.log(tableData);
+        utils.getAjax({
+            url: utils.concatGameKey('/api/game/addBet'),
+            type: 'POST',
+            data: tableData,
+            alert: true,
+            success: function(){
+                history.go(0);
+            }
+        })
+    });
 
-    })
+    /* ************* 哈 ************** */
+    init();
+    
 })
 
 
-var app = new Vue({
-    el: '#layoutBody',
-    data: {
-        periods: '20190324-11', //最新期数
-        periods_number: '123', // 最新开奖结果
-        tab: 0, // 0->游戏 1->规则
-        level: 'A', // 盘
-        quickImport: '', // 快速输入
 
-    }
-})
+
 
 
 // [
-    // {
-    //     key: 'samjun',
-    //     name: '三军',
-    //     data: [
-    //         {
-    //             key: '5mahong',
-    //             name: '5码红',
-    //             odds: '1.95',
-    //             value: 100,
-    //         }
-    //     ]
-    // }
     // {
     //     key: 'samjun',
     //     name: '三军',

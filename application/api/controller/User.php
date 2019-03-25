@@ -116,25 +116,39 @@ class User extends Base
      */
     public function settlementList()
     {
+        $week       = [];
+        $new_data   = [];
         $sum_total  = $sum_single = $sum_money = $sum_school = $sum_break = $sum_get = 0;
         $weekarray  = array("日","一","二","三","四","五","六");
+        //获取一周日期
+        for ($i=1; $i <= 7; $i++) { 
+            $week[] = date('Y-m-d' ,strtotime( '+' . $i-7 .' days', time()));
+        }
 
         $game_key   = Request::instance()->param('game_key'); 
         $where      = $game_key ? "where game_key='{$game_key}'" : 'where 1=1';
+        $where      .= " and `time`>='{$week[0]}' and `time`<='{$week[6]}'";
 
-        $sql = "SELECT DATE_FORMAT(time,'%Y-%m-%d') AS date,COUNT(no) AS single,SUM(money) AS money,SUM(handsel) AS school,SUM(break) AS break,SUM(get) AS get FROM `order` {$where} GROUP BY date ORDER BY date ASC limit 7";
+        $sql = "SELECT DATE_FORMAT(time,'%Y-%m-%d') AS date,COUNT(no) AS single,SUM(money) AS money,SUM(handsel) AS school,SUM(break) AS break,SUM(get) AS get FROM `order` {$where} GROUP BY date ORDER BY date ASC";
         $data = Db::query($sql);
+        $data = array_column($data, null,'date');
         
-        foreach ($data as $key => $value) {
+        foreach ($week as $key => $value) {
             $sum_total ++;
-            $sum_single += $value['single'];
-            $sum_money  += $value['money'];
-            $sum_school += $value['school'];
-            $sum_break  += $value['break'];
-            $sum_get    += $value['get'];
-            $data[$key]['date'] = $value['date'].' 星期'.$weekarray[date("w",strtotime($value['date']))];
-        }
+            if (isset($data[$value])) 
+            {
+                $sum_single += $data[$value]['single'];
+                $sum_money  += $data[$value]['money'];
+                $sum_school += $data[$value]['school'];
+                $sum_break  += $data[$value]['break'];
+                $sum_get    += $data[$value]['get'];
 
+                $new_data[$key] = $data[$value];
+            }else{
+                $new_data[$key] = ['date'=>$value,'single'=>0,'money'=>0,'school'=>0,'break'=>0,'get'=>0];
+            }
+            $new_data[$key]['date'] = $value.' 星期'.$weekarray[date("w",strtotime($value))];
+        }
         $return_data = [
             'total'     => $sum_total,
             'single'    => $sum_single,
@@ -142,11 +156,13 @@ class User extends Base
             'school'    => $sum_school,
             'break'     => $sum_break,
             'get'       => $sum_get,
-            'data'      => $data
+            'data'      => $new_data
 
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' => $return_data]);
     }
+
+
     /**
      * @SWG\Post(
      *   path="/api/user/settlementDetail",
