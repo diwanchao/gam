@@ -204,6 +204,7 @@ class User extends Base
     {
         //game_key
         //date 时间 字符串
+        var_dump(Request::instance()->param());die();
         $game_key   = Request::instance()->param('game_key'); 
         $date       = Request::instance()->param('date');
     
@@ -211,6 +212,7 @@ class User extends Base
         $where      .= " and user_id='{$this->USER_ID}' and DATE_FORMAT(time,'%Y-%m-%d')='{$date}'";
 
         $res = Db::name('order')->where($where)->order('time desc')->paginate(10,false,['var_page'=>'index']);
+
         var_dump($res);die();
         $data = [
             'total'=>23,
