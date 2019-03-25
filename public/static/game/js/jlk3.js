@@ -165,15 +165,15 @@ function getLastPeriods(){
         url: utils.concatGameKey('/api/game/lastNum'),
         type: 'GET',
         success: function(json){
-            app._data.periods = json.last_issue;
-            app._data.periods_number = json.last_num;
+            app._data.periods = json.periods;
+            app._data.periods_number = json.number;
         }
     })
 }
 
 // 设置基础信息的 为乐方便
 var app = new Vue({
-    el: '#layoutBody',
+    el: '#main',
     data: {
         periods: '', //最新期数
         periods_number: '', // 最新开奖结果
