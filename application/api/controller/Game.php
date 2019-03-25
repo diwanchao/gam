@@ -116,6 +116,9 @@ class Game extends Base
             'dish'       => [
                 ['key'=>'A'],
                 ['key'=>'B'],
+                ['key'=>'C'],
+                ['key'=>'D'],
+
             ]
 
         ];
