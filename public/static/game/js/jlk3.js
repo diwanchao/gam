@@ -118,12 +118,10 @@ var init = function(){
         url: utils.concatGameKey('/api/game/gameInit'),
         type: 'GET',
         success: function(json){
-            app._data.game_name = json.game_name;
-            app._data.periods = json.last_issue;
-            app._data.periods_number = json.last_num;
             app._data.level = json.dish;
             app._data.nowPeriods = json.issue;
             app._data.close_time = json.close_time;
+            app._data.tabContent = json.status;
             timeInterval(json.count_down);
         } 
     })
@@ -140,9 +138,8 @@ function timeInterval(time) {
             if(time <= 0){
                 console.log('timeout: 0')
                 window.clearInterval(interval);
-                // refresh_data = [];
-                // init();
-                // break;
+                refresh_data = [];
+                init();
             }
     }, 1000);
 }
@@ -163,13 +160,26 @@ function confirmInit() {
     tableLength.text(tableData.length);
 }
 
+function getLastPeriods(){
+    utils.getAjax({
+        url: utils.concatGameKey('/api/game/lastNum'),
+        type: 'GET',
+        success: function(json){
+            app._data.periods = json.periods;
+            app._data.periods_number = json.number;
+            
+        }
+    })
+}
+
 // 设置基础信息的 为乐方便
 var app = new Vue({
-    el: '#layoutBody',
+    el: '#main',
     data: {
         periods: '', //最新期数
         periods_number: '', // 最新开奖结果
         tab: 0, // 0->游戏 1->规则
+        tabContent: 1, // 0->停盘 1->开盘
         quickImport: '', // 快速输入
         level: [],
         levelValue: '/index/game/jlk3-A',
@@ -184,7 +194,7 @@ var app = new Vue({
             window.location = this.levelValue;
         }
     }
-})
+});
 
 $(function(){
     /* ************* 限制投注输入框 ************** */
@@ -267,6 +277,11 @@ $(function(){
 
     /* ************* 哈 ************** */
     init();
+    getLastPeriods();
+    window.setInterval(function(){
+        getLastPeriods();
+    }, 10000);
+   
     
 })
 

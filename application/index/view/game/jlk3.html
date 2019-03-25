@@ -20,7 +20,7 @@
             <!-- 左侧人物信息 -->
             {include file="public/slidebar"}
             <!-- 右侧内容信息 -->
-            <div class="layout-body" id="layoutBody">
+            <div v-if="tabContent == 1" class="layout-body" id="layoutBody">
                 <!-- 上部分 -->
                 <div class="page-content-title">
                     <span>第</span>
@@ -665,6 +665,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div v-else-if="tabContent == 0" class="layout-body">
+                <div class="loadBox">
+                    <h4><span>吉林快3</span>&nbsp;&nbsp;&nbsp;下一期:&nbsp;&nbsp;&nbsp;<span style="color:#27AD9C;">{{nowPeriods}}</span>&nbsp;&nbsp;&nbsp;开盘时间:&nbsp;&nbsp;&nbsp;<span style="color:#27AD9C;">{{close_time}}</span></h4>
+                    <h4>距离开盘时间还有:&nbsp;&nbsp;<span style="color:#27AD9C;">{{count_down}}</span></h4>
+                </div>
+                    
             </div>
         </div>
     </div>
