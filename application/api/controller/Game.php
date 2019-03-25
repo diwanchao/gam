@@ -114,8 +114,8 @@ class Game extends Base
             'close_time' => '22:40:00',
             'status'     => $a,
             'dish'       => [
-                ['name'=>'A','url'=>'/index/game/jlk3-A'],
-                ['name'=>'B','url'=>'/index/game/jlk3-B'],
+                ['key'=>'A'],
+                ['key'=>'B'],
             ]
 
         ];
