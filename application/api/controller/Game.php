@@ -36,7 +36,6 @@ class Game extends Base
         {
             if ($game_key=='jlk3') 
             {
-                # code...
                 foreach ($data as $key => $value) 
                 {
                     $sum                            = 0;
@@ -63,27 +62,6 @@ class Game extends Base
 
         ];
 
-/*
-        var_dump($data);die();
-
-
-        if ('ssc' == $game_key) {
-            $data = [
-                'total'=>10,
-                'data'=>[
-                    ['no'=>1,'week'=>'日','time'=>'2019-11-11','content'=>'12345','tenThousand'=>'小双合','thousand'=>'小单质','hundred'=>'大单合','ten'=>'小双合','one'=>'大双合'],
-                    ['no'=>1,'week'=>'日','time'=>'2019-11-11','content'=>'12345','tenThousand'=>'小双合','thousand'=>'小双合','hundred'=>'大双合','ten'=>'小双合','one'=>'大双合'],
-                ]
-            ];
-        }else{
-            $data = [
-                'total'=>10,
-                'data'=>[
-                    ['no'=>1,'week'=>'日','time'=>'2019-11-11','content'=>'123','sum'=>11,'oddEven'=>'单','bigSmall'=>'小'],
-                    ['no'=>1,'week'=>'日','time'=>'2019-11-11','content'=>'123','sum'=>11,'oddEven'=>'单','bigSmall'=>'大'],
-                ]
-            ];
-        }*/
         return json(['msg' => 'succeed','code' => 200, 'data' => $return]);
 
     }
@@ -131,9 +109,9 @@ class Game extends Base
 
         $data = [
             'issue'      => '20190324-12',
-            'count_down' => '600',
+            'count_down' => '60',
             'close_time' => '22:40:00',
-            'status'     => 0,
+            'status'     => 1,
             'dish'       => [
                 ['name'=>'A','url'=>'/index/game/jlk3-A'],
                 ['name'=>'B','url'=>'/index/game/jlk3-B'],
@@ -146,7 +124,6 @@ class Game extends Base
     public function lastNum()
     {
         $game_key   = Request::instance()->param('game_key'); 
-
 
         $data = [
             'periods'       => '20190324-11',
