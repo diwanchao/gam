@@ -582,43 +582,6 @@
                                 </tbody>
                             </table>
                         </div>
-
-                        <!-- 确认投注 -->
-                        <div class="h-modal" id="confirmModal" data-width="450">
-                            <div class="h-modal-title">
-                                <h5>下注内容</h5>
-                                <span class="h-modal-close" data-methods="close">&times;</span>
-                            </div>
-                            <div class="h-modal-body">
-                                <p>您下注的是&nbsp;[{{game_name}}]&nbsp;[{{levelName}}]</p>
-                                <table class="h-table" cellspacing="0" cellpadding="0" border="0">
-                                    <thead>
-                                        <tr>
-                                            <th>下注方式</th>
-                                            <th>下注内容</th>
-                                            <th>赔率</th>
-                                            <th>下注金额</th>
-                                            <th>状态</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="(item, index) in confirmTable">
-                                            <td>{{item.name}}</td>
-                                            <td>{{item.sub_name}}</td>
-                                            <td>{{item.odds}}</td>
-                                            <td>{{item.value}}</td>
-                                            <td><span class="f-c-red">稍等</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <p>共：&nbsp;<b>{{confirmTable.length}}</b>&nbsp;合计：&nbsp;<b class="moneyTotal"></b>&nbsp;</p>
-                            </div>
-                            <div class="h-modal-footer">
-                                <span class="h-modal-button submit" data-methods="submit">确认下注</span>
-                                <span class="h-modal-button cancel" data-methods="close">取消</span>
-                            </div>
-                        </div>
-                        
                         <!-- 游戏规则 -->
                         <div v-show="tab == 1" class="rule">
                             <div class="rule-content rule-k3">
