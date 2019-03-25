@@ -167,6 +167,7 @@ function getLastPeriods(){
         success: function(json){
             app._data.periods = json.periods;
             app._data.periods_number = json.number;
+            app._data.tabContent = json.status;
         }
     })
 }
