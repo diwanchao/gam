@@ -137,9 +137,9 @@ function timeInterval(time) {
             if(time <= 0){
                 console.log('timeout: 0')
                 window.clearInterval(interval);
-                // refresh_data = [];
-                // init();
-                // break;
+                refresh_data = [];
+                init();
+                break;
             }
     }, 1000);
 }
@@ -178,6 +178,7 @@ var app = new Vue({
         periods: '', //最新期数
         periods_number: '', // 最新开奖结果
         tab: 0, // 0->游戏 1->规则
+        tabContent: 1, // 0->停盘 1->开盘
         quickImport: '', // 快速输入
         level: [],
         levelValue: '/index/game/jlk3-A',
