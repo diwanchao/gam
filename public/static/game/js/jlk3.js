@@ -5,6 +5,8 @@ var quickValue = '';
 
 var confirmModal = new H_modal('#confirmModal');
 
+var tableData = [];
+
 function setNumber(key){
     var elementList = $('[data-item='+ key +']');
     if($.inArray(key, selectedAry) == -1){ // 不存在
@@ -118,17 +120,17 @@ function timeInterval(time) {
     }, 1000);
 }
 
-function confirmInit(data) {
+function confirmInit() {
     var ele = $('#confirmModal');
     var tbody = ele.find('.confirmTbody').empty();
     var tableLength = ele.find('.table-length');
     var html = ''
 
-    for(var i = 0 ; i < data.length; i++) {
-        html += '<tr><td>'+ data[i].name +'</td><td>'+ data[i].sub_name +'</td><td>'+ data[i].odds +'</td><td>'+ data[i].value +'</td></tr>';
+    for(var i = 0 ; i < tableData.length; i++) {
+        html += '<tr><td>'+ tableData[i].name +'</td><td>'+ tableData[i].sub_name +'</td><td>'+ tableData[i].odds +'</td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
     }
     tbody.append(html);
-    tableLength.text(data.length);
+    tableLength.text(tableData.length);
 }
 
 var app = new Vue({
@@ -145,7 +147,7 @@ var app = new Vue({
         nowPeriods: '',
         close_time: '',
         count_down: '',
-        confirmTable: [], // 啥用没有
+        // confirmTable: [], // 啥用没有/
     },
     methods: {
         levelChange: function(){
@@ -212,14 +214,13 @@ $(function(){
     })
 
     $('.submit').bind('click', function(){
-        var data = getData()
-        confirmInit(data);
-        app._data.confirmTable = data;
+        tableData = getData();
+        confirmInit();
         confirmModal.show();
     });
 
     confirmModal.on('bs-beforeSubmit', function(){
-        console.log(app._data.confirmTable);
+        console.log(tableData);
     });
 
 
