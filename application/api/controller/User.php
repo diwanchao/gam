@@ -202,27 +202,57 @@ class User extends Base
 
     public function settlementDetail()
     {
+        $total = $money = $school = $break = $get = 0;
         //game_key
         //date 时间 字符串
-        $game_key   = Request::instance()->param('game_key'); 
-        $date       = Request::instance()->param('date');
-    
-        $where      = $game_key ? "game_key='{$game_key}'" : '1=1';
+        $return_data= [];
+        $page       = Request::instance()->param('index',1);
+        $page_row   = 10;
+        $game_key   = Request::instance()->param('game_key',''); 
+        $date       = Request::instance()->param('date','');
+        $where      = $game_key ? "where game_key='{$game_key}'" : 'where 1=1';
         $where      .= " and user_id='{$this->USER_ID}' and DATE_FORMAT(time,'%Y-%m-%d')='{$date}'";
-
-        $res = Db::name('order')->where($where)->order('time desc')->paginate(10,false,['var_page'=>'index']);
-
-        var_dump($res);die();
+        $count      = Db::query("select count(1) as count FROM `order` {$where}");
+        $total      = $count[0]['count'];
+        if ($total) 
+        {
+            $star       = $page*$page_row-$page_row;
+            $end        = $page*$page_row;
+            $sql        = "select * FROM `order` {$where} order by time desc limit {$star},{$end}";
+            $res        = Db::query($sql);
+            if ($res) {
+                foreach ($res as $key => $value) {
+                    $money  += $value['money'];
+                    $school += $value['handsel'];
+                    $break  += $value['break'];
+                    $get    += $value['get'];
+                    $data = [
+                        'no'    => $key+1,
+                        'time'  => $value['time'],
+                        'number'=> $value['no'],
+                        'part'  =>$value['part'],
+                        'content'=>$value['play_name'],
+                        'name'=> $game_key ='jlk3' ? '吉林快3' : '重庆时时彩',
+                        'periods'=>$value['number'],
+                        'value'=>$value['content'],
+                        'reate'=>$value['odds'],
+                        'result'=> implode(',',str_split($value['game_result'])),
+                        'money'=>$value['money'],
+                        'school'=>$value['handsel'],
+                        'break'=>$value['break'],
+                        'get'=>$value['get'],
+                    ];
+                    $return_data[] = $data;
+                }
+            }
+        }
         $data = [
-            'total'=>23,
-            'money'=>123,
-            'school'=>11,
-            'break'=>11,
-            'get'=>11,
-            'data'=>[
-                ['no'=>1,'time'=>date('Y-m-d H:i:s',time()),'number'=>'112','part'=>'龙湖畔','content'=>'和值大小','name'=>'吉林快3','periods'=>'2910231','value'=>'小','reate'=>'1.98','result'=>'3,2,4','money'=>'100','school'=>'0','break'=>'200','get'=>'3000'],
-                ['no'=>1,'time'=>date('Y-m-d H:i:s',time()),'number'=>'112','part'=>'龙湖畔','content'=>'和值大小','name'=>'吉林快3','periods'=>'2910231','value'=>'小','reate'=>'1.98','result'=>'3,2,4','money'=>'100','school'=>'0','break'=>'200','get'=>'3000']
-            ]
+            'total'=>$total,
+            'money'=>$money,
+            'school'=>$school,
+            'break'=>$break,
+            'get'=>$get,
+            'data'=>$return_data,
 
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
