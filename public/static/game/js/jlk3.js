@@ -212,8 +212,9 @@ $(function(){
     })
 
     $('.submit').bind('click', function(){
-        confirmInit();
-        app._data.confirmTable = getData();
+        var data = getData()
+        confirmInit(data);
+        app._data.confirmTable = data;
         confirmModal.show();
     });
 
