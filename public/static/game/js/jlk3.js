@@ -121,6 +121,7 @@ var init = function(){
             app._data.level = json.dish;
             app._data.nowPeriods = json.issue;
             app._data.close_time = json.close_time;
+            app._data.tabContent = json.status;
             timeInterval(json.count_down);
         } 
     })
@@ -166,7 +167,7 @@ function getLastPeriods(){
         success: function(json){
             app._data.periods = json.periods;
             app._data.periods_number = json.number;
-            app._data.tabContent = json.status;
+            
         }
     })
 }
