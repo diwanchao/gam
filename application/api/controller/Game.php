@@ -127,12 +127,10 @@ class Game extends Base
     {
 
         $data = [
-            'last_issue' => '20190324-11',
-            'last_num'   => '123',
             'issue'      => '20190324-12',
             'count_down' => '600',
             'close_time' => '22:40:00',
-            'game_name'  => '吉林快3',
+            'status'     => 0,
             'dish'       => [
                 ['name'=>'A','url'=>'/index/game/jlk3-A'],
                 ['name'=>'B','url'=>'/index/game/jlk3-B'],

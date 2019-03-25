@@ -81,8 +81,8 @@ class Home extends Base
         if ($game_key) 
         {
             $data['subGame'] = [
-                ['name'=>'三军', 'key'=>'ssc','url'=>'/'],
-                ['name'=>'和值', 'key'=>'ssc','url'=>'/'],
+                ['name'=>'(三军,和值,其他)', 'key'=>'ssc','url'=>'/'],
+                ['name'=>'(三同号单选,二同号复选,二同号复选,三不同号,二不同号)', 'key'=>'ssc','url'=>'/'],
             ];
         }
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
