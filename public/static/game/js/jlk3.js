@@ -3,6 +3,8 @@ var selectedAry = [];
 
 var quickValue = '';
 
+var confirmModal = new H_modal('#confirmModal');
+
 function setNumber(key){
     var elementList = $('[data-item='+ key +']');
     if($.inArray(key, selectedAry) == -1){ // 不存在
@@ -126,9 +128,11 @@ var app = new Vue({
         quickImport: '', // 快速输入
         level: [],
         levelValue: '/index/game/jlk3-A',
+        levelName: 'A盘',
         nowPeriods: '',
         close_time: '',
-        count_down: ''
+        count_down: '',
+        confirmTable: [],
     },
     methods: {
         levelChange: function(){
@@ -195,10 +199,14 @@ $(function(){
     })
 
     $('.submit').bind('click', function(){
-
-        console.log(getData());
-
+        app._data.confirmTable = getData();
+        confirmModal.show();
     });
+
+    confirmModal.on('bs-beforeSubmit', function(){
+        console.log(app._data.confirmTable);
+    });
+
 
     init();
     

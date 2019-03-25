@@ -1,0 +1,124 @@
+.h-modal-opacity{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #333;
+    opacity: 0;
+    transition: opacity .2s linear;
+}
+.h-modal-opacity.show{
+    opacity: .7;
+    z-index: 1050;
+}
+.h-modal{
+    position: fixed;
+    top:-100%;
+    left: 50%;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    width: 500px;
+    margin-left: -250px;
+    z-index: 1050;
+    padding-left: 15px;
+    padding-right: 15px;
+    opacity: 0;
+    transition: opacity 0.3s linear, top 0.3s ease-out, bottom 0.3s ease-out, margin-top 0.3s ease-out;
+}
+.h-modal.show{
+    top:50%;
+    opacity: 1;
+}
+.h-modal-title{
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+.h-modal-title > h5{
+    font-size: 17px;
+    position: relative;
+    line-height: 1;
+    margin: 0;
+}
+.h-modal-title.line > h5{
+    padding-left: 13px;
+}
+.h-modal-title.line > h5::before{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 17px;
+    background: #F4A137;
+
+}
+.h-modal-title > .h-modal-close{
+    position: absolute;
+    right: 0px;
+    top: 13px;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #000;
+    background: transparent;
+    cursor: pointer;
+    transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+}
+.h-modal-title > .h-modal-close:hover{
+    background: #E4564F;
+    color: #fff;
+    transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+.h-modal-body{
+    padding: 15px 0;
+}
+.h-modal-footer{
+    text-align: right;
+    border-top: 1px solid #ddd;
+    padding: 15px 0;
+}
+.h-modal-button{
+    display: inline-block;
+    padding: 6px 14px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-align: center;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    -ms-transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+}
+.h-modal-button:hover{
+    background: #ddd;
+    border-color: #ccc;
+
+}
+.h-modal-button.submit{
+    color: #fff;
+    background: #478FCA;
+    border-color: rgb(44, 134, 207);
+}
+.h-modal-button.submit:hover{
+    background: rgb(30, 125, 202);
+    border-color: rgb(8, 121, 212);
+}

@@ -8,6 +8,7 @@
     <title>结算账户</title>
     <link rel="stylesheet" href="__STATIC__/style/bootstrap.min.css">
     <link rel="stylesheet" href="__STATIC__/style/public.css">
+    <link rel="stylesheet" href="__STATIC__/style/modal.css">
     <link rel="stylesheet" href="__STATIC__/game/style/jlk3.css">
 </head>
 
@@ -581,6 +582,41 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <!-- 确认投注 -->
+                        <div class="h-modal" id="confirmModal" data-width="450">
+                            <div class="h-modal-title">
+                                <h5>下注内容</h5>
+                                <span class="h-modal-close" data-methods="close">&times;</span>
+                            </div>
+                            <div class="h-modal-body">
+                                <p>您下注的是&nbsp;[{{game_name}}]&nbsp;[{{levelName}}]</p>
+                                <table class="h-table" cellspacing="0" cellpadding="0" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th>下注方式</th>
+                                            <th>下注内容</th>
+                                            <th>赔率</th>
+                                            <th>下注金额</th>
+                                            <th>状态</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(item, index) in confirmTable">
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.sub_name}}</td>
+                                            <td>{{item.odds}}</td>
+                                            <td>{{item.value}}</td>
+                                            <td><span class="f-c-red">稍等</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="h-modal-footer">
+                                <span class="h-modal-button submit" data-methods="submit">确认下注</span>
+                                <span class="h-modal-button cancel" data-methods="close">取消</span>
+                            </div>
+                        </div>
                         
                         <!-- 游戏规则 -->
                         <div v-show="tab == 1" class="rule">
@@ -668,9 +704,11 @@
             </div>
         </div>
     </div>
+    
 </body>
 <script src="__STATIC__/js/jquery-2.1.4.min.js"></script>
-<script src="/static/js/global.js"></script>
 <script src="/static/js/vue.min.js"></script>
+<script src="/static/js/global.js"></script>
+<script src="/static/js/modal.js"></script>
 <script src="/static/game/js/jlk3.js"></script>
 </html>
