@@ -127,7 +127,7 @@ class User extends Base
 
         $game_key   = Request::instance()->param('game_key'); 
         $where      = $game_key ? "where game_key='{$game_key}'" : 'where 1=1';
-        $where      .= " and `time`>='{$week[0]}' and `time`<='{$week[6]}'";
+        $where      .= " and user_id='{$this->USER_ID}' and `time`>='{$week[0]}' and `time`<='{$week[6]}'";
 
         $sql = "SELECT DATE_FORMAT(time,'%Y-%m-%d') AS date,COUNT(no) AS single,SUM(money) AS money,SUM(handsel) AS school,SUM(break) AS break,SUM(get) AS get FROM `order` {$where} GROUP BY date ORDER BY date ASC";
         $data = Db::query($sql);
@@ -203,10 +203,15 @@ class User extends Base
     public function settlementDetail()
     {
         //game_key
-        //index
         //date 时间 字符串
+        $game_key   = Request::instance()->param('game_key'); 
+        $date       = Request::instance()->param('date');
+    
+        $where      = $game_key ? "where game_key='{$game_key}'" : 'where 1=1';
+        $where      .= " and user_id='{$this->USER_ID}' and DATE_FORMAT(time,'%Y-%m-%d')='{$date}'";
 
-
+        $res = Db::name('order')->where($where)->order('time desc')->paginate(10,false,['var_page'=>'index'])
+        var_dump($res);die();
         $data = [
             'total'=>23,
             'money'=>123,
