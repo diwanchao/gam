@@ -113,10 +113,15 @@ function getData() {
 /**
  * 初始化 获取基础信息
  */
+var a = 0;
 var init = function(){
+    a = (a == 0 ? 1 : 0);
     utils.getAjax({
         url: utils.concatGameKey('/api/game/gameInit'),
         type: 'GET',
+        data:{
+            a: a,
+        },
         success: function(json){
             app._data.level = json.dish;
             app._data.nowPeriods = json.issue;
