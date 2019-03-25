@@ -127,7 +127,7 @@ function confirmInit() {
     var html = ''
 
     for(var i = 0 ; i < tableData.length; i++) {
-        html += '<tr><td>'+ tableData[i].name +'</td><td>'+ tableData[i].sub_name +'</td><td>'+ tableData[i].odds +'</td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
+        html += '<tr><td>'+ tableData[i].name +'</td><td>'+ tableData[i].sub_name +'</td><td><b class="f-s-16 f-c-red">'+ tableData[i].odds +'</b></td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
     }
     tbody.append(html);
     tableLength.text(tableData.length);
