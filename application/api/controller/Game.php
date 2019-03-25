@@ -140,10 +140,23 @@ class Game extends Base
             ]
 
         ];
-
-
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
+
+    public function lastNum()
+    {
+        $game_key   = Request::instance()->param('game_key'); 
+
+
+        $data = [
+            'periods'       => '20190324-11',
+            'number'        => '236',
+        ];
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+    }
+
+
+
     /**
      * @SWG\Post(
      *   path="/api/game/addBet",
