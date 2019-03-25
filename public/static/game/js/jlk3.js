@@ -139,7 +139,6 @@ function timeInterval(time) {
                 window.clearInterval(interval);
                 refresh_data = [];
                 init();
-                break;
             }
     }, 1000);
 }
