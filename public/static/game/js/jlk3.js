@@ -97,7 +97,7 @@ var init = function(){
             app._data.nowPeriods = json.issue;
             app._data.close_time = json.close_time;
             timeInterval(json.count_down);
-        }
+        } 
     })
 }
 
