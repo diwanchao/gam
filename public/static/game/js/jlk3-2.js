@@ -6,6 +6,9 @@
  
  // 快速输入 值
  var quickValue = '';
+
+ // 分盘
+var levelValue = 'A';
  
  // 确认投注弹出框
  var confirmModal = new H_modal('#confirmModal');
@@ -126,7 +129,7 @@
              app._data.level = json.dish;
              app._data.nowPeriods = json.issue;
              app._data.close_time = json.close_time;
-             app._data.tabContent = json.status;
+            //  app._data.tabContent = json.status;
              timeInterval(json.count_down);
          } 
      })
@@ -187,7 +190,7 @@
          tabContent: 1, // 0->停盘 1->开盘
          quickImport: '', // 快速输入
          level: [],
-         levelValue: '/index/game/jlk3-A',
+         levelValue: 'A',
          // levelName: 'A盘',
          nowPeriods: '',
          close_time: '',
@@ -196,7 +199,7 @@
      },
      methods: {
          levelChange: function(){
-             window.location = this.levelValue;
+            levelValue = this.levelValue;
          }
      }
  });
