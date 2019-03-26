@@ -108,7 +108,7 @@ class Home extends Base
         $game_key       = Request::instance()->param('game_key');
 
         $user_data  = Db::name('menber')->field('user_name,blance')->where('id=?',[$this->USER_ID])->find();
-        $bet        = Db::name('order')->field('time,content,odds,money')->where('user_id=? and game_key=? and number=?',[$this->USER_ID,$game_key,$game_version])->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        $bet        = Db::name('order')->field('time,content,odds,money,play_name')->where('user_id=? and game_key=? and number=?',[$this->USER_ID,$game_key,$game_version])->order('time desc')->paginate(10,false,['var_page'=>'index']);
         $num        = Db::name('lottery_record')->field('lottery_date as date,lottery_num as content')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')=?",[$game_key,date('Y-m-d',time())])->select();
 
         $data = [
