@@ -213,14 +213,14 @@ var levelValue = 'A';
      });
  
      /* ************* 限制红黑码只能选择4种 ************** */
-     $('[data-key=hongheima]').find('input[type=checkbox]').each(function() {
-         $(this).bind('click', function(e){
-             if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
-                 e.preventDefault();
-                 alert('不能超过4项');
-             }
-         })
-     })
+    //  $('[data-key=hongheima]').find('input[type=checkbox]').each(function() {
+    //      $(this).bind('click', function(e){
+    //          if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
+    //              e.preventDefault();
+    //              alert('不能超过4项');
+    //          }
+    //      })
+    //  })
  
      /* ************* 点击下注弹出确认下注 ************** */
      $('.submit').bind('click', function(){
