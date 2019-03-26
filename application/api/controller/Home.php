@@ -47,7 +47,7 @@ class Home extends Base
         {
             $data['subGame'] = [
                 ['name'=>'(三军,和值,其他)', 'key'=>'jlk3','url'=>'/index/game/jlk3'],
-                ['name'=>'(三同号单选,二同号复选,二同号复选,三不同号,二不同号)', 'key'=>'jlk3','url'=>'/index/game/jlk32'],
+                ['name'=>'(三同号单选,二同号复选,二同号单选,三不同号,二不同号)', 'key'=>'jlk3','url'=>'/index/game/jlk32'],
             ];
         }
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);

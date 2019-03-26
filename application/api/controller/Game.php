@@ -189,6 +189,11 @@ class Game extends Base
             '4码黑'=>'4码黑',
             '4码红'=>'4码红',
             '5码黑'=>'5码黑',
+            '三同号单选'=>'三同号单选',
+            '二同号复选'=>'二同号复选',
+            '二同号单选'=>'二同号单选',
+            '三不同号'=>'三不同号',
+            '二不同号'=>'二不同号',
         ];
 
         $game_key   = Request::instance()->param('game_key',''); 
@@ -237,8 +242,6 @@ class Game extends Base
                 } catch (Exception $e) {
                     Db::rollback();
                 }
-
-
             }
         }
 
