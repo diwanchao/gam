@@ -199,6 +199,14 @@ var app = new Vue({
         close_time: '',
         count_down: '',
         // confirmTable: [], // 啥用没有/
+        samjun: [
+            {key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', A: 1.98, B: 1.98, C: 2.005, D: 2.005, value:''},
+            {key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', A: 1.98, B: 1.98, C: 2.005, D: 2.005, value:''},
+            {key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', A: 1.98, B: 1.98, C: 2.005, D: 2.005, value:''},
+            {key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', A: 1.98, B: 1.98, C: 2.005, D: 2.005, value:''},
+            {key: 'samjun', name: '三军', sub_key: '5', sub_name: '5', A: 1.98, B: 1.98, C: 2.005, D: 2.005, value:''},
+            {key: 'samjun', name: '三军', sub_key: '6', sub_name: '6', A: 1.98, B: 1.98, C: 2.005, D: 2.005, value:''},
+        ]
     },
     methods: {
         levelChange: function(){
@@ -264,7 +272,7 @@ $(function(){
             }
         })
     });
-    v
+
     $('#simahong').find('input[type=checkbox]').each(function() {
         $(this).bind('click', function(e){
             if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
