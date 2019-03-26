@@ -74,8 +74,8 @@ class Home extends Base
             'notice'     => $first_notice,
             'macau_time' => time(),
             'game'       => [
-                ['name' => '吉林快3', 'key' => 'jlk3', 'url'=>'/'],
-                ['name' => '时时彩', 'key' => 'ssc', 'url'=>'/'],
+                ['name' => '吉林快3', 'key' => 'jlk3', 'url'=>'/index/game/jlk3'],
+                ['name' => '时时彩', 'key' => 'ssc', 'url'=>'/index/game/jlssc'],
             ],
         ];
         if ($game_key) 
@@ -166,60 +166,53 @@ class Home extends Base
      */
     public function gameInfo()
     {
-        $h = date('H',time());
-        $i = date('i',time());
-        $s = date('s',time());
-        $k3_status = 0;
+            $h = date('H',time());
+            $i = date('i',time());
+            $s = date('s',time());
+            $k3_status = 0;
 
-
-        if ($h>=8&&$h<=21) {
-            switch ($i) {
-                case $i>=0&&$i<18:
-                    $k3_status=1;
-                    $k3_time = strtotime(date('Y-m-d H:18:00',time())) - time();
-                    break;
-                case $i>=18&&$i<20:
-                    $k3_status=0;
-                    $k3_time = strtotime(date('Y-m-d H:20:00',time())) - time();
-                    break;
-                case $i>=20&&$i<38:
-                    $k3_status=1;
-                    $k3_time = strtotime(date('Y-m-d H:38:00',time())) - time();
-                    break;
-                case $i>=38&&$i<40:
-                    $k3_status=0;
-                    $k3_time = strtotime(date('Y-m-d H:40:00',time())) - time();
-                    break;                
-                case $i>=40&&$i<58:
-                    $k3_status=1;
-                    $k3_time = strtotime(date('Y-m-d H:58:00',time())) - time();
-                    break;                
-                case $i>=58&&$i<60:
-                    $k3_status=0;
-                    $k3_time = strtotime(date('Y-m-d H:00:00',time())) + 3600 - time();
-                    break;                
-                
-                default:
-                    # code...
-                    break;
+            if ($h>=8&&$h<=21) {
+                switch ($i) {
+                    case $i>=0&&$i<18:
+                        $k3_status=1;
+                        $k3_time = strtotime(date('Y-m-d H:18:00',time())) - time();
+                        break;
+                    case $i>=18&&$i<20:
+                        $k3_status=0;
+                        $k3_time = strtotime(date('Y-m-d H:20:00',time())) - time();
+                        break;
+                    case $i>=20&&$i<38:
+                        $k3_status=1;
+                        $k3_time = strtotime(date('Y-m-d H:38:00',time())) - time();
+                        break;
+                    case $i>=38&&$i<40:
+                        $k3_status=0;
+                        $k3_time = strtotime(date('Y-m-d H:40:00',time())) - time();
+                        break;                
+                    case $i>=40&&$i<58:
+                        $k3_status=1;
+                        $k3_time = strtotime(date('Y-m-d H:58:00',time())) - time();
+                        break;                
+                    case $i>=58&&$i<60:
+                        $k3_status=0;
+                        $k3_time = strtotime(date('Y-m-d H:00:00',time())) + 3600 - time();
+                        break;                
+                    
+                    default:
+                        # code...
+                        break;
+                }
             }
-        }
-        if (time()<strtotime(date('Y-m-d 08:40:00',time()))) 
-        {
-            $k3_status  = 0;
-            $k3_time    = strtotime(date('Y-m-d 08:40:00',time())) - time();
-        }
-        if (time()>strtotime(date('Y-m-d 21:40:00',time()))) 
-        {
-            $k3_status  = 0;
-            $k3_time    = strtotime(date('Y-m-d 08:40:00',strtotime("+1 day"))) - time();
-        }
-
-
-
-
-
-
+            if (time()<strtotime(date('Y-m-d 08:40:00',time()))) 
+            {
+                $k3_status  = 0;
+                $k3_time    = strtotime(date('Y-m-d 08:40:00',time())) - time();
+            }
+            if (time()>strtotime(date('Y-m-d 21:40:00',time()))) 
+            {
+                $k3_status  = 0;
+                $k3_time    = strtotime(date('Y-m-d 08:40:00',strtotime("+1 day"))) - time();
+            }
 
             $data = [
                 'k3'=>[
