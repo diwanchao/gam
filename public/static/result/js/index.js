@@ -147,7 +147,7 @@ $(function(){
                 var html = '';
                 if($.isArray(gameList) && gameList.length){
                     if(!ENV.game_key){
-                        ENV.game_key = gameList[0].key;
+                        ENV.game_key = gameList[0].game_key;
                     }
         
                     for(var i = 0; i < gameList.length; i++){
@@ -156,6 +156,7 @@ $(function(){
                 }
                 return html;
             }).val(ENV.game_key);
+            init();
         }
     });
 
@@ -166,5 +167,5 @@ $(function(){
         init();
     });
     
-    init();
+    
 });
