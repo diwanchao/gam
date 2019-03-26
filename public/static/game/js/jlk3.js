@@ -63,7 +63,7 @@ function getData() {
     $('[data-name=begin-table] input[type=text]').each(function(){
         var data;
         if(this.value){
-            data = new Function("return" + $(this).data('item'))();
+            data = new Function("return" + $(this).attr('data-item'))();
             data.value = this.value;
             ary.push(data);
         }
@@ -76,7 +76,7 @@ function getData() {
             key += this.name;
         });
 
-        data = new Function("return" + $('#simahei').find('input[type=text]').data('item'))();
+        data = new Function("return" + $('#simahei').find('input[type=text]').attr('data-item'))();
         data.value = $('#simahei').find('input[type=text]').val();
         data['sub_key'] = key;
         data['sub_name'] = key;
@@ -90,7 +90,7 @@ function getData() {
             key += this.name;
         });
 
-        data = new Function("return" + $('#simahong').find('input[type=text]').data('item'))();
+        data = new Function("return" + $('#simahong').find('input[type=text]').attr('data-item'))();
         data.value = $('#simahong').find('input[type=text]').val();
         data['sub_key'] = key;
         data['sub_name'] = key;
@@ -104,7 +104,7 @@ function getData() {
             key += this.name;
         });
 
-        data = new Function("return" + $('#wumahei').find('input[type=text]').data('item'))();
+        data = new Function("return" + $('#wumahei').find('input[type=text]').attr('data-item'))();
         data.value = $('#wumahei').find('input[type=text]').val();
         data['sub_key'] = key;
         data['sub_name'] = key;
