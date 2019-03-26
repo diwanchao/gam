@@ -113,6 +113,40 @@
                                             <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', odds: 2.005}">
                                         </td>
                                     </tr>
+                                    <!-- <tr>
+                                        <template v-for="">
+                                            <th :data-item="'SJ_N_' + samjun[]" onclick="setNumber('SJ_N_4')">4</th>
+                                            <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
+                                            </td>
+                                            <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
+                                                <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 2.005}">
+                                                <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 2.005}">
+                                            </td>
+                                        </template>
+                                    </tr> -->
+                                    <!-- <tr v-for="index in 2">
+                                        <template v-for="index2 in 3">
+                                            <th :data-item="'SJ_N_' + samjun[]" onclick="setNumber('SJ_N_4')">4</th>
+                                            <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
+                                            </td>
+                                            <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
+                                                <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 2.005}">
+                                                <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 2.005}">
+                                            </td>
+                                        </template>
+                                    </tr> -->
                                     <tr>
                                         <th data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">4</th>
                                         <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
