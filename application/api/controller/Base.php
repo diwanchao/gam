@@ -10,6 +10,8 @@ class Base extends Controller
 
 	function __construct() 
 	{
+        parent::__construct();
+        
         if (Session::get('is_login')) 
         {
         	$this->USER_ID = Session::get('user_id');	
