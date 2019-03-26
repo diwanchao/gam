@@ -1,6 +1,6 @@
 <?php
 namespace app\index\controller;
-//use app\index\controller\Base;
+use app\index\controller\Base;
 //use think\Controller;
 
 
