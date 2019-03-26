@@ -13,6 +13,9 @@ var init = function(){
     utils.getAjax({
         url: utils.concatGameKey('/api/user/getList'),
         type: 'POST',
+        data: {
+            index: p
+        },
         success: function(json){
             tablePage.init({total: json.total});
             render(json.data);
