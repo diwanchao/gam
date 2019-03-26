@@ -285,6 +285,9 @@ $(function(){
     /* ************* 点击下注弹出确认下注 ************** */
     $('.submit').bind('click', function(){
         tableData = getData();
+        if(!tableData.length){
+            return alert('请下注！');
+        }
 
         for(var i = 0; i < tableData.length; i++) {
             // 4码黑必须选择4个号码！
