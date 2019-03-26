@@ -142,7 +142,7 @@ var levelValue = 'A';
  
  // 设置基础信息的 为乐方便
  var app = new Vue({
-     el: '#main',
+     el: '#layoutBody',
      data: {
          periods: '', //最新期数
          periods_number: '', // 最新开奖结果
@@ -231,16 +231,20 @@ var levelValue = 'A';
  
      /* ************* 确认下注提交 ************** */
      confirmModal.on('bs-beforeSubmit', function(){
-         console.log(tableData);
-         utils.getAjax({
-             url: utils.concatGameKey('/api/game/addBet'),
-             type: 'POST',
-             data: tableData,
-             alert: true,
-             success: function(){
-                 history.go(0);
-             }
-         })
+        var data = tableData;
+        utils.getAjax({
+            url: utils.concatGameKey('/api/game/addBet'),
+            type: 'POST',
+            data: {
+                nowPeriods: app._data.nowPeriods,
+                level: levelValue,
+                data: tableData,
+            },
+            alert: true,
+            success: function(){
+                history.go(0);
+            }
+        })
      });
  
      /* ************* 哈 ************** */

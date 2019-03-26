@@ -19,877 +19,879 @@
         <div class="main" id="main">
             <!-- 左侧人物信息 -->
             {include file="public/slidebar"}
-            <!-- 右侧内容信息 -->
-            <div v-if="tabContent == 1" class="layout-body" id="layoutBody">
-                <!-- 上部分 -->
-                <div class="page-content-title">
-                    <span>第</span>
-                    <strong class="f-c-red">{{periods}}</strong>
-                    <span>开奖号码</span>
-                    <span v-for="(item,index) in periods_number" class="color-game" :class="'color' + item">{{item}}</span>
-                </div>
-                <!-- 切换 -->
-                <div class="clear-float select-wrapper">
-                    <strong class="sub-title m-r-15">投注类型</strong>
-                    <div @click="tab=0" class="select-item m-r-5" :class="(tab==0) ? 'active' : ''">一般</div>
-                    <div @click="tab=1" class="select-item" :class="(tab==1) ? 'active' : ''">游戏规则</div>
-                </div>
-                <div class="portlet">
-                    <div class="portlet-title clear-float">
-                        <span>吉林快3&nbsp;&nbsp;</span>
-                        <select @change="levelChange" v-model="levelValue" class="form-control changeGame">
-                            <option v-for="(item, index) in level" :value="item.key">{{item.key}}</option>
-                        </select>
-                        <span class="m-l-30">第<b class="f-c-red">{{nowPeriods}}</b>期</span>
-                        <span class="m-l-30">投注时间：<b class="f-c-red">{{count_down}}</b></span>
-                        <span class="m-l-30">停盘时间：<b>{{close_time}}</b></span>
-                        <div class="fast-import pull-right">
-                            <span>快速输入&nbsp;</span>
-                            <input type="text" class="form-control m-r-15 quickImport" v-model="quickImport">
-                            <a href="javascript:history.go(0);" class="h-btn btn-red">重新整理</a>
-                        </div>
+            <div class="layout-body" id="layoutBody">
+                <!-- 右侧内容信息 -->
+                <div v-if="tabContent == 1" >
+                    <!-- 上部分 -->
+                    <div class="page-content-title">
+                        <span>第</span>
+                        <strong class="f-c-red">{{periods}}</strong>
+                        <span>开奖号码</span>
+                        <span v-for="(item,index) in periods_number" class="color-game" :class="'color' + item">{{item}}</span>
                     </div>
-                    <div class="portlet-body">
-                        <div v-show="tab == 0" class="lobby">
-                            <!-- 第一项 -->
-                            <table class="h-table" data-name="begin-table" data-key="sanjun" cellspacing="0" cellpadding="0" border="0">
-                                <thead>
-                                    <tr>
-                                        <th colspan="100">三军(一同骰子=（赔率-1）X1、 二同骰子=（赔率-1）X2、 三同骰子=（赔率-1）X3)</th>
-                                    </tr>
-                                    <tr>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th data-item="SJ_N_1" onclick="setNumber('SJ_N_1')">1</th>
-                                        <td data-item="SJ_N_1" onclick="setNumber('SJ_N_1')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
-                                        </td>
-                                        <td data-item="SJ_N_1" onclick="setNumber('SJ_N_1')">
-                                            <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', odds: 1.98}">
-                                            <input v-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', odds: 1.98}">
-                                            <input v-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', odds: 2.005}">
-                                            <input v-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', odds: 2.005}">
-                                        </td>
-    
-                                        <th data-item="SJ_N_2" onclick="setNumber('SJ_N_2')">2</th>
-                                        <td data-item="SJ_N_2" onclick="setNumber('SJ_N_2')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
-                                        </td>
-                                        <td data-item="SJ_N_2" onclick="setNumber('SJ_N_2')">
-                                            <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', odds: 1.98}">
-                                            <input v-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', odds: 1.98}">
-                                            <input v-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', odds: 2.005}">
-                                            <input v-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', odds: 2.005}">
-                                        </td>
-    
-                                        <th data-item="SJ_N_3" onclick="setNumber('SJ_N_3')">3</th>
-                                        <td data-item="SJ_N_3" onclick="setNumber('SJ_N_3')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
-                                        </td>
-                                        <td data-item="SJ_N_3" onclick="setNumber('SJ_N_3')">
-                                            <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', odds: 1.98}">
-                                            <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', odds: 1.98}">
-                                            <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', odds: 2.005}">
-                                            <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', odds: 2.005}">
-                                        </td>
-                                    </tr>
-                                   
-                                    <tr>
-                                        <th data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">4</th>
-                                        <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
-                                        </td>
-                                        <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
-                                            <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 1.98}">
-                                            <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 1.98}">
-                                            <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 2.005}">
-                                            <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 2.005}">
-                                        </td>
-    
-                                        <th data-item="SJ_N_5" onclick="setNumber('SJ_N_5')">5</th>
-                                        <td data-item="SJ_N_5" onclick="setNumber('SJ_N_5')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
-                                        </td>
-                                        <td data-item="SJ_N_5" onclick="setNumber('SJ_N_5')">
-                                            <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '5', sub_name: '5', odds: 1.98}">
-                                            <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '5', sub_name: '5', odds: 1.98}">
-                                            <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '5', sub_name: '5', odds: 2.005}">
-                                            <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '5', sub_name: '5', odds: 2.005}">
-                                        </td>
-    
-                                        <th data-item="SJ_N_6" onclick="setNumber('SJ_N_6')">6</th>
-                                        <td data-item="SJ_N_6" onclick="setNumber('SJ_N_6')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
-                                        </td>
-                                        <td data-item="SJ_N_6" onclick="setNumber('SJ_N_6')">
-                                            <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '6', sub_name: '6', odds: 1.98}">
-                                            <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '6', sub_name: '6', odds: 1.98}">
-                                            <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '6', sub_name: '6', odds: 2.005}">
-                                            <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '6', sub_name: '6', odds: 2.005}">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!-- 第二项 -->
-                            <table class="h-table" data-name="begin-table" data-key="hezhi" cellspacing="0" cellpadding="0" border="0">
-                                <thead>
-                                    <tr>
-                                        <th colspan="100">合值</th>
-                                    </tr>
-                                    <tr>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                    </tr>
-                                    <tr>
-                                        <th data-item="HZ_N_3" onclick="setNumber('HZ_N_3')">3</th>
-                                        <td data-item="HZ_N_3" onclick="setNumber('HZ_N_3')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">181</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">181</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">181</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">190</b>
-                                        </td>
-                                        <td data-item="HZ_N_3" onclick="setNumber('HZ_N_3')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '3', sub_name: '3', odds: 190}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '3', sub_name: '3', odds: 181}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_4" onclick="setNumber('HZ_N_4')">4</th>
-                                        <td data-item="HZ_N_4" onclick="setNumber('HZ_N_4')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">61</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">61</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">61</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">63</b>
-                                        </td>
-                                        <td data-item="HZ_N_4" onclick="setNumber('HZ_N_4')">
-                                            <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '4', sub_name: '4', odds: 61}">
-                                            <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '4', sub_name: '4', odds: 61}">
-                                            <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '4', sub_name: '4', odds: 61}">
-                                            <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '4', sub_name: '4', odds: 63}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_5" onclick="setNumber('HZ_N_5')">5</th>
-                                        <td data-item="HZ_N_5" onclick="setNumber('HZ_N_5')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">31</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">31</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">31</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">31.5</b>
-                                        </td>
-                                        <td data-item="HZ_N_5" onclick="setNumber('HZ_N_5')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '5', sub_name: '5', odds: 31.5}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '5', sub_name: '5', odds: 31}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_6" onclick="setNumber('HZ_N_6')">6</th>
-                                        <td data-item="HZ_N_6" onclick="setNumber('HZ_N_6')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">19</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">19</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">19</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">19.5</b>
-                                        </td>
-                                        <td data-item="HZ_N_6" onclick="setNumber('HZ_N_6')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '6', sub_name: '6', odds: 19.5}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '6', sub_name: '6', odds: 19}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_7" onclick="setNumber('HZ_N_7')">7</th>
-                                        <td data-item="HZ_N_7" onclick="setNumber('HZ_N_7')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">12.9</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">12.9</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">12.9</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">13</b>
-                                        </td>
-                                        <td data-item="HZ_N_7" onclick="setNumber('HZ_N_7')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '7', sub_name: '7', odds: 13}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '7', sub_name: '7', odds: 12.9}">
-                                        </td>
-                                    </tr>
-    
-                                    <tr>
-                                        <th data-item="HZ_N_8" onclick="setNumber('HZ_N_8')">8</th>
-                                        <td data-item="HZ_N_8" onclick="setNumber('HZ_N_8')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9.2</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.2</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.2</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.4</b>
-                                        </td>
-                                        <td data-item="HZ_N_8" onclick="setNumber('HZ_N_8')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '8', sub_name: '8', odds: 9.4}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '8', sub_name: '8', odds: 9.2}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_9" onclick="setNumber('HZ_N_9')">9</th>
-                                        <td data-item="HZ_N_9" onclick="setNumber('HZ_N_9')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.7</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.7</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.7</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">7.8</b>
-                                        </td>
-                                        <td data-item="HZ_N_9" onclick="setNumber('HZ_N_9')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-itcem="{key: 'hezhi', name: '合值', sub_key: '9', sub_name: '9', odds: 7.8}">
-                                            <input v-else class="gb" type="text" data-itcem="{key: 'hezhi', name: '合值', sub_key: '9', sub_name: '9', odds: 7.7}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_10" onclick="setNumber('HZ_N_10')">10</th>
-                                        <td data-item="HZ_N_10" onclick="setNumber('HZ_N_10')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.1</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.1</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.1</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">7.2</b>
-                                        </td>
-                                        <td data-item="HZ_N_10" onclick="setNumber('HZ_N_10')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '10', sub_name: '10', odds: 7.2}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '10', sub_name: '10', odds: 7.1}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_11" onclick="setNumber('HZ_N_11')">11</th>
-                                        <td data-item="HZ_N_11" onclick="setNumber('HZ_N_11')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.1</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.1</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.1</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">7.2</b>
-                                        </td>
-                                        <td data-item="HZ_N_11" onclick="setNumber('HZ_N_11')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '11', sub_name: '11', odds: 7.2}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '11', sub_name: '11', odds: 7.1}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_12" onclick="setNumber('HZ_N_12')">12</th>
-                                        <td data-item="HZ_N_12" onclick="setNumber('HZ_N_12')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.7</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.7</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.7</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">7.8</b>
-                                        </td>
-                                        <td data-item="HZ_N_12" onclick="setNumber('HZ_N_12')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '12', sub_name: '12', odds: 7.8}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '12', sub_name: '12', odds: 7.7}">
-                                        </td>
-                                    </tr>
-    
-                                    <tr>
-                                        <th data-item="HZ_N_13" onclick="setNumber('HZ_N_13')">13</th>
-                                        <td data-item="HZ_N_13" onclick="setNumber('HZ_N_13')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9.2</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.2</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.2</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.4</b>
-                                        </td>
-                                        <td data-item="HZ_N_13" onclick="setNumber('HZ_N_13')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '13', sub_name: '13', odds: 9.4}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '13', sub_name: '13', odds: 9.2}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_14" onclick="setNumber('HZ_N_14')">14</th>
-                                        <td data-item="HZ_N_14" onclick="setNumber('HZ_N_14')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">12.9</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">12.9</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">12.9</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">13</b>
-                                        </td>
-                                        <td data-item="HZ_N_14" onclick="setNumber('HZ_N_14')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '14', sub_name: '14', odds: 13}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '14', sub_name: '14', odds: 12.9}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_15" onclick="setNumber('HZ_N_15')">15</th>
-                                        <td data-item="HZ_N_15" onclick="setNumber('HZ_N_15')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">19</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">19</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">19</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">19.5</b>
-                                        </td>
-                                        <td data-item="HZ_N_15" onclick="setNumber('HZ_N_15')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '15', sub_name: '15', odds: 19.5}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '15', sub_name: '15', odds: 19}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_16" onclick="setNumber('HZ_N_16')">16</th>
-                                        <td data-item="HZ_N_16" onclick="setNumber('HZ_N_16')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">31</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">31</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">31</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">31.5</b>
-                                        </td>
-                                        <td data-item="HZ_N_16" onclick="setNumber('HZ_N_16')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '16', sub_name: '16', odds: 31.5}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '16', sub_name: '16', odds: 31}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_17" onclick="setNumber('HZ_N_17')">17</th>
-                                        <td data-item="HZ_N_17" onclick="setNumber('HZ_N_17')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">61</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">61</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">61</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">63</b>
-                                        </td>
-                                        <td data-item="HZ_N_17" onclick="setNumber('HZ_N_17')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '17', sub_name: '17', odds: 63}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '17', sub_name: '17', odds: 61}">
-                                        </td>
-                                    </tr>
-    
-                                    <tr>
-                                        <th data-item="HZ_N_18" onclick="setNumber('HZ_N_18')">18</th>
-                                        <td data-item="HZ_N_18" onclick="setNumber('HZ_N_18')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">181</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">181</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">181</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">190</b>
-                                        </td>
-                                        <td data-item="HZ_N_18" onclick="setNumber('HZ_N_18')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '18', sub_name: '18', odds: 190}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '18', sub_name: '18', odds: 181}">
-                                        </td>
-                                        <td colspan="12"></td>
-                                    </tr>
-    
-                                    <tr>
-                                        <th data-item="HZ_N_BIG" onclick="setNumber('HZ_N_BIG')">大</th>
-                                        <td data-item="HZ_N_BIG" onclick="setNumber('HZ_N_BIG')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.95</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.963</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.973</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.983</b>
-                                        </td>
-                                        <td data-item="HZ_N_BIG" onclick="setNumber('HZ_N_BIG')">
-                                            <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'da', sub_name: '大', odds: 1.95}">
-                                            <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'da', sub_name: '大', odds: 1.963}">
-                                            <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'da', sub_name: '大', odds: 1.973}">
-                                            <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'da', sub_name: '大', odds: 1.983}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_SMALL" onclick="setNumber('HZ_N_SMALL')">小</th>
-                                        <td data-item="HZ_N_SMALL" onclick="setNumber('HZ_N_SMALL')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.95</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.963</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.973</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.983</b>
-                                        </td>
-                                        <td data-item="HZ_N_SMALL" onclick="setNumber('HZ_N_SMALL')">
-                                            <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiao', sub_name: '小', odds: 1.95}">
-                                            <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiao', sub_name: '小', odds: 1.963}">
-                                            <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiao', sub_name: '小', odds: 1.973}">
-                                            <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiao', sub_name: '小', odds: 1.983}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_SINGLE" onclick="setNumber('HZ_N_SINGLE')">单</th>
-                                        <td data-item="HZ_N_SINGLE" onclick="setNumber('HZ_N_SINGLE')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.95</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.963</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.973</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.983</b>
-                                        </td>
-                                        <td data-item="HZ_N_SINGLE" onclick="setNumber('HZ_N_SINGLE')">
-                                            <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dan', sub_name: '单', odds: 1.95}">
-                                            <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dan', sub_name: '单', odds: 1.963}">
-                                            <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dan', sub_name: '单', odds: 1.973}">
-                                            <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dan', sub_name: '单', odds: 1.983}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_ODD" onclick="setNumber('HZ_N_ODD')">双</th>
-                                        <td data-item="HZ_N_ODD" onclick="setNumber('HZ_N_ODD')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.95</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.963</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.973</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.983</b>
-                                        </td>
-                                        <td data-item="HZ_N_ODD" onclick="setNumber('HZ_N_ODD')">
-                                            <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'shuang', sub_name: '双', odds: 1.95}">
-                                            <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'shuang', sub_name: '双', odds: 1.963}">
-                                            <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'shuang', sub_name: '双', odds: 1.973}">
-                                            <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'shuang', sub_name: '双', odds: 1.983}">
-                                        </td>
-    
-                                        <td colspan="3"></td>
-                                    </tr>
-    
-                                    <tr>
-                                        <th data-item="HZ_N_BIGSINGLE" onclick="setNumber('HZ_N_BIGSINGLE')">大单</th>
-                                        <td data-item="HZ_N_BIGSINGLE" onclick="setNumber('HZ_N_BIGSINGLE')">
-                                            <b class="f-c-red f-s-16">3.3</b>
-                                        </td>
-                                        <td data-item="HZ_N_BIGSINGLE" onclick="setNumber('HZ_N_BIGSINGLE')">
-                                            <input class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dadan', sub_name: '大单', odds: 3.3}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_BIGODD" onclick="setNumber('HZ_N_BIGODD')">大双</th>
-                                        <td data-item="HZ_N_BIGODD" onclick="setNumber('HZ_N_BIGODD')">
-                                            <b class="f-c-red f-s-16">4.3</b>
-                                        </td>
-                                        <td data-item="HZ_N_BIGODD" onclick="setNumber('HZ_N_BIGODD')">
-                                            <input class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dashuang', sub_name: '大双', odds: 4.3}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_SMALLSINGLE" onclick="setNumber('HZ_N_SMALLSINGLE')">小单</th>
-                                        <td data-item="HZ_N_SMALLSINGLE" onclick="setNumber('HZ_N_SMALLSINGLE')">
-                                            <b class="f-c-red f-s-16">4.3</b>
-                                        </td>
-                                        <td data-item="HZ_N_SMALLSINGLE" onclick="setNumber('HZ_N_SMALLSINGLE')">
-                                            <input class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiaodan', sub_name: '小单', odds: 4.3}">
-                                        </td>
-    
-                                        <th data-item="HZ_N_SMALLODD" onclick="setNumber('HZ_N_SMALLODD')">小双</th>
-                                        <td data-item="HZ_N_SMALLODD" onclick="setNumber('HZ_N_SMALLODD')">
-                                            <b class="f-c-red f-s-16">3.3</b>
-                                        </td>
-                                        <td data-item="HZ_N_SMALLODD" onclick="setNumber('HZ_N_SMALLODD')">
-                                            <input class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiaoshuang', sub_name: '小双', odds: 3.3}">
-                                        </td>
-                                        
-                                        <td colspan="3"></td>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <!-- 第三项 -->
-                            <table class="h-table" data-name="begin-table" data-key="baozi" cellspacing="0" cellpadding="0" border="0">
-                                <thead>
-                                    <tr>
-                                        <th colspan="15">豹子、顺子、杂</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')">豹子</th>
-                                        <td data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">30</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">30</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">30</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">31.5</b>
-                                        </td>
-                                        <td data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')">
-                                            <input v-if="levelValue == 'D'" type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'baozi', sub_name: '豹子', odds: 31.5}">
-                                            <input v-else type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'baozi', sub_name: '豹子', odds: 30}">
-                                        </td>
-    
-                                        <th data-item="BSZ_BS" onclick="setNumber('BSZ_BS')">半顺</th>
-                                        <td data-item="BSZ_BS" onclick="setNumber('BSZ_BS')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2.5</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.5</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.5</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.65</b>
-                                        </td>
-                                        <td data-item="BSZ_BS" onclick="setNumber('BSZ_BS')">
-                                            <input v-if="levelValue == 'D'" type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'banshun', sub_name: '半顺', odds: 2.65}">
-                                            <input v-else type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'banshun', sub_name: '半顺', odds: 2.5}">
-                                        </td>
-    
-                                        <th data-item="BSZ_QS" onclick="setNumber('BSZ_QS')">全顺</th>
-                                        <td data-item="BSZ_QS" onclick="setNumber('BSZ_QS')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.5</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.5</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.5</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">8</b>
-                                        </td>
-                                        <td data-item="BSZ_QS" onclick="setNumber('BSZ_QS')">
-                                            <input v-if="levelValue == 'D'" type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'quanshun', sub_name: '全顺', odds: 8}">
-                                            <input v-else type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'quanshun', sub_name: '全顺', odds: 7.5}">
-                                        </td>
-    
-                                        <th data-item="BSZ_Z" onclick="setNumber('BSZ_Z')">杂</th>
-                                        <td data-item="BSZ_Z" onclick="setNumber('BSZ_Z')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.5</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.5</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.5</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">8</b>
-                                        </td>
-                                        <td data-item="BSZ_Z" onclick="setNumber('BSZ_Z')">
-                                            <input v-if="levelValue == 'D'" type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'za', sub_name: '杂', odds: 8}">
-                                            <input v-else type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'za', sub_name: '杂', odds: 7.5}">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!-- 第四项 -->
-                            <table class="h-table" data-name="begin-table" data-key="kuadu" cellspacing="0" cellpadding="0" border="0">
-                                <thead>
-                                    <tr>
-                                        <th colspan="15">跨度</th>
-                                    </tr>
-                                    <tr>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                        <th>号码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th data-item="KD_N_1" onclick="setNumber('KD_N_1')">1</th>
-                                        <td data-item="KD_N_1" onclick="setNumber('KD_N_1')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">6</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">6</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">6</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">6.35</b>
-                                        </td>
-                                        <td data-item="KD_N_1" onclick="setNumber('KD_N_1')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '1', sub_name: '1', odds: 6.35}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '1', sub_name: '1', odds: 6}">
-                                        </td>
-    
-                                        <th data-item="KD_N_2" onclick="setNumber('KD_N_2')">2</th>
-                                        <td data-item="KD_N_2" onclick="setNumber('KD_N_2')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3.5</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3.5</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3.5</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4</b>
-                                        </td>
-                                        <td data-item="KD_N_2" onclick="setNumber('KD_N_2')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '2', sub_name: '2', odds: 4}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '2', sub_name: '2', odds: 3.5}">
-                                        </td>
-    
-                                        <th data-item="KD_N_3" onclick="setNumber('KD_N_3')">3</th>
-                                        <td data-item="KD_N_3" onclick="setNumber('KD_N_3')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3.3</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3.3</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3.3</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.5</b>
-                                        </td>
-                                        <td data-item="KD_N_3" onclick="setNumber('KD_N_3')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '3', sub_name: '3', odds: 3.5}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '3', sub_name: '3', odds: 3.3}">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th data-item="KD_N_4" onclick="setNumber('KD_N_4')">4</th>
-                                        <td data-item="KD_N_4" onclick="setNumber('KD_N_4')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3.75</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3.75</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3.75</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4</b>
-                                        </td>
-                                        <td data-item="KD_N_4" onclick="setNumber('KD_N_4')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '4', sub_name: '4', odds: 4}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '4', sub_name: '4', odds: 3.75}">
-                                        </td>
-    
-                                        <th data-item="KD_N_5" onclick="setNumber('KD_N_5')">5</th>
-                                        <td data-item="KD_N_5" onclick="setNumber('KD_N_5')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">6</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">6</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">6</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">6.35</b>
-                                        </td>
-                                        <td data-item="KD_N_5" onclick="setNumber('KD_N_5')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '5', sub_name: '5', odds: 6.35}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '5', sub_name: '5', odds: 6}">
-                                        </td>
-    
-                                        <td colspan="3"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!-- 第五项 -->
-                            <table class="h-table" data-name="begin-table" data-key="guoguan" cellspacing="0" cellpadding="0" border="0">
-                                <thead>
-                                    <tr>
-                                        <th colspan="15">过关</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th data-item="GG_REDSINGLE" onclick="setNumber('GG_REDSINGLE')">红单</th>
-                                        <td data-item="GG_REDSINGLE" onclick="setNumber('GG_REDSINGLE')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4.2</b>
-                                        </td>
-                                        <td data-item="GG_REDSINGLE" onclick="setNumber('GG_REDSINGLE')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongdan', sub_name: '红单', odds: 4.2}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongdan', sub_name: '红单', odds: 4}">
-                                        </td>
-                                        <th data-item="GG_YEH" onclick="setNumber('GG_YEH')">红双</th>
-                                        <td data-item="GG_YEH" onclick="setNumber('GG_YEH')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4.2</b>
-                                        </td>
-                                        <td data-item="GG_YEH" onclick="setNumber('GG_YEH')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongshuang', sub_name: '红双', odds: 4.2}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongshuang', sub_name: '红双', odds: 4}">
-                                        </td>
-                                        <th data-item="GG_IFBEU" onclick="setNumber('GG_IFBEU')">红大</th>
-                                        <td data-item="GG_IFBEU" onclick="setNumber('GG_IFBEU')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4.2</b>
-                                        </td>
-                                        <td data-item="GG_IFBEU" onclick="setNumber('GG_IFBEU')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongda', sub_name: '红大', odds: 4.2}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongda', sub_name: '红大', odds: 4}">
-                                        </td>
-                                        <th data-item="GG_OGPMEIG" onclick="setNumber('GG_OGPMEIG')">红小</th>
-                                        <td data-item="GG_OGPMEIG" onclick="setNumber('GG_OGPMEIG')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">4</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4.2</b>
-                                        </td>
-                                        <td data-item="GG_OGPMEIG" onclick="setNumber('GG_OGPMEIG')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongxiao', sub_name: '红小', odds: 4.2}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongxiao', sub_name: '红小', odds: 4}">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th data-item="GG_IGRMROE" onclick="setNumber('GG_IGRMROE')">黑单</th>
-                                        <td data-item="GG_IGRMROE" onclick="setNumber('GG_IGRMROE')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.1</b>
-                                        </td>
-                                        <td data-item="GG_IGRMROE" onclick="setNumber('GG_IGRMROE')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heidan', sub_name: '黑单', odds: 3.1}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heidan', sub_name: '黑单', odds: 3}">
-                                        </td>
-                                        <th data-item="GG_VMVIEPW" onclick="setNumber('GG_VMVIEPW')">黑双</th>
-                                        <td data-item="GG_VMVIEPW" onclick="setNumber('GG_VMVIEPW')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.1</b>
-                                        </td>
-                                        <td data-item="GG_VMVIEPW" onclick="setNumber('GG_VMVIEPW')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heishuang', sub_name: '黑双', odds: 3.1}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heishuang', sub_name: '黑双', odds: 3}">
-                                        </td>
-                                        <th data-item="GG_NVBIWWW" onclick="setNumber('GG_NVBIWWW')">黑大</th>
-                                        <td data-item="GG_NVBIWWW" onclick="setNumber('GG_NVBIWWW')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.1</b>
-                                        </td>
-                                        <td data-item="GG_NVBIWWW" onclick="setNumber('GG_NVBIWWW')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heida', sub_name: '黑大', odds: 3.1}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heida', sub_name: '黑大', odds: 3}">
-                                        </td>
-                                        <th data-item="GG_PEOWNVV" onclick="setNumber('GG_PEOWNVV')">黑小</th>
-                                        <td data-item="GG_PEOWNVV" onclick="setNumber('GG_PEOWNVV')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.1</b>
-                                        </td>
-                                        <td data-item="GG_PEOWNVV" onclick="setNumber('GG_PEOWNVV')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heixiao', sub_name: '黑小', odds: 3.1}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heixiao', sub_name: '黑小', odds: 3}">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th data-item="GG_OOOOOEWW" onclick="setNumber('GG_OOOOOEWW')">黑码</th>
-                                        <td data-item="GG_OOOOOEWW" onclick="setNumber('GG_OOOOOEWW')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.5</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.5</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.5</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.55</b>
-                                        </td>
-                                        <td data-item="GG_OOOOOEWW" onclick="setNumber('GG_OOOOOEWW')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heima', sub_name: '黑码', odds: 1.55}">
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heima', sub_name: '黑码', odds: 1.5}">
-                                        </td>
-                                        <th data-item="GG_OP" onclick="setNumber('GG_OP')"><span class="f-c-red">红码</span></th>
-                                        <td data-item="GG_OP" onclick="setNumber('GG_OP')">
-                                            <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
-                                            <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2</b>
-                                            <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2</b>
-                                            <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.1</b>
-                                        </td>
-                                        <td data-item="GG_OP" onclick="setNumber('GG_OP')">
-                                            <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongma', sub_name: '红码', odds: 2.1}">
-                                            
-                                            <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongma', sub_name: '红码', odds: 2}">
-                                        </td>
-                                        
-                                        <td colspan="6"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!-- 第六项 -->
-                            <table class="h-table" data-key="hongheima" cellspacing="0" cellpadding="0" border="0">
-                                <thead>
-                                    <tr>
-                                        <th>玩法</th>
-                                        <th colspan="6">红黑码</th>
-                                        <th>赔率</th>
-                                        <th>金额</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr id="simahei">
-                                        <th>4码黑</th>
-                                        <td class="bg"><input type="checkbox" name="1">1</td>
-                                        <td class="bg"><input type="checkbox" name="2">2</td>
-                                        <td class="bg"><input type="checkbox" name="3">3</td>
-                                        <td class="bg"><input type="checkbox" name="4">4</td>
-                                        <td class="bg"><input type="checkbox" name="5">5</td>
-                                        <td class="bg"><input type="checkbox" name="6">6</td>
-                                        <td data-item="GG_UUIGMS" onclick="setNumber('GG_UUIGMS')"><b class="f-s-16 f-c-red">6</b></td>
-                                        <td data-item="GG_UUIGMS" onclick="setNumber('GG_UUIGMS')"><input type="text" class="gb" data-item="{key: '4mahei', name: '4码黑', odds: 6}"></td>
-                                    </tr>
-                                    <tr id="simahong">
-                                        <th><span class="f-c-red">4码红</span></th>
-                                        <td class="bg f-c-red"><input type="checkbox" name="1">1</td>
-                                        <td class="bg f-c-red"><input type="checkbox" name="2">2</td>
-                                        <td class="bg f-c-red"><input type="checkbox" name="3">3</td>
-                                        <td class="bg f-c-red"><input type="checkbox" name="4">4</td>
-                                        <td class="bg f-c-red"><input type="checkbox" name="5">5</td>
-                                        <td class="bg f-c-red"><input type="checkbox" name="6">6</td>
-                                        <td data-item="GG_QWERT" onclick="setNumber('GG_QWERT')"><b class="f-s-16 f-c-red">5.5</b></td>
-                                        <td data-item="GG_QWERT" onclick="setNumber('GG_QWERT')"><input type="text" class="gb" data-item="{key: '4mahong', name: '4码红', odds: 5.5}"></td>
-                                    </tr>
-                                    <tr id="wumahei">
-                                        <th>5码黑</th>
-                                        <td class="bg"><input type="checkbox" name="1">1</td>
-                                        <td class="bg"><input type="checkbox" name="2">2</td>
-                                        <td class="bg"><input type="checkbox" name="3">3</td>
-                                        <td class="bg"><input type="checkbox" name="4">4</td>
-                                        <td class="bg"><input type="checkbox" name="5">5</td>
-                                        <td class="bg"><input type="checkbox" name="6">6</td>
-                                        <td data-item="GG_POIUTM" onclick="setNumber('GG_POIUTM')"><b class="f-s-16 f-c-red">2.5</b></td>
-                                        <td data-item="GG_POIUTM" onclick="setNumber('GG_POIUTM')"><input type="text" class="gb" data-item="{key: '5mahei', name: '5码黑', odds: 2.5}"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <!-- 切换 -->
+                    <div class="clear-float select-wrapper">
+                        <strong class="sub-title m-r-15">投注类型</strong>
+                        <div @click="tab=0" class="select-item m-r-5" :class="(tab==0) ? 'active' : ''">一般</div>
+                        <div @click="tab=1" class="select-item" :class="(tab==1) ? 'active' : ''">游戏规则</div>
+                    </div>
+                    <div class="portlet">
+                        <div class="portlet-title clear-float">
+                            <span>吉林快3&nbsp;&nbsp;</span>
+                            <select @change="levelChange" v-model="levelValue" class="form-control changeGame">
+                                <option v-for="(item, index) in level" :value="item.key">{{item.key}}</option>
+                            </select>
+                            <span class="m-l-30">第<b class="f-c-red">{{nowPeriods}}</b>期</span>
+                            <span class="m-l-30">投注时间：<b class="f-c-red">{{count_down}}</b></span>
+                            <span class="m-l-30">停盘时间：<b>{{close_time}}</b></span>
+                            <div class="fast-import pull-right">
+                                <span>快速输入&nbsp;</span>
+                                <input type="text" class="form-control m-r-15 quickImport" v-model="quickImport">
+                                <a href="javascript:history.go(0);" class="h-btn btn-red">重新整理</a>
+                            </div>
                         </div>
-                        <!-- 游戏规则 -->
-                        <div v-show="tab == 1" class="rule">
-                            <div class="rule-content rule-k3">
-                                <h1>吉林快3</h1>
-                                <div class="ex-text">
-                                    吉林快三是依照中国福利彩票管理中心组织，吉林省福利彩票销售机构中心发行的吉林快3的开奖结果为派彩依据，该游戏投注时间、开奖时间和开奖号码与吉林省福利彩票机构完全同步，<span
-                                        class="f-c-red">北京时间(GMT+8)每天上午8:20至晚上9:40，每20分钟一场，共40期。</span>假设开奖结果为123，那么佰位是1，拾位是2，个位是3。(每个位数在开奖时从1~6中摇出一个结果)选号玩法
-                                </div>
-                                <h2>游戏规则说明</h2>
-                                <table class="h-table" border="0" cellspacing="0" cellpadding="0">
+                        <div class="portlet-body">
+                            <div v-show="tab == 0" class="lobby">
+                                <!-- 第一项 -->
+                                <table class="h-table" data-name="begin-table" data-key="sanjun" cellspacing="0" cellpadding="0" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="100">三军(一同骰子=（赔率-1）X1、 二同骰子=（赔率-1）X2、 三同骰子=（赔率-1）X3)</th>
+                                        </tr>
+                                        <tr>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="tit" rowspan="3" width="122"><span class="mark">和值</span></td>
-                                            <td width="736"><span class="mark2 spacing">和值 :</span>
-                                                开奖结果佰拾个三位数的总和值与投注佰拾个数字的总和值相同时，即为中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="mark2 spacing">和值大小 :</span> 3~10为小，11~18为大。</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="mark2 spacing">和值单双 :</span>
-                                                3、5、7、9、11、13、15为单，4、6、8、10、12、14、16、18为双。</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">三同号通选</span></td>
-                                            <td>对所有三同号进行投注，开奖号码为任意三同号(111、222、333、444、555、666) 即中奖</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">三同号单选</span></td>
-                                            <td>从三同号(111、222、333、444、555、666)中任选一个进行投注，开奖号码为此三同号即中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">二同号复选</span></td>
-                                            <td>开奖号码中的二同号数字(即对子号码)，非对子不中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">二同号单选</span></td>
-                                            <td>开奖号码中的二同号数字(即对子号码)，和不同号的数字。</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">三不同号</span></td>
-                                            <td>三不同号事指开奖号码的三个数子都不相同，竟猜这三个数字，猜对即中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">二不同号</span></td>
-                                            <td>选择两个号码进行投注，开奖号码中包含这两个号码即中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">三连号通选</span></td>
-                                            <td>对所有三连号进行投注，开奖号码为任意三连号(123、234、345、456)
-                                                即中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">半顺、全顺、杂</span></td>
-                                            <td>半顺、全顺、杂是针对黑码的玩法（开出红码和三同号不中奖），投注半顺玩法开出全顺号码不中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">跨度</span></td>
-                                            <td>跨度为开出奖号的最大数与最小数值差值为跨度。</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="tit"><span class="mark">四码黑、四码红、五码黑</span></td>
-                                            <td>四码黑是投注四个号码，开出奖号的三个不同号码全部在投注号码当中视为中奖。<br>四码红是投注四个号码，开奖号为红号并且两个不同的号码在投注号码当中视为中奖。<br>
-                                                五码黑是投注五个号码，开出奖号的三个不同号码全部在投注号码当中视为中奖。<br>
-
+                                            <th data-item="SJ_N_1" onclick="setNumber('SJ_N_1')">1</th>
+                                            <td data-item="SJ_N_1" onclick="setNumber('SJ_N_1')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
+                                            </td>
+                                            <td data-item="SJ_N_1" onclick="setNumber('SJ_N_1')">
+                                                <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', odds: 1.98}">
+                                                <input v-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', odds: 1.98}">
+                                                <input v-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', odds: 2.005}">
+                                                <input v-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', odds: 2.005}">
+                                            </td>
+        
+                                            <th data-item="SJ_N_2" onclick="setNumber('SJ_N_2')">2</th>
+                                            <td data-item="SJ_N_2" onclick="setNumber('SJ_N_2')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
+                                            </td>
+                                            <td data-item="SJ_N_2" onclick="setNumber('SJ_N_2')">
+                                                <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', odds: 1.98}">
+                                                <input v-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', odds: 1.98}">
+                                                <input v-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', odds: 2.005}">
+                                                <input v-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', odds: 2.005}">
+                                            </td>
+        
+                                            <th data-item="SJ_N_3" onclick="setNumber('SJ_N_3')">3</th>
+                                            <td data-item="SJ_N_3" onclick="setNumber('SJ_N_3')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
+                                            </td>
+                                            <td data-item="SJ_N_3" onclick="setNumber('SJ_N_3')">
+                                                <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', odds: 2.005}">
+                                                <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '3', sub_name: '3', odds: 2.005}">
                                             </td>
                                         </tr>
-
-
+                                    
+                                        <tr>
+                                            <th data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">4</th>
+                                            <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
+                                            </td>
+                                            <td data-item="SJ_N_4" onclick="setNumber('SJ_N_4')">
+                                                <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 2.005}">
+                                                <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '4', sub_name: '4', odds: 2.005}">
+                                            </td>
+        
+                                            <th data-item="SJ_N_5" onclick="setNumber('SJ_N_5')">5</th>
+                                            <td data-item="SJ_N_5" onclick="setNumber('SJ_N_5')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
+                                            </td>
+                                            <td data-item="SJ_N_5" onclick="setNumber('SJ_N_5')">
+                                                <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '5', sub_name: '5', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '5', sub_name: '5', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '5', sub_name: '5', odds: 2.005}">
+                                                <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '5', sub_name: '5', odds: 2.005}">
+                                            </td>
+        
+                                            <th data-item="SJ_N_6" onclick="setNumber('SJ_N_6')">6</th>
+                                            <td data-item="SJ_N_6" onclick="setNumber('SJ_N_6')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.98</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.005</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.005</b>
+                                            </td>
+                                            <td data-item="SJ_N_6" onclick="setNumber('SJ_N_6')">
+                                                <input v-if="levelValue == 'A'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '6', sub_name: '6', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'B'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '6', sub_name: '6', odds: 1.98}">
+                                                <input v-else-if="levelValue == 'C'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '6', sub_name: '6', odds: 2.005}">
+                                                <input v-else-if="levelValue == 'D'" type="text" data-item="{key: 'samjun', name: '三军', sub_key: '6', sub_name: '6', odds: 2.005}">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- 第二项 -->
+                                <table class="h-table" data-name="begin-table" data-key="hezhi" cellspacing="0" cellpadding="0" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="100">合值</th>
+                                        </tr>
+                                        <tr>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                        </tr>
+                                        <tr>
+                                            <th data-item="HZ_N_3" onclick="setNumber('HZ_N_3')">3</th>
+                                            <td data-item="HZ_N_3" onclick="setNumber('HZ_N_3')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">181</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">181</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">181</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">190</b>
+                                            </td>
+                                            <td data-item="HZ_N_3" onclick="setNumber('HZ_N_3')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '3', sub_name: '3', odds: 190}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '3', sub_name: '3', odds: 181}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_4" onclick="setNumber('HZ_N_4')">4</th>
+                                            <td data-item="HZ_N_4" onclick="setNumber('HZ_N_4')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">61</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">61</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">61</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">63</b>
+                                            </td>
+                                            <td data-item="HZ_N_4" onclick="setNumber('HZ_N_4')">
+                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '4', sub_name: '4', odds: 61}">
+                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '4', sub_name: '4', odds: 61}">
+                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '4', sub_name: '4', odds: 61}">
+                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '4', sub_name: '4', odds: 63}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_5" onclick="setNumber('HZ_N_5')">5</th>
+                                            <td data-item="HZ_N_5" onclick="setNumber('HZ_N_5')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">31</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">31</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">31</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">31.5</b>
+                                            </td>
+                                            <td data-item="HZ_N_5" onclick="setNumber('HZ_N_5')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '5', sub_name: '5', odds: 31.5}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '5', sub_name: '5', odds: 31}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_6" onclick="setNumber('HZ_N_6')">6</th>
+                                            <td data-item="HZ_N_6" onclick="setNumber('HZ_N_6')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">19</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">19</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">19</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">19.5</b>
+                                            </td>
+                                            <td data-item="HZ_N_6" onclick="setNumber('HZ_N_6')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '6', sub_name: '6', odds: 19.5}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '6', sub_name: '6', odds: 19}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_7" onclick="setNumber('HZ_N_7')">7</th>
+                                            <td data-item="HZ_N_7" onclick="setNumber('HZ_N_7')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">12.9</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">12.9</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">12.9</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">13</b>
+                                            </td>
+                                            <td data-item="HZ_N_7" onclick="setNumber('HZ_N_7')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '7', sub_name: '7', odds: 13}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '7', sub_name: '7', odds: 12.9}">
+                                            </td>
+                                        </tr>
+        
+                                        <tr>
+                                            <th data-item="HZ_N_8" onclick="setNumber('HZ_N_8')">8</th>
+                                            <td data-item="HZ_N_8" onclick="setNumber('HZ_N_8')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9.2</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.2</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.2</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.4</b>
+                                            </td>
+                                            <td data-item="HZ_N_8" onclick="setNumber('HZ_N_8')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '8', sub_name: '8', odds: 9.4}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '8', sub_name: '8', odds: 9.2}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_9" onclick="setNumber('HZ_N_9')">9</th>
+                                            <td data-item="HZ_N_9" onclick="setNumber('HZ_N_9')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.7</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.7</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.7</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">7.8</b>
+                                            </td>
+                                            <td data-item="HZ_N_9" onclick="setNumber('HZ_N_9')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-itcem="{key: 'hezhi', name: '合值', sub_key: '9', sub_name: '9', odds: 7.8}">
+                                                <input v-else class="gb" type="text" data-itcem="{key: 'hezhi', name: '合值', sub_key: '9', sub_name: '9', odds: 7.7}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_10" onclick="setNumber('HZ_N_10')">10</th>
+                                            <td data-item="HZ_N_10" onclick="setNumber('HZ_N_10')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.1</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.1</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.1</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">7.2</b>
+                                            </td>
+                                            <td data-item="HZ_N_10" onclick="setNumber('HZ_N_10')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '10', sub_name: '10', odds: 7.2}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '10', sub_name: '10', odds: 7.1}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_11" onclick="setNumber('HZ_N_11')">11</th>
+                                            <td data-item="HZ_N_11" onclick="setNumber('HZ_N_11')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.1</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.1</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.1</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">7.2</b>
+                                            </td>
+                                            <td data-item="HZ_N_11" onclick="setNumber('HZ_N_11')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '11', sub_name: '11', odds: 7.2}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '11', sub_name: '11', odds: 7.1}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_12" onclick="setNumber('HZ_N_12')">12</th>
+                                            <td data-item="HZ_N_12" onclick="setNumber('HZ_N_12')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.7</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.7</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.7</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">7.8</b>
+                                            </td>
+                                            <td data-item="HZ_N_12" onclick="setNumber('HZ_N_12')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '12', sub_name: '12', odds: 7.8}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '12', sub_name: '12', odds: 7.7}">
+                                            </td>
+                                        </tr>
+        
+                                        <tr>
+                                            <th data-item="HZ_N_13" onclick="setNumber('HZ_N_13')">13</th>
+                                            <td data-item="HZ_N_13" onclick="setNumber('HZ_N_13')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9.2</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.2</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.2</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.4</b>
+                                            </td>
+                                            <td data-item="HZ_N_13" onclick="setNumber('HZ_N_13')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '13', sub_name: '13', odds: 9.4}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '13', sub_name: '13', odds: 9.2}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_14" onclick="setNumber('HZ_N_14')">14</th>
+                                            <td data-item="HZ_N_14" onclick="setNumber('HZ_N_14')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">12.9</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">12.9</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">12.9</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">13</b>
+                                            </td>
+                                            <td data-item="HZ_N_14" onclick="setNumber('HZ_N_14')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '14', sub_name: '14', odds: 13}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '14', sub_name: '14', odds: 12.9}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_15" onclick="setNumber('HZ_N_15')">15</th>
+                                            <td data-item="HZ_N_15" onclick="setNumber('HZ_N_15')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">19</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">19</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">19</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">19.5</b>
+                                            </td>
+                                            <td data-item="HZ_N_15" onclick="setNumber('HZ_N_15')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '15', sub_name: '15', odds: 19.5}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '15', sub_name: '15', odds: 19}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_16" onclick="setNumber('HZ_N_16')">16</th>
+                                            <td data-item="HZ_N_16" onclick="setNumber('HZ_N_16')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">31</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">31</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">31</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">31.5</b>
+                                            </td>
+                                            <td data-item="HZ_N_16" onclick="setNumber('HZ_N_16')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '16', sub_name: '16', odds: 31.5}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '16', sub_name: '16', odds: 31}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_17" onclick="setNumber('HZ_N_17')">17</th>
+                                            <td data-item="HZ_N_17" onclick="setNumber('HZ_N_17')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">61</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">61</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">61</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">63</b>
+                                            </td>
+                                            <td data-item="HZ_N_17" onclick="setNumber('HZ_N_17')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '17', sub_name: '17', odds: 63}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '17', sub_name: '17', odds: 61}">
+                                            </td>
+                                        </tr>
+        
+                                        <tr>
+                                            <th data-item="HZ_N_18" onclick="setNumber('HZ_N_18')">18</th>
+                                            <td data-item="HZ_N_18" onclick="setNumber('HZ_N_18')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">181</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">181</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">181</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">190</b>
+                                            </td>
+                                            <td data-item="HZ_N_18" onclick="setNumber('HZ_N_18')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '18', sub_name: '18', odds: 190}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: '18', sub_name: '18', odds: 181}">
+                                            </td>
+                                            <td colspan="12"></td>
+                                        </tr>
+        
+                                        <tr>
+                                            <th data-item="HZ_N_BIG" onclick="setNumber('HZ_N_BIG')">大</th>
+                                            <td data-item="HZ_N_BIG" onclick="setNumber('HZ_N_BIG')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.95</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.963</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.973</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.983</b>
+                                            </td>
+                                            <td data-item="HZ_N_BIG" onclick="setNumber('HZ_N_BIG')">
+                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'da', sub_name: '大', odds: 1.95}">
+                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'da', sub_name: '大', odds: 1.963}">
+                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'da', sub_name: '大', odds: 1.973}">
+                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'da', sub_name: '大', odds: 1.983}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_SMALL" onclick="setNumber('HZ_N_SMALL')">小</th>
+                                            <td data-item="HZ_N_SMALL" onclick="setNumber('HZ_N_SMALL')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.95</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.963</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.973</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.983</b>
+                                            </td>
+                                            <td data-item="HZ_N_SMALL" onclick="setNumber('HZ_N_SMALL')">
+                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiao', sub_name: '小', odds: 1.95}">
+                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiao', sub_name: '小', odds: 1.963}">
+                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiao', sub_name: '小', odds: 1.973}">
+                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiao', sub_name: '小', odds: 1.983}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_SINGLE" onclick="setNumber('HZ_N_SINGLE')">单</th>
+                                            <td data-item="HZ_N_SINGLE" onclick="setNumber('HZ_N_SINGLE')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.95</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.963</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.973</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.983</b>
+                                            </td>
+                                            <td data-item="HZ_N_SINGLE" onclick="setNumber('HZ_N_SINGLE')">
+                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dan', sub_name: '单', odds: 1.95}">
+                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dan', sub_name: '单', odds: 1.963}">
+                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dan', sub_name: '单', odds: 1.973}">
+                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dan', sub_name: '单', odds: 1.983}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_ODD" onclick="setNumber('HZ_N_ODD')">双</th>
+                                            <td data-item="HZ_N_ODD" onclick="setNumber('HZ_N_ODD')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.95</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.963</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.973</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.983</b>
+                                            </td>
+                                            <td data-item="HZ_N_ODD" onclick="setNumber('HZ_N_ODD')">
+                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'shuang', sub_name: '双', odds: 1.95}">
+                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'shuang', sub_name: '双', odds: 1.963}">
+                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'shuang', sub_name: '双', odds: 1.973}">
+                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'shuang', sub_name: '双', odds: 1.983}">
+                                            </td>
+        
+                                            <td colspan="3"></td>
+                                        </tr>
+        
+                                        <tr>
+                                            <th data-item="HZ_N_BIGSINGLE" onclick="setNumber('HZ_N_BIGSINGLE')">大单</th>
+                                            <td data-item="HZ_N_BIGSINGLE" onclick="setNumber('HZ_N_BIGSINGLE')">
+                                                <b class="f-c-red f-s-16">3.3</b>
+                                            </td>
+                                            <td data-item="HZ_N_BIGSINGLE" onclick="setNumber('HZ_N_BIGSINGLE')">
+                                                <input class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dadan', sub_name: '大单', odds: 3.3}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_BIGODD" onclick="setNumber('HZ_N_BIGODD')">大双</th>
+                                            <td data-item="HZ_N_BIGODD" onclick="setNumber('HZ_N_BIGODD')">
+                                                <b class="f-c-red f-s-16">4.3</b>
+                                            </td>
+                                            <td data-item="HZ_N_BIGODD" onclick="setNumber('HZ_N_BIGODD')">
+                                                <input class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'dashuang', sub_name: '大双', odds: 4.3}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_SMALLSINGLE" onclick="setNumber('HZ_N_SMALLSINGLE')">小单</th>
+                                            <td data-item="HZ_N_SMALLSINGLE" onclick="setNumber('HZ_N_SMALLSINGLE')">
+                                                <b class="f-c-red f-s-16">4.3</b>
+                                            </td>
+                                            <td data-item="HZ_N_SMALLSINGLE" onclick="setNumber('HZ_N_SMALLSINGLE')">
+                                                <input class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiaodan', sub_name: '小单', odds: 4.3}">
+                                            </td>
+        
+                                            <th data-item="HZ_N_SMALLODD" onclick="setNumber('HZ_N_SMALLODD')">小双</th>
+                                            <td data-item="HZ_N_SMALLODD" onclick="setNumber('HZ_N_SMALLODD')">
+                                                <b class="f-c-red f-s-16">3.3</b>
+                                            </td>
+                                            <td data-item="HZ_N_SMALLODD" onclick="setNumber('HZ_N_SMALLODD')">
+                                                <input class="gb" type="text" data-item="{key: 'hezhi', name: '合值', sub_key: 'xiaoshuang', sub_name: '小双', odds: 3.3}">
+                                            </td>
+                                            
+                                            <td colspan="3"></td>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <!-- 第三项 -->
+                                <table class="h-table" data-name="begin-table" data-key="baozi" cellspacing="0" cellpadding="0" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="15">豹子、顺子、杂</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')">豹子</th>
+                                            <td data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">30</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">30</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">30</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">31.5</b>
+                                            </td>
+                                            <td data-item="BSZ_BZ" onclick="setNumber('BSZ_BZ')">
+                                                <input v-if="levelValue == 'D'" type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'baozi', sub_name: '豹子', odds: 31.5}">
+                                                <input v-else type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'baozi', sub_name: '豹子', odds: 30}">
+                                            </td>
+        
+                                            <th data-item="BSZ_BS" onclick="setNumber('BSZ_BS')">半顺</th>
+                                            <td data-item="BSZ_BS" onclick="setNumber('BSZ_BS')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2.5</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.5</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.5</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.65</b>
+                                            </td>
+                                            <td data-item="BSZ_BS" onclick="setNumber('BSZ_BS')">
+                                                <input v-if="levelValue == 'D'" type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'banshun', sub_name: '半顺', odds: 2.65}">
+                                                <input v-else type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'banshun', sub_name: '半顺', odds: 2.5}">
+                                            </td>
+        
+                                            <th data-item="BSZ_QS" onclick="setNumber('BSZ_QS')">全顺</th>
+                                            <td data-item="BSZ_QS" onclick="setNumber('BSZ_QS')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.5</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.5</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.5</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">8</b>
+                                            </td>
+                                            <td data-item="BSZ_QS" onclick="setNumber('BSZ_QS')">
+                                                <input v-if="levelValue == 'D'" type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'quanshun', sub_name: '全顺', odds: 8}">
+                                                <input v-else type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'quanshun', sub_name: '全顺', odds: 7.5}">
+                                            </td>
+        
+                                            <th data-item="BSZ_Z" onclick="setNumber('BSZ_Z')">杂</th>
+                                            <td data-item="BSZ_Z" onclick="setNumber('BSZ_Z')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">7.5</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">7.5</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">7.5</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">8</b>
+                                            </td>
+                                            <td data-item="BSZ_Z" onclick="setNumber('BSZ_Z')">
+                                                <input v-if="levelValue == 'D'" type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'za', sub_name: '杂', odds: 8}">
+                                                <input v-else type="text" class="gb" data-item="{key: 'baoshunza', name: '豹、顺、杂', sub_key: 'za', sub_name: '杂', odds: 7.5}">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- 第四项 -->
+                                <table class="h-table" data-name="begin-table" data-key="kuadu" cellspacing="0" cellpadding="0" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="15">跨度</th>
+                                        </tr>
+                                        <tr>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                            <th>号码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th data-item="KD_N_1" onclick="setNumber('KD_N_1')">1</th>
+                                            <td data-item="KD_N_1" onclick="setNumber('KD_N_1')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">6</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">6</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">6</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">6.35</b>
+                                            </td>
+                                            <td data-item="KD_N_1" onclick="setNumber('KD_N_1')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '1', sub_name: '1', odds: 6.35}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '1', sub_name: '1', odds: 6}">
+                                            </td>
+        
+                                            <th data-item="KD_N_2" onclick="setNumber('KD_N_2')">2</th>
+                                            <td data-item="KD_N_2" onclick="setNumber('KD_N_2')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3.5</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3.5</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3.5</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4</b>
+                                            </td>
+                                            <td data-item="KD_N_2" onclick="setNumber('KD_N_2')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '2', sub_name: '2', odds: 4}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '2', sub_name: '2', odds: 3.5}">
+                                            </td>
+        
+                                            <th data-item="KD_N_3" onclick="setNumber('KD_N_3')">3</th>
+                                            <td data-item="KD_N_3" onclick="setNumber('KD_N_3')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3.3</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3.3</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3.3</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.5</b>
+                                            </td>
+                                            <td data-item="KD_N_3" onclick="setNumber('KD_N_3')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '3', sub_name: '3', odds: 3.5}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '3', sub_name: '3', odds: 3.3}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th data-item="KD_N_4" onclick="setNumber('KD_N_4')">4</th>
+                                            <td data-item="KD_N_4" onclick="setNumber('KD_N_4')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3.75</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3.75</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3.75</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4</b>
+                                            </td>
+                                            <td data-item="KD_N_4" onclick="setNumber('KD_N_4')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '4', sub_name: '4', odds: 4}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '4', sub_name: '4', odds: 3.75}">
+                                            </td>
+        
+                                            <th data-item="KD_N_5" onclick="setNumber('KD_N_5')">5</th>
+                                            <td data-item="KD_N_5" onclick="setNumber('KD_N_5')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">6</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">6</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">6</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">6.35</b>
+                                            </td>
+                                            <td data-item="KD_N_5" onclick="setNumber('KD_N_5')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '5', sub_name: '5', odds: 6.35}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'kuadu', name: '跨度', sub_key: '5', sub_name: '5', odds: 6}">
+                                            </td>
+        
+                                            <td colspan="3"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- 第五项 -->
+                                <table class="h-table" data-name="begin-table" data-key="guoguan" cellspacing="0" cellpadding="0" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="15">过关</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th data-item="GG_REDSINGLE" onclick="setNumber('GG_REDSINGLE')">红单</th>
+                                            <td data-item="GG_REDSINGLE" onclick="setNumber('GG_REDSINGLE')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4.2</b>
+                                            </td>
+                                            <td data-item="GG_REDSINGLE" onclick="setNumber('GG_REDSINGLE')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongdan', sub_name: '红单', odds: 4.2}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongdan', sub_name: '红单', odds: 4}">
+                                            </td>
+                                            <th data-item="GG_YEH" onclick="setNumber('GG_YEH')">红双</th>
+                                            <td data-item="GG_YEH" onclick="setNumber('GG_YEH')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4.2</b>
+                                            </td>
+                                            <td data-item="GG_YEH" onclick="setNumber('GG_YEH')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongshuang', sub_name: '红双', odds: 4.2}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongshuang', sub_name: '红双', odds: 4}">
+                                            </td>
+                                            <th data-item="GG_IFBEU" onclick="setNumber('GG_IFBEU')">红大</th>
+                                            <td data-item="GG_IFBEU" onclick="setNumber('GG_IFBEU')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4.2</b>
+                                            </td>
+                                            <td data-item="GG_IFBEU" onclick="setNumber('GG_IFBEU')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongda', sub_name: '红大', odds: 4.2}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongda', sub_name: '红大', odds: 4}">
+                                            </td>
+                                            <th data-item="GG_OGPMEIG" onclick="setNumber('GG_OGPMEIG')">红小</th>
+                                            <td data-item="GG_OGPMEIG" onclick="setNumber('GG_OGPMEIG')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">4</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">4.2</b>
+                                            </td>
+                                            <td data-item="GG_OGPMEIG" onclick="setNumber('GG_OGPMEIG')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongxiao', sub_name: '红小', odds: 4.2}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongxiao', sub_name: '红小', odds: 4}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th data-item="GG_IGRMROE" onclick="setNumber('GG_IGRMROE')">黑单</th>
+                                            <td data-item="GG_IGRMROE" onclick="setNumber('GG_IGRMROE')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.1</b>
+                                            </td>
+                                            <td data-item="GG_IGRMROE" onclick="setNumber('GG_IGRMROE')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heidan', sub_name: '黑单', odds: 3.1}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heidan', sub_name: '黑单', odds: 3}">
+                                            </td>
+                                            <th data-item="GG_VMVIEPW" onclick="setNumber('GG_VMVIEPW')">黑双</th>
+                                            <td data-item="GG_VMVIEPW" onclick="setNumber('GG_VMVIEPW')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.1</b>
+                                            </td>
+                                            <td data-item="GG_VMVIEPW" onclick="setNumber('GG_VMVIEPW')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heishuang', sub_name: '黑双', odds: 3.1}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heishuang', sub_name: '黑双', odds: 3}">
+                                            </td>
+                                            <th data-item="GG_NVBIWWW" onclick="setNumber('GG_NVBIWWW')">黑大</th>
+                                            <td data-item="GG_NVBIWWW" onclick="setNumber('GG_NVBIWWW')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.1</b>
+                                            </td>
+                                            <td data-item="GG_NVBIWWW" onclick="setNumber('GG_NVBIWWW')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heida', sub_name: '黑大', odds: 3.1}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heida', sub_name: '黑大', odds: 3}">
+                                            </td>
+                                            <th data-item="GG_PEOWNVV" onclick="setNumber('GG_PEOWNVV')">黑小</th>
+                                            <td data-item="GG_PEOWNVV" onclick="setNumber('GG_PEOWNVV')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">3</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">3.1</b>
+                                            </td>
+                                            <td data-item="GG_PEOWNVV" onclick="setNumber('GG_PEOWNVV')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heixiao', sub_name: '黑小', odds: 3.1}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heixiao', sub_name: '黑小', odds: 3}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th data-item="GG_OOOOOEWW" onclick="setNumber('GG_OOOOOEWW')">黑码</th>
+                                            <td data-item="GG_OOOOOEWW" onclick="setNumber('GG_OOOOOEWW')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">1.5</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">1.5</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">1.5</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">1.55</b>
+                                            </td>
+                                            <td data-item="GG_OOOOOEWW" onclick="setNumber('GG_OOOOOEWW')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heima', sub_name: '黑码', odds: 1.55}">
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'heima', sub_name: '黑码', odds: 1.5}">
+                                            </td>
+                                            <th data-item="GG_OP" onclick="setNumber('GG_OP')"><span class="f-c-red">红码</span></th>
+                                            <td data-item="GG_OP" onclick="setNumber('GG_OP')">
+                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2</b>
+                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2</b>
+                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.1</b>
+                                            </td>
+                                            <td data-item="GG_OP" onclick="setNumber('GG_OP')">
+                                                <input v-if="levelValue == 'D'" class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongma', sub_name: '红码', odds: 2.1}">
+                                                
+                                                <input v-else class="gb" type="text" data-item="{key: 'guoguan', name: '过关', sub_key: 'hongma', sub_name: '红码', odds: 2}">
+                                            </td>
+                                            
+                                            <td colspan="6"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!-- 第六项 -->
+                                <table class="h-table" data-key="hongheima" cellspacing="0" cellpadding="0" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th>玩法</th>
+                                            <th colspan="6">红黑码</th>
+                                            <th>赔率</th>
+                                            <th>金额</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id="simahei">
+                                            <th>4码黑</th>
+                                            <td class="bg"><input type="checkbox" name="1">1</td>
+                                            <td class="bg"><input type="checkbox" name="2">2</td>
+                                            <td class="bg"><input type="checkbox" name="3">3</td>
+                                            <td class="bg"><input type="checkbox" name="4">4</td>
+                                            <td class="bg"><input type="checkbox" name="5">5</td>
+                                            <td class="bg"><input type="checkbox" name="6">6</td>
+                                            <td data-item="GG_UUIGMS" onclick="setNumber('GG_UUIGMS')"><b class="f-s-16 f-c-red">6</b></td>
+                                            <td data-item="GG_UUIGMS" onclick="setNumber('GG_UUIGMS')"><input type="text" class="gb" data-item="{key: '4mahei', name: '4码黑', odds: 6}"></td>
+                                        </tr>
+                                        <tr id="simahong">
+                                            <th><span class="f-c-red">4码红</span></th>
+                                            <td class="bg f-c-red"><input type="checkbox" name="1">1</td>
+                                            <td class="bg f-c-red"><input type="checkbox" name="2">2</td>
+                                            <td class="bg f-c-red"><input type="checkbox" name="3">3</td>
+                                            <td class="bg f-c-red"><input type="checkbox" name="4">4</td>
+                                            <td class="bg f-c-red"><input type="checkbox" name="5">5</td>
+                                            <td class="bg f-c-red"><input type="checkbox" name="6">6</td>
+                                            <td data-item="GG_QWERT" onclick="setNumber('GG_QWERT')"><b class="f-s-16 f-c-red">5.5</b></td>
+                                            <td data-item="GG_QWERT" onclick="setNumber('GG_QWERT')"><input type="text" class="gb" data-item="{key: '4mahong', name: '4码红', odds: 5.5}"></td>
+                                        </tr>
+                                        <tr id="wumahei">
+                                            <th>5码黑</th>
+                                            <td class="bg"><input type="checkbox" name="1">1</td>
+                                            <td class="bg"><input type="checkbox" name="2">2</td>
+                                            <td class="bg"><input type="checkbox" name="3">3</td>
+                                            <td class="bg"><input type="checkbox" name="4">4</td>
+                                            <td class="bg"><input type="checkbox" name="5">5</td>
+                                            <td class="bg"><input type="checkbox" name="6">6</td>
+                                            <td data-item="GG_POIUTM" onclick="setNumber('GG_POIUTM')"><b class="f-s-16 f-c-red">2.5</b></td>
+                                            <td data-item="GG_POIUTM" onclick="setNumber('GG_POIUTM')"><input type="text" class="gb" data-item="{key: '5mahei', name: '5码黑', odds: 2.5}"></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="form-assect">
-                            <span class="f-c-green m-r-5"><b>金额</b></span>
-                            <span class="f-c-red m-r-5"><b class="moneyTotal">0</b></span>
-                            <span class="m-r-5"><b>快速输入</b></span>
-                            <input type="text" class="m-r-15 quickImport" v-model="quickImport">
-                            <span class="h-btn btn-red m-r-5 submit">确认</span>
-                            <a href="javascript: history.go(0);" class="h-btn m-r-5">重置</a>
+                            <!-- 游戏规则 -->
+                            <div v-show="tab == 1" class="rule">
+                                <div class="rule-content rule-k3">
+                                    <h1>吉林快3</h1>
+                                    <div class="ex-text">
+                                        吉林快三是依照中国福利彩票管理中心组织，吉林省福利彩票销售机构中心发行的吉林快3的开奖结果为派彩依据，该游戏投注时间、开奖时间和开奖号码与吉林省福利彩票机构完全同步，<span
+                                            class="f-c-red">北京时间(GMT+8)每天上午8:20至晚上9:40，每20分钟一场，共40期。</span>假设开奖结果为123，那么佰位是1，拾位是2，个位是3。(每个位数在开奖时从1~6中摇出一个结果)选号玩法
+                                    </div>
+                                    <h2>游戏规则说明</h2>
+                                    <table class="h-table" border="0" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                            <tr>
+                                                <td class="tit" rowspan="3" width="122"><span class="mark">和值</span></td>
+                                                <td width="736"><span class="mark2 spacing">和值 :</span>
+                                                    开奖结果佰拾个三位数的总和值与投注佰拾个数字的总和值相同时，即为中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="mark2 spacing">和值大小 :</span> 3~10为小，11~18为大。</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="mark2 spacing">和值单双 :</span>
+                                                    3、5、7、9、11、13、15为单，4、6、8、10、12、14、16、18为双。</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">三同号通选</span></td>
+                                                <td>对所有三同号进行投注，开奖号码为任意三同号(111、222、333、444、555、666) 即中奖</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">三同号单选</span></td>
+                                                <td>从三同号(111、222、333、444、555、666)中任选一个进行投注，开奖号码为此三同号即中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">二同号复选</span></td>
+                                                <td>开奖号码中的二同号数字(即对子号码)，非对子不中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">二同号单选</span></td>
+                                                <td>开奖号码中的二同号数字(即对子号码)，和不同号的数字。</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">三不同号</span></td>
+                                                <td>三不同号事指开奖号码的三个数子都不相同，竟猜这三个数字，猜对即中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">二不同号</span></td>
+                                                <td>选择两个号码进行投注，开奖号码中包含这两个号码即中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">三连号通选</span></td>
+                                                <td>对所有三连号进行投注，开奖号码为任意三连号(123、234、345、456)
+                                                    即中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">半顺、全顺、杂</span></td>
+                                                <td>半顺、全顺、杂是针对黑码的玩法（开出红码和三同号不中奖），投注半顺玩法开出全顺号码不中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">跨度</span></td>
+                                                <td>跨度为开出奖号的最大数与最小数值差值为跨度。</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tit"><span class="mark">四码黑、四码红、五码黑</span></td>
+                                                <td>四码黑是投注四个号码，开出奖号的三个不同号码全部在投注号码当中视为中奖。<br>四码红是投注四个号码，开奖号为红号并且两个不同的号码在投注号码当中视为中奖。<br>
+                                                    五码黑是投注五个号码，开出奖号的三个不同号码全部在投注号码当中视为中奖。<br>
+
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-assect">
+                                <span class="f-c-green m-r-5"><b>金额</b></span>
+                                <span class="f-c-red m-r-5"><b class="moneyTotal">0</b></span>
+                                <span class="m-r-5"><b>快速输入</b></span>
+                                <input type="text" class="m-r-15 quickImport" v-model="quickImport">
+                                <span class="h-btn btn-red m-r-5 submit">确认</span>
+                                <a href="javascript: history.go(0);" class="h-btn m-r-5">重置</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div v-else-if="tabContent == 0" class="layout-body">
-                <div class="loadBox">
-                    <h4><span>吉林快3</span>&nbsp;&nbsp;&nbsp;下一期:&nbsp;&nbsp;&nbsp;<span style="color:#27AD9C;">{{nowPeriods}}</span>&nbsp;&nbsp;&nbsp;开盘时间:&nbsp;&nbsp;&nbsp;<span style="color:#27AD9C;">{{close_time}}</span></h4>
-                    <h4>距离开盘时间还有:&nbsp;&nbsp;<span style="color:#27AD9C;">{{count_down}}</span></h4>
+                <div v-else-if="tabContent == 0">
+                    <div class="loadBox">
+                        <h4><span>吉林快3</span>&nbsp;&nbsp;&nbsp;下一期:&nbsp;&nbsp;&nbsp;<span style="color:#27AD9C;">{{nowPeriods}}</span>&nbsp;&nbsp;&nbsp;开盘时间:&nbsp;&nbsp;&nbsp;<span style="color:#27AD9C;">{{close_time}}</span></h4>
+                        <h4>距离开盘时间还有:&nbsp;&nbsp;<span style="color:#27AD9C;">{{count_down}}</span></h4>
+                    </div>
                 </div>
             </div>
         </div>

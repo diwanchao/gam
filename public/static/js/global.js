@@ -518,8 +518,14 @@ var ENV = {
 	 */
 	InitHeader.prototype.logoutInit = function () {
 		this.$logout.bind('click', function () {
-			utils.delCookie('userInfo');
-			window.location = '/index/login';
+			utils.getAjax({
+				url: '/api/login/logout',
+				type: 'POST',
+				success: function(){
+					utils.delCookie('userInfo');
+					window.location = '/index/login';
+				}
+			});
 		});
 	}
 
@@ -578,13 +584,15 @@ var ENV = {
 						time: '2015-11-11 11:11:11',
 						content: '123',
 						odds: '1.5',
-						money: '100'
+						money: '100',
+						play_name: '1',
 					},
 					{
 						time: '2015-11-11 11:11:12',
 						content: '537',
 						odds: '1.3',
-						money: '110'
+						money: '110',
+						play_name: '1',
 					}
 				]
 			},
@@ -618,7 +626,7 @@ var ENV = {
 				// ajax
 				utils.getAjax({
 					type: 'GET',
-					url: utils.concatGameKey('/api/home/batPage'),
+					url: utils.concatGameKey('/api/home/betPage'),
 					data: {
 						index: index
 					},
@@ -683,11 +691,11 @@ var ENV = {
 		var html = '';
 		for (var i = 0; i < this.data.bet.data.length; i++) {
 			var cur = this.data.bet.data[i];
-			var content = '';
-			for (var s = 0; s < cur.content.length; s++) {
-				content += '<span class="m-r-2 color' + cur.content[s] + '">' + cur.content[s] + '</span>';
-			}
-			html += '<tr><td>' + cur.time + '</td><td>' + content + '</td><td>' + cur.odds + '</td><td>' + cur.money + '</td></tr>'
+			// var content = '';
+			// for (var s = 0; s < cur.content.length; s++) {
+			// 	content += '<span class="m-r-2 color' + cur.content[s] + '">' + cur.content[s] + '</span>';
+			// }
+			html += '<tr><td>' + cur.time + '</td><td>'+ cur.play_name +'&nbsp;' + cur.content + '</td><td>' + cur.odds + '</td><td>' + cur.money + '</td></tr>'
 		}
 		this.$slidebarBetTable.empty().append(html);
 	}

@@ -185,7 +185,7 @@ function getLastPeriods(){
 
 // 设置基础信息的 为乐方便
 var app = new Vue({
-    el: '#main',
+    el: '#layoutBody',
     data: {
         periods: '', //最新期数
         periods_number: '', // 最新开奖结果
