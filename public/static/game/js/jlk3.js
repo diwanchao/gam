@@ -285,6 +285,31 @@ $(function(){
     /* ************* 点击下注弹出确认下注 ************** */
     $('.submit').bind('click', function(){
         tableData = getData();
+
+        for(var i = 0; i < tableData.length; i++) {
+            // 4码黑必须选择4个号码！
+            if(tableData[i].key == '4mahei'){
+                if(tableData[i].sub_key.length != 4) {
+                    alert('4码黑必须选择4个号码！');
+                    return;
+                }
+            }
+            // 4码红必须选择4个号码！
+            if(tableData[i].key == '4mahong'){
+                if(tableData[i].sub_key.length != 4) {
+                    alert('4码红必须选择4个号码！');
+                    return;
+                }
+            }
+            // 5码黑必须选择5个号码！
+            if(tableData[i].key == '5mahei'){
+                if(tableData[i].sub_key.length != 5) {
+                    alert('5码黑必须选择5个号码！');
+                    return;
+                }
+            }
+        }
+
         confirmInit();
         confirmModal.show();
     });
