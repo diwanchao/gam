@@ -63,53 +63,11 @@ var levelValue = 'A';
      $('[data-name=begin-table] input[type=text]').each(function(){
          var data;
          if(this.value){
-             data = new Function("return" + $(this).data('item'))();
+             data = new Function("return" + $(this).attr('data-item'))();
              data.value = this.value;
              ary.push(data);
          }
      });
- 
-     // 四码黑单独获取
-     if($('#simahei').find('input[type=text]').val()){
-         var key = '';
-         $('#simahei').find('input[type=checkbox]:checked').each(function(){
-             key += this.name;
-         });
- 
-         data = new Function("return" + $('#simahei').find('input[type=text]').data('item'))();
-         data.value = $('#simahei').find('input[type=text]').val();
-         data['sub_key'] = key;
-         data['sub_name'] = key;
-         ary.push(data);
-     }
- 
-     // 四码红单独获取
-     if($('#simahong').find('input[type=text]').val()){
-         var key = '';
-         $('#simahong').find('input[type=checkbox]:checked').each(function(){
-             key += this.name;
-         });
- 
-         data = new Function("return" + $('#simahong').find('input[type=text]').data('item'))();
-         data.value = $('#simahong').find('input[type=text]').val();
-         data['sub_key'] = key;
-         data['sub_name'] = key;
-         ary.push(data);
-     }
- 
-     // 五码黑单独获取
-     if($('#wumahei').find('input[type=text]').val()){
-         var key = '';
-         $('#wumahei').find('input[type=checkbox]:checked').each(function(){
-             key += this.name;
-         });
- 
-         data = new Function("return" + $('#wumahei').find('input[type=text]').data('item'))();
-         data.value = $('#wumahei').find('input[type=text]').val();
-         data['sub_key'] = key;
-         data['sub_name'] = key;
-         ary.push(data);
-     }
      return ary;
  }
  
