@@ -13,6 +13,9 @@ var init = function(){
     utils.getAjax({
         url: utils.concatGameKey('/api/user/getList'),
         type: 'POST',
+        data: {
+            index: p
+        },
         success: function(json){
             tablePage.init({total: json.total});
             render(json.data);
@@ -38,11 +41,7 @@ var init = function(){
 var render = function(data){
     var html = '';
     for(var i = 0; i < data.length; i++) {
-        var content;
-        for(var s = 0; s < data[i].content.length; s++) {
-            content += '<span class="m-r-2 color'+ data[i].content[s] +'">'+ data[i].content[s] +'</span>';
-        }
-        html += '<tr><td>'+ data[i].no +'</td><td>'+ data[i].time +'</td><td>'+ data[i].number +'</td><td>'+ data[i].part +'</td><td>'+ data[i].content +'</td><td>'+ data[i].money +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>';
+        html += '<tr><td>'+ (i+1) +'</td><td>'+ data[i].time +'</td><td>'+ data[i].number +'</td><td>'+ data[i].part +'</td><td>第<span>'+ data[i].periods +'</span>&nbsp;期&nbsp;-&nbsp;<span class="f-c-blue">'+ data[i].content +'</span><span class="f-c-red">('+ data[i].value +')</span>&nbsp;@&nbsp;<span class="f-c-red">'+ data[i].reate +'</span></td><td>'+ data[i].money +'</td><td>'+ data[i].break +'</td><td><span class="f-c-red">尚未开奖</span></td></tr>';
     }
     $('#tableBody').empty().append(html);
 }

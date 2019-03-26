@@ -207,6 +207,11 @@ var ENV = {
 	game_key: utils.getCookie('game_key'),
 };
 
+if(location.pathname == '/index/home'){
+	utils.delCookie('game_key');
+	ENV.game_key = null;
+}
+
 
 (function () {
 

@@ -31,9 +31,8 @@ var render = function(data){
     );
 
     $html.find('.countDown').bind('click', function(){
-        console.log(data.key)
         utils.setCookie('game_key', data.key);
-        // window.location = data.url;
+        window.location = data.url;
     });
 
     refresh_data.push({

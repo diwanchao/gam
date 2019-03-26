@@ -1,6 +1,6 @@
 // var game_key = utils.getCookie('game_key');/\
 
-var tablePage = new Page('#pageInfo', function(index){init();});
+// var tablePage = new Page('#pageInfo', function(index){init();});
 
 var init = function(){
     if(!ENV.game_key){
@@ -8,14 +8,14 @@ var init = function(){
         return;
     }
 
-    var p = tablePage.data.index;
+    // var p = tablePage.data.index;
     // 用当前第几页 index / game_key ajax请求 获取列表
     utils.getAjax({
         url: utils.concatGameKey('/api/user/settlementList'),
         type: 'POST',
-        data: {index: p},
+        // data: {index: p},
         success: function(json){
-            tablePage.init({total: json.total});
+            // tablePage.init({total: json.total});
             render(json.data,json.single, json.money, json.school, json.break, json.get);
         }
     })
@@ -75,7 +75,7 @@ $(function(){
     $('#changeGame').bind('change', function(){
         ENV.game_key = this.value;
         // tablePage.init({index: 1})
-        tablePage.data.index = 1;
+        // tablePage.data.index = 1;
         init();
     });
     
