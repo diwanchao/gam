@@ -72,7 +72,7 @@ class Home extends Base
         $game_key       = Request::instance()->param('game_key','');
 
         $user_data  = Db::name('menber')->field('user_name,blance')->where('id=?',[$this->USER_ID])->find();
-        $bet        = Db::name('order')->field('DATE_FORMAT(time,'%Y-%m-%d') as time,content,odds,money,play_name')->where('user_id=? and game_key=? and number=?',[$this->USER_ID,$game_key,$game_version])->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        $bet        = Db::name('order')->field("DATE_FORMAT(time,'%Y-%m-%d') as time,content,odds,money,play_name")->where('user_id=? and game_key=? and number=?',[$this->USER_ID,$game_key,$game_version])->order('time desc')->paginate(10,false,['var_page'=>'index']);
         $num        = Db::name('game_result')->field('number as date,game_result as content')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')=?",[$game_key,date('Y-m-d',time())])->select();
 
         $data = [
@@ -112,7 +112,7 @@ class Home extends Base
         $where_param[] = $game_key;
         $where_param[] = get_k3_number();
 
-        $data = Db::name('order')->field('DATE_FORMAT(time,'%Y-%m-%d') as time,content,odds,money,play_name')->where($where,$where_param)->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        $data = Db::name('order')->field("DATE_FORMAT(time,'%Y-%m-%d') as time,content,odds,money,play_name")->where($where,$where_param)->order('time desc')->paginate(10,false,['var_page'=>'index']);
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
     /**
