@@ -210,6 +210,7 @@ class Game extends Base
             if (!isset($play_map[$play_key])) 
                 continue;
             $break = Db::table('user_game_method')->where('game_key=? and user_id=? and methods=?',[$game_key,$this->USER_ID,$play_map[$play_key]])->value($part);
+            $break = $break ?: 0;
             $data = [
                 'time' => date('Y-m-d H:i:s',time()), 
                 'part' => $part,
