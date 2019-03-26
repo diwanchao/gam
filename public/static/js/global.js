@@ -528,6 +528,7 @@ if(location.pathname == '/index/home'){
 				type: 'POST',
 				success: function(){
 					utils.delCookie('userInfo');
+					utils.delCookie('game_key');
 					window.location = '/index/login';
 				}
 			});

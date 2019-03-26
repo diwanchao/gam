@@ -272,6 +272,14 @@ $(function(){
             }
         })
     });
+    $('#wumahei').find('input[type=checkbox]').each(function() {
+        $(this).bind('click', function(e){
+            if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 6){
+                e.preventDefault();
+                alert('不能超过5项');
+            }
+        })
+    });
 
 
     /* ************* 点击下注弹出确认下注 ************** */
