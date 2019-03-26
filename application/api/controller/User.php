@@ -81,7 +81,7 @@ class User extends Base
         $where_param[] = $this->USER_ID;
         $where_param[] = $game_key;
 
-        $data   = Db::name('order')->field('time,no as number,part,content as value,money,break,number as periods,play_name as content,odds as reate')->where($where,$where_param)->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        $data   = Db::name('order')->field('time,no as number,part,content as value,money,break,number as periods,play_name as content,odds as reate')->where($where,$where_param)->order('no desc')->paginate(10,false,['var_page'=>'index']);
 
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
 
