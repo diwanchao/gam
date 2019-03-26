@@ -107,7 +107,7 @@ class Home extends Base
     public function betPage()
     {
         $game_key  = Request::instance()->param('game_key','');
-        $where = 'user_id=? and game_key=? number=?';
+        $where = 'user_id=? and game_key=? and number=?';
         $where_param[] = $this->USER_ID ?? 0;
         $where_param[] = $game_key;
         $where_param[] = get_k3_number();
