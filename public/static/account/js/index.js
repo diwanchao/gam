@@ -15,7 +15,7 @@ var init = function(){
         type: 'POST',
         // data: {index: p},
         success: function(json){
-            tablePage.init({total: json.total});
+            // tablePage.init({total: json.total});
             render(json.data,json.single, json.money, json.school, json.break, json.get);
         }
     })
