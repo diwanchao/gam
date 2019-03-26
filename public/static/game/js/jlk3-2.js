@@ -116,6 +116,7 @@ var levelValue = 'A';
  function confirmInit() {
      var ele = $('#confirmModal');
      var tbody = ele.find('.confirmTbody').empty();
+     var level = ele.find('.level');
      var tableLength = ele.find('.table-length');
      var html = ''
  
@@ -123,6 +124,7 @@ var levelValue = 'A';
          html += '<tr><td>'+ tableData[i].name +'</td><td>'+ tableData[i].sub_name +'</td><td><b class="f-s-16 f-c-red">'+ tableData[i].odds +'</b></td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
      }
      tbody.append(html);
+     level.text(levelValue);
      tableLength.text(tableData.length);
  }
  
