@@ -22,7 +22,7 @@ class Integral extends Base
      */
     public function index()
     {
-        $data = Db::name('integral')->where('user_id=?',[$this->USER_id])->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        $data = Db::name('integral')->where('user_id=?',[$this->USER_ID])->order('time desc')->paginate(10,false,['var_page'=>'index']);
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
 
