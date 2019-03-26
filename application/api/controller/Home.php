@@ -68,21 +68,22 @@ class Home extends Base
     {
                 //game_key
         $game_key       = Request::instance()->param('game_key','');
+
         $first_notice   = Db::name('notice')->order('create_time desc')->value('content');
 
         $data = [
-            'notice'     => $first_notice,
+            'notice'     => $first_notice ?: '',
             'macau_time' => time(),
             'game'       => [
                 ['name' => '吉林快3', 'key' => 'jlk3', 'url'=>'/index/game/jlk3'],
                 ['name' => '时时彩', 'key' => 'ssc', 'url'=>'/index/game/jlssc'],
             ],
         ];
-        if ($game_key) 
+        if ('jlk3' == $game_key) 
         {
             $data['subGame'] = [
-                ['name'=>'(三军,和值,其他)', 'key'=>'ssc','url'=>'/index/game/jlk3'],
-                ['name'=>'(三同号单选,二同号复选,二同号复选,三不同号,二不同号)', 'key'=>'ssc','url'=>'/index/game/jlk32'],
+                ['name'=>'(三军,和值,其他)', 'key'=>'jlk3','url'=>'/index/game/jlk3'],
+                ['name'=>'(三同号单选,二同号复选,二同号复选,三不同号,二不同号)', 'key'=>'jlk3','url'=>'/index/game/jlk32'],
             ];
         }
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
@@ -103,13 +104,12 @@ class Home extends Base
      */
     public function leftInfo()
     {
-        $game_key  = Request::instance()->param('game_key');
+        $game_version   = get_k3_number();
+        $game_key       = Request::instance()->param('game_key');
 
-
-
-        $user_data  = Db::name('menber')->field('id,user_name,password,blance')->where('id=?',[$this->USER_ID])->find();
-        $bet        = Db::name('order')->field('time,content,odds,money')->where('user_id=? and game_key=?',[$this->USER_ID,$game_key])->order('time desc')->paginate(10,false,['var_page'=>'index']);
-        $num        = Db::name('lottery_record')->field('lottery_date as date,lottery_num as content')->where('game_key=?',[$game_key])->select();
+        $user_data  = Db::name('menber')->field('user_name,blance')->where('id=?',[$this->USER_ID])->find();
+        $bet        = Db::name('order')->field('time,content,odds,money')->where('user_id=? and game_key=? and number=?',[$this->USER_ID,$game_key,$game_version])->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        $num        = Db::name('lottery_record')->field('lottery_date as date,lottery_num as content')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')=?",[$game_key,date('Y-m-d',time())])->select();
 
         $data = [
             'game_logo' => '/',
