@@ -584,13 +584,15 @@ var ENV = {
 						time: '2015-11-11 11:11:11',
 						content: '123',
 						odds: '1.5',
-						money: '100'
+						money: '100',
+						play_name: '1',
 					},
 					{
 						time: '2015-11-11 11:11:12',
 						content: '537',
 						odds: '1.3',
-						money: '110'
+						money: '110',
+						play_name: '1',
 					}
 				]
 			},
@@ -624,7 +626,7 @@ var ENV = {
 				// ajax
 				utils.getAjax({
 					type: 'GET',
-					url: utils.concatGameKey('/api/home/batPage'),
+					url: utils.concatGameKey('/api/home/betPage'),
 					data: {
 						index: index
 					},
