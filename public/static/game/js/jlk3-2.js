@@ -6,6 +6,9 @@
  
  // 快速输入 值
  var quickValue = '';
+
+ // 分盘
+var levelValue = 'A';
  
  // 确认投注弹出框
  var confirmModal = new H_modal('#confirmModal');
@@ -196,7 +199,7 @@
      },
      methods: {
          levelChange: function(){
-             window.location = this.levelValue;
+            levelValue = this.levelValue;
          }
      }
  });
