@@ -198,7 +198,6 @@ var app = new Vue({
         nowPeriods: '',
         close_time: '',
         count_down: '',
-        // confirmTable: [], // 啥用没有/
         samjun: [
             {key: 'samjun', name: '三军', sub_key: '1', sub_name: '1', A: 1.98, B: 1.98, C: 2.005, D: 2.005, value:''},
             {key: 'samjun', name: '三军', sub_key: '2', sub_name: '2', A: 1.98, B: 1.98, C: 2.005, D: 2.005, value:''},
