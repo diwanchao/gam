@@ -518,8 +518,14 @@ var ENV = {
 	 */
 	InitHeader.prototype.logoutInit = function () {
 		this.$logout.bind('click', function () {
-			utils.delCookie('userInfo');
-			window.location = '/index/login';
+			utils.getAjax({
+				url: '/api/login/logout',
+				type: 'POST',
+				success: function(){
+					utils.delCookie('userInfo');
+					window.location = '/index/login';
+				}
+			});
 		});
 	}
 
@@ -683,11 +689,11 @@ var ENV = {
 		var html = '';
 		for (var i = 0; i < this.data.bet.data.length; i++) {
 			var cur = this.data.bet.data[i];
-			var content = '';
-			for (var s = 0; s < cur.content.length; s++) {
-				content += '<span class="m-r-2 color' + cur.content[s] + '">' + cur.content[s] + '</span>';
-			}
-			html += '<tr><td>' + cur.time + '</td><td>' + content + '</td><td>' + cur.odds + '</td><td>' + cur.money + '</td></tr>'
+			// var content = '';
+			// for (var s = 0; s < cur.content.length; s++) {
+			// 	content += '<span class="m-r-2 color' + cur.content[s] + '">' + cur.content[s] + '</span>';
+			// }
+			html += '<tr><td>' + cur.time + '</td><td>'+ cur.play_name +'&nbsp;' + cur.content + '</td><td>' + cur.odds + '</td><td>' + cur.money + '</td></tr>'
 		}
 		this.$slidebarBetTable.empty().append(html);
 	}
