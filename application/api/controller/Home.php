@@ -7,42 +7,6 @@ use \think\Session;
 class Home extends Base
 {
     /**
-     * @SWG\Get(
-     *   path="/api/home/info",
-     *   tags={"Home"},
-     *   summary="主界面接口",
-     *   operationId="updatePetWithForm",
-     *   consumes={"application/x-www-form-urlencoded"},
-     *   produces={"application/json"},
-     *   @SWG\Response(response="201",description="字段不全"),
-     *   security={{
-     *     "petstore_auth": {"write:pets", "read:pets"}
-     *   }}
-     * )
-     */
-    public function info()
-    {
-
-        $first_notice   = Db::name('notice')->order('create_time desc')->value('content');
-        $data = [
-            'notice'    => $first_notice,
-            'game'      => [
-                'k3'=>[
-                    ['name'=>'吉林快3','time'=>date('Y-m-d H:i:s',time()),'status'=>1],
-                    ['name'=>'辽宁快3','time'=>date('Y-m-d H:i:s',time()),'status'=>0],
-                ],
-                'ssc'=>[
-                    ['name'=>'吉林时时彩','time'=>date('Y-m-d H:i:s',time()),'status'=>1],
-                    ['name'=>'辽宁时时彩','time'=>date('Y-m-d H:i:s',time()),'status'=>0],
-                ],
-            ],
-            'macau_time' => date('Y-m-d H:i:s',time())
-
-        ];
-
-        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
-    }
-    /**
      * @SWG\Post(
      *   path="/api/home/headInfo",
      *   tags={"Home"},
@@ -68,16 +32,16 @@ class Home extends Base
     {
                 //game_key
         $game_key       = Request::instance()->param('game_key','');
-
         $first_notice   = Db::name('notice')->order('create_time desc')->value('content');
+
+        $user_id  = $this->USER_ID ?? 0;
+        $sql        = "SELECT `name`,game_key as `key`,url FROM `game_info` WHERE id in(SELECT game_list FROM menber WHERE id={$user_id})";
+        $game_data  = Db::query($sql);
 
         $data = [
             'notice'     => $first_notice ?: '',
             'macau_time' => time(),
-            'game'       => [
-                ['name' => '吉林快3', 'key' => 'jlk3', 'url'=>'/index/game/jlk3'],
-                ['name' => '时时彩', 'key' => 'ssc', 'url'=>'/index/game/jlssc'],
-            ],
+            'game'       => $game_data ?? [],
         ];
         if ('jlk3' == $game_key) 
         {
@@ -105,15 +69,15 @@ class Home extends Base
     public function leftInfo()
     {
         $game_version   = get_k3_number();
-        $game_key       = Request::instance()->param('game_key');
+        $game_key       = Request::instance()->param('game_key','');
 
         $user_data  = Db::name('menber')->field('user_name,blance')->where('id=?',[$this->USER_ID])->find();
         $bet        = Db::name('order')->field('time,content,odds,money,play_name')->where('user_id=? and game_key=? and number=?',[$this->USER_ID,$game_key,$game_version])->order('time desc')->paginate(10,false,['var_page'=>'index']);
-        $num        = Db::name('lottery_record')->field('lottery_date as date,lottery_num as content')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')=?",[$game_key,date('Y-m-d',time())])->select();
+        $num        = Db::name('game_result')->field('number as date,game_result as content')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')=?",[$game_key,date('Y-m-d',time())])->select();
 
         $data = [
             'game_logo' => '/',
-            'game_name' => '吉林快3',
+            'game_name' => $game_key == 'jlk3' ? '吉林快3' : '重庆时时彩',
             'username'  => $user_data['user_name'] ?? '',
             'balance'   => $user_data['blance'] ?? 0,
             'bet'       => $bet,
@@ -142,12 +106,13 @@ class Home extends Base
      */
     public function betPage()
     {
-        $game_key  = Request::instance()->param('game_key');
-        $where = 'user_id=? and game_key=?';
-        $where_param[] = $this->USER_ID;
+        $game_key  = Request::instance()->param('game_key','');
+        $where = 'user_id=? and game_key=? number=?';
+        $where_param[] = $this->USER_ID ?? 0;
         $where_param[] = $game_key;
+        $where_param[] = get_k3_number();
 
-        $data = Db::name('order')->field('time,content,odds,money')->where($where,$where_param)->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        $data = Db::name('order')->field('time,content,odds,money,play_name')->where($where,$where_param)->order('time desc')->paginate(10,false,['var_page'=>'index']);
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
     /**
@@ -166,10 +131,36 @@ class Home extends Base
      */
     public function gameInfo()
     {
+        $res        = [];
+        $user_id    = $this->USER_ID ?? 0;
+        $sql        = "SELECT `name`,game_key as `key`,url FROM `game_info` WHERE id in(SELECT game_list FROM menber WHERE id={$user_id})";
+        $data       = Db::query($sql);
+        if ($data) {
+            foreach ($data as $key => $value) {
+                if ($value['key'] == 'jlk3') 
+                {
+                    $now = $this->get_k3_info();
+                    $res['k3'][] = array_merge($value,$now);
+                }
+            }
+        }
+/*
+            $data = [
+                'ssc'=>[
+                    ['name'=>'重庆时时彩','time'=>100000,'status'=>1,'url'=>'/','key'=>'jlssc'],
+                ],
+            ];*/
+        return json(['msg' => 'succeed','code' => 200, 'data' => $res]);
+    }
+
+
+    public function get_k3_info()
+    {
             $h = date('H',time());
             $i = date('i',time());
             $s = date('s',time());
-            $k3_status = 0;
+            $k3_status  = 0;
+            $k3_time    = strtotime(date('Y-m-d H:i:s',strtotime("+1 day")));
 
             if ($h>=8&&$h<=21) {
                 switch ($i) {
@@ -214,16 +205,7 @@ class Home extends Base
                 $k3_time    = strtotime(date('Y-m-d 08:40:00',strtotime("+1 day"))) - time();
             }
 
-            $data = [
-                'k3'=>[
-                    ['name'=>'吉林快3','time'=>$k3_time,'status'=>$k3_status,'url'=>'/index/game/jlk3','key'=>'jlk3'],
-                ],
-                'ssc'=>[
-                    ['name'=>'重庆时时彩','time'=>100000,'status'=>1,'url'=>'/','key'=>'jlssc'],
-                ],
-            ];
-        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+            return ['status'=>$k3_status,'time'=>$k3_time];
     }
-
 
 }

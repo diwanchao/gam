@@ -82,10 +82,9 @@ class Game extends Base
 
     public function userGameList()
     {
-        $data = [
-            ['game_key'=>'jlk3','name'=>'吉林快3'],
-            //['game_key'=>'ssc','name'=>'重庆时时彩'],
-        ];
+        $user_id  = $this->USER_ID ?? 0;
+        $sql    = "SELECT `name`,game_key FROM `game_info` WHERE id in(SELECT game_list FROM menber WHERE id={$user_id})";
+        $data   = Db::query($sql);
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
     /**
@@ -105,7 +104,7 @@ class Game extends Base
     public function gameInit()
     {
         $game_key   = Request::instance()->param('game_key'); 
-        $a   = Request::instance()->param('a'); 
+        $a          = Request::instance()->param('a'); 
 
 
         $data = [
@@ -193,48 +192,57 @@ class Game extends Base
         ];
 
         $game_key   = Request::instance()->param('game_key',''); 
-        $part       = Request::instance()->param('level');
-        $number     = Request::instance()->param('nowPeriods');
-        $bet_data   = Request::instance()->param('data/a'); 
-//        var_dump($bet_data);die();
-        foreach ($bet_data as $key => $value) {
-            $play_key = $value['name'];
+        $part       = Request::instance()->param('level','');
+        $number     = Request::instance()->param('nowPeriods','');
+        $bet_data   = Request::instance()->param('data/a',''); 
 
-            if (!is_numeric($value['sub_name'])) {
-                $play_key = $value['name'].$value['sub_name'];
-            }
-            if ('豹、顺、杂' == $value['name'] || '过关' == $value['name']) 
-            {
-                $play_key = $value['sub_name'];
-            }
-            if (!isset($play_map[$play_key])) 
-                continue;
-            $break = Db::table('user_game_method')->where('game_key=? and user_id=? and methods=?',[$game_key,$this->USER_ID,$play_map[$play_key]])->value($part);
-            $break = $break ?: 0;
-            $data = [
-                'time' => date('Y-m-d H:i:s',time()), 
-                'part' => $part,
-                'number'=>$number,
-                'content'=>$value['sub_key'],
-                'money'=>$value['value'],
-                'break'=>$value['value']*($break/100),
-                'get'=>0,
-                'game_key'=>$game_key,
-                'user_id'=>$this->USER_ID,
-                'odds'=>$value['odds'],
-                'play_name'=>$play_map[$play_key]
-            ];
-            Db::startTrans();
-            try {
-                Db::table('order')->insert($data);
-                Db::table('menber')->where('id', $this->USER_ID)->update(['blance' => Db::raw('blance-'.$value['value'])]);
-                Db::commit();    
-            } catch (Exception $e) {
-                Db::rollback();
-            }
-
-
+        if (!$game_key || !$part || !$number || !$bet_data) {
+            return json(['msg' => '投注失败,数据异常.请刷新页面重新投注','code' => 301, 'data' => []]);
         }
+
+        if ($game_key == 'jlk3') 
+        {
+            foreach ($bet_data as $key => $value) {
+                $play_key = $value['name'];
+
+                if (!is_numeric($value['sub_name'])) {
+                    $play_key = $value['name'].$value['sub_name'];
+                }
+                if ('豹、顺、杂' == $value['name'] || '过关' == $value['name']) 
+                {
+                    $play_key = $value['sub_name'];
+                }
+                if (!isset($play_map[$play_key])) 
+                    continue;
+                $break = Db::table('user_game_method')->where('game_key=? and user_id=? and methods=?',[$game_key,$this->USER_ID,$play_map[$play_key]])->value($part);
+                $break = $break ?: 0;
+                $data = [
+                    'time' => date('Y-m-d H:i:s',time()), 
+                    'part' => $part,
+                    'number'=>$number,
+                    'content'=>$value['sub_name'],
+                    'money'=>$value['value'],
+                    'break'=>$value['value']*($break/100),
+                    'get'=>0,
+                    'game_key'=>$game_key,
+                    'user_id'=>$this->USER_ID,
+                    'odds'=>$value['odds'],
+                    'play_name'=>$play_map[$play_key]
+                ];
+                Db::startTrans();
+                try {
+                    Db::table('order')->insert($data);
+                    Db::table('menber')->where('id', $this->USER_ID)->update(['blance' => Db::raw('blance-'.$value['value'])]);
+                    Db::commit();    
+                } catch (Exception $e) {
+                    Db::rollback();
+                }
+
+
+            }
+        }
+
+
         return json(['msg' => '投注成功','code' => 200, 'data' => []]);
     }
 
