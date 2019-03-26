@@ -21,7 +21,7 @@
         <input name="password" class="form-control input" type="password" placeholder="password">
         <div class="ensure">
             <input type="text" name="ensure" class="form-control">
-            <img onclick="this.src='{:captcha_src()}?'+Math.random()" src="{:captcha_src()}" alt="captcha" />
+            <img id="code" onclick="this.src='{:captcha_src()}?'+Math.random()" src="{:captcha_src()}" alt="captcha" />
         </div>
         <!-- <div class="btn">路线选择</div> -->
         <div class="btn" id="login">登入</div>

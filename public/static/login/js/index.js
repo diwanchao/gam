@@ -1,6 +1,7 @@
 var $username = $('[name=username]');
 var $password = $('[name=password]');
 var $ensure = $('[name=ensure]');
+var $code = $('#code');
 var $login = $('#login');
 
 var requireURL = {
@@ -33,12 +34,12 @@ $(function(){
             success: function(data){
                 if(data.code != 200){
                     alert(data.msg);
+                    $code.trigger('click');
                 }
                 else {
                     setCookie('userInfo', JSON.stringify(data.data.user))
                     window.location = '/index/agree';
                 }
-                console.log(data);
             },
             error: function(err){
                 alert('Server error……');
