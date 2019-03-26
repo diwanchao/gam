@@ -2,7 +2,7 @@
 namespace app\index\controller;
 use app\index\controller\Base;
 
-class Notice extends Controller
+class Notice extends Base
 {
     public function index()
     {

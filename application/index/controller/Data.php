@@ -3,7 +3,7 @@ namespace app\index\controller;
 use app\index\controller\Base;
 
 
-class Data extends Controller
+class Data extends Base
 {
     public function index()
     {

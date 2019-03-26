@@ -3,7 +3,7 @@ namespace app\index\controller;
 use app\index\controller\Base;
 
 
-class Game extends Controller
+class Game extends Base
 {
     public function jlk3()
     {
