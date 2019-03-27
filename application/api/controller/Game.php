@@ -30,7 +30,7 @@ class Game extends Base
         $page       = Request::instance()->param('index',1); 
         $page_row   = 10;
         $count  = Db::name('game_result')->where('game_key=?',[$game_key])->select();
-        $data   = Db::name('game_result')->order('time desc')->where('game_key=?',[$game_key])->limit($page*$page_row-$page_row,$page*$page_row)->select();
+        $data   = Db::name('game_result')->order('number ASC')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')",[$game_key,date('Y-m-d',time())])->limit($page*$page_row-$page_row,$page*$page_row)->select();
 
         if ($data) 
         {
