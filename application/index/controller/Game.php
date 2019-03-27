@@ -1,8 +1,9 @@
 <?php
 namespace app\index\controller;
-use think\Controller;
+use app\index\controller\Base;
 
-class Game extends Controller
+
+class Game extends Base
 {
     public function jlk3()
     {

@@ -1,8 +1,9 @@
 <?php
 namespace app\index\controller;
-use think\Controller;
+use app\index\controller\Base;
 
-class ChangePwd extends Controller
+
+class ChangePwd extends Base
 {
     public function index()
     {
