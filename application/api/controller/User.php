@@ -319,6 +319,8 @@ class User extends Base
                 throw new \Exception("修改密码失败", 1);
 
             Session::set('is_login',0);
+            echo "<script type='text/javascript'>window.location.href='http://bc1.game171.com.cn/index/login'</script>"; 
+            die();
         } catch (\Exception $e) {
             return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);          
         }
