@@ -105,13 +105,12 @@ class Game extends Base
     {
         $game_key   = Request::instance()->param('game_key'); 
         $a          = Request::instance()->param('a'); 
-
-
+        $open_data  = get_k3_number();
         $data = [
-            'issue'      => '20190324-12',
-            'count_down' => '60',
-            'close_time' => '22:40:00',
-            'status'     => $a,
+            'issue'      => $open_data['periods'] ?? '',
+            'count_down' => $open_data['count_down'] ?? '',
+            'close_time' => $open_data['close_time'] ?? '',
+            'status'     => $open_data['status'] ?? 0,
             'dish'       => [
                 ['key'=>'A'],
                 ['key'=>'B'],
@@ -123,14 +122,17 @@ class Game extends Base
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
-
+    /**
+     * 最后开奖结果
+     */
     public function lastNum()
     {
-        $game_key   = Request::instance()->param('game_key'); 
+        $game_key   = Request::instance()->param('game_key',''); 
+        $res        = Db::table('game_result')->where('game_key=?',[$game_key])->cache(true,60)->order('time desc')->find();
 
         $data = [
-            'periods'       => '20190324-11',
-            'number'        => '236',
+            'periods' => $res['number'] ?? '',
+            'number'  => $res['game_result'] ?? '',
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
