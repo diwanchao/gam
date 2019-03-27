@@ -27,10 +27,9 @@ class Game extends Base
         $weekarray  = array("日","一","二","三","四","五","六");
 
         $game_key   = Request::instance()->param('game_key'); 
-        $page       = Request::instance()->param('index',1); 
-        $page_row   = 10;
+
         $count  = Db::name('game_result')->where('game_key=?',[$game_key])->select();
-        $data   = Db::name('game_result')->order('number ASC')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')=?",[$game_key,date('Y-m-d',time())])->limit($page*$page_row-$page_row,$page*$page_row)->select();
+        $data   = Db::name('game_result')->order('number ASC')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')=?",[$game_key,date('Y-m-d',time())])->select();
 
         if ($data) 
         {
