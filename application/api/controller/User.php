@@ -319,7 +319,6 @@ class User extends Base
                 throw new \Exception("修改密码失败", 1);
 
             Session::set('is_login',0);
-
         } catch (\Exception $e) {
             return json(['msg' => $e->getMessage(), 'code' => 201, 'data' => []]);          
         }
