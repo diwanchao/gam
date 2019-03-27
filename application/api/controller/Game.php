@@ -39,7 +39,7 @@ class Game extends Base
                 foreach ($data as $key => $value) 
                 {
                     $sum                            = 0;
-                    $result_data[$key]['no']        = $key+1;
+                    $result_data[$key]['no']        = substr($value['game_result'],-2);
                     $result_data[$key]['week']      = $weekarray[date("w",strtotime($value['time']))];
                     $result_data[$key]['time']      = date('Y-m-d',strtotime($value['time']));
                     $result_data[$key]['content']   = $value['game_result'];
