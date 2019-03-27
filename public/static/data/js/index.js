@@ -19,7 +19,7 @@ var init = function(){
 var render = function(data){
     var html = '';
     for(var i = 0; i < data.length; i++) {
-        html += '<tr><td>'+ data[i].methods +'</td><td>'+ data[i].A +'</td><td>'+ data[i].B +'</td><td>'+ data[i].C +'</td><td>'+ data[i].D +'</td><td>'+ data[i].E +'</td><td>'+ data[i].limit +'</td><td>'+ data[i].max +'</td><td>'+ data[i].min +'</td></tr>'
+        html += '<tr><td>'+ data[i].methods +'</td><td>'+ data[i].A +'</td><td>'+ data[i].B +'</td><td>'+ data[i].C +'</td><td>'+ data[i].D +'</td><td>'+ data[i].limit +'</td><td>'+ data[i].max +'</td><td>'+ data[i].min +'</td></tr>'
     }
     $('#tableBody').empty().append(html);
 }

@@ -15,6 +15,19 @@ $(function(){
             return;
         }
         // ajax
+        utils.getAjax({
+            url: '/api/user/changePassword',
+            type: 'POST',
+            data: {
+                old_pwd: o,
+                new_pwd: n,
+                repeat_pwd: c,
+            },
+            alert: true,
+            // success: function(){
+            //     window.location.href = '/index/login';
+            // }
+        })
     });
 
 })
