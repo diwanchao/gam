@@ -30,7 +30,7 @@ class Game extends Base
         $page       = Request::instance()->param('index',1); 
         $page_row   = 10;
         $count  = Db::name('game_result')->where('game_key=?',[$game_key])->select();
-        $data   = Db::name('game_result')->order('number ASC')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')",[$game_key,date('Y-m-d',time())])->limit($page*$page_row-$page_row,$page*$page_row)->select();
+        $data   = Db::name('game_result')->order('number ASC')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')=?",[$game_key,date('Y-m-d',time())])->limit($page*$page_row-$page_row,$page*$page_row)->select();
 
         if ($data) 
         {
@@ -39,7 +39,7 @@ class Game extends Base
                 foreach ($data as $key => $value) 
                 {
                     $sum                            = 0;
-                    $result_data[$key]['no']        = substr($value['game_result'],-2);
+                    $result_data[$key]['no']        = substr($value['number'],-2);
                     $result_data[$key]['week']      = $weekarray[date("w",strtotime($value['time']))];
                     $result_data[$key]['time']      = date('Y-m-d',strtotime($value['time']));
                     $result_data[$key]['content']   = $value['game_result'];
