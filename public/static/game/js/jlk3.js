@@ -116,20 +116,15 @@ function getData() {
 /**
  * 初始化 获取基础信息
  */
-var a = 0;
 var init = function(){
-    a = (a == 0 ? 1 : 0);
     utils.getAjax({
         url: utils.concatGameKey('/api/game/gameInit'),
         type: 'GET',
-        data:{
-            a: a,
-        },
         success: function(json){
             app._data.level = json.dish;
             app._data.nowPeriods = json.issue;
             app._data.close_time = json.close_time;
-            //app._data.tabContent = json.status;
+            app._data.tabContent = json.status;
             timeInterval(json.count_down);
         } 
     })
@@ -285,6 +280,9 @@ $(function(){
     /* ************* 点击下注弹出确认下注 ************** */
     $('.submit').bind('click', function(){
         tableData = getData();
+        if(!tableData.length){
+            return alert('请下注！');
+        }
 
         for(var i = 0; i < tableData.length; i++) {
             // 4码黑必须选择4个号码！

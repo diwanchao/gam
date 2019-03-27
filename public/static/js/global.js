@@ -133,8 +133,8 @@ var utils = {
 		var userInfo = utils.getCookie('userInfo');
 		if (!userInfo) {
 			alert('登陆超时……');
-			// window.location.href = '/index/login';
-			// return;
+			window.location.href = '/index/login';
+			return;
 		}
 
 		$.ajax({
@@ -145,8 +145,8 @@ var utils = {
 			success: function (result) {
 				if (result.code == 304) {
 					alert('登陆超时……');
-					// window.location.href = '/index/login';
-					// return;
+					window.location.href = '/index/login';
+					return;
 				} else if (result.code == 200) {
 					typeof opt.success == 'function' ? opt.success(result.data) : null;
 					if (opt.alert) {

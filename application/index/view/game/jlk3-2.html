@@ -39,7 +39,7 @@
                         <div class="portlet-title clear-float">
                             <span>吉林快3&nbsp;&nbsp;</span>
                             <select @change="levelChange" v-model="levelValue" class="form-control changeGame">
-                                <option v-for="(item, index) in level" :value="item.key">{{item.key}}</option>
+                                <option v-for="(item, index) in level" :value="item">{{item}}</option>
                             </select>
                             <span class="m-l-30">第<b class="f-c-red">{{nowPeriods}}</b>期</span>
                             <span class="m-l-30">投注时间：<b class="f-c-red">{{count_down}}</b></span>
