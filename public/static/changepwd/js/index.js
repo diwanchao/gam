@@ -24,9 +24,9 @@ $(function(){
                 repeat_pwd: c,
             },
             alert: true,
-            // success: function(){
-            //     window.location.href = '/index/login';
-            // }
+            success: function(){
+                window.location.href = '/index/login';
+            }
         })
     });
 
