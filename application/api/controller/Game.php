@@ -240,7 +240,7 @@ class Game extends Base
                     'user_id'   => $this->USER_ID,
                     'odds'      => $value['odds'],
                     'play_name' =>$this->play_map[$play_key],
-                    'play_key'  => in_array($value['key'], ['4mahei1','4mahong','5mahei']) ? $value['key'] : $value['key'].$value['sub_key'],
+                    'play_key'  => in_array($value['key'], ['4mahei','4mahong','5mahei']) ? $value['key'] : $value['key'].$value['sub_key'],
                 ];
                 Db::startTrans();
                 try {
