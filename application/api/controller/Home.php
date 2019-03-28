@@ -72,7 +72,7 @@ class Home extends Base
         $game_key       = Request::instance()->param('game_key','');
 
         $user_data  = Db::name('menber')->field('user_name,blance')->where('id=?',[$this->USER_ID])->find();
-        $bet        = Db::name('order')->field("DATE_FORMAT(time,'%Y-%m-%d') as time,content,odds,money,play_name")->where('user_id=? and game_key=? and number=?',[$this->USER_ID,$game_key,$game_version['periods']])->order('time desc')->paginate(10,false,['var_page'=>'index']);
+        $bet        = Db::name('order')->field("DATE_FORMAT(time,'%Y-%m-%d') as time,content,odds,money,play_name")->where('user_id=? and game_key=? and number=?',[$this->USER_ID,$game_key,$game_version])->order('time desc')->paginate(10,false,['var_page'=>'index']);
         $num        = Db::name('game_result')->field('number as date,game_result as content')->where("game_key=? and DATE_FORMAT(time,'%Y-%m-%d')=?",[$game_key,date('Y-m-d',time())])->order('number ASC')->select();
 
         $data = [
@@ -108,10 +108,9 @@ class Home extends Base
     {
         $game_key   = Request::instance()->param('game_key','');
         $where      = 'user_id=? and game_key=? and number=?';
-        $periods    = get_k3_number();
         $where_param[] = $this->USER_ID ?? 0;
         $where_param[] = $game_key;
-        $where_param[] = $periods['periods'];
+        $where_param[] = get_k3_number();
 
         $data = Db::name('order')->field("DATE_FORMAT(time,'%Y-%m-%d') as time,content,odds,money,play_name")->where($where,$where_param)->order('time desc')->paginate(10,false,['var_page'=>'index']);
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
@@ -140,7 +139,7 @@ class Home extends Base
             foreach ($data as $key => $value) {
                 if ($value['key'] == 'jlk3') 
                 {
-                    $now = $this->get_k3_info();
+                    $now = get_k3_info();
                     $res['k3'][] = array_merge($value,$now);
                 }
             }
@@ -155,58 +154,6 @@ class Home extends Base
     }
 
 
-    public function get_k3_info()
-    {
-            $h = date('H',time());
-            $i = date('i',time());
-            $s = date('s',time());
-            $k3_status  = 0;
-            $k3_time    = strtotime(date('Y-m-d H:i:s',strtotime("+1 day")));
 
-            if ($h>=8&&$h<=21) {
-                switch ($i) {
-                    case $i>=0&&$i<18:
-                        $k3_status=1;
-                        $k3_time = strtotime(date('Y-m-d H:18:00',time())) - time();
-                        break;
-                    case $i>=18&&$i<20:
-                        $k3_status=0;
-                        $k3_time = strtotime(date('Y-m-d H:20:00',time())) - time();
-                        break;
-                    case $i>=20&&$i<38:
-                        $k3_status=1;
-                        $k3_time = strtotime(date('Y-m-d H:38:00',time())) - time();
-                        break;
-                    case $i>=38&&$i<40:
-                        $k3_status=0;
-                        $k3_time = strtotime(date('Y-m-d H:40:00',time())) - time();
-                        break;                
-                    case $i>=40&&$i<58:
-                        $k3_status=1;
-                        $k3_time = strtotime(date('Y-m-d H:58:00',time())) - time();
-                        break;                
-                    case $i>=58&&$i<60:
-                        $k3_status=0;
-                        $k3_time = strtotime(date('Y-m-d H:00:00',time())) + 3600 - time();
-                        break;                
-                    
-                    default:
-                        # code...
-                        break;
-                }
-            }
-            if (time()<strtotime(date('Y-m-d 08:40:00',time()))) 
-            {
-                $k3_status  = 0;
-                $k3_time    = strtotime(date('Y-m-d 08:40:00',time())) - time();
-            }
-            if (time()>strtotime(date('Y-m-d 21:40:00',time()))) 
-            {
-                $k3_status  = 0;
-                $k3_time    = strtotime(date('Y-m-d 08:40:00',strtotime("+1 day"))) - time();
-            }
-
-            return ['status'=>$k3_status,'time'=>$k3_time];
-    }
 
 }
