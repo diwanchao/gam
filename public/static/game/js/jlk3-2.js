@@ -63,7 +63,7 @@ var levelValue = 'A';
      $('[data-name=begin-table] input[type=text]').each(function(){
          var data;
          if(this.value){
-             data = new Function("return" + $(this).attr('data-item'))();
+             data = new Function("return " + $(this).attr('data-item'))();
              data.value = this.value;
              ary.push(data);
          }
