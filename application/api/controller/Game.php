@@ -110,7 +110,7 @@ class Game extends Base
             $data = [
                 'issue'      => get_k3_number(),
                 'count_down' => $info['time'] ?? '-1',
-                'close_time' => '',
+                'close_time' => $info['close_time'] ?? '',
                 'status'     => $info['status'] ?? 0,
                 'dish'       => ['A','B','C','D']
 
