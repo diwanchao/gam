@@ -464,7 +464,7 @@ if(location.pathname == '/index/home'){
 	InitHeader.prototype.timeInit = function () {
 		var time = this.data.macau_time * 1000;
 		var _this = this;
-		this.$onlineTime.text(time);
+		this.$onlineTime.text(utils.paseDate(time, 'yyyy-MM-dd HH:mm:ss'));
 		window.setInterval(function () {
 			time = new Date(time) * 1 + 1000;
 			_this.$onlineTime.text(utils.paseDate(time, 'yyyy-MM-dd HH:mm:ss'));
