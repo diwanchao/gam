@@ -7,6 +7,48 @@ use \think\Cache;
 
 class Game extends Base
 {
+
+    protected $play_map = [
+            '三军'=>'三军',
+            '合值'=>'和值',
+            '合值大'=>'和值大小',
+            '合值小'=>'和值大小',
+            '合值单'=>'和值单双',
+            '合值双'=>'和值单双',
+            '合值大单'=>'和值大单双',
+            '合值大双'=>'和值大单双',
+            '合值小单'=>'和值小单双',
+            '合值小双'=>'和值小单双',
+            '豹子'=>'豹子',
+            '半顺'=>'半顺',
+            '全顺'=>'全顺',
+            '杂'=>'杂',
+            '跨度'=>'跨',
+            '红单'=>'红单双',
+            '红双'=>'红单双',
+            '红大'=>'红大小',
+            '红小'=>'红大小',
+            '黑单'=>'黑单双',
+            '黑双'=>'黑单双',
+            '黑大'=>'黑大小',
+            '黑小'=>'黑大小',
+            '黑码'=>'黑码',
+            '红码'=>'红码',
+            '4码黑'=>'4码黑',
+            '4码红'=>'4码红',
+            '5码黑'=>'5码黑',
+            '三同号单选'=>'三同号单选',
+            '二同号复选'=>'二同号复选',
+            '二同号单选'=>'二同号单选',
+            '三不同号'=>'三不同号',
+            '二不同号'=>'二不同号',
+        ];
+
+
+
+
+
+
     /**
      * @SWG\Get(
      *   path="/api/game/resultList",
@@ -160,41 +202,6 @@ class Game extends Base
      */
     public function addBet()
     {
-        $play_map = [
-            '三军'=>'三军',
-            '合值'=>'和值',
-            '合值大'=>'和值大小',
-            '合值小'=>'和值大小',
-            '合值单'=>'和值单双',
-            '合值双'=>'和值单双',
-            '合值大单'=>'和值大单双',
-            '合值大双'=>'和值大单双',
-            '合值小单'=>'和值小单双',
-            '合值小双'=>'和值小单双',
-            '豹子'=>'豹子',
-            '半顺'=>'半顺',
-            '全顺'=>'全顺',
-            '杂'=>'杂',
-            '跨度'=>'跨',
-            '红单'=>'红单双',
-            '红双'=>'红单双',
-            '红大'=>'红大小',
-            '红小'=>'红大小',
-            '黑单'=>'黑单双',
-            '黑双'=>'黑单双',
-            '黑大'=>'黑大小',
-            '黑小'=>'黑大小',
-            '黑码'=>'黑码',
-            '红码'=>'红码',
-            '4码黑'=>'4码黑',
-            '4码红'=>'4码红',
-            '5码黑'=>'5码黑',
-            '三同号单选'=>'三同号单选',
-            '二同号复选'=>'二同号复选',
-            '二同号单选'=>'二同号单选',
-            '三不同号'=>'三不同号',
-            '二不同号'=>'二不同号',
-        ];
 
         $game_key   = Request::instance()->param('game_key',''); 
         $part       = Request::instance()->param('level','');
@@ -217,22 +224,23 @@ class Game extends Base
                 {
                     $play_key = $value['sub_name'];
                 }
-                if (!isset($play_map[$play_key])) 
+                if (!isset($this->play_map[$play_key])) 
                     continue;
-                $break = Db::table('user_game_method')->where('game_key=? and user_id=? and methods=?',[$game_key,$this->USER_ID,$play_map[$play_key]])->value($part);
+                $break = Db::table('user_game_method')->where('game_key=? and user_id=? and methods=?',[$game_key,$this->USER_ID,$this->play_map[$play_key]])->value($part);
                 $break = $break ?: 0;
                 $data = [
-                    'time' => date('Y-m-d H:i:s',time()), 
-                    'part' => $part,
-                    'number'=>$number,
-                    'content'=>$value['sub_name'],
-                    'money'=>$value['value'],
-                    'break'=>$value['value']*($break/100),
-                    'get'=>0,
-                    'game_key'=>$game_key,
-                    'user_id'=>$this->USER_ID,
-                    'odds'=>$value['odds'],
-                    'play_name'=>$play_map[$play_key]
+                    'time'      => date('Y-m-d H:i:s',time()), 
+                    'part'      => $part,
+                    'number'    => $number,
+                    'content'   => $value['sub_name'],
+                    'money'     => $value['value'],
+                    'break'     => $value['value']*($break/100),
+                    'get'       => 0,
+                    'game_key'  => $game_key,
+                    'user_id'   => $this->USER_ID,
+                    'odds'      => $value['odds'],
+                    'play_name' =>$this->play_map[$play_key],
+                    'play_key'  => $value['key'].$value['sub_key'],
                 ];
                 Db::startTrans();
                 try {
