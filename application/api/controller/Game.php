@@ -102,16 +102,22 @@ class Game extends Base
      */
     public function gameInit()
     {
-        $game_key   = Request::instance()->param('game_key'); 
-        $open_data  = get_k3_number();
-        $data = [
-            'issue'      => $open_data['periods'] ?? '',
-            'count_down' => $open_data['count_down'] ?? '',
-            'close_time' => $open_data['close_time'] ?? '',
-            'status'     => $open_data['status'] ?? 0,
-            'dish'       => ['A','B','C','D']
+        $data       = [];
+        $game_key   = Request::instance()->param('game_key',''); 
+        if ($game_key == 'jlk3') 
+        {
+            $info       = get_k3_info();
+            $data = [
+                'issue'      => get_k3_number(),
+                'count_down' => $info['time'] ?? '-1',
+                'close_time' => '',
+                'status'     => $info['status'] ?? 0,
+                'dish'       => ['A','B','C','D']
 
-        ];
+            ];
+        }
+
+
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
     /**
