@@ -45,14 +45,14 @@ use \think\Db;
 
         if ($now>$closestamp) 
         {
-        	return date('Ymd',strtotime('+1 day')).'01';
+        	return date('Ymd',strtotime('+1 day')).'001';
         }
         if ($now<$openstamp) 
         {
-        	return date('Ymd',$now).'01';
+        	return date('Ymd',$now).'001';
         }
 	    $num = ceil((($now-$openstamp)/$period))+1;
-	    $num = ($num<10) ? '0'.$num : $num;
+	    $num = ($num<10) ? '00'.$num : '0'.$num;
 
 	    return date('Ymd').$num;
 
