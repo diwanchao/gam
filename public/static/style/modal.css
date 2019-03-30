@@ -32,6 +32,8 @@
 .h-modal.show{
     top:50%;
     opacity: 1;
+    overflow: auto;
+    max-height: 95%;
 }
 .h-modal-title{
     padding: 15px 0;
