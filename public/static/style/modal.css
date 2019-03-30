@@ -17,6 +17,8 @@
     position: fixed;
     top:-100%;
     left: 50%;
+    overflow: auto;
+    max-height: 95%;
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 4px;
@@ -32,8 +34,7 @@
 .h-modal.show{
     top:50%;
     opacity: 1;
-    overflow: auto;
-    max-height: 95%;
+
 }
 .h-modal-title{
     padding: 15px 0;
