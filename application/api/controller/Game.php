@@ -212,8 +212,21 @@ class Game extends Base
             return json(['msg' => '投注失败,数据异常.请刷新页面重新投注','code' => 301, 'data' => []]);
         }
 
+
+
+
         if ($game_key == 'jlk3') 
         {
+            $sum = 0;
+            $set_count_blance = array_column($bet_data, 'value');
+            foreach ($set_count_blance as $v) {
+                $sum += $v;
+            }
+            $user_blance = Db::table('menber')->where('id', $this->USER_ID)->value('blance');
+            if ($sum>$user_blance) 
+                return json(['msg' => '投注失败,余额不足','code' => 301, 'data' => []]);
+
+
             foreach ($bet_data as $key => $value) {
                 $play_key = $value['name'];
 
