@@ -30,13 +30,12 @@ class Home extends Base
 
     public function headInfo()
     {
-                //game_key
+
+
         $game_key       = Request::instance()->param('game_key','');
         $first_notice   = Db::name('notice')->order('create_time desc')->value('content');
-
-        $user_id  = $this->USER_ID ?? 0;
-        $sql        = "SELECT `name`,game_key as `key`,url FROM `game_info` WHERE id in(SELECT game_list FROM menber WHERE id={$user_id})";
-        $game_data  = Db::query($sql);
+        $user_id        = $this->USER_ID ?? 0;
+        $game_data      = get_user_info_by_user_id($user_id);
 
         $data = [
             'notice'     => $first_notice ?: '',
@@ -133,8 +132,7 @@ class Home extends Base
     {
         $res        = [];
         $user_id    = $this->USER_ID ?? 0;
-        $sql        = "SELECT `name`,game_key as `key`,url FROM `game_info` WHERE id in(SELECT game_list FROM menber WHERE id={$user_id})";
-        $data       = Db::query($sql);
+        $data       = get_user_info_by_user_id($user_id);
         if ($data) {
             foreach ($data as $key => $value) {
                 if ($value['key'] == 'jlk3') 

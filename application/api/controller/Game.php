@@ -124,8 +124,7 @@ class Game extends Base
     public function userGameList()
     {
         $user_id  = $this->USER_ID ?? 0;
-        $sql    = "SELECT `name`,game_key FROM `game_info` WHERE id in(SELECT game_list FROM menber WHERE id={$user_id})";
-        $data   = Db::query($sql);
+        $data   = get_user_info_by_user_id($user_id);
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
     /**
