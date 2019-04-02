@@ -227,20 +227,20 @@ class User extends Base
                     $break  += $value['break'];
                     $get    += $value['get'];
                     $data = [
-                        'no'    => $key+1,
-                        'time'  => $value['time'],
-                        'number'=> $value['no'],
-                        'part'  =>$value['part'],
-                        'content'=>$value['play_name'],
-                        'name'=> $game_key ='jlk3' ? '吉林快3' : '重庆时时彩',
-                        'periods'=>$value['number'],
-                        'value'=>$value['content'],
-                        'reate'=>$value['odds'],
-                        'result'=> implode(',',str_split($value['game_result'])),
-                        'money'=>$value['money'],
-                        'school'=>$value['handsel'],
-                        'break'=>$value['break'],
-                        'get'=>$value['get'],
+                        'no'        => $key+1,
+                        'time'      => $value['time'],
+                        'number'    => $value['no'],
+                        'part'      => $value['part'],
+                        'content'   => $value['play_name'],
+                        'name'      => $game_key ='jlk3' ? '吉林快3' : '重庆时时彩',
+                        'periods'   => $value['number'],
+                        'value'     => $value['content'],
+                        'reate'     => $value['odds'],
+                        'result'    => implode(',',str_split($value['game_result'])),
+                        'money'     => $value['money'],
+                        'school'    => $value['handsel'],
+                        'break'     => $value['break'],
+                        'get'       => $value['get'],
                     ];
                     $return_data[] = $data;
                 }

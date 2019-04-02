@@ -153,7 +153,7 @@ class Game extends Base
                 'count_down' => $info['time'] ?? '-1',
                 'close_time' => $info['close_time'] ?? '',
                 'status'     => $info['status'] ?? 0,
-                'dish'       => ['A','B','C','D']
+                'dish'       => $this->get_part_by_user($this->USER_ID)
 
             ];
         }
@@ -161,6 +161,22 @@ class Game extends Base
 
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
+    /**
+     * 根据用户id查询所开盘数
+     */
+    public function get_part_by_user($user_id)
+    {
+        $item       = [];
+        $user_part  = Db::name('menber')->where('id=?',[$user_id])->value('part');
+        foreach (json_decode($user_part,true) as $key => $value) 
+        {
+            if ($value == 'true') 
+                $item[] = $key;
+        }
+        return $item;
+    }
+
+
     /**
      * 最后开奖结果
      */
