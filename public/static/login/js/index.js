@@ -71,6 +71,14 @@ $(function(){
             error: function(err){
                 alert('Server error……');
             }
-        })
+        });
+
+        var e = window.event || arguments.callee.caller.arguments[0];
+        if (typeof e.preventDefault === 'function') {
+            e.preventDefault();
+        }
+        else {
+            e.returnValue = false;
+        }
     });
 })

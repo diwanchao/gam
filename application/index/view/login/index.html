@@ -13,7 +13,7 @@
     <div class="bg">
     </div>
 
-    <div class="login">
+    <form class="login">
         <h2>会员专区</h2>
         <p>Username	</p>
         <input name="username" class="form-control input" type="text" placeholder="Account">
@@ -24,8 +24,8 @@
             <img id="code" onclick="this.src='{:captcha_src()}?'+Math.random()" src="{:captcha_src()}" alt="captcha" />
         </div>
         <!-- <div class="btn">路线选择</div> -->
-        <div class="btn" id="login">登入</div>
-    </div>
+        <button type="submit" class="btn" id="login" >登入</button>
+    </form>
 </body>
 <script src="/static/js/jquery-2.1.4.min.js"></script>
 <script src="/static/login/js/index.js"></script>
