@@ -9,6 +9,9 @@ var quickValue = '';
 
 // 分盘
 var levelValue = 'A';
+if(utils.getCookie('part')){
+    levelValue = utils.getCookie('part');
+}
 
 // 确认投注弹出框
 var confirmModal = new H_modal('#confirmModal');
@@ -188,7 +191,7 @@ var app = new Vue({
         tabContent: 1, // 0->停盘 1->开盘
         quickImport: '', // 快速输入
         level: [],
-        levelValue: 'A',
+        levelValue: levelValue,
         // levelName: 'A盘',
         nowPeriods: '',
         close_time: '',
@@ -198,6 +201,7 @@ var app = new Vue({
     methods: {
         levelChange: function(){
             levelValue = this.levelValue;
+            utils.setCookie('part', this.levelValue);
         }
     }
 });

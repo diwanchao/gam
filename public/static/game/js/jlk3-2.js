@@ -9,6 +9,9 @@
 
  // 分盘
 var levelValue = 'A';
+if(utils.getCookie('part')){
+    levelValue = utils.getCookie('part');
+}
  
  // 确认投注弹出框
  var confirmModal = new H_modal('#confirmModal');
@@ -155,6 +158,7 @@ var levelValue = 'A';
      methods: {
          levelChange: function(){
             levelValue = this.levelValue;
+            utils.setCookie('part', this.levelValue);
          }
      }
  });
@@ -207,16 +211,6 @@ var levelValue = 'A';
          getMoneyTotal();
      });
  
-     /* ************* 限制红黑码只能选择4种 ************** */
-    //  $('[data-key=hongheima]').find('input[type=checkbox]').each(function() {
-    //      $(this).bind('click', function(e){
-    //          if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
-    //              e.preventDefault();
-    //              alert('不能超过4项');
-    //          }
-    //      })
-    //  })
- 
      /* ************* 点击下注弹出确认下注 ************** */
      $('.submit').bind('click', function(){
          tableData = getData();
@@ -250,20 +244,4 @@ var levelValue = 'A';
      }, 10000);
     
      
- })
- 
- 
- 
- 
- 
- 
- // [
-     // {
-     //     key: 'samjun',
-     //     name: '三军',
-     //     sub_key: '5mahong',
-     //     sub_name: '5码红',
-     //     odds: '1.95',
-     //     value: 100,
-     // }
- // ]
+ });
