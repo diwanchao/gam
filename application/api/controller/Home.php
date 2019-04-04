@@ -135,7 +135,7 @@ class Home extends Base
         $data       = get_user_info_by_user_id($user_id);
         if ($data) {
             foreach ($data as $key => $value) {
-                if ($value['key'] == 'jlk3') 
+                if ($value['game_key'] == 'jlk3') 
                 {
                     $now = get_k3_info();
                     $res['k3'][] = array_merge($value,$now);
