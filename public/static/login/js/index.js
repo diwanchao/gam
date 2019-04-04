@@ -9,6 +9,7 @@ var requireURL = {
 }
 delCookie('userInfo');
 delCookie('game_key');
+delCookie('part');
 
 function setCookie(name,value) 
 { 

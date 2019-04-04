@@ -498,7 +498,7 @@ if(location.pathname == '/index/home'){
 				var cur = this.data.game[i];
 				var $html = $('<li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript:void(0);">' + cur.name + '</a></li>');
 				$html.click(function () {
-					utils.setCookie('game_key', cur.key);
+					// utils.setCookie('game_key', cur.key);
 					window.location = cur.url;
 				});
 				this.$navGameList.append($html);
@@ -528,8 +528,8 @@ if(location.pathname == '/index/home'){
 				url: '/api/login/logout',
 				type: 'POST',
 				success: function(){
-					utils.delCookie('userInfo');
-					utils.delCookie('game_key');
+					// utils.delCookie('userInfo');
+					// utils.delCookie('game_key');
 					window.location = '/index/login';
 				}
 			});
