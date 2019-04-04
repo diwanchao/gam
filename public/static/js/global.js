@@ -500,7 +500,7 @@ if(location.pathname == '/index/home'){
 				var cur = this.data.game[i];
 				var $html = $('<li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript:void(0);">' + cur.name + '</a></li>');
 				$html.click(function () {
-					utils.setCookie('game_key', cur.key);
+					utils.setCookie('game_key', cur.game_key);
 					window.location = cur.url;
 				});
 				this.$navGameList.append($html);
