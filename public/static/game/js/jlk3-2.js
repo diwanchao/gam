@@ -9,7 +9,11 @@
 
  // 分盘
 var levelValue = 'A';
-if(utils.getCookie('part')){
+if(utils.getCookie('game_key') != 'jlk3') {
+    utils.setCookie('game_key', 'jlk3');
+    utils.setCookie('part', levelValue)
+}
+else if(utils.getCookie('part')){
     levelValue = utils.getCookie('part');
 }
  
