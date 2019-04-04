@@ -447,7 +447,7 @@ if(location.pathname == '/index/home'){
 		utils.getAjax({
 			url: utils.concatGameKey('/api/home/headInfo'),
 			type: 'POST',
-			async: false,
+			// async: false,
 			success: function (data) {
 				_this.data = $.extend({}, _this.data, data);
 
