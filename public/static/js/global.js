@@ -29,7 +29,7 @@ var utils = {
 		exp.setTime(exp.getTime() - 1);
 		var cval = utils.getCookie(name);
 		if (cval != null)
-			document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + 'path=/';
+			document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ';path=/';
 	},
 
 	/**
