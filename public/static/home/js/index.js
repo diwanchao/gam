@@ -31,7 +31,7 @@ var render = function(data){
     );
 
     $html.find('.countDown').bind('click', function(){
-        // utils.setCookie('game_key', data.key);
+        utils.setCookie('game_key', data.key);
         window.location = data.url;
     });
 
