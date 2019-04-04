@@ -148,7 +148,7 @@ if(utils.getCookie('part')){
          tabContent: 1, // 0->停盘 1->开盘
          quickImport: '', // 快速输入
          level: [],
-         levelValue: 'A',
+         levelValue: levelValue,
          // levelName: 'A盘',
          nowPeriods: '',
          close_time: '',
