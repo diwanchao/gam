@@ -9,7 +9,11 @@ var quickValue = '';
 
 // 分盘
 var levelValue = 'A';
-if(utils.getCookie('part')){
+if(utils.getCookie('game_key') != 'jlk3') {
+    utils.setCookie('game_key', 'jlk3');
+    utils.setCookie('part', levelValue)
+}
+else if(utils.getCookie('part')){
     levelValue = utils.getCookie('part');
 }
 
@@ -127,7 +131,7 @@ var init = function(){
             app._data.level = json.dish;
             app._data.nowPeriods = json.issue;
             app._data.close_time = json.close_time;
-            //app._data.tabContent = json.status;
+            app._data.tabContent = json.status;
             timeInterval(json.count_down);
         } 
     })

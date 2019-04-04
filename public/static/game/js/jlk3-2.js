@@ -9,7 +9,11 @@
 
  // 分盘
 var levelValue = 'A';
-if(utils.getCookie('part')){
+if(utils.getCookie('game_key') != 'jlk3') {
+    utils.setCookie('game_key', 'jlk3');
+    utils.setCookie('part', levelValue)
+}
+else if(utils.getCookie('part')){
     levelValue = utils.getCookie('part');
 }
  
@@ -148,7 +152,7 @@ if(utils.getCookie('part')){
          tabContent: 1, // 0->停盘 1->开盘
          quickImport: '', // 快速输入
          level: [],
-         levelValue: 'A',
+         levelValue: levelValue,
          // levelName: 'A盘',
          nowPeriods: '',
          close_time: '',
