@@ -666,25 +666,31 @@ if(location.pathname == '/index/home'){
 				}
 
 			})
-		})
+		});
 
-		// ajax 用分页面请求 this.betPage.data.index
-		utils.getAjax({
-			url: utils.concatGameKey('/api/home/leftInfo'),
-			data: {
-				index: this.betPage.data.index
-			},
-			type: 'GET',
-			success: function (data) {
-				_this.data = $.extend({}, _this.data, data);
-				_this.betPage.init({
-					total: _this.data.bet.total
-				})
-				_this.baseInit();
-				_this.betTableInit();
-				_this.numTableInit();
-			}
-		})
+		var interval = function(){
+			// ajax 用分页面请求 this.betPage.data.index
+			utils.getAjax({
+				url: utils.concatGameKey('/api/home/leftInfo'),
+				data: {
+					index: _this.betPage.data.index
+				},
+				type: 'GET',
+				success: function (data) {
+					_this.data = $.extend({}, _this.data, data);
+					_this.betPage.init({
+						total: _this.data.bet.total
+					})
+					_this.baseInit();
+					_this.betTableInit();
+					_this.numTableInit();
+				}
+			});
+		}
+
+		window.setInterval(interval, 7000);
+
+		interval();
 
 	}
 
