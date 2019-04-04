@@ -142,6 +142,7 @@ var utils = {
 			dataType: opt.dataType || 'JSON',
 			url: opt.url || '/',
 			data: opt.data || {},
+			async: opt.async === 'undefined' ? true : opt.async,
 			success: function (result) {
 				if (result.code == 304) {
 					alert('登陆超时……');
@@ -446,6 +447,7 @@ if(location.pathname == '/index/home'){
 		utils.getAjax({
 			url: utils.concatGameKey('/api/home/headInfo'),
 			type: 'POST',
+			async: false,
 			success: function (data) {
 				_this.data = $.extend({}, _this.data, data);
 
