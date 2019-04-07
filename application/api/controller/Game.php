@@ -195,6 +195,18 @@ class Game extends Base
 
             ];
         }
+        if ($game_key == 'ssc') 
+        {
+            $info       = get_ssc_info();
+            $data = [
+                'issue'      => get_ssc_number(),
+                'count_down' => $info['time'] ?? '-1',
+                'close_time' => $info['close_time'] ?? '',
+                'status'     => $info['status'] ?? 0,
+                'dish'       => $this->get_part_by_user($this->USER_ID)
+
+            ];
+        }
 
 
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
