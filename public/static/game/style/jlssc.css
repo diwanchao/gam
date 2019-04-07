@@ -116,3 +116,91 @@
 .form-assect .h-btn{
     padding: 7px 18px;
 }
+
+.rule{
+    background: #eeedf3;
+}
+.rule .spacing{
+    color: #3366ff;
+}
+.rule .mark{
+    color: #d90b29;
+    background: transparent;
+}
+.rule .f-c-red{
+    color: #ff0000;
+}
+.rule h1{
+    MARGIN: 70px 0px 20px;
+    WIDTH: 530px;
+    COLOR: #3366ff;
+    FONT-SIZE: 36px;
+    font-weight: 400;
+}
+.rule h2{
+    LINE-HEIGHT: 32px;
+    COLOR: #3366ff;
+    FONT-SIZE: 16px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+.rule h4{
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+}
+.rule h3{
+    BACKGROUND-IMAGE: url(../../../../public/image/h3_icon.png);
+    LINE-HEIGHT: 32px;
+    PADDING-LEFT: 20px;
+    BACKGROUND-REPEAT: no-repeat;
+    BACKGROUND-POSITION: 0px 8px;
+    COLOR: #000000;
+    FONT-SIZE: 16px;
+    font-weight: 400;
+}
+.rule .tit{
+    width: 218px;
+}
+.rule .h-table{
+    border-color: #666;
+    border-top: 1px solid #666;
+}
+.rule .h-table th,
+.rule .h-table td{
+    border-color: #666;
+    background: transparent;
+    text-align: left;
+    LINE-HEIGHT: 24px;
+    padding: 10px;
+}
+.rule .h-table tr:hover{
+    background: #f7eec8;
+}
+.rule .ex-text{
+    BORDER-BOTTOM: #666 1px solid;
+    BORDER-LEFT: #666 1px solid;
+    PADDING-BOTTOM: 10px;
+    LINE-HEIGHT: 24px;
+    MARGIN: 10px 0px;
+    PADDING-LEFT: 10px;
+    PADDING-RIGHT: 10px;
+    COLOR: #333;
+    FONT-SIZE: 14px;
+    BORDER-TOP: #666 1px solid;
+    BORDER-RIGHT: #666 1px solid;
+    PADDING-TOP: 10px;
+}
+.rule-content{
+    BACKGROUND-IMAGE: url(../../../../public/image/bg_img.jpg);
+    PADDING-BOTTOM: 20px;
+    PADDING-LEFT: 20px;
+    WIDTH: 820px;
+    PADDING-RIGHT: 20px;
+    BACKGROUND-REPEAT: no-repeat;
+    PADDING-TOP: 20px;
+    padding-bottom: 30px;
+}
