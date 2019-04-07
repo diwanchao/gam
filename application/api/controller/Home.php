@@ -53,8 +53,8 @@ class Home extends Base
         {
             $data['subGame'] = [
                 ['name'=>'龙虎和', 'key'=>'ssc','url'=>'/index/game/jlk3'],
-                ['name'=>'组选三', 'key'=>'ssc','url'=>'/index/game/jlk32'],
-                ['name'=>'组选六', 'key'=>'ssc','url'=>'/index/game/jlk32'],
+                ['name'=>'组选三', 'key'=>'ssc','url'=>'/index/game/ssczxs'],
+                ['name'=>'组选六', 'key'=>'ssc','url'=>'/index/game/ssczxl'],
             ];
         }
 
