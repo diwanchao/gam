@@ -142,9 +142,11 @@ class Home extends Base
                 }
                 if ($value['game_key'] == 'ssc') 
                 {
-                    $res['ssc'] = [
+                    $now = get_ssc_info();
+                    $res['ssc'][] = array_merge($value,$now);
+/*                    $res['ssc'] = [
                         ['name'=>'重庆时时彩','time'=>100000,'status'=>1,'url'=>'/index/game/jlssc','game_key'=>'ssc','close_time'=>"2019-04-07 17:18:00"]
-                    ];
+                    ];*/
                 }
             }
         }
