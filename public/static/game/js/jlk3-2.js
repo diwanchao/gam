@@ -104,7 +104,7 @@ else if(utils.getCookie('part')){
              time -= 1;
              app._data.count_down = utils.remainingTime(time);
              if(time <= -1){
-                 console.log('timeout: 0')
+                 console.log('timeout: 0');
                  window.clearInterval(interval);
                  refresh_data = [];
                  init();
