@@ -140,14 +140,14 @@ class Home extends Base
                     $now = get_k3_info();
                     $res['k3'][] = array_merge($value,$now);
                 }
+                if ($value['key'] == 'ssc') 
+                {
+                    $res['ssc'] = ['name'=>'重庆时时彩','time'=>100000,'status'=>1,'url'=>'/','key'=>'jlssc'];                    
+                }
+
+
             }
         }
-/*
-            $data = [
-                'ssc'=>[
-                    ['name'=>'重庆时时彩','time'=>100000,'status'=>1,'url'=>'/','key'=>'jlssc'],
-                ],
-            ];*/
         return json(['msg' => 'succeed','code' => 200, 'data' => $res]);
     }
 
