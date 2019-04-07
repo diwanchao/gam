@@ -16,5 +16,12 @@ class Game extends Base
     {
     	return $this->fetch('game/jlk3-2');
     }
-
+    public function ssczxs()
+    {
+        return $this->fetch('game/jlssc-zxs');
+    }
+    public function ssczxl()
+    {
+        return $this->fetch('game/jlssc-zxl');
+    }
 }
