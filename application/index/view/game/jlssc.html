@@ -20,617 +20,653 @@
             {include file="public/slidebar"}
             <!-- 右侧内容信息 -->
             <div class="layout-body">
-                <!-- 上部分 -->
-                <div class="page-content-title">
-                    <span>第</span>
-                    <strong class="f-c-red">20190311-039</strong>
-                    <span>开奖号码</span>
-                    <span class="color1 color-game">1</span>
-                    <span class="color2 color-game">2</span>
-                    <span class="color3 color-game">3</span>
-                </div>
-                <!-- 切换 -->
-                <div class="clear-float select-wrapper">
-                    <strong class="sub-title m-r-15">投注类型</strong>
-                    <div class="select-item active m-r-5">一般</div>
-                    <div class="select-item">游戏规则</div>
-                </div>
-                <div class="portlet">
-                    <div class="portlet-title clear-float">
-                        <span>重庆时时彩&nbsp;&nbsp;龙虎&nbsp;</span>
-                        <select name="" id="" class="form-control changeGame">
-                            <option selected value="">A</option>
-                            <option value="">B</option>
-                        </select>
-                        <span class="m-l-30">第<b class="f-c-red">20190311-054</b>期</span>
-                        <span class="m-l-30">投注时间：<b class="f-c-red">0:12:40</b></span>
-                        <span class="m-l-30">停盘时间：<b>22:07:00</b></span>
-                        <div class="fast-import pull-right">
-                            <span>快速输入&nbsp;</span>
-                            <input type="text" class="form-control m-r-15">
-                            <span class="h-btn btn-red">重新整理</span>
+                <div v-if="tabContent == 1" >
+                     <!-- 上部分 -->
+                    <div class="page-content-title">
+                        <span>第</span>
+                        <strong class="f-c-red">{{periods}}</strong>
+                        <span>开奖号码</span>
+                        <span v-for="(item,index) in periods_number" class="color-game" :class="'color' + item">{{item}}</span>
+                    </div>
+                    <!-- 切换 -->
+                    <div class="clear-float select-wrapper">
+                        <strong class="sub-title m-r-15">投注类型</strong>
+                        <div @click="tab=0" class="select-item m-r-5" :class="(tab==0) ? 'active' : ''">一般</div>
+                        <div @click="tab=1" class="select-item" :class="(tab==1) ? 'active' : ''">游戏规则</div>
+                    </div>
+                    <div class="portlet">
+                        <div class="portlet-title clear-float">
+                            <span>重庆时时彩&nbsp;&nbsp;</span>
+                            <select @change="levelChange" v-model="levelValue" class="form-control changeGame">
+                                <option v-for="(item, index) in level" :value="item">{{item}}</option>
+                            </select>
+                            <span class="m-l-30">第<b class="f-c-red">{{nowPeriods}}</b>期</span>
+                            <span class="m-l-30">投注时间：<b class="f-c-red">{{count_down}}</b></span>
+                            <span class="m-l-30">停盘时间：<b>{{close_time}}</b></span>
+                            <div class="fast-import pull-right">
+                                <span>快速输入&nbsp;</span>
+                                <input type="text" class="form-control m-r-15 quickImport" v-model="quickImport">
+                                <a href="javascript:history.go(0);" class="h-btn btn-red">重新整理</a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <!-- 游戏大厅 -->
+                            <div v-show="tab == 0" class="lobby">
+                                <table class="h-table" border="0" cellspacing="0" cellpadding="0">
+                                    <thead>
+                                        <!-- 龙1 -->
+                                        <tr>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙1</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙1</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎3</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙1</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎4</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙1</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎5</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                        </tr>
+                                        <!-- 龙2 -->
+                                        <tr>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙2</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎3</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙2</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎4</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙2</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎5</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                            <th class="p-5">
+                                            </th>
+                                        </tr>
+                                        <!-- 龙3 -->
+                                        <tr>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙3</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎4</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙3</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎5</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                            <th class="p-5">
+                                            </th>
+                                            <th class="p-5">
+                                            </th>
+                                        </tr>
+                                        <!-- 龙4 -->
+                                        <tr>
+                                            <th class="p-5">
+                                                <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <td><b>龙4</b></td>
+                                                            <td><b>和局</b></td>
+                                                            <td><b>虎5</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td><b class="f-c-red f-s-16">9</b></td>
+                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                            <td><input type="text" class="gb"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </th>
+                                            <th class="p-5">
+                                            </th>
+                                            <th class="p-5">
+                                            </th>
+                                            <th class="p-5">
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="form-assect">
+                                    <span class="f-c-green m-r-5"><b>金额</b></span>
+                                    <span class="f-c-red m-r-5"><b class="moneyTotal">0</b></span>
+                                    <span class="m-r-5"><b>快速输入</b></span>
+                                    <input type="text" class="m-r-15 quickImport" v-model="quickImport">
+                                    <span class="h-btn btn-red m-r-5 submit">确认</span>
+                                    <a href="javascript: history.go(0);" class="h-btn m-r-5">重置</a>
+                                </div>
+                            </div>
+                            <!-- 游戏规则 -->
+                            <div v-show="tab == 1" class="rule">
+                                <div class="rule-content rule-k3">
+                                    <h1>重庆时时彩</h1>
+                                    <div class="ex-text">
+                                        <span class="f-c-red">重庆时时彩</span>是中国福利彩票时时彩经国家财政部批准，由中国福利彩票发行管理中心在重庆市所辖区域内发行，由重庆市福利彩票发行中心承销。该游戏的投注时间、开奖时间和开奖号码与重庆福利彩票时时彩完全同步，<span
+                                            class="f-c-red">北京时间(GMT+8)每天上午7点10至凌晨3点10分，每20分钟一场，共59期。</span><br /><span
+                                            class="f-c-red">若注单为官网关盘后下注，本公司有权将该注单取消。</span>
+                                    </div>
+                                    <h4>广东盘</h4>
+                                    <h2>游戏规则说明</h2>
+                                    <table class="h-table" border="0" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>第一球~第五球</h3>
+                                                </td>
+                                                <td>第一球、第二球、第三球、第四球、第五球：指下注的每一球与开出之号码其开奖顺序及开奖号码相同，视为中奖，如第一球开出号码8时，投注者投注第一球为8者视为中奖，其余情形视为不中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>单双大小</h3>
+                                                </td>
+                                                <td>根据相应单项投注第一球~第五球开出的球号，判断胜负。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>大小</h3>
+                                                </td>
+                                                <td>根据相应单项投注第一球~第五球开出的球号大于或等于5为大，小于或等于4为小。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>单双</h3>
+                                                </td>
+                                                <td>根据相应单项投注第一球~第五球开出的球号为双数为双，如2、6；球号为单数为单，如1、3。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>龙1虎5和</h3>
+                                                </td>
+                                                <td>龙1<br />开出之号码第一球(万位)的中奖号码大于第五球(个位)中奖号码，如出和局则龙虎均不中奖。如第一球开出3第五球开出2；第一球开出5第五球开出1…中奖为龙。<br />虎5<br />开出之号码第一球(万位)的中奖号码小于第五球(个位)中奖号码，如出和局则龙虎均不中奖。如第一球开出2第五球开出3；第一球开出1第五球开出5…中奖为虎。<br />和<br />开出之号码第一球(万位)的中奖号码等于第五球(个位)中奖号码，例如开出结果：第一球开出2第五球开出2，则投注和局者视为中奖，其他视为不中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>总和单双大小</h3>
+                                                </td>
+                                                <td>大小<br />根据相应单项投注的第一球～第五球开出的球号大于或等于23为大，小于或等于22为小。<br />单双<br />根据相应单项投注的第一球~第五球开出的球号数字总和值是双数为总合双，数字总和值是单数为总合单。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>龙虎</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>龙</h3>
+                                                </td>
+                                                <td>任选1~5颗其中一个球，若开出之中奖号码大于虎所选之中奖号码。如第二球开出05第三球开出01；第一球开出03第五球开出02…中奖为龙。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>虎</h3>
+                                                </td>
+                                                <td>任选1~5颗其中一个球，若开出之中奖号码小于龙所选之中奖号码。如第二球开出01第三球开出03；第一球开出02第五球开出05…中奖为虎。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>和</h3>
+                                                </td>
+                                                <td>任选1~5颗其中一个球，若开出之中奖号码等于龙所选之中奖号码。如开出结果：第一球开出2第五球开出2，则投注和局者视为中奖，其他视为不中奖。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4 class="m-t-10">东北盘</h4>
+                                    <h2>一字盘势规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>一字定位</h3>
+                                                </td>
+                                                <td>于万、千、佰、拾、个任选一位，自0 ~ 9 任选１号进行投注，当开奖结果与所选的定位与号码相同且顺序一致时，即为中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>全五一字组合</h3>
+                                                </td>
+                                                <td>0 ~ 9 任选１号进行投注，当开奖结果【万位、千位、佰位、拾位、个位】任一数与所选的号码相同时，即为中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>前三一字组合</h3>
+                                                </td>
+                                                <td>0 ~ 9 任选１号进行投注，当开奖结果【万位、千位、佰位】任一数与所选的号码相同时，即为中奖。 </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>中三一字组合</h3>
+                                                </td>
+                                                <td>0 ~ 9 任选１号进行投注，当开奖结果【千位、佰位、拾位】任一数与所选的号码相同时，即为中奖。 </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>后三一字组合</h3>
+                                                </td>
+                                                <td>0 ~ 9 任选１号进行投注，当开奖结果【佰位、拾位、个位】任一数与所选的号码相同时，即为中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>万/千/佰/拾/个</h3>
+                                                </td>
+                                                <td>大小<br />0 ~ 4 为小， 5 ~ 9 为大<br />单双<br />1、3、5、7、9为单，0、2、4、6、8为双。 <br />质合
+                                                    <br />1、2、3、5、7为质数，0、4、6、8、9为合数。
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>二字盘势规则说明</h2>
+                                    <h4 class="m-b-10">万千/万佰/万拾/万个/千佰/千拾/千个/百拾/百个/拾个 </h4>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:180px;">
+                                                    <h3>和数单双</h3>
+                                                </td>
+                                                <td>1、3、5、7、9、11、13、15、17为单，0、2、4、6、8、10、12、14、16、18为双。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>二字定位盘势规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td>于万、千、佰、拾、个任选二位，自0 ~ 9 任选 2 号进行投注，当开奖结果与所选号码相同且顺序一致时，即为中奖。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>二字组选盘势规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td>从0 ~
+                                                    9十个数字中，任选两个不同的数字，对指定位置进行投注，若所选择的号码与当开开奖号码所指定之位置相同(顺序不限)，即为中奖。若是开出对子，如00、11、22、33、44、55、66、77、88、99皆算不中奖。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>三字盘势规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>三字组选</h3>
+                                                </td>
+                                                <td>从0 ~ 9
+                                                    十个数字中，任选三个不同的数字，对指定位置进行投注，若所选择的号码与当开开奖号码所指定之位置相同(顺序不限)，即为中奖。若是开出豹子，如000、111、222、333、444、555、666、777、888、999皆算不中奖。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h3>三字定位盘势</h3>
+                                                </td>
+                                                <td>于万、千、佰、拾、个位数当中任选三位，自0 ~ 9 任选 3号进行投注，当开奖结果与所选号码相同且顺序一致时，即为中奖。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>前三组选三规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>前三组选三</h3>
+                                                </td>
+                                                <td>会员可以挑选5~10个号码，当开奖结果【万位、千位、佰位】中有且只有两个号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2、3、4、5)，则只要开奖结果【万位、千位、佰位】中，有出现1、2、3、4、5中的任何两个号码，且其中有一个号码重复则中奖。<br>例如：112、334，若是开出豹子则不算中奖。<br>备注：〝豹子〞为三字同号，例如：111，222。</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <h2>中三组选三规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>中三组选三</h3>
+                                                </td>
+                                                <td>会员可以挑选5~10个号码，当开奖结果【千位、佰位、拾位】中有且只有两个号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2、3、4、5)，则只要开奖结果【千位、佰位、拾位】中，有出现1、2、3、4、5中的任何两个号码，且其中有一个号码重复则中奖。<br>例如：112、334，若是开出豹子则不算中奖。<br>备注：〝豹子〞为三字同号，例如：111，222。</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <h2>后三组选三规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>后三组选三</h3>
+                                                </td>
+                                                <td>会员可以挑选5~10个号码，当开奖结果【佰位、拾位、个位】中有且只有两个号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2、3、4、5)，则只要开奖结果【佰位、拾位、个位】中，有出现1、2、3、4、5中的任何两个号码，且其中有一个号码重复则中奖。<br>例如：112、334，若是开出豹子则不算中奖。<br>备注：〝豹子〞为三字同号，例如：111，222。</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <h2>前三组选六规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>前三组选六</h3>
+                                                </td>
+                                                <td>会员可以挑选4~8个号码，当开奖结果【万位、千位、佰位】都出现在所下注的号码中且没有任何号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。中奖赔率以所选号码中的最小赔率计算派彩。<br>例如：如果是选择(1、2、3、4)，则开奖结果【万位、千位、佰位】为123、124、134、234都中奖，其他都是不中奖。例如：112、133、145、444等都是不中奖。</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <h2>中三组选六规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>中三组选六</h3>
+                                                </td>
+                                                <td>会员可以挑选4~8个号码，当开奖结果【千位、佰位、拾位】都出现在所下注的号码中且没有任何号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。中奖赔率以所选号码中的最小赔率计算派彩。<br>例如：如果是选择(1、2、3、4)，则开奖结果【千位、佰位、拾位】为123、124、134、234都中奖，其他都是不中奖。例如：112、133、145、444等都是不中奖。</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <h2>后三组选六规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>后三组选六</h3>
+                                                </td>
+                                                <td>会员可以挑选4~8个号码，当开奖结果【佰位、拾位、个位】都出现在所下注的号码中且没有任何号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。中奖赔率以所选号码中的最小赔率计算派彩。<br>例如：如果是选择(1、2、3、4)，则开奖结果【佰位、拾位、个位】为123、124、134、234都中奖，其他都是不中奖。例如：112、133、145、444等都是不中奖。</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <h2>前三跨度盘势规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td>以开奖结果【万位、千位、佰位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<br><span class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为5。(最大号码8减最小号码3等于5)。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <!--  -->
+                                    <h2>中三跨度盘势规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">以开奖结果【千位、佰位、拾位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<span class="f-c-red">跨度</span><br><span class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为4。(最大号码8减最小号码4等于4)。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>后三跨度盘势规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
+                                        <tbody>
+                                            <tr>
+
+                                                <td colspan="2">以开奖结果【佰位、拾位、个位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<br><span class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为2。(最大号码8减最小号码6等于2)。
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>前三组选二规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>前三组选二</h3>
+                                                </td>
+                                                <td>会员可以挑选两个号码，当开奖结果【万位、千位、佰位】中任两数与所选的号码相同时，即为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2)，则只要开奖结果【万位、千位、佰位】中，有出现1、2中的任何两个号码，即为中奖。<br>例如：012、021、102、120、210、201。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>中三组选二规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>中三组选二</h3>
+                                                </td>
+                                                <td>会员可以挑选两个号码，当开奖结果【千位、佰位、拾位】中任两数与所选的号码相同时，即为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2)，则只要开奖结果【千位、佰位、拾位】中，有出现1、2中的任何两个号码，即为中奖。<br>例如：012、021、102、120、210、201。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>后三组选二规则说明</h2>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>后三组选二</h3>
+                                                </td>
+                                                <td>会员可以挑选两个号码，当开奖结果【佰位、拾位、个位】中任两数与所选的号码相同时，即为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2)，则只要开奖结果【佰位、拾位、个位】中，有出现1、2中的任何两个号码，即为中奖。<br>例如：012、021、102、120、210、201。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h2>龙虎游戏规则说明</h2>
+                                    <h4 class="m-b-10">龙虎以选择球号之中奖号码做为对奖号码</h4>
+                                    <table class="h-table" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>龙</h3>
+                                                </td>
+                                                <td>开出之号码第一球(万位)的中奖号码大于第五球(个位)的中奖号码，如出和局则龙虎均不中奖。如第一球开出3第五球开出2；第一球开出5第五球开出1…中奖为龙。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>虎</h3>
+                                                </td>
+                                                <td>开出之号码第一球(万位)的中奖号码小于第五球(个位)的中奖号码，如出和局则龙虎均不中奖。如第一球开出2第五球开出3；第一球开出1第五球开出5…中奖为虎。</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="180">
+                                                    <h3>和</h3>
+                                                </td>
+                                                <td>开出之号码第一球(万位)的中奖号码等于第五球(个位)的中奖号码，例如开出结果：8*8，则投注和局者视为中奖，其他视为不中奖。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="portlet-body">
-                        <!-- 游戏大厅 -->
-                        <div class="hide lobby">
-                            <table class="h-table" border="0" cellspacing="0" cellpadding="0">
-                                <thead>
-                                    <!-- 龙1 -->
-                                    <tr>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙1</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙1</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎3</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙1</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎4</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙1</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                    </tr>
-                                    <!-- 龙2 -->
-                                    <tr>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙2</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎3</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙2</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎4</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙2</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                    </tr>
-                                    <!-- 龙3 -->
-                                    <tr>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙3</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎4</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙3</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                    </tr>
-                                    <!-- 龙4 -->
-                                    <tr>
-                                        <th class="p-5">
-                                            <table class="h-table inner-table" border="0" cellspacing="0" cellpadding="0">
-                                                <thead>
-                                                    <tr>
-                                                        <td><b>龙4</b></td>
-                                                        <td><b>和局</b></td>
-                                                        <td><b>虎5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                        <td><b class="f-c-red f-s-16">9</b></td>
-                                                        <td><b class="f-c-red f-s-16">2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                        <td><input type="text" class="gb"></td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                        <th class="p-5">
-                                        </th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div class="form-assect">
-                                <span class="f-c-green m-r-5"><b>金额</b></span>
-                                <span class="f-c-red m-r-5"><b>0</b></span>
-                                <span class="m-r-5"><b>快速输入</b></span>
-                                <input type="text" class="m-r-15">
-                                <span class="h-btn btn-red m-r-5">确认</span>
-                                <span class="h-btn m-r-5">重置</span>
-                            </div>
-                        </div>
-                        <!-- 游戏规则 -->
-                        <div class="show rule">
-                            <div class="rule-content rule-k3">
-                                <h1>重庆时时彩</h1>
-                                <div class="ex-text">
-                                    <span class="f-c-red">重庆时时彩</span>是中国福利彩票时时彩经国家财政部批准，由中国福利彩票发行管理中心在重庆市所辖区域内发行，由重庆市福利彩票发行中心承销。该游戏的投注时间、开奖时间和开奖号码与重庆福利彩票时时彩完全同步，<span
-                                        class="f-c-red">北京时间(GMT+8)每天上午7点10至凌晨3点10分，每20分钟一场，共59期。</span><br /><span
-                                        class="f-c-red">若注单为官网关盘后下注，本公司有权将该注单取消。</span>
-                                </div>
-                                <h4>广东盘</h4>
-                                <h2>游戏规则说明</h2>
-                                <table class="h-table" border="0" cellspacing="0" cellpadding="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>第一球~第五球</h3>
-                                            </td>
-                                            <td>第一球、第二球、第三球、第四球、第五球：指下注的每一球与开出之号码其开奖顺序及开奖号码相同，视为中奖，如第一球开出号码8时，投注者投注第一球为8者视为中奖，其余情形视为不中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>单双大小</h3>
-                                            </td>
-                                            <td>根据相应单项投注第一球~第五球开出的球号，判断胜负。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>大小</h3>
-                                            </td>
-                                            <td>根据相应单项投注第一球~第五球开出的球号大于或等于5为大，小于或等于4为小。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>单双</h3>
-                                            </td>
-                                            <td>根据相应单项投注第一球~第五球开出的球号为双数为双，如2、6；球号为单数为单，如1、3。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>龙1虎5和</h3>
-                                            </td>
-                                            <td>龙1<br />开出之号码第一球(万位)的中奖号码大于第五球(个位)中奖号码，如出和局则龙虎均不中奖。如第一球开出3第五球开出2；第一球开出5第五球开出1…中奖为龙。<br />虎5<br />开出之号码第一球(万位)的中奖号码小于第五球(个位)中奖号码，如出和局则龙虎均不中奖。如第一球开出2第五球开出3；第一球开出1第五球开出5…中奖为虎。<br />和<br />开出之号码第一球(万位)的中奖号码等于第五球(个位)中奖号码，例如开出结果：第一球开出2第五球开出2，则投注和局者视为中奖，其他视为不中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>总和单双大小</h3>
-                                            </td>
-                                            <td>大小<br />根据相应单项投注的第一球～第五球开出的球号大于或等于23为大，小于或等于22为小。<br />单双<br />根据相应单项投注的第一球~第五球开出的球号数字总和值是双数为总合双，数字总和值是单数为总合单。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>龙虎</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>龙</h3>
-                                            </td>
-                                            <td>任选1~5颗其中一个球，若开出之中奖号码大于虎所选之中奖号码。如第二球开出05第三球开出01；第一球开出03第五球开出02…中奖为龙。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>虎</h3>
-                                            </td>
-                                            <td>任选1~5颗其中一个球，若开出之中奖号码小于龙所选之中奖号码。如第二球开出01第三球开出03；第一球开出02第五球开出05…中奖为虎。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>和</h3>
-                                            </td>
-                                            <td>任选1~5颗其中一个球，若开出之中奖号码等于龙所选之中奖号码。如开出结果：第一球开出2第五球开出2，则投注和局者视为中奖，其他视为不中奖。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h4 class="m-t-10">东北盘</h4>
-                                <h2>一字盘势规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>一字定位</h3>
-                                            </td>
-                                            <td>于万、千、佰、拾、个任选一位，自0 ~ 9 任选１号进行投注，当开奖结果与所选的定位与号码相同且顺序一致时，即为中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>全五一字组合</h3>
-                                            </td>
-                                            <td>0 ~ 9 任选１号进行投注，当开奖结果【万位、千位、佰位、拾位、个位】任一数与所选的号码相同时，即为中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>前三一字组合</h3>
-                                            </td>
-                                            <td>0 ~ 9 任选１号进行投注，当开奖结果【万位、千位、佰位】任一数与所选的号码相同时，即为中奖。 </td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>中三一字组合</h3>
-                                            </td>
-                                            <td>0 ~ 9 任选１号进行投注，当开奖结果【千位、佰位、拾位】任一数与所选的号码相同时，即为中奖。 </td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>后三一字组合</h3>
-                                            </td>
-                                            <td>0 ~ 9 任选１号进行投注，当开奖结果【佰位、拾位、个位】任一数与所选的号码相同时，即为中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>万/千/佰/拾/个</h3>
-                                            </td>
-                                            <td>大小<br />0 ~ 4 为小， 5 ~ 9 为大<br />单双<br />1、3、5、7、9为单，0、2、4、6、8为双。 <br />质合
-                                                <br />1、2、3、5、7为质数，0、4、6、8、9为合数。
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>二字盘势规则说明</h2>
-                                <h4 class="m-b-10">万千/万佰/万拾/万个/千佰/千拾/千个/百拾/百个/拾个 </h4>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td style="width:180px;">
-                                                <h3>和数单双</h3>
-                                            </td>
-                                            <td>1、3、5、7、9、11、13、15、17为单，0、2、4、6、8、10、12、14、16、18为双。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>二字定位盘势规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td>于万、千、佰、拾、个任选二位，自0 ~ 9 任选 2 号进行投注，当开奖结果与所选号码相同且顺序一致时，即为中奖。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>二字组选盘势规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td>从0 ~
-                                                9十个数字中，任选两个不同的数字，对指定位置进行投注，若所选择的号码与当开开奖号码所指定之位置相同(顺序不限)，即为中奖。若是开出对子，如00、11、22、33、44、55、66、77、88、99皆算不中奖。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>三字盘势规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>三字组选</h3>
-                                            </td>
-                                            <td>从0 ~ 9
-                                                十个数字中，任选三个不同的数字，对指定位置进行投注，若所选择的号码与当开开奖号码所指定之位置相同(顺序不限)，即为中奖。若是开出豹子，如000、111、222、333、444、555、666、777、888、999皆算不中奖。</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3>三字定位盘势</h3>
-                                            </td>
-                                            <td>于万、千、佰、拾、个位数当中任选三位，自0 ~ 9 任选 3号进行投注，当开奖结果与所选号码相同且顺序一致时，即为中奖。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>前三组选三规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>前三组选三</h3>
-                                            </td>
-                                            <td>会员可以挑选5~10个号码，当开奖结果【万位、千位、佰位】中有且只有两个号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2、3、4、5)，则只要开奖结果【万位、千位、佰位】中，有出现1、2、3、4、5中的任何两个号码，且其中有一个号码重复则中奖。<br>例如：112、334，若是开出豹子则不算中奖。<br>备注：〝豹子〞为三字同号，例如：111，222。</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <h2>中三组选三规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>中三组选三</h3>
-                                            </td>
-                                            <td>会员可以挑选5~10个号码，当开奖结果【千位、佰位、拾位】中有且只有两个号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2、3、4、5)，则只要开奖结果【千位、佰位、拾位】中，有出现1、2、3、4、5中的任何两个号码，且其中有一个号码重复则中奖。<br>例如：112、334，若是开出豹子则不算中奖。<br>备注：〝豹子〞为三字同号，例如：111，222。</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <h2>后三组选三规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>后三组选三</h3>
-                                            </td>
-                                            <td>会员可以挑选5~10个号码，当开奖结果【佰位、拾位、个位】中有且只有两个号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2、3、4、5)，则只要开奖结果【佰位、拾位、个位】中，有出现1、2、3、4、5中的任何两个号码，且其中有一个号码重复则中奖。<br>例如：112、334，若是开出豹子则不算中奖。<br>备注：〝豹子〞为三字同号，例如：111，222。</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <h2>前三组选六规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>前三组选六</h3>
-                                            </td>
-                                            <td>会员可以挑选4~8个号码，当开奖结果【万位、千位、佰位】都出现在所下注的号码中且没有任何号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。中奖赔率以所选号码中的最小赔率计算派彩。<br>例如：如果是选择(1、2、3、4)，则开奖结果【万位、千位、佰位】为123、124、134、234都中奖，其他都是不中奖。例如：112、133、145、444等都是不中奖。</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <h2>中三组选六规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>中三组选六</h3>
-                                            </td>
-                                            <td>会员可以挑选4~8个号码，当开奖结果【千位、佰位、拾位】都出现在所下注的号码中且没有任何号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。中奖赔率以所选号码中的最小赔率计算派彩。<br>例如：如果是选择(1、2、3、4)，则开奖结果【千位、佰位、拾位】为123、124、134、234都中奖，其他都是不中奖。例如：112、133、145、444等都是不中奖。</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <h2>后三组选六规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>后三组选六</h3>
-                                            </td>
-                                            <td>会员可以挑选4~8个号码，当开奖结果【佰位、拾位、个位】都出现在所下注的号码中且没有任何号码重复，则视为中奖。挑选不同个数的号码有其相对应的赔率。中奖赔率以所选号码中的最小赔率计算派彩。<br>例如：如果是选择(1、2、3、4)，则开奖结果【佰位、拾位、个位】为123、124、134、234都中奖，其他都是不中奖。例如：112、133、145、444等都是不中奖。</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <h2>前三跨度盘势规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
-                                    <tbody>
-                                        <tr>
-                                            <td>以开奖结果【万位、千位、佰位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<br><span class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为5。(最大号码8减最小号码3等于5)。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                                <!--  -->
-                                <h2>中三跨度盘势规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="2">以开奖结果【千位、佰位、拾位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<span class="f-c-red">跨度</span><br><span class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为4。(最大号码8减最小号码4等于4)。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>后三跨度盘势规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0" style="width:100%;">
-                                    <tbody>
-                                        <tr>
-
-                                            <td colspan="2">以开奖结果【佰位、拾位、个位】的最大差距(跨度)，做为中奖依据。会员可以选择0~9的任一跨度。<br><span class="f-c-red">跨度</span>　举例：开奖结果为3、4、8、7、6。中奖的跨度为2。(最大号码8减最小号码6等于2)。
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>前三组选二规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>前三组选二</h3>
-                                            </td>
-                                            <td>会员可以挑选两个号码，当开奖结果【万位、千位、佰位】中任两数与所选的号码相同时，即为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2)，则只要开奖结果【万位、千位、佰位】中，有出现1、2中的任何两个号码，即为中奖。<br>例如：012、021、102、120、210、201。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>中三组选二规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>中三组选二</h3>
-                                            </td>
-                                            <td>会员可以挑选两个号码，当开奖结果【千位、佰位、拾位】中任两数与所选的号码相同时，即为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2)，则只要开奖结果【千位、佰位、拾位】中，有出现1、2中的任何两个号码，即为中奖。<br>例如：012、021、102、120、210、201。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>后三组选二规则说明</h2>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>后三组选二</h3>
-                                            </td>
-                                            <td>会员可以挑选两个号码，当开奖结果【佰位、拾位、个位】中任两数与所选的号码相同时，即为中奖。挑选不同个数的号码有其相对应的赔率。如果是选择(1、2)，则只要开奖结果【佰位、拾位、个位】中，有出现1、2中的任何两个号码，即为中奖。<br>例如：012、021、102、120、210、201。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h2>龙虎游戏规则说明</h2>
-                                <h4 class="m-b-10">龙虎以选择球号之中奖号码做为对奖号码</h4>
-                                <table class="h-table" cellpadding="0" cellspacing="0" border="0">
-                                    <tbody>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>龙</h3>
-                                            </td>
-                                            <td>开出之号码第一球(万位)的中奖号码大于第五球(个位)的中奖号码，如出和局则龙虎均不中奖。如第一球开出3第五球开出2；第一球开出5第五球开出1…中奖为龙。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>虎</h3>
-                                            </td>
-                                            <td>开出之号码第一球(万位)的中奖号码小于第五球(个位)的中奖号码，如出和局则龙虎均不中奖。如第一球开出2第五球开出3；第一球开出1第五球开出5…中奖为虎。</td>
-                                        </tr>
-                                        <tr>
-                                            <td width="180">
-                                                <h3>和</h3>
-                                            </td>
-                                            <td>开出之号码第一球(万位)的中奖号码等于第五球(个位)的中奖号码，例如开出结果：8*8，则投注和局者视为中奖，其他视为不中奖。</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                </div>
+                <div v-else-if="tabContent == 0">
+                    <div class="loadBox">
+                        <h4><span>吉林快3</span>&nbsp;&nbsp;&nbsp;下一期:&nbsp;&nbsp;&nbsp;<span style="color:#27AD9C;">{{nowPeriods}}</span>&nbsp;&nbsp;&nbsp;开盘时间:&nbsp;&nbsp;&nbsp;<span style="color:#27AD9C;">{{close_time}}</span></h4>
+                        <h4>距离开盘时间还有:&nbsp;&nbsp;<span style="color:#27AD9C;">{{count_down}}</span></h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- 确认投注 -->
+    <div class="h-modal" id="confirmModal" data-width="450">
+        <div class="h-modal-title">
+            <h5>下注内容</h5>
+            <span class="h-modal-close" data-methods="close">&times;</span>
+        </div>
+        <div class="h-modal-body">
+            <div class="m-b-10">您下注的是&nbsp;[ <b>重庆时时彩</b> ]&nbsp;[ <b><span class="level"></span>盘</b> ]</div>
+            <table class="h-table" cellspacing="0" cellpadding="0" border="0" style="border-top: 1px solid #ddd">
+                <thead>
+                    <tr>
+                        <th>下注方式</th>
+                        <th>下注内容</th>
+                        <th>赔率</th>
+                        <th>下注金额</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody class="confirmTbody"></tbody>
+            </table>
+            <div class="m-t-10">共&nbsp;<b class="table-length"></b>&nbsp;注&nbsp;&nbsp;合计：<b class="moneyTotal"></b></div>
+        </div>
+        <div class="h-modal-footer">
+            <span class="h-modal-button submit" data-methods="submit">确认下注</span>
+            <span class="h-modal-button cancel" data-methods="close">取消</span>
+        </div>
+    </div>
 </body>
 <script src="__STATIC__/js/jquery-2.1.4.min.js"></script>
+<script src="/static/js/vue.min.js"></script>
 <script src="/static/js/global.js"></script>
+<script src="/static/js/modal.js"></script>
+<script src="/static/game/js/jlssc.js"></script>
 </html>
