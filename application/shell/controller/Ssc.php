@@ -14,7 +14,7 @@ class Ssc
         	if (!isset($cqssc_data['data'])) 
         		throw new \Exception("开奖结果为空");
         	$expect_arr = array_column($cqssc_data['data'], 'expect');
-        	$old_data 	= Db::name('game_result')->field('number')->where('number','in', $expect_arr)->where('game_key', '=', $cqssc_data['code'])->fetchSql(false)->select();
+        	$old_data 	= Db::name('game_result')->field('number')->where('number','in', $expect_arr)->where('game_key', '=', 'ssc')->fetchSql(false)->select();
         	$diff 		= array_diff($expect_arr,array_column($old_data, 'number'));
         	if ($diff) 
         	{
