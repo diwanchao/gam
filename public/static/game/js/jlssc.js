@@ -130,7 +130,7 @@ function confirmInit() {
     var html = ''
 
     for(var i = 0 ; i < tableData.length; i++) {
-        html += '<tr><td>'+ app.nowPeriods +'</td><td><span color="blur">龙虎'+ tableData[i].name +'</span><span color="red">('+ tableData[i].sub_name +'&nbsp;[五字])</span></td><td><b class="f-s-16 f-c-red">'+ tableData[i].odds +'</b></td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
+        html += '<tr><td>'+ app.nowPeriods +'</td><td><span style="color: rgb(0, 0, 255)">龙虎'+ tableData[i].name +'</span><span style="color: rgb(255, 0, 0)">('+ tableData[i].sub_name +'&nbsp;[五字])</span></td><td><b class="f-s-16 f-c-red">'+ tableData[i].odds +'</b></td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
     }
     
     tbody.append(html);
