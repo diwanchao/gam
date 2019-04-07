@@ -66,14 +66,44 @@
                                                             <td><b>虎2</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v2', name: '1v2', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
@@ -87,14 +117,44 @@
                                                             <td><b>虎3</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v3', name: '1v3', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
@@ -108,14 +168,44 @@
                                                             <td><b>虎4</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v4', name: '1v4', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
@@ -129,14 +219,44 @@
                                                             <td><b>虎5</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '1v5', name: '1v5', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
@@ -153,14 +273,44 @@
                                                             <td><b>虎3</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
                                                         <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '2v3', name: '2v3', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
@@ -174,14 +324,44 @@
                                                             <td><b>虎4</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                         <tr>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '2v4', name: '2v4', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
@@ -195,14 +375,44 @@
                                                             <td><b>虎5</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                         <tr>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '2v5', name: '2v5', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
@@ -221,14 +431,44 @@
                                                             <td><b>虎4</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                         <tr>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '3v4', name: '3v4', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
@@ -242,14 +482,44 @@
                                                             <td><b>虎5</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                         <tr>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '3v5', name: '3v5', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
@@ -270,14 +540,44 @@
                                                             <td><b>虎5</b></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
-                                                            <td><b class="f-c-red f-s-16">9</b></td>
-                                                            <td><b class="f-c-red f-s-16">2</b></td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">9</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">9.25</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">9.54</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">9.79</b>
+                                                            </td>
+                                                            <td>
+                                                                <b v-if="levelValue == 'A'" class="f-c-red f-s-16">2</b>
+                                                                <b v-else-if="levelValue == 'B'" class="f-c-red f-s-16">2.06</b>
+                                                                <b v-else-if="levelValue == 'C'" class="f-c-red f-s-16">2.12</b>
+                                                                <b v-else-if="levelValue == 'D'" class="f-c-red f-s-16">2.175</b>
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
-                                                            <td><input type="text" class="gb"></td>
+                                                         <tr>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'long', sub_name: '龙', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'long', sub_name: '龙', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'long', sub_name: '龙', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'long', sub_name: '龙', odds: 2.175}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'he', sub_name: '和', odds: 9}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'he', sub_name: '和', odds: 9.25}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'he', sub_name: '和', odds: 9.54}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'he', sub_name: '和', odds: 9.79}">
+                                                            </td>
+                                                            <td>
+                                                                <input v-if="levelValue == 'A'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'hu', sub_name: '虎', odds: 2}">
+                                                                <input v-else-if="levelValue == 'B'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'hu', sub_name: '虎', odds: 2.06}">
+                                                                <input v-else-if="levelValue == 'C'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'hu', sub_name: '虎', odds: 2.12}">
+                                                                <input v-else-if="levelValue == 'D'" class="gb" type="text" data-item="{key: '4v5', name: '4v5', sub_key: 'hu', sub_name: '虎', odds: 2.175}">
+                                                            </td>
                                                         </tr>
                                                     </thead>
                                                 </table>
