@@ -49,6 +49,15 @@ class Home extends Base
                 ['name'=>'(三同号单选,二同号复选,二同号单选,三不同号,二不同号)', 'key'=>'jlk3','url'=>'/index/game/jlk32'],
             ];
         }
+        if ('ssc' == $game_key) 
+        {
+            $data['subGame'] = [
+                ['name'=>'龙虎和', 'key'=>'ssc','url'=>'/index/game/jlk3'],
+                ['name'=>'组选三', 'key'=>'ssc','url'=>'/index/game/jlk32'],
+                ['name'=>'组选六', 'key'=>'ssc','url'=>'/index/game/jlk32'],
+            ];
+        }
+
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
     /**
@@ -109,7 +118,7 @@ class Home extends Base
         $where      = 'user_id=? and game_key=? and number=?';
         $where_param[] = $this->USER_ID ?? 0;
         $where_param[] = $game_key;
-        $where_param[] = get_k3_number();
+        $where_param[] = $game_key == 'jlk3' ? get_k3_number() : get_ssc_number();
 
         $data = Db::name('order')->field("DATE_FORMAT(time,'%Y-%m-%d') as time,content,odds,money,play_name")->where($where,$where_param)->order('time desc')->paginate(10,false,['var_page'=>'index']);
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
@@ -144,16 +153,9 @@ class Home extends Base
                 {
                     $now = get_ssc_info();
                     $res['ssc'][] = array_merge($value,$now);
-/*                    $res['ssc'] = [
-                        ['name'=>'重庆时时彩','time'=>100000,'status'=>1,'url'=>'/index/game/jlssc','game_key'=>'ssc','close_time'=>"2019-04-07 17:18:00"]
-                    ];*/
                 }
             }
         }
         return json(['msg' => 'succeed','code' => 200, 'data' => $res]);
     }
-
-
-
-
 }
