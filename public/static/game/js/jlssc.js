@@ -130,7 +130,7 @@ function confirmInit() {
     var html = ''
 
     for(var i = 0 ; i < tableData.length; i++) {
-        html += '<tr><td>'+ tableData[i].name +'</td><td>'+ tableData[i].sub_name +'</td><td><b class="f-s-16 f-c-red">'+ tableData[i].odds +'</b></td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
+        html += '<tr><td>'+ app.nowPeriods +'</td><td><span color="blur">龙虎'+ tableData[i].name +'</span><span color="red">('+ tableData[i].sub_name +'&nbsp;[五字])</span></td><td><b class="f-s-16 f-c-red">'+ tableData[i].odds +'</b></td><td>'+ tableData[i].value +'</td><td><span class="f-c-red">稍等</span></td></tr>';
     }
     
     tbody.append(html);
@@ -155,7 +155,22 @@ function timeInterval(time) {
     }, 1000);
 }
 
+/**
+ * 获取被选中游戏的信息
+ */
+function getData() {
+    var ary = [];
+    $('[data-name=begin-table] input[type=text]').each(function(){
+        var data;
+        if(this.value){
+            data = new Function("return " + $(this).attr('data-item'))();
+            data.value = this.value;
+            ary.push(data);
+        }
+    });
 
+    return ary;
+}
 
 
 
