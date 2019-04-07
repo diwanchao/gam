@@ -148,7 +148,7 @@ use \think\Db;
                         $ssc_time = strtotime(date('Y-m-d H:50:00',time())) - time();
                         $close_time = date('Y-m-d H:50:00',time());
                         break;                
-                    case $i>=58&&$i<60:
+                    case $i>=50&&$i<60:
                         $ssc_status=1;
                         $ssc_time = strtotime(date('Y-m-d H:08:00',strtotime('+1 hours'))) - time();
                         $close_time = date('Y-m-d H:08:00',strtotime('+1 hours'));
