@@ -140,8 +140,8 @@ use \think\Db;
                         break;
                     case $i>=30&&$i<48:
                         $ssc_status=1;
-                        $ssc_time = strtotime(date('Y-m-d H:38:00',time())) - time();
-                        $close_time = date('Y-m-d H:38:00',time());
+                        $ssc_time = strtotime(date('Y-m-d H:48:00',time())) - time();
+                        $close_time = date('Y-m-d H:48:00',time());
                         break;                
                     case $i>=48&&$i<50:
                         $ssc_status=0;
