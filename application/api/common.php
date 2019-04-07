@@ -23,6 +23,28 @@ use \think\Db;
 
 	}
 
+    function get_ssc_number()
+    {
+        $openstamp  = strtotime(date('Y-m-d 00:10:00',time()));
+        $closestamp = strtotime(date('Y-m-d 23:50:00',time()));
+        $period     = 20*60;
+        $now        = time(); 
+
+        if ($now>$closestamp) 
+        {
+            return date('Ymd',strtotime('+1 day')).'001';
+        }
+        if ($now<$openstamp) 
+        {
+            return date('Ymd',$now).'001';
+        }
+        $num = ceil((($now-$openstamp)/$period))+1;
+        $num = ($num<10) ? '00'.$num : '0'.$num;
+
+        return date('Ymd').$num;
+
+    }
+
 
 
 
@@ -84,6 +106,68 @@ use \think\Db;
             }
 
             return ['status'=>$k3_status,'time'=>$k3_time,'close_time'=>$close_time];
+    }
+
+
+    function get_ssc_info()
+    {
+            $h = date('H',time());
+            $i = date('i',time());
+            $s = date('s',time());
+            $ssc_status  = 0;
+            $ssc_time    = strtotime(date('Y-m-d H:i:s',strtotime("+1 day")));
+
+                switch ($i) {
+                    case $i>=0&&$i<8:
+                        $ssc_status=1;
+                        $ssc_time = strtotime(date('Y-m-d H:08:00',time())) - time();
+                        $close_time = date('Y-m-d H:08:00',time());
+                        break;
+                    case $i>=8&&$i<10:
+                        $ssc_status=0;
+                        $ssc_time = strtotime(date('Y-m-d H:10:00',time())) - time();
+                        $close_time = date('Y-m-d H:10:00',time());
+                        break;
+                    case $i>=10&&$i<28:
+                        $ssc_status=1;
+                        $ssc_time = strtotime(date('Y-m-d H:28:00',time())) - time();
+                        $close_time = date('Y-m-d H:28:00',time());
+                        break;
+                    case $i>=28&&$i<30:
+                        $ssc_status=0;
+                        $ssc_time = strtotime(date('Y-m-d H:30:00',time())) - time();
+                        $close_time = date('Y-m-d H:30:00',time());
+                        break;
+                    case $i>=30&&$i<48:
+                        $ssc_status=1;
+                        $ssc_time = strtotime(date('Y-m-d H:48:00',time())) - time();
+                        $close_time = date('Y-m-d H:48:00',time());
+                        break;                
+                    case $i>=48&&$i<50:
+                        $ssc_status=0;
+                        $ssc_time = strtotime(date('Y-m-d H:50:00',time())) - time();
+                        $close_time = date('Y-m-d H:50:00',time());
+                        break;                
+                    case $i>=50&&$i<60:
+                        $ssc_status=1;
+                        $ssc_time = strtotime(date('Y-m-d H:08:00',strtotime('+1 hours'))) - time();
+                        $close_time = date('Y-m-d H:08:00',strtotime('+1 hours'));
+                        break;                
+
+                }
+
+            if (time()<strtotime(date('Y-m-d 00:10:00',time()))) 
+            {
+                $ssc_status  = 0;
+                $ssc_time    = strtotime(date('Y-m-d 00:10:00',time())) - time();
+            }
+            if (time()>strtotime(date('Y-m-d 23:50:00',time()))) 
+            {
+                $ssc_status  = 0;
+                $ssc_time    = strtotime(date('Y-m-d 00:10:00',strtotime("+1 day"))) - time();
+            }
+
+            return ['status'=>$ssc_status,'time'=>$ssc_time,'close_time'=>$close_time];
     }
 
 

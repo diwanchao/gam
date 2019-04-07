@@ -95,17 +95,55 @@ class Game extends Base
 
                 }
             }
+            if ($game_key == 'ssc') 
+            {
+                foreach ($data as $key => $value) {
+                    $result_data[$key]['no']        = substr($value['number'],-2);
+                    $result_data[$key]['week']      = $weekarray[date("w",strtotime($value['time']))];
+                    $result_data[$key]['time']      = date('Y-m-d',strtotime($value['time']));
+                    $result_data[$key]['content']   = $value['game_result'];
+                    $num_data = str_split($value['game_result']);
+                    $result_data[$key]['tenThousand'] = $this->count_result_num($num_data[0]);
+                    $result_data[$key]['thousand'] = $this->count_result_num($num_data[1]);
+                    $result_data[$key]['hundred'] = $this->count_result_num($num_data[2]);
+                    $result_data[$key]['ten'] = $this->count_result_num($num_data[3]);
+                    $result_data[$key]['one'] = $this->count_result_num($num_data[4]);
+                }
+            }
         }
-
+        //['tenThousand'=>'小双合','thousand'=>'小双合','hundred'=>'大双合','ten'=>'小双合','one'=>'大双合'],
         $return=[
             'total' => $count ? count($count) : 0,
             'data'  => $result_data,
 
         ];
-
         return json(['msg' => 'succeed','code' => 200, 'data' => $return]);
+    }
+
+    function count_result_num($num)
+    {
+        $bigSmall   = $num>9 ? '大' : '小';
+        $oddEven    = ($num%2)==0 ? '双' : '单';
+        $PerfectNumber = $this->isPerfectNumber($num) ? '合' : '质';
+
+        return $bigSmall.$oddEven.$PerfectNumber;
 
     }
+    function isPerfectNumber($N) 
+    { 
+
+        $sum = 0; 
+
+        for ($i = 1; $i < $N; $i++) 
+        { 
+            if ($N % $i == 0) 
+            { 
+                $sum = $sum + $i; 
+            }    
+        } 
+        return $sum == $N; 
+    } 
+
     /**
      * @SWG\Get(
      *   path="/api/game/userGameList",
@@ -150,6 +188,18 @@ class Game extends Base
             $info       = get_k3_info();
             $data = [
                 'issue'      => get_k3_number(),
+                'count_down' => $info['time'] ?? '-1',
+                'close_time' => $info['close_time'] ?? '',
+                'status'     => $info['status'] ?? 0,
+                'dish'       => $this->get_part_by_user($this->USER_ID)
+
+            ];
+        }
+        if ($game_key == 'ssc') 
+        {
+            $info       = get_ssc_info();
+            $data = [
+                'issue'      => get_ssc_number(),
                 'count_down' => $info['time'] ?? '-1',
                 'close_time' => $info['close_time'] ?? '',
                 'status'     => $info['status'] ?? 0,

@@ -24,7 +24,7 @@ class Ssc
         				'game_result' 	=> str_replace(",","",$game_data[$value]['opencode']),
  						'number' 		=> $game_data[$value]['expect'],
  						'time' 			=> $game_data[$value]['opentime'],
- 						'game_key'		=> $cqssc_data['code']
+ 						'game_key'		=> 'ssc'
         			];
         			Db::table('game_result')->insert($item);
         		}
