@@ -55,6 +55,7 @@ use \think\Db;
             $s = date('s',time());
             $k3_status  = 0;
             $k3_time    = strtotime(date('Y-m-d H:i:s',strtotime("+1 day")));
+            $close_time = date('Y-m-d 08:40:00',strtotime("+1 day"));
 
             if ($h>=8&&$h<=21) {
                 switch ($i) {
@@ -116,6 +117,7 @@ use \think\Db;
             $s = date('s',time());
             $ssc_status  = 0;
             $ssc_time    = strtotime(date('Y-m-d H:i:s',strtotime("+1 day")));
+            $close_time  = date('Y-m-d 00:10:00',strtotime("+1 day"));
 
                 switch ($i) {
                     case $i>=0&&$i<8:
