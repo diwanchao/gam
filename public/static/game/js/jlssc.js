@@ -138,6 +138,23 @@ function confirmInit() {
     tableLength.text(tableData.length);
 }
 
+/**
+ * 设置倒计时
+ * @param {Number} time 倒计时(秒)
+ */
+function timeInterval(time) {
+    var interval = window.setInterval(function(){
+            time -= 1;
+            app._data.count_down = utils.remainingTime(time);
+            if(time <= 0){
+                console.log('timeout: 0')
+                window.clearInterval(interval);
+                refresh_data = [];
+                init();
+            }
+    }, 1000);
+}
+
 
 
 
