@@ -101,7 +101,7 @@ use \think\Db;
                 $item[] = $key;
         }
         $where['game_key']  = ['in',$item];
-        $game_data          = Db::name('game_info')->field(' `name`,game_key as `key`,url') ->where($where)->select();
+        $game_data          = Db::name('game_info')->field(' `name`,game_key,url') ->where($where)->select();
 
         return $game_data;
     }

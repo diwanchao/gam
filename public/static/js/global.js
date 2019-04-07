@@ -29,7 +29,7 @@ var utils = {
 		exp.setTime(exp.getTime() - 1);
 		var cval = utils.getCookie(name);
 		if (cval != null)
-			document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+			document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString() + ';path=/';
 	},
 
 	/**
@@ -41,7 +41,7 @@ var utils = {
 		var Days = 1;
 		var exp = new Date();
 		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-		document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + 'path=/';
+		document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ';path=/';
 	},
 
 	/**
@@ -142,6 +142,7 @@ var utils = {
 			dataType: opt.dataType || 'JSON',
 			url: opt.url || '/',
 			data: opt.data || {},
+			async: opt.async === 'undefined' ? true : opt.async,
 			success: function (result) {
 				if (result.code == 304) {
 					alert('登陆超时……');
@@ -209,6 +210,7 @@ var ENV = {
 
 if(location.pathname == '/index/home'){
 	utils.delCookie('game_key');
+	utils.delCookie('part');
 	ENV.game_key = null;
 }
 
@@ -445,6 +447,7 @@ if(location.pathname == '/index/home'){
 		utils.getAjax({
 			url: utils.concatGameKey('/api/home/headInfo'),
 			type: 'POST',
+			// async: false,
 			success: function (data) {
 				_this.data = $.extend({}, _this.data, data);
 
@@ -497,7 +500,7 @@ if(location.pathname == '/index/home'){
 				var cur = this.data.game[i];
 				var $html = $('<li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript:void(0);">' + cur.name + '</a></li>');
 				$html.click(function () {
-					utils.setCookie('game_key', cur.key);
+					utils.setCookie('game_key', cur.game_key);
 					window.location = cur.url;
 				});
 				this.$navGameList.append($html);
@@ -527,8 +530,8 @@ if(location.pathname == '/index/home'){
 				url: '/api/login/logout',
 				type: 'POST',
 				success: function(){
-					utils.delCookie('userInfo');
-					utils.delCookie('game_key');
+					// utils.delCookie('userInfo');
+					// utils.delCookie('game_key');
 					window.location = '/index/login';
 				}
 			});
@@ -663,25 +666,31 @@ if(location.pathname == '/index/home'){
 				}
 
 			})
-		})
+		});
 
-		// ajax 用分页面请求 this.betPage.data.index
-		utils.getAjax({
-			url: utils.concatGameKey('/api/home/leftInfo'),
-			data: {
-				index: this.betPage.data.index
-			},
-			type: 'GET',
-			success: function (data) {
-				_this.data = $.extend({}, _this.data, data);
-				_this.betPage.init({
-					total: _this.data.bet.total
-				})
-				_this.baseInit();
-				_this.betTableInit();
-				_this.numTableInit();
-			}
-		})
+		var interval = function(){
+			// ajax 用分页面请求 this.betPage.data.index
+			utils.getAjax({
+				url: utils.concatGameKey('/api/home/leftInfo'),
+				data: {
+					index: _this.betPage.data.index
+				},
+				type: 'GET',
+				success: function (data) {
+					_this.data = $.extend({}, _this.data, data);
+					_this.betPage.init({
+						total: _this.data.bet.total
+					})
+					_this.baseInit();
+					_this.betTableInit();
+					_this.numTableInit();
+				}
+			});
+		}
+
+		window.setInterval(interval, 7000);
+
+		interval();
 
 	}
 
