@@ -95,7 +95,7 @@ var app = new Vue({
                 utils.getAjax({
                     url: utils.concatGameKey('/api/game/getOdds'),
                     data: {
-                        item: JSON.parse(JSON.stringify(this.selectInput)),
+                        item: this.selectInput.toString(),
                         game_item: this.game_item,
                         part: this.levelValue,
                     },
