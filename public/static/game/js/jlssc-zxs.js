@@ -92,21 +92,21 @@ var app = new Vue({
 
             if(this.selectInput.length >= 5){
                 // 获取赔率
-                // utils.getAjax({
-                //     url: utils.concatGameKey('/'),
-                //     data: {
-                //         item: JSON.parse(JSON.stringify(this.selectInput)),
-                //         game_item: this.game_item,
-                //         part: this.levelValue,
-                //     },
-                //     type: 'GET',
-                //     success: function(result){
-                //         __this.selectInputData = __this.selectInput.toString();
-                //         __this.odds = result;
-                //     }
-                // })
-                __this.selectInputData = __this.selectInput.toString();
-                __this.odds = 1.23;
+                utils.getAjax({
+                    url: utils.concatGameKey('/'),
+                    data: {
+                        item: JSON.parse(JSON.stringify(this.selectInput)),
+                        game_item: this.game_item,
+                        part: this.levelValue,
+                    },
+                    type: 'GET',
+                    success: function(result){
+                        __this.selectInputData = __this.selectInput.toString();
+                        __this.odds = result;
+                    }
+                })
+                // __this.selectInputData = __this.selectInput.toString();
+                // __this.odds = 1.23;
             }
             else {
                 this.selectInputData = '';
@@ -197,6 +197,10 @@ $(function(){
     /* ************* 确认下注提交 ************** */
     confirmModal.on('bs-beforeSubmit', function(){
         
+        var val = $('#drop_money').val();
+        if(!val){
+            return alert('请投注！')
+        }
         utils.getAjax({
             url: utils.concatGameKey('/api/game/addBet'),
             type: 'POST',
@@ -204,9 +208,10 @@ $(function(){
                 nowPeriods: app._data.nowPeriods,
                 game_type: app.game_type,
                 game_item: app.game_item,
-                money: $('#drop_money').val(),
+                money: val,
                 level: levelValue,
-                part: app.levelValue
+                part: app.levelValue,
+                number: app.selectInput
             },
             alert: true,
             success: function(){
