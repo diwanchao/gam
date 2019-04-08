@@ -82,7 +82,12 @@ var app = new Vue({
         },
 
         setInput: function(_this,index){
-            console.log(_this);
+            if($(_this.target).is(':checked')){
+                this.selectInput.splice($.inArray(index, this.selectInput), 1);
+            }
+            else {
+                this.selectInput.push(index);
+            }
             var __this = this;
 
             if(this.selectInput.length >= 5){
