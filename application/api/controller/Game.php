@@ -111,7 +111,6 @@ class Game extends Base
                 }
             }
         }
-        //['tenThousand'=>'小双合','thousand'=>'小双合','hundred'=>'大双合','ten'=>'小双合','one'=>'大双合'],
         $return=[
             'total' => $count ? count($count) : 0,
             'data'  => $result_data,

@@ -218,7 +218,7 @@ class User extends Base
         {
             $star       = $page*$page_row-$page_row;
             $end        = $page*$page_row;
-            $sql        = "select * FROM `order` {$where} order by time desc limit {$star},{$end}";
+            $sql        = "select * FROM `order` {$where} order by time desc limit {$star},{$page_row}";
             $res        = Db::query($sql);
             if ($res) {
                 foreach ($res as $key => $value) {
