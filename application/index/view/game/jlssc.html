@@ -22,7 +22,7 @@
             <!-- 右侧内容信息 -->
             <div class="layout-body"  id="layoutBody">
                 <div v-if="tabContent == 1" >
-                     <!-- 上部分 -->
+                    <!-- 上部分 -->
                     <div class="page-content-title">
                         <span>第</span>
                         <strong class="f-c-red">{{periods}}</strong>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="portlet">
                         <div class="portlet-title clear-float">
-                            <span>重庆时时彩&nbsp;&nbsp;</span>
+                            <span>重庆时时彩&nbsp;&nbsp;龙虎&nbsp;</span>
                             <select @change="levelChange" v-model="levelValue" class="form-control changeGame">
                                 <option v-for="(item, index) in level" :value="item">{{item}}</option>
                             </select>
