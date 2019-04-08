@@ -205,13 +205,13 @@ $(function(){
             url: utils.concatGameKey('/api/game/addBet'),
             type: 'POST',
             data: {
-                nowPeriods: app._data.nowPeriods,
+                periods: app._data.nowPeriods,
                 game_type: app.game_type,
                 game_item: app.game_item,
                 money: val,
-                level: levelValue,
                 part: app.levelValue,
-                number: app.selectInput
+                number: app.selectInput,
+                odds: app.odds,
             },
             alert: true,
             success: function(){
