@@ -93,7 +93,7 @@ var app = new Vue({
             if(this.selectInput.length >= 4){
                 // 获取赔率
                 utils.getAjax({
-                    url: utils.concatGameKey('/'),
+                    url: utils.concatGameKey('/api/game/getOdds'),
                     data: {
                         item: JSON.parse(JSON.stringify(this.selectInput)),
                         game_item: this.game_item,
