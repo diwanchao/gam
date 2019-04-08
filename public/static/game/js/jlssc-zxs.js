@@ -92,19 +92,21 @@ var app = new Vue({
 
             if(this.selectInput.length >= 5){
                 // 获取赔率
-                utils.getAjax({
-                    url: utils.concatGameKey('/'),
-                    data: {
-                        item: JSON.parse(JSON.stringify(this.selectInput)),
-                        game_item: this.game_item,
-                        part: this.levelValue,
-                    },
-                    type: 'GET',
-                    success: function(result){
-                        __this.selectInputData = __this.selectInput.toString();
-                        __this.odds = result;
-                    }
-                })
+                // utils.getAjax({
+                //     url: utils.concatGameKey('/'),
+                //     data: {
+                //         item: JSON.parse(JSON.stringify(this.selectInput)),
+                //         game_item: this.game_item,
+                //         part: this.levelValue,
+                //     },
+                //     type: 'GET',
+                //     success: function(result){
+                //         __this.selectInputData = __this.selectInput.toString();
+                //         __this.odds = result;
+                //     }
+                // })
+                __this.selectInputData = __this.selectInput.toString();
+                __this.odds = 1.23;
             }
             else {
                 this.selectInputData = '';
