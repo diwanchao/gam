@@ -384,4 +384,16 @@ class Game extends Base
     }
 
 
+    /**
+     * 获取组三,组三赔率
+     */
+    public function getOdds()
+    {
+        $game_item         = Request::instance()->param('game_item',0); //玩法
+        $item         = Request::instance()->param('item',0); //选中内容
+        $part         = Request::instance()->param('part',''); //盘别
+        $data = 1.2;
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+    }
+
 }
