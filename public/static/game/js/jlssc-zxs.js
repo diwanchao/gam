@@ -156,11 +156,6 @@ function timeInterval(time) {
 $(function(){
 
      /* ************* 限制投注输入框 ************** */
-     $('#drop_money').bind('keydown', function(e){
-        if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
-            e.preventDefault();
-        }
-    });
 
     $('#drop_money').bind('blur', function(){
         if(isNaN(this.value)){
