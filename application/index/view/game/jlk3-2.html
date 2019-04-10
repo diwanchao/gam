@@ -46,7 +46,7 @@
                             <span class="m-l-30">停盘时间：<b>{{close_time}}</b></span>
                             <div class="fast-import pull-right">
                                 <span>快速输入&nbsp;</span>
-                                <input type="text" class="form-control m-r-15 quickImport" v-model="quickImport">
+                                <input type="text" class="form-control m-r-15 quickImport" v-model="quickImport" @input="quickImport" @click.stop @blur="verifyInput($event)">
                                 <a href="javascript:history.go(0);" class="h-btn btn-red">重新整理</a>
                             </div>
                         </div>
@@ -82,8 +82,8 @@
                                                 <b v-else class="f-c-red f-s-16">181</b>
                                             </td>
                                             <td data-item="Q123" onclick="setNumber('Q123')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '111', sub_name: '111', odds: 190}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '111', sub_name: '111', odds: 181}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '111', sub_name: '111', odds: 190}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '111', sub_name: '111', odds: 181}">
                                             </td>
 
                                             <th data-item="Q234" onclick="setNumber('Q234')">222</th>
@@ -92,8 +92,8 @@
                                                 <b v-else class="f-c-red f-s-16">181</b>
                                             </td>
                                             <td data-item="Q234" onclick="setNumber('Q234')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '222', sub_name: '222', odds: 190}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '222', sub_name: '222', odds: 181}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '222', sub_name: '222', odds: 190}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '222', sub_name: '222', odds: 181}">
                                             </td>
 
                                             <th data-item="Q345" onclick="setNumber('Q345')">333</th>
@@ -102,8 +102,8 @@
                                                 <b v-else class="f-c-red f-s-16">181</b>
                                             </td>
                                             <td data-item="Q345" onclick="setNumber('Q345')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '333', sub_name: '333', odds: 190}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '333', sub_name: '333', odds: 181}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '333', sub_name: '333', odds: 190}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '333', sub_name: '333', odds: 181}">
                                             </td>
 
                                             <th data-item="Q456" onclick="setNumber('Q456')">444</th>
@@ -112,8 +112,8 @@
                                                 <b v-else class="f-c-red f-s-16">181</b>
                                             </td>
                                             <td data-item="Q456" onclick="setNumber('Q456')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '444', sub_name: '444', odds: 190}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '444', sub_name: '444', odds: 181}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '444', sub_name: '444', odds: 190}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '444', sub_name: '444', odds: 181}">
                                             </td>
 
                                             <th data-item="Q567" onclick="setNumber('Q567')">555</th>
@@ -122,8 +122,8 @@
                                                 <b v-else class="f-c-red f-s-16">181</b>
                                             </td>
                                             <td data-item="Q567" onclick="setNumber('Q567')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '555', sub_name: '555', odds: 190}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '555', sub_name: '555', odds: 181}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '555', sub_name: '555', odds: 190}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '555', sub_name: '555', odds: 181}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -133,8 +133,8 @@
                                                 <b v-else class="f-c-red f-s-16">181</b>
                                             </td>
                                             <td data-item="Q678" onclick="setNumber('Q678')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '666', sub_name: '666', odds: 190}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '666', sub_name: '666', odds: 181}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '666', sub_name: '666', odds: 190}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'santonghaodanxuan', name: '三同号单选', sub_key: '666', sub_name: '666', odds: 181}">
                                             </td>
                                             <td colspan="12"></td>
                                         </tr>
@@ -170,8 +170,8 @@
                                                 <b v-else class="f-c-red f-s-16">12</b>
                                             </td>
                                             <td data-item="W123" onclick="setNumber('W123')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '11', sub_name: '11', odds: 12.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '11', sub_name: '11', odds: 12}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '11', sub_name: '11', odds: 12.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '11', sub_name: '11', odds: 12}">
                                             </td>
 
                                             <th data-item="W234" onclick="setNumber('W234')">22</th>
@@ -180,8 +180,8 @@
                                                 <b v-else class="f-c-red f-s-16">12</b>
                                             </td>
                                             <td data-item="W234" onclick="setNumber('W234')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '22', sub_name: '22', odds: 12.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '22', sub_name: '22', odds: 12}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '22', sub_name: '22', odds: 12.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '22', sub_name: '22', odds: 12}">
                                             </td>
 
                                             <th data-item="W345" onclick="setNumber('W345')">33</th>
@@ -190,8 +190,8 @@
                                                 <b v-else class="f-c-red f-s-16">12</b>
                                             </td>
                                             <td data-item="W345" onclick="setNumber('W345')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '33', sub_name: '33', odds: 12.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '33', sub_name: '33', odds: 12}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '33', sub_name: '33', odds: 12.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '33', sub_name: '33', odds: 12}">
                                             </td>
 
                                             <th data-item="W456" onclick="setNumber('W456')">44</th>
@@ -200,8 +200,8 @@
                                                 <b v-else class="f-c-red f-s-16">12</b>
                                             </td>
                                             <td data-item="W456" onclick="setNumber('W456')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '44', sub_name: '44', odds: 12.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '44', sub_name: '44', odds: 12}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '44', sub_name: '44', odds: 12.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '44', sub_name: '44', odds: 12}">
                                             </td>
 
                                             <th data-item="W567" onclick="setNumber('W567')">55</th>
@@ -210,8 +210,8 @@
                                                 <b v-else class="f-c-red f-s-16">12</b>
                                             </td>
                                             <td data-item="W567" onclick="setNumber('W567')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '55', sub_name: '55', odds: 12.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '55', sub_name: '55', odds: 12}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '55', sub_name: '55', odds: 12.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '55', sub_name: '55', odds: 12}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -221,8 +221,8 @@
                                                 <b v-else class="f-c-red f-s-16">12</b>
                                             </td>
                                             <td data-item="W678" onclick="setNumber('W678')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '66', sub_name: '66', odds: 12.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '66', sub_name: '66', odds: 12}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '66', sub_name: '66', odds: 12.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaofuxuan', name: '二同号复选', sub_key: '66', sub_name: '66', odds: 12}">
                                             </td>
                                             <td colspan="12"></td>
                                         </tr>
@@ -258,8 +258,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="QWER" onclick="setNumber('QWER')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '112', sub_name: '112', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '112', sub_name: '112', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '112', sub_name: '112', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '112', sub_name: '112', odds: 61}">
                                             </td>
 
                                             <th data-item="WERT" onclick="setNumber('WERT')">113</th>
@@ -268,8 +268,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="WERT" onclick="setNumber('WERT')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '113', sub_name: '113', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '113', sub_name: '113', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '113', sub_name: '113', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '113', sub_name: '113', odds: 61}">
                                             </td>
 
                                             <th data-item="ERTY" onclick="setNumber('ERTY')">114</th>
@@ -278,8 +278,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="ERTY" onclick="setNumber('ERTY')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '114', sub_name: '114', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '114', sub_name: '114', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '114', sub_name: '114', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '114', sub_name: '114', odds: 61}">
                                             </td>
 
                                             <th data-item="RTYU" onclick="setNumber('RTYU')">115</th>
@@ -288,8 +288,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="RTYU" onclick="setNumber('RTYU')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '115', sub_name: '115', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '115', sub_name: '115', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '115', sub_name: '115', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '115', sub_name: '115', odds: 61}">
                                             </td>
 
                                             <th data-item="QQQWE" onclick="setNumber('QQQWE')">116</th>
@@ -298,8 +298,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="QQQWE" onclick="setNumber('QQQWE')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '116', sub_name: '116', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '116', sub_name: '116', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '116', sub_name: '116', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '116', sub_name: '116', odds: 61}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -309,8 +309,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="WFQW" onclick="setNumber('WFQW')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '122', sub_name: '122', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '122', sub_name: '122', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '122', sub_name: '122', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '122', sub_name: '122', odds: 61}">
                                             </td>
 
                                             <th data-item="XZCVCV" onclick="setNumber('XZCVCV')">133</th>
@@ -319,8 +319,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="XZCVCV" onclick="setNumber('XZCVCV')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '133', sub_name: '133', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '133', sub_name: '133', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '133', sub_name: '133', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '133', sub_name: '133', odds: 61}">
                                             </td>
 
                                             <th data-item="HGJHF" onclick="setNumber('HGJHF')">144</th>
@@ -329,8 +329,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="HGJHF" onclick="setNumber('HGJHF')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '144', sub_name: '144', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '144', sub_name: '144', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '144', sub_name: '144', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '144', sub_name: '144', odds: 61}">
                                             </td>
 
                                             <th data-item="QEBGT" onclick="setNumber('QEBGT')">155</th>
@@ -339,8 +339,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="QEBGT" onclick="setNumber('QEBGT')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '155', sub_name: '155', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '155', sub_name: '155', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '155', sub_name: '155', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '155', sub_name: '155', odds: 61}">
                                             </td>
 
                                             <th data-item="UYTF" onclick="setNumber('UYTF')">166</th>
@@ -349,8 +349,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="UYTF" onclick="setNumber('UYTF')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '166', sub_name: '166', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '166', sub_name: '166', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '166', sub_name: '166', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '166', sub_name: '166', odds: 61}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -360,8 +360,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="BVSER" onclick="setNumber('BVSER')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '223', sub_name: '223', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '223', sub_name: '223', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '223', sub_name: '223', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '223', sub_name: '223', odds: 61}">
                                             </td>
 
                                             <th data-item="YNFYTY" onclick="setNumber('YNFYTY')">224</th>
@@ -370,8 +370,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="YNFYTY" onclick="setNumber('YNFYTY')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '224', sub_name: '224', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '224', sub_name: '224', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '224', sub_name: '224', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '224', sub_name: '224', odds: 61}">
                                             </td>
 
                                             <th data-item="AVDE" onclick="setNumber('AVDE')">225</th>
@@ -380,8 +380,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="AVDE" onclick="setNumber('AVDE')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '225', sub_name: '225', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '225', sub_name: '225', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '225', sub_name: '225', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '225', sub_name: '225', odds: 61}">
                                             </td>
 
                                             <th data-item="NMTT" onclick="setNumber('NMTT')">226</th>
@@ -390,8 +390,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="NMTT" onclick="setNumber('NMTT')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '226', sub_name: '226', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '226', sub_name: '226', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '226', sub_name: '226', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '226', sub_name: '226', odds: 61}">
                                             </td>
 
                                             <th data-item="EEDD" onclick="setNumber('EEDD')">233</th>
@@ -400,8 +400,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="EEDD" onclick="setNumber('EEDD')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '233', sub_name: '233', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '233', sub_name: '233', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '233', sub_name: '233', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '233', sub_name: '233', odds: 61}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -411,8 +411,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="ZXZA" onclick="setNumber('ZXZA')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '244', sub_name: '244', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '244', sub_name: '244', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '244', sub_name: '244', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '244', sub_name: '244', odds: 61}">
                                             </td>
 
                                             <th data-item="NNBT" onclick="setNumber('NNBT')">255</th>
@@ -421,8 +421,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="NNBT" onclick="setNumber('NNBT')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '255', sub_name: '255', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '255', sub_name: '255', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '255', sub_name: '255', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '255', sub_name: '255', odds: 61}">
                                             </td>
 
                                             <th data-item="TYASK" onclick="setNumber('TYASK')">266</th>
@@ -431,8 +431,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="TYASK" onclick="setNumber('TYASK')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '266', sub_name: '266', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '266', sub_name: '266', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '266', sub_name: '266', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '266', sub_name: '266', odds: 61}">
                                             </td>
 
                                             <th data-item="LLILK" onclick="setNumber('LLILK')">334</th>
@@ -441,8 +441,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="LLILK" onclick="setNumber('LLILK')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '334', sub_name: '334', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '334', sub_name: '334', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '334', sub_name: '334', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '334', sub_name: '334', odds: 61}">
                                             </td>
 
                                             <th data-item="IEHF" onclick="setNumber('IEHF')">335</th>
@@ -451,8 +451,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="IEHF" onclick="setNumber('IEHF')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '335', sub_name: '335', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '335', sub_name: '335', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '335', sub_name: '335', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '335', sub_name: '335', odds: 61}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -462,8 +462,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="WEOP" onclick="setNumber('WEOP')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '336', sub_name: '336', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '336', sub_name: '336', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '336', sub_name: '336', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '336', sub_name: '336', odds: 61}">
                                             </td>
 
                                             <th data-item="POAVN" onclick="setNumber('POAVN')">344</th>
@@ -472,8 +472,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="POAVN" onclick="setNumber('POAVN')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '344', sub_name: '344', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '344', sub_name: '344', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '344', sub_name: '344', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '344', sub_name: '344', odds: 61}">
                                             </td>
 
                                             <th data-item="PEMVIE" onclick="setNumber('PEMVIE')">355</th>
@@ -482,8 +482,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="PEMVIE" onclick="setNumber('PEMVIE')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '355', sub_name: '355', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '355', sub_name: '355', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '355', sub_name: '355', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '355', sub_name: '355', odds: 61}">
                                             </td>
 
                                             <th data-item="PERVEA" onclick="setNumber('PERVEA')">366</th>
@@ -492,8 +492,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="PERVEA" onclick="setNumber('PERVEA')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '366', sub_name: '366', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '366', sub_name: '366', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '366', sub_name: '366', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '366', sub_name: '366', odds: 61}">
                                             </td>
 
                                             <th data-item="INISTER" onclick="setNumber('INISTER')">445</th>
@@ -502,8 +502,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="INISTER" onclick="setNumber('INISTER')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '445', sub_name: '445', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '445', sub_name: '445', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '445', sub_name: '445', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '445', sub_name: '445', odds: 61}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -513,8 +513,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="DU3J" onclick="setNumber('DU3J')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '446', sub_name: '446', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '446', sub_name: '446', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '446', sub_name: '446', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '446', sub_name: '446', odds: 61}">
                                             </td>
 
                                             <th data-item="39FJ9" onclick="setNumber('39FJ9')">455</th>
@@ -523,8 +523,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="39FJ9" onclick="setNumber('39FJ9')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '455', sub_name: '455', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '455', sub_name: '455', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '455', sub_name: '455', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '455', sub_name: '455', odds: 61}">
                                             </td>
 
                                             <th data-item="P31JV" onclick="setNumber('P31JV')">466</th>
@@ -533,8 +533,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="P31JV" onclick="setNumber('P31JV')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '466', sub_name: '466', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '466', sub_name: '466', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '466', sub_name: '466', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '466', sub_name: '466', odds: 61}">
                                             </td>
 
                                             <th data-item="Q33DE" onclick="setNumber('Q33DE')">556</th>
@@ -543,8 +543,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="Q33DE" onclick="setNumber('Q33DE')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '556', sub_name: '556', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '556', sub_name: '556', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '556', sub_name: '556', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '556', sub_name: '556', odds: 61}">
                                             </td>
 
                                             <th data-item="VANT4T" onclick="setNumber('VANT4T')">566</th>
@@ -553,8 +553,8 @@
                                                 <b v-else class="f-c-red f-s-16">61</b>
                                             </td>
                                             <td data-item="VANT4T" onclick="setNumber('VANT4T')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '566', sub_name: '566', odds: 63.5}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '566', sub_name: '566', odds: 61}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '566', sub_name: '566', odds: 63.5}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'ertonghaodanxuan', name: '二同号单选', sub_key: '566', sub_name: '566', odds: 61}">
                                             </td>
                                         </tr>
                                     </thead>
@@ -589,8 +589,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="MMMIE" onclick="setNumber('MMMIE')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '123', sub_name: '123', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '123', sub_name: '123', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '123', sub_name: '123', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '123', sub_name: '123', odds: 31}">
                                             </td>
 
                                             <th data-item="M90289F" onclick="setNumber('M90289F')">124</th>
@@ -599,8 +599,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="M90289F" onclick="setNumber('M90289F')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '124', sub_name: '124', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '124', sub_name: '124', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '124', sub_name: '124', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '124', sub_name: '124', odds: 31}">
                                             </td>
 
                                             <th data-item="M23NF9" onclick="setNumber('M23NF9')">125</th>
@@ -609,8 +609,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="M23NF9" onclick="setNumber('M23NF9')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '125', sub_name: '125', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '125', sub_name: '125', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '125', sub_name: '125', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '125', sub_name: '125', odds: 31}">
                                             </td>
 
                                             <th data-item="H87G4" onclick="setNumber('H87G4')">126</th>
@@ -619,8 +619,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="H87G4" onclick="setNumber('H87G4')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '126', sub_name: '126', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '126', sub_name: '126', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '126', sub_name: '126', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '126', sub_name: '126', odds: 31}">
                                             </td>
 
                                             <th data-item="W0J33" onclick="setNumber('W0J33')">134</th>
@@ -629,8 +629,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="W0J33" onclick="setNumber('W0J33')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '134', sub_name: '134', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '134', sub_name: '134', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '134', sub_name: '134', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '134', sub_name: '134', odds: 31}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -640,8 +640,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="JOIFFJ0" onclick="setNumber('JOIFFJ0')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '135', sub_name: '135', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '135', sub_name: '135', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '135', sub_name: '135', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '135', sub_name: '135', odds: 31}">
                                             </td>
 
                                             <th data-item="21HF92" onclick="setNumber('21HF92')">136</th>
@@ -650,8 +650,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="21HF92" onclick="setNumber('21HF92')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '136', sub_name: '136', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '136', sub_name: '136', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '136', sub_name: '136', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '136', sub_name: '136', odds: 31}">
                                             </td>
 
                                             <th data-item="1228QC1" onclick="setNumber('1228QC1')">145</th>
@@ -660,8 +660,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="1228QC1" onclick="setNumber('1228QC1')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '145', sub_name: '145', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '145', sub_name: '145', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '145', sub_name: '145', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '145', sub_name: '145', odds: 31}">
                                             </td>
 
                                             <th data-item="R98WV4V4W" onclick="setNumber('R98WV4V4W')">146</th>
@@ -670,8 +670,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="R98WV4V4W" onclick="setNumber('R98WV4V4W')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '146', sub_name: '146', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '146', sub_name: '146', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '146', sub_name: '146', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '146', sub_name: '146', odds: 31}">
                                             </td>
 
                                             <th data-item="Q84C23" onclick="setNumber('Q84C23')">156</th>
@@ -680,8 +680,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="Q84C23" onclick="setNumber('Q84C23')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '156', sub_name: '156', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '156', sub_name: '156', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '156', sub_name: '156', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '156', sub_name: '156', odds: 31}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -691,8 +691,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="444RTY" onclick="setNumber('444RTY')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '234', sub_name: '234', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '234', sub_name: '234', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '234', sub_name: '234', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '234', sub_name: '234', odds: 31}">
                                             </td>
 
                                             <th data-item="YUIHUER" onclick="setNumber('YUIHUER')">235</th>
@@ -701,8 +701,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="YUIHUER" onclick="setNumber('YUIHUER')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '235', sub_name: '235', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '235', sub_name: '235', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '235', sub_name: '235', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '235', sub_name: '235', odds: 31}">
                                             </td>
 
                                             <th data-item="Y783F3" onclick="setNumber('Y783F3')">236</th>
@@ -711,8 +711,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="Y783F3" onclick="setNumber('Y783F3')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '236', sub_name: '236', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '236', sub_name: '236', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '236', sub_name: '236', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '236', sub_name: '236', odds: 31}">
                                             </td>
 
                                             <th data-item="378Y348" onclick="setNumber('378Y348')">245</th>
@@ -721,8 +721,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="378Y348" onclick="setNumber('378Y348')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '245', sub_name: '245', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '245', sub_name: '245', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '245', sub_name: '245', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '245', sub_name: '245', odds: 31}">
                                             </td>
 
                                             <th data-item="Y78HVEW" onclick="setNumber('Y78HVEW')">246</th>
@@ -731,8 +731,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="Y78HVEW" onclick="setNumber('Y78HVEW')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '246', sub_name: '246', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '246', sub_name: '246', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '246', sub_name: '246', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '246', sub_name: '246', odds: 31}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -742,8 +742,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="QOJCORQE" onclick="setNumber('QOJCORQE')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '256', sub_name: '256', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '256', sub_name: '256', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '256', sub_name: '256', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '256', sub_name: '256', odds: 31}">
                                             </td>
 
                                             <th data-item="QKMOICJN9" onclick="setNumber('QKMOICJN9')">345</th>
@@ -752,8 +752,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="QKMOICJN9" onclick="setNumber('QKMOICJN9')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '345', sub_name: '345', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '345', sub_name: '345', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '345', sub_name: '345', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '345', sub_name: '345', odds: 31}">
                                             </td>
 
                                             <th data-item="NVIUBW" onclick="setNumber('NVIUBW')">346</th>
@@ -762,8 +762,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="NVIUBW" onclick="setNumber('NVIUBW')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '346', sub_name: '346', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '346', sub_name: '346', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '346', sub_name: '346', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '346', sub_name: '346', odds: 31}">
                                             </td>
 
                                             <th data-item="09J9ER" onclick="setNumber('09J9ER')">356</th>
@@ -772,8 +772,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="09J9ER" onclick="setNumber('09J9ER')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '356', sub_name: '356', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '356', sub_name: '356', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '356', sub_name: '356', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '356', sub_name: '356', odds: 31}">
                                             </td>
 
                                             <th data-item="NUTTERTOOLS" onclick="setNumber('NUTTERTOOLS')">456</th>
@@ -782,8 +782,8 @@
                                                 <b v-else class="f-c-red f-s-16">31</b>
                                             </td>
                                             <td data-item="NUTTERTOOLS" onclick="setNumber('NUTTERTOOLS')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '456', sub_name: '456', odds: 32}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '456', sub_name: '456', odds: 31}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '456', sub_name: '456', odds: 32}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'sanbutonghao', name: '三不同号', sub_key: '456', sub_name: '456', odds: 31}">
                                             </td>
                                         </tr>
                                     </thead>
@@ -818,8 +818,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="S_SFO3" onclick="setNumber('S_SFO3')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '12', sub_name: '12', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '12', sub_name: '12', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '12', sub_name: '12', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '12', sub_name: '12', odds: 6}">
                                             </td>
 
                                             <th data-item="I_JFO98" onclick="setNumber('I_JFO98')">13</th>
@@ -828,8 +828,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="I_JFO98" onclick="setNumber('I_JFO98')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '13', sub_name: '13', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '13', sub_name: '13', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '13', sub_name: '13', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '13', sub_name: '13', odds: 6}">
                                             </td>
 
                                             <th data-item="NVUR_D" onclick="setNumber('NVUR_D')">14</th>
@@ -838,8 +838,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="NVUR_D" onclick="setNumber('NVUR_D')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '14', sub_name: '14', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '14', sub_name: '14', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '14', sub_name: '14', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '14', sub_name: '14', odds: 6}">
                                             </td>
 
                                             <th data-item="MDIM0_JSAO" onclick="setNumber('MDIM0_JSAO')">15</th>
@@ -848,8 +848,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="MDIM0_JSAO" onclick="setNumber('MDIM0_JSAO')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '15', sub_name: '15', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '15', sub_name: '15', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '15', sub_name: '15', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '15', sub_name: '15', odds: 6}">
                                             </td>
 
                                             <th data-item="lOIEW_D" onclick="setNumber('lOIEW_D')">16</th>
@@ -858,8 +858,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="lOIEW_D" onclick="setNumber('lOIEW_D')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '16', sub_name: '16', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '16', sub_name: '16', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '16', sub_name: '16', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '16', sub_name: '16', odds: 6}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -869,8 +869,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="DFUIOHE" onclick="setNumber('DFUIOHE')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '23', sub_name: '23', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '23', sub_name: '23', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '23', sub_name: '23', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '23', sub_name: '23', odds: 6}">
                                             </td>
 
                                             <th data-item="TYTY_98" onclick="setNumber('TYTY_98')">24</th>
@@ -879,8 +879,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="TYTY_98" onclick="setNumber('TYTY_98')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '24', sub_name: '24', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '24', sub_name: '24', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '24', sub_name: '24', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '24', sub_name: '24', odds: 6}">
                                             </td>
 
                                             <th data-item="IDI_NU" onclick="setNumber('IDI_NU')">25</th>
@@ -889,8 +889,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="IDI_NU" onclick="setNumber('IDI_NU')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '24', sub_name: '24', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '24', sub_name: '24', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '24', sub_name: '24', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '24', sub_name: '24', odds: 6}">
                                             </td>
 
                                             <th data-item="DSMIBN" onclick="setNumber('DSMIBN')">26</th>
@@ -899,8 +899,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="DSMIBN" onclick="setNumber('DSMIBN')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '26', sub_name: '26', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '26', sub_name: '26', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '26', sub_name: '26', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '26', sub_name: '26', odds: 6}">
                                             </td>
 
                                             <th data-item="SDFOI3" onclick="setNumber('SDFOI3')">34</th>
@@ -909,8 +909,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="SDFOI3" onclick="setNumber('SDFOI3')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '34', sub_name: '34', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '34', sub_name: '34', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '34', sub_name: '34', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '34', sub_name: '34', odds: 6}">
                                             </td>
                                         </tr>
                                         <tr>
@@ -920,8 +920,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="SJFIOE" onclick="setNumber('SJFIOE')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '35', sub_name: '35', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '35', sub_name: '35', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '35', sub_name: '35', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '35', sub_name: '35', odds: 6}">
                                             </td>
 
                                             <th data-item="PIEE_D" onclick="setNumber('PIEE_D')">36</th>
@@ -930,8 +930,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="PIEE_D" onclick="setNumber('PIEE_D')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '36', sub_name: '36', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '36', sub_name: '36', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '36', sub_name: '36', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '36', sub_name: '36', odds: 6}">
                                             </td>
 
                                             <th data-item="DJFONVB" onclick="setNumber('DJFONVB')">45</th>
@@ -940,8 +940,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="DJFONVB" onclick="setNumber('DJFONVB')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '45', sub_name: '45', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '45', sub_name: '45', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '45', sub_name: '45', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '45', sub_name: '45', odds: 6}">
                                             </td>
 
                                             <th data-item="FIJIR_D" onclick="setNumber('FIJIR_D')">46</th>
@@ -950,8 +950,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="FIJIR_D" onclick="setNumber('FIJIR_D')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '46', sub_name: '46', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '46', sub_name: '46', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '46', sub_name: '46', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '46', sub_name: '46', odds: 6}">
                                             </td>
 
                                             <th data-item="KOJF" onclick="setNumber('KOJF')">56</th>
@@ -960,8 +960,8 @@
                                                 <b v-else class="f-c-red f-s-16">6</b>
                                             </td>
                                             <td data-item="KOJF" onclick="setNumber('KOJF')">
-                                                <input v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '56', sub_name: '56', odds: 6.35}">
-                                                <input v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '56', sub_name: '56', odds: 6}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-if="levelValue =='D'" type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '56', sub_name: '56', odds: 6.35}">
+                                                <input @click.stop @input="getMoneyTotal" @blur="verifyInput($event)" v-else type="text" class="gb" data-item="{key: 'erbutonghao', name: '二不同号', sub_key: '56', sub_name: '56', odds: 6}">
                                             </td>
                                         </tr>
                                     </thead>
@@ -1044,8 +1044,8 @@
                                 <span class="f-c-green m-r-5"><b>金额</b></span>
                                 <span class="f-c-red m-r-5"><b class="moneyTotal">0</b></span>
                                 <span class="m-r-5"><b>快速输入</b></span>
-                                <input type="text" class="m-r-15 quickImport" v-model="quickImport">
-                                <span class="h-btn btn-red m-r-5 submit">确认</span>
+                                <input type="text" class="m-r-15 quickImport" v-model="quickImport" @input="quickImport" @click.stop @blur="verifyInput($event)">
+                                <span class="h-btn btn-red m-r-5 submit" @click="submit">确认</span>
                                 <a href="javascript: history.go(0);" class="h-btn m-r-5">重置</a>
                             </div>
                         </div>
