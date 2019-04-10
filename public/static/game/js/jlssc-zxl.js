@@ -204,7 +204,7 @@ $(function(){
                 game_type: app.game_type,
                 game_item: app.game_item,
                 money: val,
-                part: app.levelValue,
+                level: app.levelValue,
                 number: app.selectInput,
                 odds: app.odds,
             },
