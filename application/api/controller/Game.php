@@ -410,7 +410,7 @@ class Game extends Base
         $game_item    = Request::instance()->param('game_item',''); //玩法
         $item         = Request::instance()->param('item',''); //选中内容
 
-        $data = $odds[$game_item][strlen(str_replace(',', '', $item))] ?? 0;
+        $data = $odds_arr[$game_item][strlen(str_replace(',', '', $item))] ?? 0;
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
 
