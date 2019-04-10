@@ -251,7 +251,6 @@ var app = new Vue({
                     }
                 }
             }
-    
             confirmInit();
             confirmModal.show();
         },
@@ -264,25 +263,23 @@ var app = new Vue({
 
         simahei: function(event){
             if($(event.target).closest('tr').find('input[type=checkbox]:checked').length >= 5){
-                e.preventDefault();
+                event.target.checked = false;
                 alert('不能超过4项');
             }
         },
 
         simahong: function(event){
             if($(event.target).closest('tr').find('input[type=checkbox]:checked').length >= 5){
-                e.preventDefault();
+                event.target.checked = false;
                 alert('不能超过4项');
             }
         },
 
         wumahei: function(event){
-            $(this).bind('click', function(e){
-                if($(event.target).closest('tr').find('input[type=checkbox]:checked').length >= 6){
-                    e.preventDefault();
-                    alert('不能超过5项');
-                }
-            })
+            if($(event.target).closest('tr').find('input[type=checkbox]:checked').length >= 6){
+                event.target.checked = false;
+                alert('不能超过5项');
+            }
         }
     }
 });
