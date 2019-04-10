@@ -46,7 +46,7 @@
                             <span class="m-l-30">停盘时间：<b>{{close_time}}</b></span>
                             <div class="fast-import pull-right">
                                 <span>快速输入&nbsp;</span>
-                                <input type="text" class="form-control m-r-15 quickImport" v-model="quickImport" @input="quickImport" @click.stop @blur="verifyInput($event)">
+                                <input type="text" class="form-control m-r-15 quickImport" v-model="quickImport" @input="quickImportFn" @click.stop @blur="verifyInput($event)">
                                 <a href="javascript:history.go(0);" class="h-btn btn-red">重新整理</a>
                             </div>
                         </div>
@@ -880,7 +880,7 @@
                                 <span class="f-c-green m-r-5"><b>金额</b></span>
                                 <span class="f-c-red m-r-5"><b class="moneyTotal">0</b></span>
                                 <span class="m-r-5"><b>快速输入</b></span>
-                                <input type="text" class="m-r-15 quickImport" v-model="quickImport" @input="quickImport" @click.stop @blur="verifyInput($event)">
+                                <input type="text" class="m-r-15 quickImport" v-model="quickImport" @input="quickImportFn" @click.stop @blur="verifyInput($event)">
                                 <span class="h-btn btn-red m-r-5 submit" @click="submit">确认</span>
                                 <a href="javascript: history.go(0);" class="h-btn m-r-5">重置</a>
                             </div>

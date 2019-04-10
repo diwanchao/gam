@@ -183,7 +183,7 @@ else if(utils.getCookie('part')){
             confirmModal.show();
         },
 
-        quickImport: function(){
+        quickImportFn: function(){
             quickValue = this.quickValue;
             setSelectAry();
             getMoneyTotal();
