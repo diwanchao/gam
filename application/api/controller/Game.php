@@ -341,7 +341,7 @@ class Game extends Base
 
                 sort($content);
 
-                $method = $game_type ? $game_type == 'zxs' ? '组选三' : '组选六' : '';
+                $method = $game_item == 'zxs' ? '组选三' : '组选六';
 
                 if ($money>$user_blance) 
                     return json(['msg' => '投注失败,余额不足','code' => 301, 'data' => []]);
@@ -358,7 +358,7 @@ class Game extends Base
                     'game_key'  => $game_key,
                     'user_id'   => $this->USER_ID,
                     'odds'      => $odds,
-                    'play_name' => $game_type == 'zxs' ? '组选三['.$game_type.']':'组选六['.$game_type.']',
+                    'play_name' => $game_item == 'zxs' ? '组选三['.$game_type.']':'组选六['.$game_type.']',
                     'play_key'  => $game_type,
                 ];
                     Db::startTrans();
