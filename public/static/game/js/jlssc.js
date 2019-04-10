@@ -115,7 +115,34 @@ var app = new Vue({
         levelChange: function(){
             levelValue = this.levelValue;
             utils.setCookie('part', this.levelValue);
+        },
+
+        // input blur验证
+        verifyInput: function(event){
+            if(isNaN(event.target.value)){
+                alert('请输入纯数字');
+                event.target.value = '';
+                this.getMoneyTotal();
+            }
+        },
+
+        // 获取金额
+        getMoneyTotal: getMoneyTotal,
+
+
+        // 确认下注
+        submit: function(){
+            tableData = getData();
+            if(!tableData.length){
+                return alert('请下注！');
+            }
+
+            confirmInit();
+            confirmModal.show();
         }
+        
+
+
     }
 });
 
@@ -176,20 +203,20 @@ function getData() {
 
 $(function(){
     /* ************* 限制投注输入框 ************** */
-    $('.portlet-body .h-table').find('input[type=text]').bind('blur', function(){
-        if(isNaN(this.value)){
-            alert('请输入纯数字');
-            this.value = '';
-        }
-    });
+    // $('.portlet-body .h-table').find('input[type=text]').bind('blur', function(){
+    //     if(isNaN(this.value)){
+    //         alert('请输入纯数字');
+    //         this.value = '';
+    //     }
+    // });
 
-    $('.portlet-body .h-table').find('input[type=text]').bind('click', function(e){
-        e.stopPropagation();
-    });
+    // $('.portlet-body .h-table').find('input[type=text]').bind('click', function(e){
+    //     e.stopPropagation();
+    // });
 
-    $('.portlet-body .h-table').find('input[type=text]').bind('input', function(){
-        getMoneyTotal();
-    })
+    // $('.portlet-body .h-table').find('input[type=text]').bind('input', function(){
+    //     getMoneyTotal();
+    // })
 
     /* ************* 限制快速投注输入框 ************** */
 
