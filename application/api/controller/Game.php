@@ -388,10 +388,29 @@ class Game extends Base
      */
     public function getOdds()
     {
+        $odds_arr = [
+            'zxs' => [
+                5=>14.8,
+                6=>9.867,
+                7=>7.048,
+                8=>5.268,
+                9=>4.111,
+                10=>3.289,
+            ],
+            'zxl' => [
+                4=>35.75,
+                5=>14.3,
+                6=>7.15,
+                7=>4.086,
+                8=>2.554,
+
+            ]
+        ];
+
         $game_item    = Request::instance()->param('game_item',''); //玩法
         $item         = Request::instance()->param('item',''); //选中内容
-        $part         = Request::instance()->param('part',''); //盘别
-        $data = 1.2;
+
+        $data = $odds[$game_item][strlen(str_replace(',', '', $item))] ?? 0;
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
     }
 
