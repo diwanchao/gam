@@ -184,7 +184,7 @@ else if(utils.getCookie('part')){
         },
 
         quickImportFn: function(){
-            quickValue = this.quickValue;
+            quickValue = this.quickImport;
             setSelectAry();
             getMoneyTotal();
         },

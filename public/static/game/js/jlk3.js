@@ -256,7 +256,7 @@ var app = new Vue({
         },
 
         quickImportFn: function(){
-            quickValue = this.quickValue;
+            quickValue = this.quickImport;
             setSelectAry();
             getMoneyTotal();
         },
