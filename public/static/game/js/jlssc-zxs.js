@@ -114,6 +114,21 @@ var app = new Vue({
             }
         },
 
+        submit: function(){
+            // if(!tableData.length){
+            //     return alert('请下注！');
+            // }
+            if(this.selectInput.length < 5) {
+                return alert('请选择5位号码下注~');
+            }
+            if(!this.odds || !this.selectInputData){
+                return alert('下注失败，请重选号码~');
+            }
+    
+            confirmInit();
+            confirmModal.show();
+        }
+
 
     }
 });
@@ -174,20 +189,20 @@ $(function(){
 
 
     /* ************* 点击下注弹出确认下注 ************** */
-    $('.submit').bind('click', function(){
-        // if(!tableData.length){
-        //     return alert('请下注！');
-        // }
-        if(app.selectInput.length < 5) {
-            return alert('请选择5位号码下注~');
-        }
-        if(!app.odds || !app.selectInputData){
-            return alert('下注失败，请重选号码~');
-        }
+    // $('.submit').bind('click', function(){
+    //     // if(!tableData.length){
+    //     //     return alert('请下注！');
+    //     // }
+    //     if(app.selectInput.length < 5) {
+    //         return alert('请选择5位号码下注~');
+    //     }
+    //     if(!app.odds || !app.selectInputData){
+    //         return alert('下注失败，请重选号码~');
+    //     }
 
-        confirmInit();
-        confirmModal.show();
-    });
+    //     confirmInit();
+    //     confirmModal.show();
+    // });
 
     /* ************* 确认下注提交 ************** */
     confirmModal.on('bs-beforeSubmit', function(){

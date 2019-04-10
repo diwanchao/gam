@@ -206,6 +206,80 @@ var app = new Vue({
         levelChange: function(){
             levelValue = this.levelValue;
             utils.setCookie('part', this.levelValue);
+        },
+
+        // input blur验证
+        verifyInput: function(event){
+            if(isNaN(event.target.value)){
+                alert('请输入纯数字');
+                event.target.value = '';
+                this.getMoneyTotal();
+            }
+        },
+
+        // 获取金额
+        getMoneyTotal: getMoneyTotal,
+
+
+        // 确认下注
+        submit: function(){
+            tableData = getData();
+            if(!tableData.length){
+                return alert('请下注！');
+            }
+    
+            for(var i = 0; i < tableData.length; i++) {
+                // 4码黑必须选择4个号码！
+                if(tableData[i].key == '4mahei'){
+                    if(tableData[i].sub_key.length != 4) {
+                        alert('4码黑必须选择4个号码！');
+                        return;
+                    }
+                }
+                // 4码红必须选择4个号码！
+                if(tableData[i].key == '4mahong'){
+                    if(tableData[i].sub_key.length != 4) {
+                        alert('4码红必须选择4个号码！');
+                        return;
+                    }
+                }
+                // 5码黑必须选择5个号码！
+                if(tableData[i].key == '5mahei'){
+                    if(tableData[i].sub_key.length != 5) {
+                        alert('5码黑必须选择5个号码！');
+                        return;
+                    }
+                }
+            }
+            confirmInit();
+            confirmModal.show();
+        },
+
+        quickImport: function(){
+            quickValue = this.quickValue;
+            setSelectAry();
+            getMoneyTotal();
+        },
+
+        simahei: function(event){
+            if($(event.target).closest('tr').find('input[type=checkbox]:checked').length >= 5){
+                event.target.checked = false;
+                alert('不能超过4项');
+            }
+        },
+
+        simahong: function(event){
+            if($(event.target).closest('tr').find('input[type=checkbox]:checked').length >= 5){
+                event.target.checked = false;
+                alert('不能超过4项');
+            }
+        },
+
+        wumahei: function(event){
+            if($(event.target).closest('tr').find('input[type=checkbox]:checked').length >= 6){
+                event.target.checked = false;
+                alert('不能超过5项');
+            }
         }
     }
 });
@@ -213,107 +287,105 @@ var app = new Vue({
 $(function(){
     /* ************* 限制投注输入框 ************** */
 
-    $('.portlet-body .h-table').find('input[type=text]').bind('blur', function(){
-        if(isNaN(this.value)){
-            alert('请输入纯数字');
-            this.value = '';
-        }
-    });
+    // $('.portlet-body .h-table').find('input[type=text]').bind('blur', function(){
+    //     if(isNaN(this.value)){
+    //         alert('请输入纯数字');
+    //         this.value = '';
+    //     }
+    // });
 
-    $('.portlet-body .h-table').find('input[type=text]').bind('click', function(e){
-        e.stopPropagation();
-    });
+    // $('.portlet-body .h-table').find('input[type=text]').bind('click', function(e){
+    //     e.stopPropagation();
+    // });
 
-    $('.portlet-body .h-table').find('input[type=text]').bind('input', function(){
-        getMoneyTotal();
-    })
+    // $('.portlet-body .h-table').find('input[type=text]').bind('input', function(){
+    //     getMoneyTotal();
+    // })
 
     /* ************* 限制快速投注输入框 ************** */
 
-    $('.quickImport').bind('blur', function(){
-        if(isNaN(this.value)){
-            alert('请输入纯数字');
-            this.value = '';
-        }
-    });
+    // $('.quickImport').bind('blur', function(){
+    //     if(isNaN(this.value)){
+    //         alert('请输入纯数字');
+    //         this.value = '';
+    //     }
+    // });
 
-    $('.quickImport').bind('click', function(e){
-        e.stopPropagation();
-    });
+    // $('.quickImport').bind('click', function(e){
+    //     e.stopPropagation();
+    // });
 
-    $('.quickImport').bind('input', function(){
-        $('.quickImport').val(this.value);
-        quickValue = this.value;
-        setSelectAry();
-        getMoneyTotal();
-    });
+    // $('.quickImport').bind('input', function(){
+    //     $('.quickImport').val(this.value);
+    //     quickValue = this.value;
+    //     setSelectAry();
+    //     getMoneyTotal();
+    // });
 
     /* ************* 限制红黑码只能选择4种 ************** */
-    $('#simahei').find('input[type=checkbox]').each(function() {
-        $(this).bind('click', function(e){
-            if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
-                e.preventDefault();
-                alert('不能超过4项');
-            }
-        })
-    });
-    $('#simahong').find('input[type=checkbox]').each(function() {
-        $(this).bind('click', function(e){
-            if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
-                e.preventDefault();
-                alert('不能超过4项');
-            }
-        })
-    });
-    $('#wumahei').find('input[type=checkbox]').each(function() {
-        $(this).bind('click', function(e){
-            if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 6){
-                e.preventDefault();
-                alert('不能超过5项');
-            }
-        })
-    });
+    // $('#simahei').find('input[type=checkbox]').each(function() {
+    //     $(this).bind('click', function(e){
+    //         if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
+    //             e.preventDefault();
+    //             alert('不能超过4项');
+    //         }
+    //     })
+    // });
+    // $('#simahong').find('input[type=checkbox]').each(function() {
+    //     $(this).bind('click', function(e){
+    //         if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 5){
+    //             e.preventDefault();
+    //             alert('不能超过4项');
+    //         }
+    //     })
+    // });
+    // $('#wumahei').find('input[type=checkbox]').each(function() {
+    //     $(this).bind('click', function(e){
+    //         if($(this).closest('tr').find('input[type=checkbox]:checked').length >= 6){
+    //             e.preventDefault();
+    //             alert('不能超过5项');
+    //         }
+    //     })
+    // });
 
 
     /* ************* 点击下注弹出确认下注 ************** */
-    $('.submit').bind('click', function(){
-        tableData = getData();
-        if(!tableData.length){
-            return alert('请下注！');
-        }
+    // $('.submit').bind('click', function(){
+    //     tableData = getData();
+    //     if(!tableData.length){
+    //         return alert('请下注！');
+    //     }
 
-        for(var i = 0; i < tableData.length; i++) {
-            // 4码黑必须选择4个号码！
-            if(tableData[i].key == '4mahei'){
-                if(tableData[i].sub_key.length != 4) {
-                    alert('4码黑必须选择4个号码！');
-                    return;
-                }
-            }
-            // 4码红必须选择4个号码！
-            if(tableData[i].key == '4mahong'){
-                if(tableData[i].sub_key.length != 4) {
-                    alert('4码红必须选择4个号码！');
-                    return;
-                }
-            }
-            // 5码黑必须选择5个号码！
-            if(tableData[i].key == '5mahei'){
-                if(tableData[i].sub_key.length != 5) {
-                    alert('5码黑必须选择5个号码！');
-                    return;
-                }
-            }
-        }
+    //     for(var i = 0; i < tableData.length; i++) {
+    //         // 4码黑必须选择4个号码！
+    //         if(tableData[i].key == '4mahei'){
+    //             if(tableData[i].sub_key.length != 4) {
+    //                 alert('4码黑必须选择4个号码！');
+    //                 return;
+    //             }
+    //         }
+    //         // 4码红必须选择4个号码！
+    //         if(tableData[i].key == '4mahong'){
+    //             if(tableData[i].sub_key.length != 4) {
+    //                 alert('4码红必须选择4个号码！');
+    //                 return;
+    //             }
+    //         }
+    //         // 5码黑必须选择5个号码！
+    //         if(tableData[i].key == '5mahei'){
+    //             if(tableData[i].sub_key.length != 5) {
+    //                 alert('5码黑必须选择5个号码！');
+    //                 return;
+    //             }
+    //         }
+    //     }
 
-        confirmInit();
-        confirmModal.show();
-    });
+    //     confirmInit();
+    //     confirmModal.show();
+    // });
 
     /* ************* 确认下注提交 ************** */
     confirmModal.on('bs-beforeSubmit', function(){
-        var data = tableData;
-        
         utils.getAjax({
             url: utils.concatGameKey('/api/game/addBet'),
             type: 'POST',
