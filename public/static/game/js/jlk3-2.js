@@ -169,11 +169,6 @@ else if(utils.getCookie('part')){
  
  $(function(){
      /* ************* 限制投注输入框 ************** */
-     $('.portlet-body .h-table').find('input[type=text]').bind('keydown', function(e){
-         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
-             e.preventDefault();
-         }
-     });
  
      $('.portlet-body .h-table').find('input[type=text]').bind('blur', function(){
          if(isNaN(this.value)){
@@ -191,11 +186,6 @@ else if(utils.getCookie('part')){
      })
  
      /* ************* 限制快速投注输入框 ************** */
-     $('.quickImport').bind('keydown', function(e){
-         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
-             e.preventDefault();
-         }
-     });
  
      $('.quickImport').bind('blur', function(){
          if(isNaN(this.value)){

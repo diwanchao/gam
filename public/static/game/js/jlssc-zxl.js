@@ -93,9 +93,9 @@ var app = new Vue({
             if(this.selectInput.length >= 4){
                 // 获取赔率
                 utils.getAjax({
-                    url: utils.concatGameKey('/'),
+                    url: utils.concatGameKey('/api/game/getOdds'),
                     data: {
-                        item: JSON.parse(JSON.stringify(this.selectInput)),
+                        item: this.selectInput.toString(),
                         game_item: this.game_item,
                         part: this.levelValue,
                     },
@@ -156,11 +156,6 @@ function timeInterval(time) {
 $(function(){
 
      /* ************* 限制投注输入框 ************** */
-     $('#drop_money').bind('keydown', function(e){
-        if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
-            e.preventDefault();
-        }
-    });
 
     $('#drop_money').bind('blur', function(){
         if(isNaN(this.value)){
@@ -205,13 +200,13 @@ $(function(){
             url: utils.concatGameKey('/api/game/addBet'),
             type: 'POST',
             data: {
-                nowPeriods: app._data.nowPeriods,
+                periods: app._data.nowPeriods,
                 game_type: app.game_type,
                 game_item: app.game_item,
                 money: val,
-                level: levelValue,
                 part: app.levelValue,
-                number: app.selectInput
+                number: app.selectInput,
+                odds: app.odds,
             },
             alert: true,
             success: function(){

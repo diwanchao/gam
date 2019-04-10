@@ -334,5 +334,65 @@ class Game extends Base
         return json(['msg' => '投注成功','code' => 200, 'data' => []]);
     }
 
+    public function openGame()
+    {
+        $number         = Request::instance()->param('number',0); 
+        $game_result    = Request::instance()->param('game_result',0);
+
+        if (!$number) 
+        {
+            exit();
+        }
+        if (!$game_result) 
+        {
+            exit();
+        }
+        $bet = Db::name('order')->where('number=? and status=0',[$number])->select();
+
+        if (!$bet) 
+        {
+            exit();
+        }
+
+        foreach ($bet as $key => $value) {
+            
+        }
+
+
+    }
+
+    /**
+     * 计算输赢
+     */
+    public function get_result($game_result,$content,$play_name)
+    {
+        $get = false;
+
+        switch ($play_name) {
+            case '二同号复选':
+                
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
+
+
+    }
+
+
+    /**
+     * 获取组三,组三赔率
+     */
+    public function getOdds()
+    {
+        $game_item    = Request::instance()->param('game_item',''); //玩法
+        $item         = Request::instance()->param('item',''); //选中内容
+        $part         = Request::instance()->param('part',''); //盘别
+        $data = 1.2;
+        return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
+    }
 
 }
