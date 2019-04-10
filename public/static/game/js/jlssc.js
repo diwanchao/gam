@@ -220,35 +220,35 @@ $(function(){
 
     /* ************* 限制快速投注输入框 ************** */
 
-    $('.quickImport').bind('blur', function(){
-        if(isNaN(this.value)){
-            alert('请输入纯数字');
-            this.value = '';
-        }
-    });
+    // $('.quickImport').bind('blur', function(){
+    //     if(isNaN(this.value)){
+    //         alert('请输入纯数字');
+    //         this.value = '';
+    //     }
+    // });
 
-    $('.quickImport').bind('click', function(e){
-        e.stopPropagation();
-    });
+    // $('.quickImport').bind('click', function(e){
+    //     e.stopPropagation();
+    // });
 
-    $('.quickImport').bind('input', function(){
-        $('.quickImport').val(this.value);
-        quickValue = this.value;
-        setSelectAry();
-        getMoneyTotal();
-    });
+    // $('.quickImport').bind('input', function(){
+    //     $('.quickImport').val(this.value);
+    //     quickValue = this.value;
+    //     setSelectAry();
+    //     getMoneyTotal();
+    // });
 
 
     /* ************* 点击下注弹出确认下注 ************** */
-    $('.submit').bind('click', function(){
-        tableData = getData();
-        if(!tableData.length){
-            return alert('请下注！');
-        }
+    // $('.submit').bind('click', function(){
+    //     tableData = getData();
+    //     if(!tableData.length){
+    //         return alert('请下注！');
+    //     }
 
-        confirmInit();
-        confirmModal.show();
-    });
+    //     confirmInit();
+    //     confirmModal.show();
+    // });
 
     /* ************* 确认下注提交 ************** */
     confirmModal.on('bs-beforeSubmit', function(){
