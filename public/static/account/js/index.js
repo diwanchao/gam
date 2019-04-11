@@ -80,4 +80,6 @@ $(function(){
         // tablePage.data.index = 1;
         init();
     });
+
+    $('body').fadeIn('fast');
 });

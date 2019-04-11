@@ -75,5 +75,6 @@ var render = function(data, money, school, b_break, get){
 $(function(){
 
     init();
+    $('body').fadeIn('fast');
 
 });

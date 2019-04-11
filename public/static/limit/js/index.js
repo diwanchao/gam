@@ -28,4 +28,5 @@ $(function(){
 
     init();
     
+    $('body').fadeIn('fast');
 })

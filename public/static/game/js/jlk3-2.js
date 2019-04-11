@@ -264,5 +264,5 @@ else if(utils.getCookie('part')){
          getLastPeriods();
      }, 10000);
     
-     
+     $('body').fadeIn('fast');
  });

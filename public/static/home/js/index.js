@@ -134,4 +134,5 @@ $(function(){
         interTime:4000
     });
 
+    $('body').fadeIn('fast');
 })

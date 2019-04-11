@@ -410,7 +410,7 @@ $(function(){
         getLastPeriods();
     }, 10000);
    
-    
+    $('body').fadeIn('fast');
 })
 
 
