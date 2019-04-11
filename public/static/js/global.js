@@ -508,10 +508,12 @@ if(location.pathname == '/index/home'){
 			for (var i = 0; i < this.data.game.length; i++) {
 				var cur = this.data.game[i];
 				var $html = $('<li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript:void(0);">' + cur.name + '</a></li>');
-				$html.click(function () {
-					utils.setCookie('game_key', cur.game_key);
-					window.location = cur.url;
-				});
+				(function(cur, $html){
+					$html.click(function () {
+						utils.setCookie('game_key', cur.game_key);
+						window.location = cur.url;
+					});
+				})(cur, $html);
 				this.$navGameList.append($html);
 			}
 		}
