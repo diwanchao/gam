@@ -555,9 +555,6 @@ if(location.pathname == '/index/home'){
 	 */
 	var InitSlidebar = function () {
 
-		// 当前人物所在的游戏 key
-		this.gameKey = ENV.game_key;
-
 		// 页面内容 用来控制显示隐藏slidebar userInfo -> 有
 		this.$main = $('#main');
 		// 左侧个人信息
@@ -579,7 +576,7 @@ if(location.pathname == '/index/home'){
 		if (location.pathname == '/index/home') {
 			return;
 		}
-		if (!this.gameKey) {
+		if (!ENV.game_key) {
 			return;
 		} else {
 			this.$main.addClass('userInfo');
@@ -707,7 +704,13 @@ if(location.pathname == '/index/home'){
 
 	InitSlidebar.prototype.baseInit = function () {
 		// logo暂定
-		// this.$slidebarGameLogo
+		if(ENV.game_key === 'ssc'){
+			this.$slidebarGameLogo.css({backgroundPosition: '-240px -60px'});
+		}
+		else if(ENV.game_key === 'jlk3'){
+			this.$slidebarGameLogo.css({backgroundPosition: '-180px -180px'});
+		}
+		this.$slidebarGameLogo
 		this.$slidebarGameName.html(this.data.game_name);
 		this.$slidebarUsername.html(this.data.username);
 		this.$slidebarBalance.html(this.data.balance);
