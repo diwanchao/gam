@@ -5,6 +5,7 @@ var init = function(){
     //ajax
     utils.getAjax({
         url: '/api/notice/',
+        loading: true,
         type: 'GET',
         data: {index: p},
         success: function(json){

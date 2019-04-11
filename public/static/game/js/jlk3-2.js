@@ -84,6 +84,7 @@ else if(utils.getCookie('part')){
  var init = function(){
      utils.getAjax({
          url: utils.concatGameKey('/api/game/gameInit'),
+         loading: true,
          type: 'GET',
          success: function(json){
              app._data.level = json.dish;
@@ -242,6 +243,7 @@ else if(utils.getCookie('part')){
         var data = tableData;
         utils.getAjax({
             url: utils.concatGameKey('/api/game/addBet'),
+            loading: true,
             type: 'POST',
             data: {
                 nowPeriods: app._data.nowPeriods,

@@ -8,6 +8,7 @@ var init = function(){
 
     utils.getAjax({
         url: utils.concatGameKey('/api/user/settlementDetail'),
+        loading: true,
         data: {
             date: date,
             index: p,

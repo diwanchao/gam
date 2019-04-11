@@ -137,6 +137,10 @@ var utils = {
 			return;
 		}
 
+		if(opt.loading) {
+			$('body').append('<div class="opacity"><div class="bg"></div><div class="size" id="size"><span class="">L</span><span class="active"> o</span><span class="">a</span><span class="">d</span><span class="">i</span><span class="">n</span><span class="">g</span><span class=""></span></div></div>')
+		}
+
 		$.ajax({
 			type: opt.type || 'POST',
 			dataType: opt.dataType || 'JSON',
@@ -162,6 +166,11 @@ var utils = {
 			error: function (err) {
 				typeof opt.error == 'function' ? opt.error(err) : null;
 				alert('服务器错误');
+			},
+			complete: function(){
+				if(opt.loading) {
+					$('.opacity').remove();
+				}
 			}
 		})
 	},

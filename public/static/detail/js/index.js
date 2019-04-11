@@ -12,6 +12,7 @@ var init = function(){
     // 用当前第几页 index / game_key ajax请求 获取列表
     utils.getAjax({
         url: utils.concatGameKey('/api/user/getList'),
+        loading: true,
         type: 'POST',
         data: {
             index: p

@@ -50,6 +50,7 @@ var init = function(){
 
     utils.getAjax({
         url: utils.concatGameKey('/api/game/resultList'),
+        loading: true,
         type: 'GET',
         // data: {
         //     index: p,
