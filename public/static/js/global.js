@@ -743,3 +743,23 @@ if(location.pathname == '/index/home'){
 	}
 
 })();
+
+(function () {
+	var stemp = 0;
+	window.setInterval(function () {
+		try {
+			var list = document.getElementById('size').children;
+			for (var i = 0; i < list.length; i++) {
+				list[i].className = "";
+			}
+			list[stemp].className = 'active';
+			if (stemp == list.length - 1) {
+				stemp = 0
+			} else {
+				stemp++
+			}
+		} catch (e) {
+			console.log(e);
+		};
+	}, 200)
+})();
