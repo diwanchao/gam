@@ -82,4 +82,6 @@ $(function(){
             e.returnValue = false;
         }
     });
+
+    $('body').fadeIn('fast');
 })
