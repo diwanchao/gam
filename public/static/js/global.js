@@ -137,6 +137,10 @@ var utils = {
 			return;
 		}
 
+		if(opt.loading) {
+			$('body').append('<div class="opacity"><div class="bg"></div><div class="size" id="size"><span class="">L</span><span class="active"> o</span><span class="">a</span><span class="">d</span><span class="">i</span><span class="">n</span><span class="">g</span><span class=""></span></div></div>')
+		}
+
 		$.ajax({
 			type: opt.type || 'POST',
 			dataType: opt.dataType || 'JSON',
@@ -162,6 +166,11 @@ var utils = {
 			error: function (err) {
 				typeof opt.error == 'function' ? opt.error(err) : null;
 				alert('服务器错误');
+			},
+			complete: function(){
+				if(opt.loading) {
+					$('.opacity').remove();
+				}
 			}
 		})
 	},
@@ -499,10 +508,12 @@ if(location.pathname == '/index/home'){
 			for (var i = 0; i < this.data.game.length; i++) {
 				var cur = this.data.game[i];
 				var $html = $('<li>&nbsp;&nbsp;●&nbsp;&nbsp;<a href="javascript:void(0);">' + cur.name + '</a></li>');
-				$html.click(function () {
-					utils.setCookie('game_key', cur.game_key);
-					window.location = cur.url;
-				});
+				(function(cur, $html){
+					$html.click(function () {
+						utils.setCookie('game_key', cur.game_key);
+						window.location = cur.url;
+					});
+				})(cur, $html);
 				this.$navGameList.append($html);
 			}
 		}
@@ -544,9 +555,6 @@ if(location.pathname == '/index/home'){
 	 */
 	var InitSlidebar = function () {
 
-		// 当前人物所在的游戏 key
-		this.gameKey = ENV.game_key;
-
 		// 页面内容 用来控制显示隐藏slidebar userInfo -> 有
 		this.$main = $('#main');
 		// 左侧个人信息
@@ -568,7 +576,7 @@ if(location.pathname == '/index/home'){
 		if (location.pathname == '/index/home') {
 			return;
 		}
-		if (!this.gameKey) {
+		if (!ENV.game_key) {
 			return;
 		} else {
 			this.$main.addClass('userInfo');
@@ -696,7 +704,13 @@ if(location.pathname == '/index/home'){
 
 	InitSlidebar.prototype.baseInit = function () {
 		// logo暂定
-		// this.$slidebarGameLogo
+		if(ENV.game_key === 'ssc'){
+			this.$slidebarGameLogo.css({backgroundPosition: '-240px -60px'});
+		}
+		else if(ENV.game_key === 'jlk3'){
+			this.$slidebarGameLogo.css({backgroundPosition: '-180px -180px'});
+		}
+		this.$slidebarGameLogo
 		this.$slidebarGameName.html(this.data.game_name);
 		this.$slidebarUsername.html(this.data.username);
 		this.$slidebarBalance.html(this.data.balance);
@@ -733,4 +747,24 @@ if(location.pathname == '/index/home'){
 		InitSlidebar: new InitSlidebar(),
 	}
 
+})();
+
+(function () {
+	var stemp = 0;
+	window.setInterval(function () {
+		try {
+			var list = document.getElementById('size').children;
+			for (var i = 0; i < list.length; i++) {
+				list[i].className = "";
+			}
+			list[stemp].className = 'active';
+			if (stemp == list.length - 1) {
+				stemp = 0
+			} else {
+				stemp++
+			}
+		} catch (e) {
+			console.log(e);
+		};
+	}, 200)
 })();

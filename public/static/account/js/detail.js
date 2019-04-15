@@ -8,6 +8,7 @@ var init = function(){
 
     utils.getAjax({
         url: utils.concatGameKey('/api/user/settlementDetail'),
+        loading: true,
         data: {
             date: date,
             index: p,
@@ -74,5 +75,6 @@ var render = function(data, money, school, b_break, get){
 $(function(){
 
     init();
+    $('body').fadeIn('fast');
 
 });

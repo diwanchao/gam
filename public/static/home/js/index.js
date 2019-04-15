@@ -122,7 +122,7 @@ var init = function(callback){
 $(function(){
 
     init();
-
+    $('body').fadeIn('fast');
     TouchSlide({
         slideCell:'#banner',
         mainCell:"#banner .inner",
@@ -133,5 +133,5 @@ $(function(){
         autoPlay:true,
         interTime:4000
     });
-
+   
 })
