@@ -34,6 +34,28 @@ class Ssc
          } catch (\Exception $e) {
      		echo $e->getMessage();    	
          }
+    }
+
+
+    /**
+     * 开奖方法
+     */
+    public function lottery()
+    {
+        $game_key   = Request::instance()->param('game_key'); 
+
+
+
 
     }
+    /**
+     * 计算结果
+     */
+
+    public function result()
+    {
+
+    }
+
+
 }
