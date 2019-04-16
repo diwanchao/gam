@@ -42,7 +42,7 @@ var init = function(){
 var render = function(data, single, money, school, b_reak, get){
     $('#tableBody').empty();
     for(var i = 0; i < data.length; i++) {
-        var $html = $('<tr><td class="bg-eee"><a href="/index/account/detail?date='+ (/\d{4}-\d{2}-\d{2}/.exec(data[i].date)[0]) +'">'+ data[i].date +'</a></td><td>'+ data[i].single +'</td><td>'+ data[i].money +'</td><td>'+ data[i].school +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>');
+        var $html = $('<tr><td class="bg-eee"><a href="javascript: void(0);">'+ data[i].date +'</a></td><td>'+ data[i].single +'</td><td>'+ data[i].money +'</td><td>'+ data[i].school +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>');
         $html.find('a').bind('click', function(){
             window.location = '/index/account/detail?date='+ (/\d{4}-\d{2}-\d{2}/.exec(data[i].date)[0]) + '&game_key=' + ENV.game_key;
         });
