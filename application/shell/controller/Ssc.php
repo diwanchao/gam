@@ -34,7 +34,7 @@ class Ssc
  						'time' 			=> $game_data[$value]['opentime'],
  						'game_key'		=> 'ssc'
         			];
-                    $this->exec(self::REQUEST_URL,self::METHOD_POST,['number'=>$item['number']]);
+                    $this->exec(self::REQUEST_URL,self::METHOD_POST,['number'=>$game_data[$value]['expect']]);
         			Db::table('game_result')->insert($item);
         		}
         	}
