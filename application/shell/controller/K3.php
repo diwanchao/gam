@@ -36,8 +36,8 @@ class K3
  						'time' 			=> $game_data[$value]['opentime'],
  						'game_key'		=> $jlk3_data['code']
         			];
-        			Db::table('game_result')->insert($item);
                     $this->exec(self::REQUEST_URL,self::METHOD_POST,['number'=>$key]);
+        			Db::table('game_result')->insert($item);
         		}
         	}
 	        echo 'ok';
