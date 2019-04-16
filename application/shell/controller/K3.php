@@ -46,6 +46,11 @@ class K3
          }
     }
 
+    public function test()
+    {
+                    $this->exec(self::REQUEST_URL,self::METHOD_POST,['number'=>20190416025]);
+    }
+
     public  function exec($url = self::REQUEST_URL, $method = self::METHOD_GET, $params = array(), $ip = null, $connectTimeout = 1)
     {
 
