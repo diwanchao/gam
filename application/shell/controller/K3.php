@@ -29,7 +29,7 @@ class K3
         	if ($diff) 
         	{
         		$game_data = array_column($jlk3_data['data'], null, 'expect');
-        		foreach ($diff as $value) {
+        		foreach ($diff as $key => $value) {
         			$item = [
         				'game_result' 	=> str_replace(",","",$game_data[$value]['opencode']),
  						'number' 		=> $game_data[$value]['expect'],
@@ -37,16 +37,14 @@ class K3
  						'game_key'		=> $jlk3_data['code']
         			];
         			Db::table('game_result')->insert($item);
-                    $this->exec(self::REQUEST_URL,self::METHOD_POST,['number'=>$value['expect']]);
+                    $this->exec(self::REQUEST_URL,self::METHOD_POST,['number'=>$key]);
         		}
         	}
 	        echo 'ok';
          } catch (\Exception $e) {
      		echo $e->getMessage();
          }
-
     }
-
 
     public  function exec($url = self::REQUEST_URL, $method = self::METHOD_GET, $params = array(), $ip = null, $connectTimeout = 1)
     {
