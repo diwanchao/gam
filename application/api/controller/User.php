@@ -153,9 +153,9 @@ class User extends Base
             'total'     => $sum_total,
             'single'    => $sum_single,
             'money'     => $sum_money,
-            'school'    => $sum_school,
-            'break'     => $sum_break,
-            'get'       => $sum_get,
+            'school'    => sprintf("%.2f",$sum_school),
+            'break'     => sprintf("%.2f",$sum_break),
+            'get'       => sprintf("%.2f",$sum_get),
             'data'      => $new_data
 
         ];
