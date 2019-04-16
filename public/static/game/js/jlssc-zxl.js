@@ -41,6 +41,7 @@ function getLastPeriods(){
 var init = function(){
     utils.getAjax({
         url: utils.concatGameKey('/api/game/gameInit'),
+        loading: true,
         type: 'GET',
         success: function(json){
             app._data.level = json.dish;
@@ -95,7 +96,7 @@ var app = new Vue({
                 utils.getAjax({
                     url: utils.concatGameKey('/api/game/getOdds'),
                     data: {
-                        item: JSON.parse(JSON.stringify(this.selectInput)),
+                        item: this.selectInput.toString(),
                         game_item: this.game_item,
                         part: this.levelValue,
                     },
@@ -113,6 +114,22 @@ var app = new Vue({
                 this.odds = '';
             }
         },
+
+
+        submit: function(){
+            // if(!tableData.length){
+            //     return alert('请下注！');
+            // }
+            if(this.selectInput.length < 4) {
+                return alert('请选择4位号码下注~');
+            }
+            if(!this.odds || !this.selectInputData){
+                return alert('下注失败，请重选号码~');
+            }
+    
+            confirmInit();
+            confirmModal.show();
+        }
 
 
     }
@@ -156,11 +173,6 @@ function timeInterval(time) {
 $(function(){
 
      /* ************* 限制投注输入框 ************** */
-     $('#drop_money').bind('keydown', function(e){
-        if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
-            e.preventDefault();
-        }
-    });
 
     $('#drop_money').bind('blur', function(){
         if(isNaN(this.value)){
@@ -179,20 +191,20 @@ $(function(){
 
 
     /* ************* 点击下注弹出确认下注 ************** */
-    $('.submit').bind('click', function(){
-        // if(!tableData.length){
-        //     return alert('请下注！');
-        // }
-        if(app.selectInput.length < 4) {
-            return alert('请选择4位号码下注~');
-        }
-        if(!app.odds || !app.selectInputData){
-            return alert('下注失败，请重选号码~');
-        }
+    // $('.submit').bind('click', function(){
+    //     // if(!tableData.length){
+    //     //     return alert('请下注！');
+    //     // }
+    //     if(app.selectInput.length < 4) {
+    //         return alert('请选择4位号码下注~');
+    //     }
+    //     if(!app.odds || !app.selectInputData){
+    //         return alert('下注失败，请重选号码~');
+    //     }
 
-        confirmInit();
-        confirmModal.show();
-    });
+    //     confirmInit();
+    //     confirmModal.show();
+    // });
 
     /* ************* 确认下注提交 ************** */
     confirmModal.on('bs-beforeSubmit', function(){
@@ -203,15 +215,16 @@ $(function(){
         }
         utils.getAjax({
             url: utils.concatGameKey('/api/game/addBet'),
+            loading: true,
             type: 'POST',
             data: {
                 nowPeriods: app._data.nowPeriods,
                 game_type: app.game_type,
                 game_item: app.game_item,
                 money: val,
-                level: levelValue,
-                part: app.levelValue,
-                number: app.selectInput
+                level: app.levelValue,
+                number: app.selectInput,
+                odds: app.odds,
             },
             alert: true,
             success: function(){
@@ -227,4 +240,5 @@ $(function(){
         getLastPeriods();
     }, 10000);
    
+    $('body').fadeIn('fast');
 })

@@ -17,6 +17,7 @@ $(function(){
         // ajax
         utils.getAjax({
             url: '/api/user/changePassword',
+            loading: true,
             type: 'POST',
             data: {
                 old_pwd: o,
@@ -30,4 +31,5 @@ $(function(){
         })
     });
 
+    $('body').fadeIn('fast');
 })

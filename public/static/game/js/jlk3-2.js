@@ -84,6 +84,7 @@ else if(utils.getCookie('part')){
  var init = function(){
      utils.getAjax({
          url: utils.concatGameKey('/api/game/gameInit'),
+         loading: true,
          type: 'GET',
          success: function(json){
              app._data.level = json.dish;
@@ -163,70 +164,86 @@ else if(utils.getCookie('part')){
          levelChange: function(){
             levelValue = this.levelValue;
             utils.setCookie('part', this.levelValue);
-         }
+         },
+
+         // input blur验证
+        verifyInput: function(event){
+            if(isNaN(event.target.value)){
+                alert('请输入纯数字');
+                event.target.value = '';
+                this.getMoneyTotal();
+            }
+        },
+
+        // 获取金额
+        getMoneyTotal: getMoneyTotal,
+
+        submit: function(){
+            tableData = getData();
+            confirmInit();
+            confirmModal.show();
+        },
+
+        quickImportFn: function(){
+            quickValue = this.quickImport;
+            setSelectAry();
+            getMoneyTotal();
+        },
+
      }
  });
  
  $(function(){
      /* ************* 限制投注输入框 ************** */
-     $('.portlet-body .h-table').find('input[type=text]').bind('keydown', function(e){
-         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
-             e.preventDefault();
-         }
-     });
  
-     $('.portlet-body .h-table').find('input[type=text]').bind('blur', function(){
-         if(isNaN(this.value)){
-             alert('请输入纯数字');
-             this.value = '';
-         }
-     });
+    //  $('.portlet-body .h-table').find('input[type=text]').bind('blur', function(){
+    //      if(isNaN(this.value)){
+    //          alert('请输入纯数字');
+    //          this.value = '';
+    //      }
+    //  });
  
-     $('.portlet-body .h-table').find('input[type=text]').bind('click', function(e){
-         e.stopPropagation();
-     });
+    //  $('.portlet-body .h-table').find('input[type=text]').bind('click', function(e){
+    //      e.stopPropagation();
+    //  });
  
-     $('.portlet-body .h-table').find('input[type=text]').bind('input', function(){
-         getMoneyTotal();
-     })
+    //  $('.portlet-body .h-table').find('input[type=text]').bind('input', function(){
+    //      getMoneyTotal();
+    //  })
  
      /* ************* 限制快速投注输入框 ************** */
-     $('.quickImport').bind('keydown', function(e){
-         if((e.keyCode < 48 || e.keyCode > 57) && e.keyCode != 8 && e.keyCode != 37 && e.keyCode != 39 && e.keyCode != 38 && e.keyCode != 40) {
-             e.preventDefault();
-         }
-     });
  
-     $('.quickImport').bind('blur', function(){
-         if(isNaN(this.value)){
-             alert('请输入纯数字');
-             this.value = '';
-         }
-     });
+    //  $('.quickImport').bind('blur', function(){
+    //      if(isNaN(this.value)){
+    //          alert('请输入纯数字');
+    //          this.value = '';
+    //      }
+    //  });
  
-     $('.quickImport').bind('click', function(e){
-         e.stopPropagation();
-     });
+    //  $('.quickImport').bind('click', function(e){
+    //      e.stopPropagation();
+    //  });
  
-     $('.quickImport').bind('input', function(){
-         $('.quickImport').val(this.value);
-         quickValue = this.value;
-         setSelectAry();
-         getMoneyTotal();
-     });
+    //  $('.quickImport').bind('input', function(){
+    //      $('.quickImport').val(this.value);
+    //      quickValue = this.value;
+    //      setSelectAry();
+    //      getMoneyTotal();
+    //  });
  
-     /* ************* 点击下注弹出确认下注 ************** */
-     $('.submit').bind('click', function(){
-         tableData = getData();
-         confirmInit();
-         confirmModal.show();
-     });
+    //  /* ************* 点击下注弹出确认下注 ************** */
+    //  $('.submit').bind('click', function(){
+    //      tableData = getData();
+    //      confirmInit();
+    //      confirmModal.show();
+    //  });
  
      /* ************* 确认下注提交 ************** */
      confirmModal.on('bs-beforeSubmit', function(){
         var data = tableData;
         utils.getAjax({
             url: utils.concatGameKey('/api/game/addBet'),
+            loading: true,
             type: 'POST',
             data: {
                 nowPeriods: app._data.nowPeriods,
@@ -247,5 +264,5 @@ else if(utils.getCookie('part')){
          getLastPeriods();
      }, 10000);
     
-     
+     $('body').fadeIn('fast');
  });

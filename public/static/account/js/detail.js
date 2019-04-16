@@ -1,6 +1,7 @@
 // var game_key = utils.getCookie('game_key');
 var tablePage = new Page('#pageInfo', function(index){init();});
 var date = utils.getURL(location.search, 'date');
+var game_key = utils.getURL(location.search, 'game_key');
 
 var init = function(){
     // date / game_key
@@ -8,9 +9,11 @@ var init = function(){
 
     utils.getAjax({
         url: utils.concatGameKey('/api/user/settlementDetail'),
+        loading: true,
         data: {
             date: date,
             index: p,
+            game_key: game_key
         },
         type: 'POST',
         success: function(json){
@@ -74,5 +77,6 @@ var render = function(data, money, school, b_break, get){
 $(function(){
 
     init();
+    $('body').fadeIn('fast');
 
 });

@@ -6,6 +6,7 @@ var init = function(){
     //ajax  
     utils.getAjax({
         url: '/api/integral/',
+        loading: true,
         type: 'GET',
         data: {index: p},
         success: function(json){
@@ -27,4 +28,5 @@ $(function(){
 
     init();
     
+    $('body').fadeIn('fast');
 })

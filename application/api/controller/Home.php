@@ -52,7 +52,7 @@ class Home extends Base
         if ('ssc' == $game_key) 
         {
             $data['subGame'] = [
-                ['name'=>'龙虎和', 'key'=>'ssc','url'=>'/index/game/jlk3'],
+                ['name'=>'龙虎和', 'key'=>'ssc','url'=>'/index/game/jlssc'],
                 ['name'=>'组选三', 'key'=>'ssc','url'=>'/index/game/ssczxs'],
                 ['name'=>'组选六', 'key'=>'ssc','url'=>'/index/game/ssczxl'],
             ];
@@ -87,7 +87,7 @@ class Home extends Base
             'game_logo' => '/',
             'game_name' => $game_key == 'jlk3' ? '吉林快3' : '重庆时时彩',
             'username'  => $user_data['user_name'] ?? '',
-            'balance'   => $user_data['blance'] ?? 0,
+            'balance'   => floor($user_data['blance']) ?? 0,
             'bet'       => $bet,
             'num'       => [
                 'data'=> $num ?: []

@@ -9,6 +9,7 @@ var init = function(){
     // 用url + ?game_key=游戏key ajax请求 获取列表
     utils.getAjax({
         url: utils.concatGameKey('/api/user/'),
+        loading: true,
         type: 'GET',
         success: function(data){
             render(data.data);
@@ -54,5 +55,5 @@ $(function(){
         init();
     });
     
-    
+    $('body').fadeIn('fast');
 });

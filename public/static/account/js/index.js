@@ -12,6 +12,7 @@ var init = function(){
     // 用当前第几页 index / game_key ajax请求 获取列表
     utils.getAjax({
         url: utils.concatGameKey('/api/user/settlementList'),
+        loading: true,
         type: 'POST',
         // data: {index: p},
         success: function(json){
@@ -39,15 +40,17 @@ var init = function(){
 }
 
 var render = function(data, single, money, school, b_reak, get){
-    var html = '';
-
+    $('#tableBody').empty();
     for(var i = 0; i < data.length; i++) {
-        html += '<tr><td class="bg-eee"><a href="/index/account/detail?date='+ (/\d{4}-\d{2}-\d{2}/.exec(data[i].date)[0]) +'">'+ data[i].date +'</a></td><td>'+ data[i].single +'</td><td>'+ data[i].money +'</td><td>'+ data[i].school +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>';
+        var $html = $('<tr><td class="bg-eee"><a href="javascript: void(0);">'+ data[i].date +'</a></td><td>'+ data[i].single +'</td><td>'+ data[i].money +'</td><td>'+ data[i].school +'</td><td>'+ data[i].break +'</td><td>'+ data[i].get +'</td></tr>');
+        (function(i){
+            $html.find('a').bind('click', function(){
+                window.location = '/index/account/detail?date='+ (/\d{4}-\d{2}-\d{2}/.exec(data[i].date)[0]) + '&game_key=' + ENV.game_key;
+            });
+        })(i)
+        $('#tableBody').append($html);
     }
-
-    html += '<tr><td>总计</td><td>'+ single +'</td><td>'+ money +'</td><td>'+ school +'</td><td>'+ b_reak +'</td><td><b>'+ get +'</b></td></tr>';
-
-    $('#tableBody').empty().append(html);
+    $('#tableBody').append('<tr><td>总计</td><td>'+ single +'</td><td>'+ money +'</td><td>'+ school +'</td><td>'+ b_reak +'</td><td><b>'+ get +'</b></td></tr>');
 }
 
 $(function(){
@@ -79,4 +82,6 @@ $(function(){
         // tablePage.data.index = 1;
         init();
     });
+
+    $('body').fadeIn('fast');
 });

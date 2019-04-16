@@ -80,9 +80,7 @@ class User extends Base
         $where = 'user_id=? and game_key=? and status=0';
         $where_param[] = $this->USER_ID;
         $where_param[] = $game_key;
-
         $data   = Db::name('order')->field('time,no as number,part,content as value,money,break,number as periods,play_name as content,odds as reate')->where($where,$where_param)->order('no desc')->paginate(10,false,['var_page'=>'index']);
-
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
 
     }
@@ -220,7 +218,7 @@ class User extends Base
         {
             $star       = $page*$page_row-$page_row;
             $end        = $page*$page_row;
-            $sql        = "select * FROM `order` {$where} order by time desc limit {$star},{$end}";
+            $sql        = "select * FROM `order` {$where} order by time desc limit {$star},{$page_row}";
             $res        = Db::query($sql);
             if ($res) {
                 foreach ($res as $key => $value) {
@@ -249,12 +247,12 @@ class User extends Base
             }
         }
         $data = [
-            'total'=>$total,
-            'money'=>$money,
-            'school'=>$school,
-            'break'=>$break,
-            'get'=>$get,
-            'data'=>$return_data,
+            'total'     => $total,
+            'money'     => $money,
+            'school'    => $school,
+            'break'     => $break,
+            'get'       => sprintf("%.2f",$get),
+            'data'      => $return_data,
 
         ];
         return json(['msg' => 'succeed','code' => 200, 'data' => $data]);
