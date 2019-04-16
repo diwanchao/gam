@@ -35,7 +35,7 @@ class Ssc
  						'game_key'		=> 'ssc'
         			];
         			Db::table('game_result')->insert($item);
-                    $this->exec(self::REQUEST_URL,self::METHOD_POST,['number'=>$value['expect']]);
+                    $this->exec(self::REQUEST_URL,self::METHOD_POST,['number'=>$item['number']]);
         		}
         	}
 
@@ -44,7 +44,6 @@ class Ssc
      		echo $e->getMessage();    	
          }
     }
-
     public  function exec($url = self::REQUEST_URL, $method = self::METHOD_GET, $params = array(), $ip = null, $connectTimeout = 1)
     {
 

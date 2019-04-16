@@ -87,7 +87,7 @@ class Home extends Base
             'game_logo' => '/',
             'game_name' => $game_key == 'jlk3' ? '吉林快3' : '重庆时时彩',
             'username'  => $user_data['user_name'] ?? '',
-            'balance'   => $user_data['blance'] ?? 0,
+            'balance'   => floor($user_data['blance']) ?? 0,
             'bet'       => $bet,
             'num'       => [
                 'data'=> $num ?: []

@@ -42,10 +42,11 @@ class K3
         	}
 	        echo 'ok';
          } catch (\Exception $e) {
-     		echo $e->getMessage();    	
+     		echo $e->getMessage();
          }
 
     }
+
 
     public  function exec($url = self::REQUEST_URL, $method = self::METHOD_GET, $params = array(), $ip = null, $connectTimeout = 1)
     {
