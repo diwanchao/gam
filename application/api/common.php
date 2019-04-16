@@ -26,23 +26,28 @@ use \think\Db;
     function get_ssc_number()
     {
         $openstamp  = strtotime(date('Y-m-d 00:10:00',time()));
-        $closestamp = strtotime(date('Y-m-d 23:50:00',time()));
+        $closestamp = strtotime(date('Y-m-d 03:10:00',time()));
+
+        $openstamp1  = strtotime(date('Y-m-d 07:10:00',time()));
+        $closestamp1 = strtotime(date('Y-m-d 23:50:00',time()));
+
         $period     = 20*60;
         $now        = time(); 
-
-        if ($now>$closestamp) 
+        if ($now < $openstamp) 
         {
+            $num = '001';
+        }elseif ($now>$openstamp && $now < $closestamp) 
+        {
+            $num = ceil((($now-$openstamp)/$period));
+        }elseif ($now>$closestamp && $now < $openstamp1) {
+            $num = '010';
+        }elseif ($now > $openstamp1 && $now < $closestamp1) {
+            $num = ceil(($now-$openstamp1)/$period)+9;    
+        }elseif ($now > $openstamp1) {
             return date('Ymd',strtotime('+1 day')).'001';
         }
-        if ($now<$openstamp) 
-        {
-            return date('Ymd',$now).'001';
-        }
-        $num = ceil((($now-$openstamp)/$period))+1;
-        $num = ($num<10) ? '00'.$num : '0'.$num;
-
+        $num = $num < 9 ? '00'.$num : '0'.$num;
         return date('Ymd').$num;
-
     }
 
 

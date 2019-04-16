@@ -91,7 +91,7 @@ class K3
      */
     public function lottery()
     {
-        $number         = Request::instance()->param('number',20190415027); 
+        $number         = Request::instance()->param('number',''); 
 
         $game_result    = Db::table('game_result')->where("number=? and game_key='jlk3'",[$number])->value('game_result');
         if (!$game_result) 
