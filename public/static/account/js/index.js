@@ -48,7 +48,7 @@ var render = function(data, single, money, school, b_reak, get){
         });
         $('#tableBody').append($html);
     }
-    $('#tableBody') = $('<tr><td>总计</td><td>'+ single +'</td><td>'+ money +'</td><td>'+ school +'</td><td>'+ b_reak +'</td><td><b>'+ get +'</b></td></tr>');
+    $('#tableBody').append('<tr><td>总计</td><td>'+ single +'</td><td>'+ money +'</td><td>'+ school +'</td><td>'+ b_reak +'</td><td><b>'+ get +'</b></td></tr>');
 }
 
 $(function(){
