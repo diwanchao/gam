@@ -104,11 +104,42 @@ class Ssc
                 $update['get']      = $handsel - $value['money'];
 
             }
+            $earn_data  = $this->accounts($update['get'],'jlk3',$value['user_id']);
+            $update     = array_merge($update,$earn_data);
             //修改订单记录结果
             Db::table('order')->where('no','=',$value['no'])->update($update);
             Db::table('menber')->where('id', '=',$value['user_id'])->update(['blance' => Db::raw('blance+'.$update['handsel'])]);
         }
     }
+
+
+    /**
+     * 新增结算表
+     */
+    public function accounts($get,$game_key,$id)
+    {
+        $parent_id      = Db::name('menber')->where('id=?',[$id])->value('parent_id');
+        $proportion     = Db::table('proportion')
+                        ->where('a_id','=',$parent_id)
+                        ->where('game_key','=',$game_key)
+                        ->find();
+        $data ['1_id'] = $proportion['a_id'];
+        $data ['2_id'] = $proportion['b_id'];
+        $data ['3_id'] = $proportion['c_id'];
+        $data ['4_id'] = $proportion['d_id'];
+        $data ['1_earn'] = $bet*$proportion['a']/100;
+        $data ['2_earn'] = $bet*$proportion['b']/100;
+        $data ['3_earn'] = $bet*$proportion['c']/100;
+        $data ['4_earn'] = $bet*$proportion['d']/100;
+
+        return $data;
+    }
+
+
+
+
+
+
     /**
      * 计算结果
      */
