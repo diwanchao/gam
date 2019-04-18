@@ -140,8 +140,10 @@ class User extends Base
                 $sum_school += $data[$value]['school'];
                 $sum_break  += $data[$value]['break'];
                 $sum_get    += $data[$value]['get'];
-
                 $new_data[$key] = $data[$value];
+                $new_data[$key]['school']   = sprintf("%.2f",$new_data[$key]['school']);
+                $new_data[$key]['break']    = sprintf("%.2f",$new_data[$key]['break']);
+                $new_data[$key]['get']      = sprintf("%.2f",$new_data[$key]['get']);
             }else{
                 $new_data[$key] = ['date'=>$value,'single'=>0,'money'=>0,'school'=>0,'break'=>0,'get'=>0];
             }
@@ -151,9 +153,9 @@ class User extends Base
             'total'     => $sum_total,
             'single'    => $sum_single,
             'money'     => $sum_money,
-            'school'    => $sum_school,
-            'break'     => $sum_break,
-            'get'       => $sum_get,
+            'school'    => sprintf("%.2f",$sum_school),
+            'break'     => sprintf("%.2f",$sum_break),
+            'get'       => sprintf("%.2f",$sum_get),
             'data'      => $new_data
 
         ];
