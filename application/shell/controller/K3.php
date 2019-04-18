@@ -83,7 +83,10 @@ class K3
         }
     }
 
-
+    public function test()
+    {
+        $this->lottery('20190418022');
+    }
 
     /**
      * 开奖方法
@@ -121,10 +124,6 @@ class K3
             Db::table('menber')->where('id', '=',$value['user_id'])->update(['blance' => Db::raw('blance+'.$update['handsel'])]);
         }
     }
-    public function test()
-    {
-        $this->accounts(1,'jlk3','29');
-    }
 
     /**
      * 新增结算表
@@ -140,10 +139,10 @@ class K3
         $data ['2_id'] = $proportion['b_id'];
         $data ['3_id'] = $proportion['c_id'];
         $data ['4_id'] = $proportion['d_id'];
-        $data ['1_earn'] = $bet*$proportion['a']/100;
-        $data ['2_earn'] = $bet*$proportion['b']/100;
-        $data ['3_earn'] = $bet*$proportion['c']/100;
-        $data ['4_earn'] = $bet*$proportion['d']/100;
+        $data ['1_earn'] = $get*$proportion['a']/100;
+        $data ['2_earn'] = $get*$proportion['b']/100;
+        $data ['3_earn'] = $get*$proportion['c']/100;
+        $data ['4_earn'] = $get*$proportion['d']/100;
 
         return $data;
     }
