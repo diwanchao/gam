@@ -70,11 +70,11 @@ function renderGame(key){
 
         switch(key){
             case 'ssc': {
-                name = '时时彩';
+                name = '重庆时时彩';
                 break;
             }
             case 'k3': {
-                name = 'K3';
+                name = '吉林快3';
                 break;
             }
         }
