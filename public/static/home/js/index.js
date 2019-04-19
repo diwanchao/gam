@@ -70,7 +70,7 @@ function renderGame(key){
 
         switch(key){
             case 'ssc': {
-                name = '重庆时时彩';
+                name = '时时彩';
                 break;
             }
             case 'k3': {
