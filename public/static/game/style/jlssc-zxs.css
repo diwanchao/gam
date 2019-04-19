@@ -171,7 +171,7 @@ body{
     font-size: 16px;
 }
 .rule h3{
-    BACKGROUND-IMAGE: url(/public/image/h3_icon.png);
+    BACKGROUND-IMAGE: url(/static/image/h3_icon.png);
     LINE-HEIGHT: 32px;
     PADDING-LEFT: 20px;
     BACKGROUND-REPEAT: no-repeat;
@@ -213,7 +213,7 @@ body{
     PADDING-TOP: 10px;
 }
 .rule-content{
-    BACKGROUND-IMAGE: url(/public/image/bg_img.jpg);
+    BACKGROUND-IMAGE: url(/static/image/bg_img.jpg);
     PADDING-BOTTOM: 20px;
     PADDING-LEFT: 20px;
     WIDTH: 820px;
