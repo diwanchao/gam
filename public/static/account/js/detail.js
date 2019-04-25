@@ -8,7 +8,7 @@ var init = function(){
     var p = tablePage.data.index;
 
     utils.getAjax({
-        url: utils.concatGameKey('/api/user/settlementDetail'),
+        url: '/api/user/settlementDetail',
         loading: true,
         data: {
             date: date,

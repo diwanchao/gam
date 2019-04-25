@@ -564,6 +564,7 @@ a:hover{
 
 select.form-control{
     padding: 0 3px;
+    padding-right: 25px;
 }
 .loadBox{
     padding: 12em 4em;
