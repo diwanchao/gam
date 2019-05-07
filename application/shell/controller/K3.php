@@ -83,11 +83,6 @@ class K3
         }
     }
 
-    public function test()
-    {
-        $this->lottery('20190418022');
-    }
-
     /**
      * 开奖方法
      */
@@ -124,6 +119,15 @@ class K3
             Db::table('menber')->where('id', '=',$value['user_id'])->update(['blance' => Db::raw('blance+'.$update['handsel'])]);
         }
     }
+
+    public function timing_settle_accounts()
+    {
+
+
+    }
+
+
+
 
     /**
      * 新增结算表
@@ -192,6 +196,7 @@ class K3
                     }
                 break;
             case '和值大单双':
+                    $sum    = array_sum(str_split($game_result));
                     if ($sum >10) 
                     {
                         $item = ($sum%2)==0 ? '大双' : '大单';
